@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "DashboardViewController.h"
+#import "SignUpViewController.h"
 
 @interface HomeViewController ()
 
@@ -42,5 +43,8 @@
 
 - (IBAction)actionSignUp:(id)sender {
     // Open pop-up sign up
+//    SignUpViewController *signup = [[SignUpViewController alloc] initWithNibName:NSStringFromClass([SignUpViewController class]) bundle:nil];
+//    [signup showInView:ROAppDelegate.window animated:YES];
 }
+
 @end
