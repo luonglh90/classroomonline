@@ -10,7 +10,7 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    ../../msg/cpp/Category.pb.cc \
+    ../../msg/cpp/ClassCategory.pb.cc \
     ../../msg/cpp/ClassroomInfo.pb.cc \
     ../../msg/cpp/Enums.pb.cc \
     ../../msg/cpp/IpcMessage.pb.cc \
@@ -26,10 +26,12 @@ SOURCES += main.cpp \
     channel/basechannel.cpp \
     channel/router.cpp \
     communication/server.cpp \
-    channel/messagereceivechannel.cpp
+    channel/messagereceivechannel.cpp \
+    manager/usermanager.cpp \
+    pgdao/userdao.cpp
 
 HEADERS += \
-    ../../msg/cpp/Category.pb.h \
+    ../../msg/cpp/ClassCategory.pb.h \
     ../../msg/cpp/ClassroomInfo.pb.h \
     ../../msg/cpp/Enums.pb.h \
     ../../msg/cpp/IpcMessage.pb.h \
@@ -50,7 +52,9 @@ HEADERS += \
     base/enums.h \
     channel/router.h \
     communication/server.h \
-    channel/messagereceivechannel.h
+    channel/messagereceivechannel.h \
+    manager/usermanager.h \
+    pgdao/userdao.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

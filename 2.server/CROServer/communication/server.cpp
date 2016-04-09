@@ -1,5 +1,6 @@
 #include "channel/userchannel.h"
 #include "channel/messagereceivechannel.h"
+#include "manager/usermanager.h"
 #include "server.h"
 
 Server::Server()
@@ -10,6 +11,7 @@ void Server::startServer()
 {
     openSocket();
     initChannels();
+    UserManager::instance()->loadAllUser();
 
     connect(WebsocketCom::instance(), SIGNAL(disconnected(QWebSocket*)),
             this, SLOT(onDisconneced(QWebSocket*)));

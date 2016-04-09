@@ -12,4 +12,5 @@ message User {
 	optional string fullname = 3;
 	required int32 yearofborn = 4;
 	optional string imgurl = 5;
+	optional string password = 6;
 }

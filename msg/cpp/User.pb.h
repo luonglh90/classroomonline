@@ -148,6 +148,18 @@ class User : public ::google::protobuf::Message {
   inline ::std::string* release_imgurl();
   inline void set_allocated_imgurl(::std::string* imgurl);
 
+  // optional string password = 6;
+  inline bool has_password() const;
+  inline void clear_password();
+  static const int kPasswordFieldNumber = 6;
+  inline const ::std::string& password() const;
+  inline void set_password(const ::std::string& value);
+  inline void set_password(const char* value);
+  inline void set_password(const char* value, size_t size);
+  inline ::std::string* mutable_password();
+  inline ::std::string* release_password();
+  inline void set_allocated_password(::std::string* password);
+
   static const int kMessageFieldNumber = 101;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::User >, 11, false >
@@ -164,6 +176,8 @@ class User : public ::google::protobuf::Message {
   inline void clear_has_yearofborn();
   inline void set_has_imgurl();
   inline void clear_has_imgurl();
+  inline void set_has_password();
+  inline void clear_has_password();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -173,6 +187,7 @@ class User : public ::google::protobuf::Message {
   ::std::string* email_;
   ::std::string* fullname_;
   ::std::string* imgurl_;
+  ::std::string* password_;
   ::google::protobuf::int32 yearofborn_;
   friend void  protobuf_AddDesc_User_2eproto();
   friend void protobuf_AssignDesc_User_2eproto();
@@ -514,6 +529,82 @@ inline void User::set_allocated_imgurl(::std::string* imgurl) {
     imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.User.imgurl)
+}
+
+// optional string password = 6;
+inline bool User::has_password() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void User::set_has_password() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void User::clear_has_password() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void User::clear_password() {
+  if (password_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    password_->clear();
+  }
+  clear_has_password();
+}
+inline const ::std::string& User::password() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.User.password)
+  return *password_;
+}
+inline void User::set_password(const ::std::string& value) {
+  set_has_password();
+  if (password_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    password_ = new ::std::string;
+  }
+  password_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.User.password)
+}
+inline void User::set_password(const char* value) {
+  set_has_password();
+  if (password_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    password_ = new ::std::string;
+  }
+  password_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.User.password)
+}
+inline void User::set_password(const char* value, size_t size) {
+  set_has_password();
+  if (password_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    password_ = new ::std::string;
+  }
+  password_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.User.password)
+}
+inline ::std::string* User::mutable_password() {
+  set_has_password();
+  if (password_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    password_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.User.password)
+  return password_;
+}
+inline ::std::string* User::release_password() {
+  clear_has_password();
+  if (password_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = password_;
+    password_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void User::set_allocated_password(::std::string* password) {
+  if (password_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete password_;
+  }
+  if (password) {
+    set_has_password();
+    password_ = password;
+  } else {
+    clear_has_password();
+    password_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.User.password)
 }
 
 

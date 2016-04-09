@@ -2,7 +2,10 @@
 #define USERCHANNEL_H
 
 #include <QObject>
+#include "../../msg/cpp/RequestLogin.pb.h"
 #include "channel/basechannel.h"
+
+using namespace METRO::CRO::MESSAGES;
 
 class UserChannel : public BaseChannel
 {
@@ -10,13 +13,12 @@ class UserChannel : public BaseChannel
 public:
     explicit UserChannel();
 
+    void processRequestLogin(QWebSocket *socket, METRO::CRO::MESSAGES::RequestLogin *msg);
 signals:
 
 public slots:
 
 protected:
-    // QThread interface
-    void run();
     // BaseChannel interface
     void readMessage(IpcSocketEvelope *ipcevelope);
     void onDisconnect(QWebSocket *socket);
