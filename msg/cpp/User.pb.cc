@@ -84,22 +84,15 @@ void protobuf_AddDesc_User_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\nUser.proto\022\022METRO.CRO.MESSAGES\032\020IpcMes"
-    "sage.proto\"\272\001\n\004User\022\020\n\010username\030\001 \002(\t\022\r\n"
-    "\005email\030\002 \002(\t\022\020\n\010fullname\030\003 \001(\t\022\022\n\nyearof"
-    "born\030\004 \002(\t\022\016\n\006imgurl\030\005 \001(\t\022\020\n\010password\030\006"
-    " \001(\t2I\n\007message\022\036.METRO.CRO.MESSAGES.Ipc"
-    "Message\030e \001(\0132\030.METRO.CRO.MESSAGES.User", 239);
+    "\n\nUser.proto\022\022METRO.CRO.MESSAGES\"o\n\004User"
+    "\022\020\n\010username\030\001 \002(\t\022\r\n\005email\030\002 \002(\t\022\020\n\010ful"
+    "lname\030\003 \001(\t\022\022\n\nyearofborn\030\004 \002(\t\022\016\n\006imgur"
+    "l\030\005 \001(\t\022\020\n\010password\030\006 \001(\t", 145);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "User.proto", &protobuf_RegisterTypes);
   User::default_instance_ = new User();
   User::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    101, 11, false, false,
-    &::METRO::CRO::MESSAGES::User::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_User_2eproto);
 }
 
@@ -121,12 +114,6 @@ const int User::kImgurlFieldNumber;
 const int User::kPasswordFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int User::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::User >, 11, false >
-  User::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::User::default_instance());
 User::User()
   : ::google::protobuf::Message() {
   SharedCtor();

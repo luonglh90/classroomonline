@@ -1,12 +1,6 @@
-import "IpcMessage.proto";
-
 package METRO.CRO.MESSAGES;
 
 message TeacherOpenClass {
-	extend IpcMessage {
-		optional TeacherOpenClass message = 301;
-	}
-
 	optional string username = 1;
 	optional string classid = 2;
 }

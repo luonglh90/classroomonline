@@ -92,26 +92,38 @@ class IpcMessage : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 msgId = 1;
-  inline bool has_msgid() const;
-  inline void clear_msgid();
-  static const int kMsgIdFieldNumber = 1;
-  inline ::google::protobuf::int32 msgid() const;
-  inline void set_msgid(::google::protobuf::int32 value);
+  // optional int64 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int64 id() const;
+  inline void set_id(::google::protobuf::int64 value);
 
-  GOOGLE_PROTOBUF_EXTENSION_ACCESSORS(IpcMessage)
+  // optional bytes payload_data = 2;
+  inline bool has_payload_data() const;
+  inline void clear_payload_data();
+  static const int kPayloadDataFieldNumber = 2;
+  inline const ::std::string& payload_data() const;
+  inline void set_payload_data(const ::std::string& value);
+  inline void set_payload_data(const char* value);
+  inline void set_payload_data(const void* value, size_t size);
+  inline ::std::string* mutable_payload_data();
+  inline ::std::string* release_payload_data();
+  inline void set_allocated_payload_data(::std::string* payload_data);
+
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.IpcMessage)
  private:
-  inline void set_has_msgid();
-  inline void clear_has_msgid();
-
-  ::google::protobuf::internal::ExtensionSet _extensions_;
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_payload_data();
+  inline void clear_has_payload_data();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::int32 msgid_;
+  ::google::protobuf::int64 id_;
+  ::std::string* payload_data_;
   friend void  protobuf_AddDesc_IpcMessage_2eproto();
   friend void protobuf_AssignDesc_IpcMessage_2eproto();
   friend void protobuf_ShutdownFile_IpcMessage_2eproto();
@@ -126,28 +138,104 @@ class IpcMessage : public ::google::protobuf::Message {
 
 // IpcMessage
 
-// required int32 msgId = 1;
-inline bool IpcMessage::has_msgid() const {
+// optional int64 id = 1;
+inline bool IpcMessage::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void IpcMessage::set_has_msgid() {
+inline void IpcMessage::set_has_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void IpcMessage::clear_has_msgid() {
+inline void IpcMessage::clear_has_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void IpcMessage::clear_msgid() {
-  msgid_ = 0;
-  clear_has_msgid();
+inline void IpcMessage::clear_id() {
+  id_ = GOOGLE_LONGLONG(0);
+  clear_has_id();
 }
-inline ::google::protobuf::int32 IpcMessage::msgid() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.IpcMessage.msgId)
-  return msgid_;
+inline ::google::protobuf::int64 IpcMessage::id() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.IpcMessage.id)
+  return id_;
 }
-inline void IpcMessage::set_msgid(::google::protobuf::int32 value) {
-  set_has_msgid();
-  msgid_ = value;
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.IpcMessage.msgId)
+inline void IpcMessage::set_id(::google::protobuf::int64 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.IpcMessage.id)
+}
+
+// optional bytes payload_data = 2;
+inline bool IpcMessage::has_payload_data() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void IpcMessage::set_has_payload_data() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void IpcMessage::clear_has_payload_data() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void IpcMessage::clear_payload_data() {
+  if (payload_data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    payload_data_->clear();
+  }
+  clear_has_payload_data();
+}
+inline const ::std::string& IpcMessage::payload_data() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.IpcMessage.payload_data)
+  return *payload_data_;
+}
+inline void IpcMessage::set_payload_data(const ::std::string& value) {
+  set_has_payload_data();
+  if (payload_data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    payload_data_ = new ::std::string;
+  }
+  payload_data_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.IpcMessage.payload_data)
+}
+inline void IpcMessage::set_payload_data(const char* value) {
+  set_has_payload_data();
+  if (payload_data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    payload_data_ = new ::std::string;
+  }
+  payload_data_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.IpcMessage.payload_data)
+}
+inline void IpcMessage::set_payload_data(const void* value, size_t size) {
+  set_has_payload_data();
+  if (payload_data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    payload_data_ = new ::std::string;
+  }
+  payload_data_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.IpcMessage.payload_data)
+}
+inline ::std::string* IpcMessage::mutable_payload_data() {
+  set_has_payload_data();
+  if (payload_data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    payload_data_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.IpcMessage.payload_data)
+  return payload_data_;
+}
+inline ::std::string* IpcMessage::release_payload_data() {
+  clear_has_payload_data();
+  if (payload_data_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = payload_data_;
+    payload_data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void IpcMessage::set_allocated_payload_data(::std::string* payload_data) {
+  if (payload_data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete payload_data_;
+  }
+  if (payload_data) {
+    set_has_payload_data();
+    payload_data_ = payload_data;
+  } else {
+    clear_has_payload_data();
+    payload_data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.IpcMessage.payload_data)
 }
 
 

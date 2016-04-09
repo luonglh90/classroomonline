@@ -58,7 +58,7 @@ void ClassInfoManager::loadAllClassroomInfo()
             User *teacher = info.mutable_teacher();
             (*teacher) = user;
 
-            mHashClassroomInfo.insert(StringUtils::stringToInt(info.u_id()),
+            mHashClassroomInfo.insert(StringUtils::stringToInt(info.uid()),
                                       info);
         }
     } else {
@@ -68,7 +68,14 @@ void ClassInfoManager::loadAllClassroomInfo()
 
 QList<ClassroomInfo> ClassInfoManager::getOwnerClasses(QString username)
 {
+    QList<ClassroomInfo> result;
+    for(const ClassroomInfo &info : mHashClassroomInfo.values()) {
+        if(QString::fromStdString(info.teacher().username()).compare(username) == 0) {
+            result.append(info);
+        }
+    }
 
+    return result;
 }
 
 ClassroomInfo ClassInfoManager::getClassById(int classId)
@@ -85,12 +92,12 @@ void ClassInfoManager::sendClassroomOfCategory(int socketuid, int cate_id)
 {
     QList<ClassroomInfo> listOfClasses;
     for(ClassroomInfo &info : mHashClassroomInfo.values()) {
-        if(StringUtils::stringToInt(info.cate_id()) == cate_id) {
+        if(StringUtils::stringToInt(info.cateid()) == cate_id) {
             listOfClasses.append(info);
         }
     }
     ClassroomInfoOfCategory msg;
-    msg.set_cate_id(std::to_string(cate_id));
+    msg.set_cateid(std::to_string(cate_id));
     for(ClassroomInfo &info : listOfClasses) {
         ClassroomInfo *data = msg.add_listofclasses();
         (*data) = info;

@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "IpcMessage.pb.h"
 #include "User.pb.h"
 #include "ClassCategory.pb.h"
 #include "ClassroomInfo.pb.h"
@@ -129,10 +128,6 @@ class UserInit : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo >*
       mutable_ownerclass();
 
-  static const int kMessageFieldNumber = 109;
-  static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-      ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::UserInit >, 11, false >
-    message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.UserInit)
  private:
   inline void set_has_userinfo();

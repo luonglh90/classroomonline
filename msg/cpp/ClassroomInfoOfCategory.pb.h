@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "IpcMessage.pb.h"
 #include "ClassroomInfo.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -94,17 +93,17 @@ class ClassroomInfoOfCategory : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string cate_id = 1;
-  inline bool has_cate_id() const;
-  inline void clear_cate_id();
-  static const int kCateIdFieldNumber = 1;
-  inline const ::std::string& cate_id() const;
-  inline void set_cate_id(const ::std::string& value);
-  inline void set_cate_id(const char* value);
-  inline void set_cate_id(const char* value, size_t size);
-  inline ::std::string* mutable_cate_id();
-  inline ::std::string* release_cate_id();
-  inline void set_allocated_cate_id(::std::string* cate_id);
+  // required string cateid = 1;
+  inline bool has_cateid() const;
+  inline void clear_cateid();
+  static const int kCateidFieldNumber = 1;
+  inline const ::std::string& cateid() const;
+  inline void set_cateid(const ::std::string& value);
+  inline void set_cateid(const char* value);
+  inline void set_cateid(const char* value, size_t size);
+  inline ::std::string* mutable_cateid();
+  inline ::std::string* release_cateid();
+  inline void set_allocated_cateid(::std::string* cateid);
 
   // repeated .METRO.CRO.MESSAGES.ClassroomInfo listOfClasses = 2;
   inline int listofclasses_size() const;
@@ -118,20 +117,16 @@ class ClassroomInfoOfCategory : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo >*
       mutable_listofclasses();
 
-  static const int kMessageFieldNumber = 207;
-  static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-      ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassroomInfoOfCategory >, 11, false >
-    message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.ClassroomInfoOfCategory)
  private:
-  inline void set_has_cate_id();
-  inline void clear_has_cate_id();
+  inline void set_has_cateid();
+  inline void clear_has_cateid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::std::string* cate_id_;
+  ::std::string* cateid_;
   ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo > listofclasses_;
   friend void  protobuf_AddDesc_ClassroomInfoOfCategory_2eproto();
   friend void protobuf_AssignDesc_ClassroomInfoOfCategory_2eproto();
@@ -147,80 +142,80 @@ class ClassroomInfoOfCategory : public ::google::protobuf::Message {
 
 // ClassroomInfoOfCategory
 
-// required string cate_id = 1;
-inline bool ClassroomInfoOfCategory::has_cate_id() const {
+// required string cateid = 1;
+inline bool ClassroomInfoOfCategory::has_cateid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ClassroomInfoOfCategory::set_has_cate_id() {
+inline void ClassroomInfoOfCategory::set_has_cateid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ClassroomInfoOfCategory::clear_has_cate_id() {
+inline void ClassroomInfoOfCategory::clear_has_cateid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ClassroomInfoOfCategory::clear_cate_id() {
-  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_->clear();
+inline void ClassroomInfoOfCategory::clear_cateid() {
+  if (cateid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_->clear();
   }
-  clear_has_cate_id();
+  clear_has_cateid();
 }
-inline const ::std::string& ClassroomInfoOfCategory::cate_id() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cate_id)
-  return *cate_id_;
+inline const ::std::string& ClassroomInfoOfCategory::cateid() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cateid)
+  return *cateid_;
 }
-inline void ClassroomInfoOfCategory::set_cate_id(const ::std::string& value) {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline void ClassroomInfoOfCategory::set_cateid(const ::std::string& value) {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  cate_id_->assign(value);
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cate_id)
+  cateid_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cateid)
 }
-inline void ClassroomInfoOfCategory::set_cate_id(const char* value) {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline void ClassroomInfoOfCategory::set_cateid(const char* value) {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  cate_id_->assign(value);
-  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cate_id)
+  cateid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cateid)
 }
-inline void ClassroomInfoOfCategory::set_cate_id(const char* value, size_t size) {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline void ClassroomInfoOfCategory::set_cateid(const char* value, size_t size) {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  cate_id_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cate_id)
+  cateid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cateid)
 }
-inline ::std::string* ClassroomInfoOfCategory::mutable_cate_id() {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline ::std::string* ClassroomInfoOfCategory::mutable_cateid() {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cate_id)
-  return cate_id_;
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cateid)
+  return cateid_;
 }
-inline ::std::string* ClassroomInfoOfCategory::release_cate_id() {
-  clear_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* ClassroomInfoOfCategory::release_cateid() {
+  clear_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = cate_id_;
-    cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = cateid_;
+    cateid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void ClassroomInfoOfCategory::set_allocated_cate_id(::std::string* cate_id) {
-  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete cate_id_;
+inline void ClassroomInfoOfCategory::set_allocated_cateid(::std::string* cateid) {
+  if (cateid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cateid_;
   }
-  if (cate_id) {
-    set_has_cate_id();
-    cate_id_ = cate_id;
+  if (cateid) {
+    set_has_cateid();
+    cateid_ = cateid;
   } else {
-    clear_has_cate_id();
-    cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_cateid();
+    cateid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cate_id)
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfoOfCategory.cateid)
 }
 
 // repeated .METRO.CRO.MESSAGES.ClassroomInfo listOfClasses = 2;

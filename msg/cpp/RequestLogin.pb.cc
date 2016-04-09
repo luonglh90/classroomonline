@@ -80,21 +80,14 @@ void protobuf_AddDesc_RequestLogin_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\022RequestLogin.proto\022\022METRO.CRO.MESSAGES"
-    "\032\020IpcMessage.proto\"\205\001\n\014RequestLogin\022\020\n\010u"
-    "sername\030\001 \002(\t\022\020\n\010password\030\002 \002(\t2Q\n\007messa"
-    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030i \001(\013"
-    "2 .METRO.CRO.MESSAGES.RequestLogin", 194);
+    "\"2\n\014RequestLogin\022\020\n\010username\030\001 \002(\t\022\020\n\010pa"
+    "ssword\030\002 \002(\t", 92);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "RequestLogin.proto", &protobuf_RegisterTypes);
   RequestLogin::default_instance_ = new RequestLogin();
   RequestLogin::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    105, 11, false, false,
-    &::METRO::CRO::MESSAGES::RequestLogin::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_RequestLogin_2eproto);
 }
 
@@ -112,12 +105,6 @@ const int RequestLogin::kUsernameFieldNumber;
 const int RequestLogin::kPasswordFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int RequestLogin::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::RequestLogin >, 11, false >
-  RequestLogin::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::RequestLogin::default_instance());
 RequestLogin::RequestLogin()
   : ::google::protobuf::Message() {
   SharedCtor();

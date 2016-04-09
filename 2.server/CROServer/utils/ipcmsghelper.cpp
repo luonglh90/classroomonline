@@ -1,3 +1,4 @@
+#include <sstream>
 #include "IpcMsgHelper.h"
 #include "../../msg/cpp/ipcmessagetype.h"
 #include "../../msg/cpp/RequestLogin.pb.h"
@@ -39,61 +40,16 @@ IpcMessage* IpcMsgHelper::createIpcMessage(google::protobuf::Message* msg) {
         return NULL;
 
     IpcMessage* ipc = new IpcMessage;
-    ipc->set_msgid(msgId);
-    // TODO: add case for all message here
-    switch (msgId) {
-
-    case REQUEST_LOGIN_MSG: {
-        RequestLogin* ipcExt = ipc->MutableExtension(RequestLogin::message);
-        (*ipcExt) = (*(RequestLogin*) msg);
-        break;
-    }
-    case RESPONSE_LOGIN_MSG: {
-        ResponseLogin* ipcExt = ipc->MutableExtension(ResponseLogin::message);
-        (*ipcExt) = (*(ResponseLogin*) msg);
-        break;
-    }
-    case USER_INIT_MSG: {
-        UserInit* ipcExt = ipc->MutableExtension(UserInit::message);
-        (*ipcExt) = (*(UserInit*) msg);
-        break;
-    }
-    case REQUEST_VIEW_CATEGORY_DETAIL_MSG: {
-        RequestViewCategoryDetail* ipcExt = ipc->MutableExtension(RequestViewCategoryDetail::message);
-        (*ipcExt) = (*(RequestViewCategoryDetail*) msg);
-        break;
-    }
-    case CLASSES_OF_CATEGORY: {
-        ClassroomInfoOfCategory* ipcExt = ipc->MutableExtension(ClassroomInfoOfCategory::message);
-        (*ipcExt) = (*(ClassroomInfoOfCategory*) msg);
-        break;
-    }
-    case LOGIN_STATUS_MSG: {
-        LoginStatus* ipcExt = ipc->MutableExtension(LoginStatus::message);
-        (*ipcExt) = (*(LoginStatus*) msg);
-        break;
-    }
-    case TEACHER_OPEN_CLASS_MSG: {
-        TeacherOpenClass* ipcExt = ipc->MutableExtension(TeacherOpenClass::message);
-        (*ipcExt) = (*(TeacherOpenClass*) msg);
-        break;
-    }
-    case CLASS_ONLINE_ACTION_MSG: {
-        ClassOnlineAction* ipcExt = ipc->MutableExtension(ClassOnlineAction::message);
-        (*ipcExt) = (*(ClassOnlineAction*) msg);
-        break;
-    }
-    default:
-        delete ipc;
-        ipc = NULL;
-        break;
-    }
+    ipc->set_id(msgId);
+    std::ostringstream out;
+    msg->SerializeToOstream(&out);
+    ipc->set_payload_data(out.str().data());
 
     return ipc;
 }
 
 google::protobuf::Message* IpcMsgHelper::getMessage(IpcMessage* ipc) {
-    int msgId = ipc->msgid();
+    int msgId = ipc->id();
     if (msgId < 0)
         return NULL;
 
@@ -102,48 +58,42 @@ google::protobuf::Message* IpcMsgHelper::getMessage(IpcMessage* ipc) {
     switch (msgId) {
 
     case REQUEST_LOGIN_MSG: {
-        if(ipc->HasExtension(RequestLogin::message))
-            msg = new RequestLogin(ipc->GetExtension(RequestLogin::message));
+        msg = new RequestLogin();
         break;
     }
     case RESPONSE_LOGIN_MSG: {
-        if(ipc->HasExtension(ResponseLogin::message))
-            msg = new ResponseLogin(ipc->GetExtension(ResponseLogin::message));
+        msg = new ResponseLogin();
         break;
     }
     case USER_INIT_MSG: {
-        if(ipc->HasExtension(UserInit::message))
-            msg = new UserInit(ipc->GetExtension(UserInit::message));
+        msg = new UserInit();
         break;
     }
     case REQUEST_VIEW_CATEGORY_DETAIL_MSG: {
-        if(ipc->HasExtension(RequestViewCategoryDetail::message))
-            msg = new RequestViewCategoryDetail(ipc->GetExtension(RequestViewCategoryDetail::message));
+        msg = new RequestViewCategoryDetail();
         break;
     }
     case CLASSES_OF_CATEGORY: {
-        if(ipc->HasExtension(ClassroomInfoOfCategory::message))
-            msg = new ClassroomInfoOfCategory(ipc->GetExtension(ClassroomInfoOfCategory::message));
+        msg = new ClassroomInfoOfCategory();
         break;
     }
     case LOGIN_STATUS_MSG: {
-        if(ipc->HasExtension(LoginStatus::message))
-            msg = new LoginStatus(ipc->GetExtension(LoginStatus::message));
+        msg = new LoginStatus();
         break;
     }
     case TEACHER_OPEN_CLASS_MSG: {
-        if(ipc->HasExtension(TeacherOpenClass::message))
-            msg = new TeacherOpenClass(ipc->GetExtension(TeacherOpenClass::message));
+        msg = new TeacherOpenClass();
         break;
     }
     case CLASS_ONLINE_ACTION_MSG: {
-        if(ipc->HasExtension(ClassOnlineAction::message))
-            msg = new ClassOnlineAction(ipc->GetExtension(ClassOnlineAction::message));
+        msg = new ClassOnlineAction();
         break;
     }
     default:
-        break;
+        return msg;
     }
+
+    msg->ParseFromArray(ipc->payload_data().data(), ipc->payload_data().size());
 
     return msg;
 }

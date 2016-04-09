@@ -1,12 +1,6 @@
-import "IpcMessage.proto";
-
 package METRO.CRO.MESSAGES;
 
 message User {
-	extend IpcMessage {
-		optional User message = 101;
-	}
-
 	required string username = 1;
 	required string email = 2;
 	optional string fullname = 3;

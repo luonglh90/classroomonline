@@ -102,7 +102,7 @@ void ClassOnlineChannel::readMessage(IpcSocketEvelope *ipcevelope)
     if(ipcevelope) {
         IpcMessage *ipc = ipcevelope->ipcmsg;
         if(ipc) {
-            switch (ipc->msgid()) {
+            switch (ipc->id()) {
             case CLASS_ONLINE_ACTION_MSG: {
                 ClassOnlineAction *msg = (ClassOnlineAction*)IpcMsgHelper::getMessage(ipc);
                 processRequestClassAction(ipcevelope->socketuid, msg);

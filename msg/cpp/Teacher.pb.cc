@@ -81,23 +81,16 @@ void protobuf_AddDesc_Teacher_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_User_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\rTeacher.proto\022\022METRO.CRO.MESSAGES\032\020Ipc"
-    "Message.proto\032\nUser.proto\"\242\001\n\007Teacher\022*\n"
-    "\010userinfo\030\001 \002(\0132\030.METRO.CRO.MESSAGES.Use"
-    "r\022\017\n\007classid\030\002 \003(\t\022\014\n\004rate\030\003 \001(\0012L\n\007mess"
-    "age\022\036.METRO.CRO.MESSAGES.IpcMessage\030g \001("
-    "\0132\033.METRO.CRO.MESSAGES.Teacher", 230);
+    "\n\rTeacher.proto\022\022METRO.CRO.MESSAGES\032\nUse"
+    "r.proto\"T\n\007Teacher\022*\n\010userinfo\030\001 \002(\0132\030.M"
+    "ETRO.CRO.MESSAGES.User\022\017\n\007classid\030\002 \003(\t\022"
+    "\014\n\004rate\030\003 \001(\001", 133);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Teacher.proto", &protobuf_RegisterTypes);
   Teacher::default_instance_ = new Teacher();
   Teacher::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    103, 11, false, false,
-    &::METRO::CRO::MESSAGES::Teacher::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Teacher_2eproto);
 }
 
@@ -116,12 +109,6 @@ const int Teacher::kClassidFieldNumber;
 const int Teacher::kRateFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int Teacher::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::Teacher >, 11, false >
-  Teacher::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::Teacher::default_instance());
 Teacher::Teacher()
   : ::google::protobuf::Message() {
   SharedCtor();

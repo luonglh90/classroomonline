@@ -81,28 +81,21 @@ void protobuf_AddDesc_UserInit_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_User_2eproto();
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_ClassCategory_2eproto();
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_ClassroomInfo_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016UserInit.proto\022\022METRO.CRO.MESSAGES\032\020Ip"
-    "cMessage.proto\032\nUser.proto\032\023ClassCategor"
-    "y.proto\032\023ClassroomInfo.proto\"\363\001\n\010UserIni"
-    "t\022*\n\010userinfo\030\001 \002(\0132\030.METRO.CRO.MESSAGES"
-    ".User\0225\n\ncategories\030\002 \003(\0132!.METRO.CRO.ME"
-    "SSAGES.ClassCategory\0225\n\nownerclass\030\003 \003(\013"
-    "2!.METRO.CRO.MESSAGES.ClassroomInfo2M\n\007m"
-    "essage\022\036.METRO.CRO.MESSAGES.IpcMessage\030m"
-    " \001(\0132\034.METRO.CRO.MESSAGES.UserInit", 354);
+    "\n\016UserInit.proto\022\022METRO.CRO.MESSAGES\032\nUs"
+    "er.proto\032\023ClassCategory.proto\032\023Classroom"
+    "Info.proto\"\244\001\n\010UserInit\022*\n\010userinfo\030\001 \002("
+    "\0132\030.METRO.CRO.MESSAGES.User\0225\n\ncategorie"
+    "s\030\002 \003(\0132!.METRO.CRO.MESSAGES.ClassCatego"
+    "ry\0225\n\nownerclass\030\003 \003(\0132!.METRO.CRO.MESSA"
+    "GES.ClassroomInfo", 257);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "UserInit.proto", &protobuf_RegisterTypes);
   UserInit::default_instance_ = new UserInit();
   UserInit::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    109, 11, false, false,
-    &::METRO::CRO::MESSAGES::UserInit::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_UserInit_2eproto);
 }
 
@@ -121,12 +114,6 @@ const int UserInit::kCategoriesFieldNumber;
 const int UserInit::kOwnerclassFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int UserInit::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::UserInit >, 11, false >
-  UserInit::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::UserInit::default_instance());
 UserInit::UserInit()
   : ::google::protobuf::Message() {
   SharedCtor();

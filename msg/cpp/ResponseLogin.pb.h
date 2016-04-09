@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "IpcMessage.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace METRO {
@@ -117,10 +116,6 @@ class ResponseLogin : public ::google::protobuf::Message {
   inline ::std::string* release_status();
   inline void set_allocated_status(::std::string* status);
 
-  static const int kMessageFieldNumber = 701;
-  static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-      ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ResponseLogin >, 11, false >
-    message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.ResponseLogin)
  private:
   inline void set_has_username();

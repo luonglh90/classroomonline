@@ -16,12 +16,15 @@
  * Class Online 300
  * - TeacherOpenClass = 301
  * - ClassOnlineAction = 303
+ * Board 400
+ * - ChangeFontSetting = 401
+ * - DrawLine: 402
+ * - Erase: 403
  */
 
 package METRO.CRO.MESSAGES;
 
 message IpcMessage {
-	extensions 100 to 10000;
-
-	required int32 msgId = 1;
+	optional int64 id = 1;
+	optional bytes payload_data = 2;
 }

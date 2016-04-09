@@ -1,12 +1,6 @@
-import "IpcMessage.proto";
-
 package METRO.CRO.MESSAGES;
 
 message ClassOnlineAction {
-	extend IpcMessage {
-		optional ClassOnlineAction message = 303;
-	}
-
 	enum ActionType {
 		OPEN_CLASS = 1;
 		CLOSE_CLASS = 2;

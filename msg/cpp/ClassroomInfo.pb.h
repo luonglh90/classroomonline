@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "IpcMessage.pb.h"
 #include "User.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -94,29 +93,29 @@ class ClassroomInfo : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string u_id = 1;
-  inline bool has_u_id() const;
-  inline void clear_u_id();
-  static const int kUIdFieldNumber = 1;
-  inline const ::std::string& u_id() const;
-  inline void set_u_id(const ::std::string& value);
-  inline void set_u_id(const char* value);
-  inline void set_u_id(const char* value, size_t size);
-  inline ::std::string* mutable_u_id();
-  inline ::std::string* release_u_id();
-  inline void set_allocated_u_id(::std::string* u_id);
+  // required string uid = 1;
+  inline bool has_uid() const;
+  inline void clear_uid();
+  static const int kUidFieldNumber = 1;
+  inline const ::std::string& uid() const;
+  inline void set_uid(const ::std::string& value);
+  inline void set_uid(const char* value);
+  inline void set_uid(const char* value, size_t size);
+  inline ::std::string* mutable_uid();
+  inline ::std::string* release_uid();
+  inline void set_allocated_uid(::std::string* uid);
 
-  // required string cate_id = 2;
-  inline bool has_cate_id() const;
-  inline void clear_cate_id();
-  static const int kCateIdFieldNumber = 2;
-  inline const ::std::string& cate_id() const;
-  inline void set_cate_id(const ::std::string& value);
-  inline void set_cate_id(const char* value);
-  inline void set_cate_id(const char* value, size_t size);
-  inline ::std::string* mutable_cate_id();
-  inline ::std::string* release_cate_id();
-  inline void set_allocated_cate_id(::std::string* cate_id);
+  // required string cateid = 2;
+  inline bool has_cateid() const;
+  inline void clear_cateid();
+  static const int kCateidFieldNumber = 2;
+  inline const ::std::string& cateid() const;
+  inline void set_cateid(const ::std::string& value);
+  inline void set_cateid(const char* value);
+  inline void set_cateid(const char* value, size_t size);
+  inline ::std::string* mutable_cateid();
+  inline ::std::string* release_cateid();
+  inline void set_allocated_cateid(::std::string* cateid);
 
   // required string name = 3;
   inline bool has_name() const;
@@ -163,40 +162,36 @@ class ClassroomInfo : public ::google::protobuf::Message {
   inline ::std::string* release_imgurl();
   inline void set_allocated_imgurl(::std::string* imgurl);
 
-  // optional string time_open = 7;
-  inline bool has_time_open() const;
-  inline void clear_time_open();
-  static const int kTimeOpenFieldNumber = 7;
-  inline const ::std::string& time_open() const;
-  inline void set_time_open(const ::std::string& value);
-  inline void set_time_open(const char* value);
-  inline void set_time_open(const char* value, size_t size);
-  inline ::std::string* mutable_time_open();
-  inline ::std::string* release_time_open();
-  inline void set_allocated_time_open(::std::string* time_open);
+  // optional string timeopen = 7;
+  inline bool has_timeopen() const;
+  inline void clear_timeopen();
+  static const int kTimeopenFieldNumber = 7;
+  inline const ::std::string& timeopen() const;
+  inline void set_timeopen(const ::std::string& value);
+  inline void set_timeopen(const char* value);
+  inline void set_timeopen(const char* value, size_t size);
+  inline ::std::string* mutable_timeopen();
+  inline ::std::string* release_timeopen();
+  inline void set_allocated_timeopen(::std::string* timeopen);
 
-  // optional string time_close = 8;
-  inline bool has_time_close() const;
-  inline void clear_time_close();
-  static const int kTimeCloseFieldNumber = 8;
-  inline const ::std::string& time_close() const;
-  inline void set_time_close(const ::std::string& value);
-  inline void set_time_close(const char* value);
-  inline void set_time_close(const char* value, size_t size);
-  inline ::std::string* mutable_time_close();
-  inline ::std::string* release_time_close();
-  inline void set_allocated_time_close(::std::string* time_close);
+  // optional string timeclose = 8;
+  inline bool has_timeclose() const;
+  inline void clear_timeclose();
+  static const int kTimecloseFieldNumber = 8;
+  inline const ::std::string& timeclose() const;
+  inline void set_timeclose(const ::std::string& value);
+  inline void set_timeclose(const char* value);
+  inline void set_timeclose(const char* value, size_t size);
+  inline ::std::string* mutable_timeclose();
+  inline ::std::string* release_timeclose();
+  inline void set_allocated_timeclose(::std::string* timeclose);
 
-  static const int kMessageFieldNumber = 203;
-  static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-      ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassroomInfo >, 11, false >
-    message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.ClassroomInfo)
  private:
-  inline void set_has_u_id();
-  inline void clear_has_u_id();
-  inline void set_has_cate_id();
-  inline void clear_has_cate_id();
+  inline void set_has_uid();
+  inline void clear_has_uid();
+  inline void set_has_cateid();
+  inline void clear_has_cateid();
   inline void set_has_name();
   inline void clear_has_name();
   inline void set_has_teacher();
@@ -205,23 +200,23 @@ class ClassroomInfo : public ::google::protobuf::Message {
   inline void clear_has_description();
   inline void set_has_imgurl();
   inline void clear_has_imgurl();
-  inline void set_has_time_open();
-  inline void clear_has_time_open();
-  inline void set_has_time_close();
-  inline void clear_has_time_close();
+  inline void set_has_timeopen();
+  inline void clear_has_timeopen();
+  inline void set_has_timeclose();
+  inline void clear_has_timeclose();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::std::string* u_id_;
-  ::std::string* cate_id_;
+  ::std::string* uid_;
+  ::std::string* cateid_;
   ::std::string* name_;
   ::METRO::CRO::MESSAGES::User* teacher_;
   ::std::string* description_;
   ::std::string* imgurl_;
-  ::std::string* time_open_;
-  ::std::string* time_close_;
+  ::std::string* timeopen_;
+  ::std::string* timeclose_;
   friend void  protobuf_AddDesc_ClassroomInfo_2eproto();
   friend void protobuf_AssignDesc_ClassroomInfo_2eproto();
   friend void protobuf_ShutdownFile_ClassroomInfo_2eproto();
@@ -236,156 +231,156 @@ class ClassroomInfo : public ::google::protobuf::Message {
 
 // ClassroomInfo
 
-// required string u_id = 1;
-inline bool ClassroomInfo::has_u_id() const {
+// required string uid = 1;
+inline bool ClassroomInfo::has_uid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ClassroomInfo::set_has_u_id() {
+inline void ClassroomInfo::set_has_uid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ClassroomInfo::clear_has_u_id() {
+inline void ClassroomInfo::clear_has_uid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ClassroomInfo::clear_u_id() {
-  if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    u_id_->clear();
+inline void ClassroomInfo::clear_uid() {
+  if (uid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uid_->clear();
   }
-  clear_has_u_id();
+  clear_has_uid();
 }
-inline const ::std::string& ClassroomInfo::u_id() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.u_id)
-  return *u_id_;
+inline const ::std::string& ClassroomInfo::uid() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.uid)
+  return *uid_;
 }
-inline void ClassroomInfo::set_u_id(const ::std::string& value) {
-  set_has_u_id();
-  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    u_id_ = new ::std::string;
+inline void ClassroomInfo::set_uid(const ::std::string& value) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uid_ = new ::std::string;
   }
-  u_id_->assign(value);
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.u_id)
+  uid_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.uid)
 }
-inline void ClassroomInfo::set_u_id(const char* value) {
-  set_has_u_id();
-  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    u_id_ = new ::std::string;
+inline void ClassroomInfo::set_uid(const char* value) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uid_ = new ::std::string;
   }
-  u_id_->assign(value);
-  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.u_id)
+  uid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.uid)
 }
-inline void ClassroomInfo::set_u_id(const char* value, size_t size) {
-  set_has_u_id();
-  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    u_id_ = new ::std::string;
+inline void ClassroomInfo::set_uid(const char* value, size_t size) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uid_ = new ::std::string;
   }
-  u_id_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.u_id)
+  uid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.uid)
 }
-inline ::std::string* ClassroomInfo::mutable_u_id() {
-  set_has_u_id();
-  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    u_id_ = new ::std::string;
+inline ::std::string* ClassroomInfo::mutable_uid() {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    uid_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.u_id)
-  return u_id_;
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.uid)
+  return uid_;
 }
-inline ::std::string* ClassroomInfo::release_u_id() {
-  clear_has_u_id();
-  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* ClassroomInfo::release_uid() {
+  clear_has_uid();
+  if (uid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = u_id_;
-    u_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = uid_;
+    uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void ClassroomInfo::set_allocated_u_id(::std::string* u_id) {
-  if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete u_id_;
+inline void ClassroomInfo::set_allocated_uid(::std::string* uid) {
+  if (uid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete uid_;
   }
-  if (u_id) {
-    set_has_u_id();
-    u_id_ = u_id;
+  if (uid) {
+    set_has_uid();
+    uid_ = uid;
   } else {
-    clear_has_u_id();
-    u_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_uid();
+    uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.u_id)
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.uid)
 }
 
-// required string cate_id = 2;
-inline bool ClassroomInfo::has_cate_id() const {
+// required string cateid = 2;
+inline bool ClassroomInfo::has_cateid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ClassroomInfo::set_has_cate_id() {
+inline void ClassroomInfo::set_has_cateid() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ClassroomInfo::clear_has_cate_id() {
+inline void ClassroomInfo::clear_has_cateid() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ClassroomInfo::clear_cate_id() {
-  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_->clear();
+inline void ClassroomInfo::clear_cateid() {
+  if (cateid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_->clear();
   }
-  clear_has_cate_id();
+  clear_has_cateid();
 }
-inline const ::std::string& ClassroomInfo::cate_id() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.cate_id)
-  return *cate_id_;
+inline const ::std::string& ClassroomInfo::cateid() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.cateid)
+  return *cateid_;
 }
-inline void ClassroomInfo::set_cate_id(const ::std::string& value) {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline void ClassroomInfo::set_cateid(const ::std::string& value) {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  cate_id_->assign(value);
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.cate_id)
+  cateid_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.cateid)
 }
-inline void ClassroomInfo::set_cate_id(const char* value) {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline void ClassroomInfo::set_cateid(const char* value) {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  cate_id_->assign(value);
-  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.cate_id)
+  cateid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.cateid)
 }
-inline void ClassroomInfo::set_cate_id(const char* value, size_t size) {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline void ClassroomInfo::set_cateid(const char* value, size_t size) {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  cate_id_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.cate_id)
+  cateid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.cateid)
 }
-inline ::std::string* ClassroomInfo::mutable_cate_id() {
-  set_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    cate_id_ = new ::std::string;
+inline ::std::string* ClassroomInfo::mutable_cateid() {
+  set_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cateid_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.cate_id)
-  return cate_id_;
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.cateid)
+  return cateid_;
 }
-inline ::std::string* ClassroomInfo::release_cate_id() {
-  clear_has_cate_id();
-  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* ClassroomInfo::release_cateid() {
+  clear_has_cateid();
+  if (cateid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = cate_id_;
-    cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = cateid_;
+    cateid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void ClassroomInfo::set_allocated_cate_id(::std::string* cate_id) {
-  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete cate_id_;
+inline void ClassroomInfo::set_allocated_cateid(::std::string* cateid) {
+  if (cateid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cateid_;
   }
-  if (cate_id) {
-    set_has_cate_id();
-    cate_id_ = cate_id;
+  if (cateid) {
+    set_has_cateid();
+    cateid_ = cateid;
   } else {
-    clear_has_cate_id();
-    cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_cateid();
+    cateid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.cate_id)
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.cateid)
 }
 
 // required string name = 3;
@@ -657,156 +652,156 @@ inline void ClassroomInfo::set_allocated_imgurl(::std::string* imgurl) {
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.imgurl)
 }
 
-// optional string time_open = 7;
-inline bool ClassroomInfo::has_time_open() const {
+// optional string timeopen = 7;
+inline bool ClassroomInfo::has_timeopen() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void ClassroomInfo::set_has_time_open() {
+inline void ClassroomInfo::set_has_timeopen() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void ClassroomInfo::clear_has_time_open() {
+inline void ClassroomInfo::clear_has_timeopen() {
   _has_bits_[0] &= ~0x00000040u;
 }
-inline void ClassroomInfo::clear_time_open() {
-  if (time_open_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_open_->clear();
+inline void ClassroomInfo::clear_timeopen() {
+  if (timeopen_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeopen_->clear();
   }
-  clear_has_time_open();
+  clear_has_timeopen();
 }
-inline const ::std::string& ClassroomInfo::time_open() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
-  return *time_open_;
+inline const ::std::string& ClassroomInfo::timeopen() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.timeopen)
+  return *timeopen_;
 }
-inline void ClassroomInfo::set_time_open(const ::std::string& value) {
-  set_has_time_open();
-  if (time_open_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_open_ = new ::std::string;
+inline void ClassroomInfo::set_timeopen(const ::std::string& value) {
+  set_has_timeopen();
+  if (timeopen_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeopen_ = new ::std::string;
   }
-  time_open_->assign(value);
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
+  timeopen_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.timeopen)
 }
-inline void ClassroomInfo::set_time_open(const char* value) {
-  set_has_time_open();
-  if (time_open_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_open_ = new ::std::string;
+inline void ClassroomInfo::set_timeopen(const char* value) {
+  set_has_timeopen();
+  if (timeopen_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeopen_ = new ::std::string;
   }
-  time_open_->assign(value);
-  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
+  timeopen_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.timeopen)
 }
-inline void ClassroomInfo::set_time_open(const char* value, size_t size) {
-  set_has_time_open();
-  if (time_open_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_open_ = new ::std::string;
+inline void ClassroomInfo::set_timeopen(const char* value, size_t size) {
+  set_has_timeopen();
+  if (timeopen_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeopen_ = new ::std::string;
   }
-  time_open_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
+  timeopen_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.timeopen)
 }
-inline ::std::string* ClassroomInfo::mutable_time_open() {
-  set_has_time_open();
-  if (time_open_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_open_ = new ::std::string;
+inline ::std::string* ClassroomInfo::mutable_timeopen() {
+  set_has_timeopen();
+  if (timeopen_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeopen_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
-  return time_open_;
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.timeopen)
+  return timeopen_;
 }
-inline ::std::string* ClassroomInfo::release_time_open() {
-  clear_has_time_open();
-  if (time_open_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* ClassroomInfo::release_timeopen() {
+  clear_has_timeopen();
+  if (timeopen_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = time_open_;
-    time_open_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = timeopen_;
+    timeopen_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void ClassroomInfo::set_allocated_time_open(::std::string* time_open) {
-  if (time_open_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete time_open_;
+inline void ClassroomInfo::set_allocated_timeopen(::std::string* timeopen) {
+  if (timeopen_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete timeopen_;
   }
-  if (time_open) {
-    set_has_time_open();
-    time_open_ = time_open;
+  if (timeopen) {
+    set_has_timeopen();
+    timeopen_ = timeopen;
   } else {
-    clear_has_time_open();
-    time_open_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_timeopen();
+    timeopen_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.timeopen)
 }
 
-// optional string time_close = 8;
-inline bool ClassroomInfo::has_time_close() const {
+// optional string timeclose = 8;
+inline bool ClassroomInfo::has_timeclose() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
-inline void ClassroomInfo::set_has_time_close() {
+inline void ClassroomInfo::set_has_timeclose() {
   _has_bits_[0] |= 0x00000080u;
 }
-inline void ClassroomInfo::clear_has_time_close() {
+inline void ClassroomInfo::clear_has_timeclose() {
   _has_bits_[0] &= ~0x00000080u;
 }
-inline void ClassroomInfo::clear_time_close() {
-  if (time_close_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_close_->clear();
+inline void ClassroomInfo::clear_timeclose() {
+  if (timeclose_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeclose_->clear();
   }
-  clear_has_time_close();
+  clear_has_timeclose();
 }
-inline const ::std::string& ClassroomInfo::time_close() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
-  return *time_close_;
+inline const ::std::string& ClassroomInfo::timeclose() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.timeclose)
+  return *timeclose_;
 }
-inline void ClassroomInfo::set_time_close(const ::std::string& value) {
-  set_has_time_close();
-  if (time_close_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_close_ = new ::std::string;
+inline void ClassroomInfo::set_timeclose(const ::std::string& value) {
+  set_has_timeclose();
+  if (timeclose_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeclose_ = new ::std::string;
   }
-  time_close_->assign(value);
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
+  timeclose_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.timeclose)
 }
-inline void ClassroomInfo::set_time_close(const char* value) {
-  set_has_time_close();
-  if (time_close_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_close_ = new ::std::string;
+inline void ClassroomInfo::set_timeclose(const char* value) {
+  set_has_timeclose();
+  if (timeclose_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeclose_ = new ::std::string;
   }
-  time_close_->assign(value);
-  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
+  timeclose_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.timeclose)
 }
-inline void ClassroomInfo::set_time_close(const char* value, size_t size) {
-  set_has_time_close();
-  if (time_close_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_close_ = new ::std::string;
+inline void ClassroomInfo::set_timeclose(const char* value, size_t size) {
+  set_has_timeclose();
+  if (timeclose_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeclose_ = new ::std::string;
   }
-  time_close_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
+  timeclose_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.timeclose)
 }
-inline ::std::string* ClassroomInfo::mutable_time_close() {
-  set_has_time_close();
-  if (time_close_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    time_close_ = new ::std::string;
+inline ::std::string* ClassroomInfo::mutable_timeclose() {
+  set_has_timeclose();
+  if (timeclose_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    timeclose_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
-  return time_close_;
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.timeclose)
+  return timeclose_;
 }
-inline ::std::string* ClassroomInfo::release_time_close() {
-  clear_has_time_close();
-  if (time_close_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* ClassroomInfo::release_timeclose() {
+  clear_has_timeclose();
+  if (timeclose_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = time_close_;
-    time_close_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = timeclose_;
+    timeclose_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void ClassroomInfo::set_allocated_time_close(::std::string* time_close) {
-  if (time_close_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete time_close_;
+inline void ClassroomInfo::set_allocated_timeclose(::std::string* timeclose) {
+  if (timeclose_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete timeclose_;
   }
-  if (time_close) {
-    set_has_time_close();
-    time_close_ = time_close;
+  if (timeclose) {
+    set_has_timeclose();
+    timeclose_ = timeclose;
   } else {
-    clear_has_time_close();
-    time_close_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_timeclose();
+    timeclose_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.timeclose)
 }
 
 
