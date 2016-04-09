@@ -12,6 +12,8 @@
 #import "ClassroomInfo.pb.h"
 #import "Rpc.h"
 #import "RoomViewController.h"
+#import "TestRoomInfo.pb.h"
+#import "Utils.h"
 
 #define Session [ROSession instance]
 
@@ -32,18 +34,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)generateDummyData{
-//    2, 1, 'Math class 1', 'We fall in love of Math', '', 1460205353, 1460206353, 'teacher1'
-//    [ClassroomInfoRoot initialize];
-//    ClassroomInfo *class = [[[[[[[ClassroomInfo builder] setUid:@"2"] setCateid:@"1"] setName:@"We fall in love of Math"] setTimeopen:@"1460205353"] setTimeclose:@"1460206353"] build];
-    self.arrayCurrentClasses = [NSArray arrayWithObjects:@"", nil];
 }
 
 /*
@@ -107,47 +103,57 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cateIdentifier];
         }
-        //ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
-        cell.textLabel.text = @"Test class";
-        cell.detailTextLabel.text = @"...";
+        ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
+        cell.textLabel.text = room.name;
+        if ([room.teacher isEqualToString:Session.user.username]) {
+            cell.detailTextLabel.text = @"Click to OPEN class";;
+        }
+        else {
+            cell.detailTextLabel.text = @"Click to JOIN";
+        }
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag == 1) {
-//        int padding = Session.arrayMyClasses.count > 0 ? 1 : 0;
-//        if (padding == 1 && indexPath.row == 0) {
-//            self.arrayCurrentClasses = Session.arrayMyClasses;
-//        }
-//        else{
-//            ClassCategory *category = Session.categories[indexPath.row - padding];
-//            if (category) {
-//                [ROAppDelegate showLoading];
-//                [[Rpc instance] requestListClassesWithCategoryId:category.uId];
-//                [[Rpc instance] setOnResponseListClasses:^(NSString* categoryId, NSArray *listClasses){
-//                    [ROAppDelegate hideLoading];
-//                    if ([category.uId isEqualToString:categoryId]) {
-//                        self.arrayCurrentClasses = [listClasses copy];
-//                        [self.tableClasses reloadData];
-//                    }
-//                }];
-//            }
-//        }
-        [self generateDummyData];
-        [self.tableClasses reloadData];
-        [self.tableClasses setHidden:NO];
+        int padding = Session.arrayMyClasses.count > 0 ? 1 : 0;
+        if (padding == 1 && indexPath.row == 0) {
+            self.arrayCurrentClasses = Session.arrayMyClasses;
+        }
+        else{
+            ClassCategory *category = Session.categories[indexPath.row - padding];
+            if (category) {
+                [ROAppDelegate showLoading];
+                [[Rpc instance] requestListClassesWithCategoryId:category.uId];
+                [[Rpc instance] setOnResponseListClasses:^(NSString* categoryId, NSArray *listClasses){
+                    [ROAppDelegate hideLoading];
+                    if ([category.uId isEqualToString:categoryId]) {
+                        self.arrayCurrentClasses = [listClasses copy];
+                        [self.tableClasses reloadData];
+                        [self.tableClasses setHidden:NO];
+                    }
+                }];
+            }
+        }
     }
     else if (tableView.tag == 2){
-        
-        [[Rpc instance] requestOpenClassId:@"2" sourceUser:@"teacher1" targetUser:@"" type:@"1"];
-        [[Rpc instance] setOnOpenClassSuccess:^(){
+        ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
+        if ([room.teacher isEqualToString:Session.user.username]) {
+            Session.isDrawable = YES;
+            [[Rpc instance] requestOpenClassId:room.uid sourceUser:Session.user.username targetUser:@"test" type:@"1"];
             RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
-        }];
-        
-        
+        }
+        else if ([Session.arrayCurrentOpen containsObject:room.uid]) {
+            [[Rpc instance] requestOpenClassId:room.uid sourceUser:Session.user.username targetUser:room.teacher type:@"3"];
+        }
+        else{
+            [Utils showAlertTitle:app_name content:@"You can not join this room."];
+        }
     }
 }
+
+
 
 @end

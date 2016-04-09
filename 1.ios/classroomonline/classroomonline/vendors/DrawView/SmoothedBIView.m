@@ -1,5 +1,6 @@
 #import "SmoothedBIView.h"
 #import "CROLine.h"
+#import "ROSession.h"
 
 @implementation SmoothedBIView
 {
@@ -46,6 +47,9 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (![ROSession instance].isDrawable) {
+        return;
+    }
     ctr = 0;
     UITouch *touch = [touches anyObject];
     pts[0] = [touch locationInView:self];
@@ -58,6 +62,9 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (![ROSession instance].isDrawable) {
+        return;
+    }
     UITouch *touch = [touches anyObject];
     CGPoint p = [touch locationInView:self];
     [currentLine.points addObject:NSStringFromCGPoint(p)];
@@ -73,7 +80,7 @@
         [self setNeedsDisplay];
         // replace points and get ready to handle the next segment
         pts[0] = pts[3]; 
-        pts[1] = pts[4]; 
+        pts[1] = pts[4];
         ctr = 1;
     }
     
@@ -81,9 +88,12 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self drawBitmap];
+    if (![ROSession instance].isDrawable) {
+        return;
+    }
+    //[self drawBitmap];
     [self setNeedsDisplay];
-    [path removeAllPoints];
+    //[path removeAllPoints];
     ctr = 0;
     [self.arrayLines addObject:currentLine];
 }
@@ -96,7 +106,6 @@
 - (void)drawBitmap
 {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 0.0);
-    
     if (!incrementalImage) // first time; paint background white
     {
         UIBezierPath *rectpath = [UIBezierPath bezierPathWithRect:self.bounds];

@@ -1,13 +1,13 @@
 PODS:
   - MBProgressHUD (0.9.2)
-  - ProtocolBuffers (1.9.8)
+  - ProtocolBuffers (1.9.9.2)
 
 DEPENDENCIES:
   - MBProgressHUD (~> 0.9)
-  - ProtocolBuffers (= 1.9.8)
+  - ProtocolBuffers (= 1.9.9.2)
 
 SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  ProtocolBuffers: 9a4a171c0c7cc8f21dd29aeca4f9ac775d84a880
+  ProtocolBuffers: 7111461618460961e6b7469177ec45ee551b4f0e
 
 COCOAPODS: 0.39.0

@@ -13,6 +13,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
   if (self == [ClassroomInfoRoot class]) {
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
+    [UserRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
@@ -24,7 +25,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @property (strong) NSString* uid;
 @property (strong) NSString* cateid;
 @property (strong) NSString* name;
-@property (strong) NSString* teacher;
+@property (strong) User* teacher;
 @property (strong) NSString* pb_description;
 @property (strong) NSString* imgurl;
 @property (strong) NSString* timeopen;
@@ -94,7 +95,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.uid = @"";
     self.cateid = @"";
     self.name = @"";
-    self.teacher = @"";
+    self.teacher = [User defaultInstance];
     self.pb_description = @"";
     self.imgurl = @"";
     self.timeopen = @"";
@@ -127,6 +128,9 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
   if (!self.hasTeacher) {
     return NO;
   }
+  if (!self.teacher.isInitialized) {
+    return NO;
+  }
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
@@ -140,7 +144,7 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
     [output writeString:3 value:self.name];
   }
   if (self.hasTeacher) {
-    [output writeString:4 value:self.teacher];
+    [output writeMessage:4 value:self.teacher];
   }
   if (self.hasDescription) {
     [output writeString:5 value:self.pb_description];
@@ -173,7 +177,7 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
     size_ += computeStringSize(3, self.name);
   }
   if (self.hasTeacher) {
-    size_ += computeStringSize(4, self.teacher);
+    size_ += computeMessageSize(4, self.teacher);
   }
   if (self.hasDescription) {
     size_ += computeStringSize(5, self.pb_description);
@@ -232,7 +236,10 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
     [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
   }
   if (self.hasTeacher) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"teacher", self.teacher];
+    [output appendFormat:@"%@%@ {\n", indent, @"teacher"];
+    [self.teacher writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
   }
   if (self.hasDescription) {
     [output appendFormat:@"%@%@: %@\n", indent, @"pb_description", self.pb_description];
@@ -259,7 +266,9 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
     [dictionary setObject: self.name forKey: @"name"];
   }
   if (self.hasTeacher) {
-    [dictionary setObject: self.teacher forKey: @"teacher"];
+   NSMutableDictionary *messageDictionary = [NSMutableDictionary dictionary]; 
+   [self.teacher storeInDictionary:messageDictionary];
+   [dictionary setObject:[NSDictionary dictionaryWithDictionary:messageDictionary] forKey:@"teacher"];
   }
   if (self.hasDescription) {
     [dictionary setObject: self.pb_description forKey: @"pb_description"];
@@ -381,7 +390,7 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
     [self setName:other.name];
   }
   if (other.hasTeacher) {
-    [self setTeacher:other.teacher];
+    [self mergeTeacher:other.teacher];
   }
   if (other.hasDescription) {
     [self setDescription:other.pb_description];
@@ -429,7 +438,12 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
         break;
       }
       case 34: {
-        [self setTeacher:[input readString]];
+        UserBuilder* subBuilder = [User builder];
+        if (self.hasTeacher) {
+          [subBuilder mergeFrom:self.teacher];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setTeacher:[subBuilder buildPartial]];
         break;
       }
       case 42: {
@@ -502,17 +516,31 @@ static ClassroomInfo* defaultClassroomInfoInstance = nil;
 - (BOOL) hasTeacher {
   return resultClassroomInfo.hasTeacher;
 }
-- (NSString*) teacher {
+- (User*) teacher {
   return resultClassroomInfo.teacher;
 }
-- (ClassroomInfoBuilder*) setTeacher:(NSString*) value {
+- (ClassroomInfoBuilder*) setTeacher:(User*) value {
   resultClassroomInfo.hasTeacher = YES;
   resultClassroomInfo.teacher = value;
   return self;
 }
+- (ClassroomInfoBuilder*) setTeacherBuilder:(UserBuilder*) builderForValue {
+  return [self setTeacher:[builderForValue build]];
+}
+- (ClassroomInfoBuilder*) mergeTeacher:(User*) value {
+  if (resultClassroomInfo.hasTeacher &&
+      resultClassroomInfo.teacher != [User defaultInstance]) {
+    resultClassroomInfo.teacher =
+      [[[User builderWithPrototype:resultClassroomInfo.teacher] mergeFrom:value] buildPartial];
+  } else {
+    resultClassroomInfo.teacher = value;
+  }
+  resultClassroomInfo.hasTeacher = YES;
+  return self;
+}
 - (ClassroomInfoBuilder*) clearTeacher {
   resultClassroomInfo.hasTeacher = NO;
-  resultClassroomInfo.teacher = @"";
+  resultClassroomInfo.teacher = [User defaultInstance];
   return self;
 }
 - (BOOL) hasDescription {

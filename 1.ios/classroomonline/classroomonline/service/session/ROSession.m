@@ -19,6 +19,7 @@
     dispatch_once(&onceToken, ^{
         if (!rpc) {
             rpc = [[ROSession alloc] init];
+            rpc.arrayCurrentOpen = [NSMutableArray new];
         }
     });
     return rpc;

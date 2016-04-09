@@ -16,6 +16,8 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSArray *categories;
 @property (nonatomic, strong) NSArray *arrayMyClasses;
+@property (nonatomic, strong) NSMutableArray *arrayCurrentOpen;
+@property (nonatomic, assign) BOOL isDrawable;
 
 + (instancetype)instance;
 

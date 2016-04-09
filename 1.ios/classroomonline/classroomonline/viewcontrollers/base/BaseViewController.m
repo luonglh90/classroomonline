@@ -7,8 +7,20 @@
 //
 
 #import "BaseViewController.h"
+#import "ROSession.h"
+#import "ClassCategory.pb.h"
+#import "ClassroomInfo.pb.h"
+#import "Rpc.h"
+#import "RoomViewController.h"
+#import "TestRoomInfo.pb.h"
+#import "Utils.h"
 
-@interface BaseViewController ()
+#define Session [ROSession instance]
+
+@interface BaseViewController () <UIAlertViewDelegate>{
+    NSString *receivedRoomId;
+    NSString *target;
+}
 
 @end
 
@@ -23,6 +35,45 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES];
+    
+    
+    [[Rpc instance] setOnOpenClassSuccess:^(ClassOnlineAction *action){
+        
+        int type = [action.actiontype intValue];
+        switch (type) {
+            case ClassOnlineActionActionTypeOpenClass:{
+                [Session.arrayCurrentOpen addObject:action.classid];
+                [Utils showAlertTitle:app_name content:[NSString stringWithFormat:@"Your %@ just open a class", action.sourceusername]];
+            }
+                break;
+            case ClassOnlineActionActionTypeRequestJoint:{
+                if ([action.targetusername isEqualToString:Session.user.username]) {
+                    receivedRoomId = action.classid;
+                    target = action.sourceusername;
+                    // thay
+                    UIAlertView *message = [[UIAlertView alloc] initWithTitle:app_name
+                                                                      message:[NSString stringWithFormat:@"%@ request to join your room", action.sourceusername]
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"OK"
+                                                            otherButtonTitles:@"Cancel", nil];
+                    [message setTag:111];
+                    [message show];
+                }
+            }
+                break;
+            case ClassOnlineActionActionTypeAcceptJoint:{
+                if ([action.targetusername isEqualToString:Session.user.username]) {
+                    RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
+                    [self.navigationController pushViewController:controller animated:YES];
+                }
+            }
+                break;
+            default:
+                break;
+        }
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,5 +90,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 111) {
+        if (buttonIndex == 0) {
+            [[Rpc instance] requestOpenClassId:receivedRoomId sourceUser:Session.user.username targetUser:target type:@"4"];
+        }
+    }
+}
 
 @end
