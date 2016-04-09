@@ -34,7 +34,9 @@ SOURCES += main.cpp \
     pgdao/classcategorydao.cpp \
     manager/classinfomanager.cpp \
     utils/messagesender.cpp \
-    pgdao/classinfodao.cpp
+    pgdao/classinfodao.cpp \
+    ../../msg/cpp/ClassroomInfoOfCategory.pb.cc \
+    ../../msg/cpp/RequestViewCategoryDetail.pb.cc
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -66,7 +68,9 @@ HEADERS += \
     pgdao/classcategorydao.h \
     manager/classinfomanager.h \
     utils/messagesender.h \
-    pgdao/classinfodao.h
+    pgdao/classinfodao.h \
+    ../../msg/cpp/ClassroomInfoOfCategory.pb.h \
+    ../../msg/cpp/RequestViewCategoryDetail.pb.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf
