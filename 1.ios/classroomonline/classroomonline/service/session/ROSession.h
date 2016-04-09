@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *arrayMyClasses;
 @property (nonatomic, strong) NSMutableArray *arrayCurrentOpen;
 @property (nonatomic, assign) BOOL isDrawable;
+@property (nonatomic, assign) int currentLineId;
 
 + (instancetype)instance;
 

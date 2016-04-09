@@ -1,6 +1,7 @@
 #import "SmoothedBIView.h"
 #import "CROLine.h"
 #import "ROSession.h"
+#import "MetroPointXY.pb.h"
 
 @implementation SmoothedBIView
 {
@@ -44,7 +45,6 @@
     [path stroke];
 }
 
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (![ROSession instance].isDrawable) {
@@ -57,7 +57,7 @@
     // Clear and add first node to array
     currentLine = nil;
     currentLine = [[CROLine alloc] init];
-    [currentLine.points addObject:NSStringFromCGPoint(pts[0])];
+    [currentLine.points addObject:[[[MetroPointXY builder] setX:pts[0].x] setY:pts[0].y]];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -67,7 +67,7 @@
     }
     UITouch *touch = [touches anyObject];
     CGPoint p = [touch locationInView:self];
-    [currentLine.points addObject:NSStringFromCGPoint(p)];
+    [currentLine.points addObject:[[[MetroPointXY builder] setX:p.x] setY:p.y]];
     ctr++;
     pts[ctr] = p;
     if (ctr == 4) 
@@ -83,7 +83,6 @@
         pts[1] = pts[4];
         ctr = 1;
     }
-    
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

@@ -9,8 +9,6 @@
 @class ClassroomInfoBuilder;
 @class ClassroomInfoOfCategory;
 @class ClassroomInfoOfCategoryBuilder;
-@class User;
-@class UserBuilder;
 
 
 
