@@ -34,24 +34,24 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @end
 
 @interface ClassroomInfoOfCategory ()
-@property (strong) NSString* cateId;
+@property (strong) NSString* cateid;
 @property (strong) NSMutableArray * listOfClassesArray;
 @end
 
 @implementation ClassroomInfoOfCategory
 
-- (BOOL) hasCateId {
-  return !!hasCateId_;
+- (BOOL) hasCateid {
+  return !!hasCateid_;
 }
-- (void) setHasCateId:(BOOL) _value_ {
-  hasCateId_ = !!_value_;
+- (void) setHasCateid:(BOOL) _value_ {
+  hasCateid_ = !!_value_;
 }
-@synthesize cateId;
+@synthesize cateid;
 @synthesize listOfClassesArray;
 @dynamic listOfClasses;
 - (instancetype) init {
   if ((self = [super init])) {
-    self.cateId = @"";
+    self.cateid = @"";
   }
   return self;
 }
@@ -77,7 +77,7 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
   return [listOfClassesArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  if (!self.hasCateId) {
+  if (!self.hasCateid) {
     return NO;
   }
   __block BOOL isInitlistOfClasses = YES;
@@ -91,8 +91,8 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  if (self.hasCateId) {
-    [output writeString:1 value:self.cateId];
+  if (self.hasCateid) {
+    [output writeString:1 value:self.cateid];
   }
   [self.listOfClassesArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
@@ -106,8 +106,8 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
   }
 
   size_ = 0;
-  if (self.hasCateId) {
-    size_ += computeStringSize(1, self.cateId);
+  if (self.hasCateid) {
+    size_ += computeStringSize(1, self.cateid);
   }
   [self.listOfClassesArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
@@ -147,8 +147,8 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
   return [ClassroomInfoOfCategory builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  if (self.hasCateId) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"cateId", self.cateId];
+  if (self.hasCateid) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"cateid", self.cateid];
   }
   [self.listOfClassesArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"listOfClasses"];
@@ -159,8 +159,8 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (void) storeInDictionary:(NSMutableDictionary *)dictionary {
-  if (self.hasCateId) {
-    [dictionary setObject: self.cateId forKey: @"cateId"];
+  if (self.hasCateid) {
+    [dictionary setObject: self.cateid forKey: @"cateid"];
   }
   for (ClassroomInfo* element in self.listOfClassesArray) {
     NSMutableDictionary *elementDictionary = [NSMutableDictionary dictionary];
@@ -178,15 +178,15 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
   }
   ClassroomInfoOfCategory *otherMessage = other;
   return
-      self.hasCateId == otherMessage.hasCateId &&
-      (!self.hasCateId || [self.cateId isEqual:otherMessage.cateId]) &&
+      self.hasCateid == otherMessage.hasCateid &&
+      (!self.hasCateid || [self.cateid isEqual:otherMessage.cateid]) &&
       [self.listOfClassesArray isEqualToArray:otherMessage.listOfClassesArray] &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  if (self.hasCateId) {
-    hashCode = hashCode * 31 + [self.cateId hash];
+  if (self.hasCateid) {
+    hashCode = hashCode * 31 + [self.cateid hash];
   }
   [self.listOfClassesArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
@@ -234,8 +234,8 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
   if (other == [ClassroomInfoOfCategory defaultInstance]) {
     return self;
   }
-  if (other.hasCateId) {
-    [self setCateId:other.cateId];
+  if (other.hasCateid) {
+    [self setCateid:other.cateid];
   }
   if (other.listOfClassesArray.count > 0) {
     if (resultClassroomInfoOfCategory.listOfClassesArray == nil) {
@@ -266,7 +266,7 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
         break;
       }
       case 10: {
-        [self setCateId:[input readString]];
+        [self setCateid:[input readString]];
         break;
       }
       case 18: {
@@ -278,20 +278,20 @@ static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
     }
   }
 }
-- (BOOL) hasCateId {
-  return resultClassroomInfoOfCategory.hasCateId;
+- (BOOL) hasCateid {
+  return resultClassroomInfoOfCategory.hasCateid;
 }
-- (NSString*) cateId {
-  return resultClassroomInfoOfCategory.cateId;
+- (NSString*) cateid {
+  return resultClassroomInfoOfCategory.cateid;
 }
-- (ClassroomInfoOfCategoryBuilder*) setCateId:(NSString*) value {
-  resultClassroomInfoOfCategory.hasCateId = YES;
-  resultClassroomInfoOfCategory.cateId = value;
+- (ClassroomInfoOfCategoryBuilder*) setCateid:(NSString*) value {
+  resultClassroomInfoOfCategory.hasCateid = YES;
+  resultClassroomInfoOfCategory.cateid = value;
   return self;
 }
-- (ClassroomInfoOfCategoryBuilder*) clearCateId {
-  resultClassroomInfoOfCategory.hasCateId = NO;
-  resultClassroomInfoOfCategory.cateId = @"";
+- (ClassroomInfoOfCategoryBuilder*) clearCateid {
+  resultClassroomInfoOfCategory.hasCateid = NO;
+  resultClassroomInfoOfCategory.cateid = @"";
   return self;
 }
 - (NSMutableArray *)listOfClasses {

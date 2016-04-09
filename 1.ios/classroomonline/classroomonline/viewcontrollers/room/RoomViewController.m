@@ -51,7 +51,7 @@
         [self.btnPencil setSelected:NO];
         [self.btnCurosr setEnabled:YES];
         [self.btnCurosr setSelected:NO];
-        [self.viewDraw setUserInteractionEnabled:NO];
+        [self.viewDraw setIsDragEnabled:NO];
     }
     else if (button == self.btnPencil) {
         [self.btnErase setEnabled:YES];
@@ -60,7 +60,7 @@
         [self.btnPencil setSelected:YES];
         [self.btnCurosr setEnabled:YES];
         [self.btnCurosr setSelected:NO];
-        [self.viewDraw setUserInteractionEnabled:YES];
+        [self.viewDraw setIsDragEnabled:NO];
     }
     if (button == self.btnCurosr) {
         [self.btnErase setEnabled:YES];
@@ -69,7 +69,7 @@
         [self.btnPencil setSelected:NO];
         [self.btnCurosr setEnabled:NO];
         [self.btnCurosr setSelected:YES];
-        [self.viewDraw setUserInteractionEnabled:NO];
+        [self.viewDraw setIsDragEnabled:YES];
     }
 }
 

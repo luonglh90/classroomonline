@@ -1,4 +1,5 @@
 #import "SmoothedBIView.h"
+#import "CROLine.h"
 
 @implementation SmoothedBIView
 {
@@ -6,6 +7,7 @@
     UIImage *incrementalImage;
     CGPoint pts[5]; // we now need to keep track of the four points of a Bezier segment and the first control point of the next segment
     uint ctr;
+    CROLine *currentLine;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -15,6 +17,7 @@
         [self setMultipleTouchEnabled:NO];
         path = [UIBezierPath bezierPath];
         [path setLineWidth:2.0];
+        self.arrayLines = [[NSMutableArray alloc] init];
     }
     return self;
     
@@ -26,6 +29,7 @@
         [self setMultipleTouchEnabled:NO];
         path = [UIBezierPath bezierPath];
         [path setLineWidth:2.0];
+        self.arrayLines = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -45,12 +49,18 @@
     ctr = 0;
     UITouch *touch = [touches anyObject];
     pts[0] = [touch locationInView:self];
+    
+    // Clear and add first node to array
+    currentLine = nil;
+    currentLine = [[CROLine alloc] init];
+    [currentLine.points addObject:NSStringFromCGPoint(pts[0])];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint p = [touch locationInView:self];
+    [currentLine.points addObject:NSStringFromCGPoint(p)];
     ctr++;
     pts[ctr] = p;
     if (ctr == 4) 
@@ -59,7 +69,7 @@
         
         [path moveToPoint:pts[0]];
         [path addCurveToPoint:pts[3] controlPoint1:pts[1] controlPoint2:pts[2]];
-
+        
         [self setNeedsDisplay];
         // replace points and get ready to handle the next segment
         pts[0] = pts[3]; 
@@ -75,6 +85,7 @@
     [self setNeedsDisplay];
     [path removeAllPoints];
     ctr = 0;
+    [self.arrayLines addObject:currentLine];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event

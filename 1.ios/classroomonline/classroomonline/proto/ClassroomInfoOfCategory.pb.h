@@ -23,16 +23,16 @@
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry;
 @end
 
-#define ClassroomInfoOfCategory_cate_id @"cateId"
+#define ClassroomInfoOfCategory_cateid @"cateid"
 #define ClassroomInfoOfCategory_listOfClasses @"listOfClasses"
 @interface ClassroomInfoOfCategory : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
-  BOOL hasCateId_:1;
-  NSString* cateId;
+  BOOL hasCateid_:1;
+  NSString* cateid;
   NSMutableArray * listOfClassesArray;
 }
-- (BOOL) hasCateId;
-@property (readonly, strong) NSString* cateId;
+- (BOOL) hasCateid;
+@property (readonly, strong) NSString* cateid;
 @property (readonly, strong) NSArray * listOfClasses;
 - (ClassroomInfo*)listOfClassesAtIndex:(NSUInteger)index;
 
@@ -72,10 +72,10 @@
 - (ClassroomInfoOfCategoryBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (ClassroomInfoOfCategoryBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (BOOL) hasCateId;
-- (NSString*) cateId;
-- (ClassroomInfoOfCategoryBuilder*) setCateId:(NSString*) value;
-- (ClassroomInfoOfCategoryBuilder*) clearCateId;
+- (BOOL) hasCateid;
+- (NSString*) cateid;
+- (ClassroomInfoOfCategoryBuilder*) setCateid:(NSString*) value;
+- (ClassroomInfoOfCategoryBuilder*) clearCateid;
 
 - (NSMutableArray *)listOfClasses;
 - (ClassroomInfo*)listOfClassesAtIndex:(NSUInteger)index;

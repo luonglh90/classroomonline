@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseDrawView.h"
 
-@interface SmoothedBIView : UIView
+@interface SmoothedBIView : BaseDrawView
 
 @end

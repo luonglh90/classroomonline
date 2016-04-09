@@ -61,22 +61,17 @@
 
 #define ObjectiveCFileOptions_package @"package"
 #define ObjectiveCFileOptions_class_prefix @"classPrefix"
-#define ObjectiveCFileOptions_relax_camel_case @"relaxCamelCase"
 @interface ObjectiveCFileOptions : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
-  BOOL hasRelaxCamelCase_:1;
   BOOL hasPackage_:1;
   BOOL hasClassPrefix_:1;
-  BOOL relaxCamelCase_:1;
   NSString* package;
   NSString* classPrefix;
 }
 - (BOOL) hasPackage;
 - (BOOL) hasClassPrefix;
-- (BOOL) hasRelaxCamelCase;
 @property (readonly, strong) NSString* package;
 @property (readonly, strong) NSString* classPrefix;
-- (BOOL) relaxCamelCase;
 
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
@@ -122,11 +117,6 @@
 - (NSString*) classPrefix;
 - (ObjectiveCFileOptionsBuilder*) setClassPrefix:(NSString*) value;
 - (ObjectiveCFileOptionsBuilder*) clearClassPrefix;
-
-- (BOOL) hasRelaxCamelCase;
-- (BOOL) relaxCamelCase;
-- (ObjectiveCFileOptionsBuilder*) setRelaxCamelCase:(BOOL) value;
-- (ObjectiveCFileOptionsBuilder*) clearRelaxCamelCase;
 @end
 
 
