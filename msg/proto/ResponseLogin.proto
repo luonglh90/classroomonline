@@ -1,0 +1,13 @@
+import "IpcMessage.proto";
+import "Enums.proto";
+
+package METRO.CRO.MESSAGES;
+
+message ResponseLogin {
+	extend IpcMessage {
+		optional ResponseLogin message = 104;
+	}
+
+	required string username = 1;
+	required Enums.ResponseLoginEnums status = 2;
+}

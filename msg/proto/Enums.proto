@@ -1,0 +1,8 @@
+package METRO.CRO.MESSAGES;
+
+message Enums {
+	enum ResponseLoginEnums {
+	    SUCCESS = 0;
+	    FAILD_WRONG_PASS = 1;
+	}
+}

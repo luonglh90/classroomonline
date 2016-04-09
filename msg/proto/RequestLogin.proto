@@ -1,0 +1,12 @@
+import "IpcMessage.proto";
+
+package METRO.CRO.MESSAGES;
+
+message RequestLogin {
+	extend IpcMessage {
+		optional RequestLogin message = 103;
+	}
+
+	required string username = 1;
+	required string password = 2;
+}
