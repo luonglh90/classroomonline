@@ -79,22 +79,14 @@ void protobuf_AddDesc_RequestViewCategoryDetail_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037RequestViewCategoryDetail.proto\022\022METRO"
-    ".CRO.MESSAGES\032\020IpcMessage.proto\"\215\001\n\031Requ"
-    "estViewCategoryDetail\022\017\n\007cate_id\030\001 \002(\t2_"
-    "\n\007message\022\036.METRO.CRO.MESSAGES.IpcMessag"
-    "e\030\315\001 \001(\0132-.METRO.CRO.MESSAGES.RequestVie"
-    "wCategoryDetail", 215);
+    ".CRO.MESSAGES\",\n\031RequestViewCategoryDeta"
+    "il\022\017\n\007cate_id\030\001 \002(\t", 99);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "RequestViewCategoryDetail.proto", &protobuf_RegisterTypes);
   RequestViewCategoryDetail::default_instance_ = new RequestViewCategoryDetail();
   RequestViewCategoryDetail::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    205, 11, false, false,
-    &::METRO::CRO::MESSAGES::RequestViewCategoryDetail::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_RequestViewCategoryDetail_2eproto);
 }
 
@@ -111,12 +103,6 @@ struct StaticDescriptorInitializer_RequestViewCategoryDetail_2eproto {
 const int RequestViewCategoryDetail::kCateIdFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int RequestViewCategoryDetail::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::RequestViewCategoryDetail >, 11, false >
-  RequestViewCategoryDetail::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::RequestViewCategoryDetail::default_instance());
 RequestViewCategoryDetail::RequestViewCategoryDetail()
   : ::google::protobuf::Message() {
   SharedCtor();

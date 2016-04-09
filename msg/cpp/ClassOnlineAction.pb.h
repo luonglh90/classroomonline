@@ -25,7 +25,6 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "IpcMessage.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace METRO {
@@ -193,10 +192,6 @@ class ClassOnlineAction : public ::google::protobuf::Message {
   inline ::std::string* release_actiontype();
   inline void set_allocated_actiontype(::std::string* actiontype);
 
-  static const int kMessageFieldNumber = 303;
-  static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-      ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassOnlineAction >, 11, false >
-    message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.ClassOnlineAction)
  private:
   inline void set_has_targetusername();

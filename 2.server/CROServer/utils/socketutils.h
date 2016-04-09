@@ -4,6 +4,7 @@
 #include <QtWebSockets/QWebSocketServer>
 #include <QtWebSockets/QWebSocket>
 
+#include "../../msg/cpp/IpcMessage.pb.h"
 #include "../../msg/cpp/ResponseLogin.pb.h"
 #include "../../msg/cpp/RequestLogin.pb.h"
 

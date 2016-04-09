@@ -1,13 +1,8 @@
-import "IpcMessage.proto";
 import "User.proto";
 
 package METRO.CRO.MESSAGES;
 
 message Teacher {
-	extend IpcMessage {
-		optional Teacher message = 103;
-	}
-
 	required User userinfo = 1;
 	repeated string classid = 2;
 	optional double rate = 3;

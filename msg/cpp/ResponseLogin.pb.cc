@@ -80,21 +80,14 @@ void protobuf_AddDesc_ResponseLogin_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ResponseLogin.proto\022\022METRO.CRO.MESSAGE"
-    "S\032\020IpcMessage.proto\"\206\001\n\rResponseLogin\022\020\n"
-    "\010username\030\001 \001(\t\022\016\n\006status\030\002 \001(\t2S\n\007messa"
-    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030\275\005 \001("
-    "\0132!.METRO.CRO.MESSAGES.ResponseLogin", 196);
+    "S\"1\n\rResponseLogin\022\020\n\010username\030\001 \001(\t\022\016\n\006"
+    "status\030\002 \001(\t", 92);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ResponseLogin.proto", &protobuf_RegisterTypes);
   ResponseLogin::default_instance_ = new ResponseLogin();
   ResponseLogin::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    701, 11, false, false,
-    &::METRO::CRO::MESSAGES::ResponseLogin::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ResponseLogin_2eproto);
 }
 
@@ -112,12 +105,6 @@ const int ResponseLogin::kUsernameFieldNumber;
 const int ResponseLogin::kStatusFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int ResponseLogin::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ResponseLogin >, 11, false >
-  ResponseLogin::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::ResponseLogin::default_instance());
 ResponseLogin::ResponseLogin()
   : ::google::protobuf::Message() {
   SharedCtor();

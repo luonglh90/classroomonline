@@ -37,7 +37,7 @@ void protobuf_AssignDesc_ClassroomInfoOfCategory_2eproto() {
   GOOGLE_CHECK(file != NULL);
   ClassroomInfoOfCategory_descriptor_ = file->message_type(0);
   static const int ClassroomInfoOfCategory_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfoOfCategory, cate_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfoOfCategory, cateid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfoOfCategory, listofclasses_),
   };
   ClassroomInfoOfCategory_reflection_ =
@@ -80,25 +80,17 @@ void protobuf_AddDesc_ClassroomInfoOfCategory_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_ClassroomInfo_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035ClassroomInfoOfCategory.proto\022\022METRO.C"
-    "RO.MESSAGES\032\020IpcMessage.proto\032\023Classroom"
-    "Info.proto\"\303\001\n\027ClassroomInfoOfCategory\022\017"
-    "\n\007cate_id\030\001 \002(\t\0228\n\rlistOfClasses\030\002 \003(\0132!"
-    ".METRO.CRO.MESSAGES.ClassroomInfo2]\n\007mes"
-    "sage\022\036.METRO.CRO.MESSAGES.IpcMessage\030\317\001 "
-    "\001(\0132+.METRO.CRO.MESSAGES.ClassroomInfoOf"
-    "Category", 288);
+    "RO.MESSAGES\032\023ClassroomInfo.proto\"c\n\027Clas"
+    "sroomInfoOfCategory\022\016\n\006cateid\030\001 \002(\t\0228\n\rl"
+    "istOfClasses\030\002 \003(\0132!.METRO.CRO.MESSAGES."
+    "ClassroomInfo", 173);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassroomInfoOfCategory.proto", &protobuf_RegisterTypes);
   ClassroomInfoOfCategory::default_instance_ = new ClassroomInfoOfCategory();
   ClassroomInfoOfCategory::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    207, 11, false, false,
-    &::METRO::CRO::MESSAGES::ClassroomInfoOfCategory::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ClassroomInfoOfCategory_2eproto);
 }
 
@@ -112,16 +104,10 @@ struct StaticDescriptorInitializer_ClassroomInfoOfCategory_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int ClassroomInfoOfCategory::kCateIdFieldNumber;
+const int ClassroomInfoOfCategory::kCateidFieldNumber;
 const int ClassroomInfoOfCategory::kListOfClassesFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int ClassroomInfoOfCategory::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassroomInfoOfCategory >, 11, false >
-  ClassroomInfoOfCategory::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::ClassroomInfoOfCategory::default_instance());
 ClassroomInfoOfCategory::ClassroomInfoOfCategory()
   : ::google::protobuf::Message() {
   SharedCtor();
@@ -141,7 +127,7 @@ ClassroomInfoOfCategory::ClassroomInfoOfCategory(const ClassroomInfoOfCategory& 
 void ClassroomInfoOfCategory::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cateid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -151,8 +137,8 @@ ClassroomInfoOfCategory::~ClassroomInfoOfCategory() {
 }
 
 void ClassroomInfoOfCategory::SharedDtor() {
-  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete cate_id_;
+  if (cateid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cateid_;
   }
   if (this != default_instance_) {
   }
@@ -180,9 +166,9 @@ ClassroomInfoOfCategory* ClassroomInfoOfCategory::New() const {
 }
 
 void ClassroomInfoOfCategory::Clear() {
-  if (has_cate_id()) {
-    if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-      cate_id_->clear();
+  if (has_cateid()) {
+    if (cateid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      cateid_->clear();
     }
   }
   listofclasses_.Clear();
@@ -200,15 +186,15 @@ bool ClassroomInfoOfCategory::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string cate_id = 1;
+      // required string cateid = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_cate_id()));
+                input, this->mutable_cateid()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->cate_id().data(), this->cate_id().length(),
+            this->cateid().data(), this->cateid().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "cate_id");
+            "cateid");
         } else {
           goto handle_unusual;
         }
@@ -255,14 +241,14 @@ failure:
 void ClassroomInfoOfCategory::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:METRO.CRO.MESSAGES.ClassroomInfoOfCategory)
-  // required string cate_id = 1;
-  if (has_cate_id()) {
+  // required string cateid = 1;
+  if (has_cateid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->cate_id().data(), this->cate_id().length(),
+      this->cateid().data(), this->cateid().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "cate_id");
+      "cateid");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->cate_id(), output);
+      1, this->cateid(), output);
   }
 
   // repeated .METRO.CRO.MESSAGES.ClassroomInfo listOfClasses = 2;
@@ -281,15 +267,15 @@ void ClassroomInfoOfCategory::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ClassroomInfoOfCategory::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:METRO.CRO.MESSAGES.ClassroomInfoOfCategory)
-  // required string cate_id = 1;
-  if (has_cate_id()) {
+  // required string cateid = 1;
+  if (has_cateid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->cate_id().data(), this->cate_id().length(),
+      this->cateid().data(), this->cateid().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "cate_id");
+      "cateid");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->cate_id(), target);
+        1, this->cateid(), target);
   }
 
   // repeated .METRO.CRO.MESSAGES.ClassroomInfo listOfClasses = 2;
@@ -311,11 +297,11 @@ int ClassroomInfoOfCategory::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required string cate_id = 1;
-    if (has_cate_id()) {
+    // required string cateid = 1;
+    if (has_cateid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->cate_id());
+          this->cateid());
     }
 
   }
@@ -354,8 +340,8 @@ void ClassroomInfoOfCategory::MergeFrom(const ClassroomInfoOfCategory& from) {
   GOOGLE_CHECK_NE(&from, this);
   listofclasses_.MergeFrom(from.listofclasses_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_cate_id()) {
-      set_cate_id(from.cate_id());
+    if (from.has_cateid()) {
+      set_cateid(from.cateid());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -382,7 +368,7 @@ bool ClassroomInfoOfCategory::IsInitialized() const {
 
 void ClassroomInfoOfCategory::Swap(ClassroomInfoOfCategory* other) {
   if (other != this) {
-    std::swap(cate_id_, other->cate_id_);
+    std::swap(cateid_, other->cateid_);
     listofclasses_.Swap(&other->listofclasses_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "IpcMessage.pb.h"
 #include "User.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -126,10 +125,6 @@ class Teacher : public ::google::protobuf::Message {
   inline double rate() const;
   inline void set_rate(double value);
 
-  static const int kMessageFieldNumber = 103;
-  static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-      ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::Teacher >, 11, false >
-    message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.Teacher)
  private:
   inline void set_has_userinfo();

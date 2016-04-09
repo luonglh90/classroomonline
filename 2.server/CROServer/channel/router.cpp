@@ -14,9 +14,9 @@ Router::Router(QMap<ChannelType, BaseChannel*> *channels)
 
 void Router::routeMessage2Channel(IpcSocketEvelope *msg)
 {
-    if (mMapMsgId2ChannelId.contains(msg->ipcmsg->msgid()))
+    if (mMapMsgId2ChannelId.contains(msg->ipcmsg->id()))
     {
-        BaseChannel* channel = mMapChannelType2Channel->value(mMapMsgId2ChannelId[msg->ipcmsg->msgid()]);
+        BaseChannel* channel = mMapChannelType2Channel->value(mMapMsgId2ChannelId[msg->ipcmsg->id()]);
         channel->enqueueMessage(msg);
     }
     else

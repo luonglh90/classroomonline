@@ -84,26 +84,19 @@ void protobuf_AddDesc_ClassOnlineAction_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\027ClassOnlineAction.proto\022\022METRO.CRO.MES"
-    "SAGES\032\020IpcMessage.proto\"\305\002\n\021ClassOnlineA"
-    "ction\022\026\n\016targetusername\030\001 \001(\t\022\026\n\016sourceu"
-    "sername\030\004 \001(\t\022\017\n\007classid\030\002 \001(\t\022\022\n\naction"
-    "type\030\003 \001(\t\"\201\001\n\nActionType\022\016\n\nOPEN_CLASS\020"
-    "\001\022\017\n\013CLOSE_CLASS\020\002\022\021\n\rREQUEST_JOINT\020\003\022\020\n"
-    "\014ACCEPT_JOINT\020\004\022\026\n\022REQUEST_DRAW_BOARD\020\005\022"
-    "\025\n\021ACCEPT_DRAW_BOARD\020\0062W\n\007message\022\036.METR"
-    "O.CRO.MESSAGES.IpcMessage\030\257\002 \001(\0132%.METRO"
-    ".CRO.MESSAGES.ClassOnlineAction", 391);
+    "SAGES\"\354\001\n\021ClassOnlineAction\022\026\n\016targetuse"
+    "rname\030\001 \001(\t\022\026\n\016sourceusername\030\004 \001(\t\022\017\n\007c"
+    "lassid\030\002 \001(\t\022\022\n\nactiontype\030\003 \001(\t\"\201\001\n\nAct"
+    "ionType\022\016\n\nOPEN_CLASS\020\001\022\017\n\013CLOSE_CLASS\020\002"
+    "\022\021\n\rREQUEST_JOINT\020\003\022\020\n\014ACCEPT_JOINT\020\004\022\026\n"
+    "\022REQUEST_DRAW_BOARD\020\005\022\025\n\021ACCEPT_DRAW_BOA"
+    "RD\020\006", 284);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassOnlineAction.proto", &protobuf_RegisterTypes);
   ClassOnlineAction::default_instance_ = new ClassOnlineAction();
   ClassOnlineAction::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    303, 11, false, false,
-    &::METRO::CRO::MESSAGES::ClassOnlineAction::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ClassOnlineAction_2eproto);
 }
 
@@ -152,12 +145,6 @@ const int ClassOnlineAction::kClassidFieldNumber;
 const int ClassOnlineAction::kActiontypeFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int ClassOnlineAction::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassOnlineAction >, 11, false >
-  ClassOnlineAction::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::ClassOnlineAction::default_instance());
 ClassOnlineAction::ClassOnlineAction()
   : ::google::protobuf::Message() {
   SharedCtor();

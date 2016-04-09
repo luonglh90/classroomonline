@@ -82,22 +82,15 @@ void protobuf_AddDesc_ClassCategory_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ClassCategory.proto\022\022METRO.CRO.MESSAGE"
-    "S\032\020IpcMessage.proto\"\245\001\n\rClassCategory\022\014\n"
-    "\004u_id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\023\n\013description"
-    "\030\003 \001(\t\022\016\n\006imgurl\030\004 \001(\t2S\n\007message\022\036.METR"
-    "O.CRO.MESSAGES.IpcMessage\030\311\001 \001(\0132!.METRO"
-    ".CRO.MESSAGES.ClassCategory", 227);
+    "S\"P\n\rClassCategory\022\014\n\004u_id\030\001 \002(\t\022\014\n\004name"
+    "\030\002 \002(\t\022\023\n\013description\030\003 \001(\t\022\016\n\006imgurl\030\004 "
+    "\001(\t", 123);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassCategory.proto", &protobuf_RegisterTypes);
   ClassCategory::default_instance_ = new ClassCategory();
   ClassCategory::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    201, 11, false, false,
-    &::METRO::CRO::MESSAGES::ClassCategory::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ClassCategory_2eproto);
 }
 
@@ -117,12 +110,6 @@ const int ClassCategory::kDescriptionFieldNumber;
 const int ClassCategory::kImgurlFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int ClassCategory::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassCategory >, 11, false >
-  ClassCategory::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::ClassCategory::default_instance());
 ClassCategory::ClassCategory()
   : ::google::protobuf::Message() {
   SharedCtor();

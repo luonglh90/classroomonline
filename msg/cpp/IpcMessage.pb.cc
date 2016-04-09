@@ -36,8 +36,9 @@ void protobuf_AssignDesc_IpcMessage_2eproto() {
       "IpcMessage.proto");
   GOOGLE_CHECK(file != NULL);
   IpcMessage_descriptor_ = file->message_type(0);
-  static const int IpcMessage_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IpcMessage, msgid_),
+  static const int IpcMessage_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IpcMessage, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IpcMessage, payload_data_),
   };
   IpcMessage_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -46,7 +47,7 @@ void protobuf_AssignDesc_IpcMessage_2eproto() {
       IpcMessage_offsets_,
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IpcMessage, _has_bits_[0]),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IpcMessage, _unknown_fields_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IpcMessage, _extensions_),
+      -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(IpcMessage));
@@ -80,8 +81,9 @@ void protobuf_AddDesc_IpcMessage_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020IpcMessage.proto\022\022METRO.CRO.MESSAGES\"\""
-    "\n\nIpcMessage\022\r\n\005msgId\030\001 \002(\005*\005\010d\020\221N", 74);
+    "\n\020IpcMessage.proto\022\022METRO.CRO.MESSAGES\"."
+    "\n\nIpcMessage\022\n\n\002id\030\001 \001(\003\022\024\n\014payload_data"
+    "\030\002 \001(\014", 86);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "IpcMessage.proto", &protobuf_RegisterTypes);
   IpcMessage::default_instance_ = new IpcMessage();
@@ -99,7 +101,8 @@ struct StaticDescriptorInitializer_IpcMessage_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int IpcMessage::kMsgIdFieldNumber;
+const int IpcMessage::kIdFieldNumber;
+const int IpcMessage::kPayloadDataFieldNumber;
 #endif  // !_MSC_VER
 
 IpcMessage::IpcMessage()
@@ -119,8 +122,10 @@ IpcMessage::IpcMessage(const IpcMessage& from)
 }
 
 void IpcMessage::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  msgid_ = 0;
+  id_ = GOOGLE_LONGLONG(0);
+  payload_data_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -130,6 +135,9 @@ IpcMessage::~IpcMessage() {
 }
 
 void IpcMessage::SharedDtor() {
+  if (payload_data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete payload_data_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -156,8 +164,14 @@ IpcMessage* IpcMessage::New() const {
 }
 
 void IpcMessage::Clear() {
-  _extensions_.Clear();
-  msgid_ = 0;
+  if (_has_bits_[0 / 32] & 3) {
+    id_ = GOOGLE_LONGLONG(0);
+    if (has_payload_data()) {
+      if (payload_data_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        payload_data_->clear();
+      }
+    }
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -172,13 +186,26 @@ bool IpcMessage::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 msgId = 1;
+      // optional int64 id = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &msgid_)));
-          set_has_msgid();
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &id_)));
+          set_has_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_payload_data;
+        break;
+      }
+
+      // optional bytes payload_data = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_payload_data:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_payload_data()));
         } else {
           goto handle_unusual;
         }
@@ -192,11 +219,6 @@ bool IpcMessage::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
           goto success;
-        }
-        if ((800u <= tag && tag < 80008u)) {
-          DO_(_extensions_.ParseField(tag, input, default_instance_,
-                                      mutable_unknown_fields()));
-          continue;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
@@ -216,14 +238,16 @@ failure:
 void IpcMessage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:METRO.CRO.MESSAGES.IpcMessage)
-  // required int32 msgId = 1;
-  if (has_msgid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->msgid(), output);
+  // optional int64 id = 1;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->id(), output);
   }
 
-  // Extension range [100, 10001)
-  _extensions_.SerializeWithCachedSizes(
-      100, 10001, output);
+  // optional bytes payload_data = 2;
+  if (has_payload_data()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      2, this->payload_data(), output);
+  }
 
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
@@ -235,14 +259,17 @@ void IpcMessage::SerializeWithCachedSizes(
 ::google::protobuf::uint8* IpcMessage::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:METRO.CRO.MESSAGES.IpcMessage)
-  // required int32 msgId = 1;
-  if (has_msgid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->msgid(), target);
+  // optional int64 id = 1;
+  if (has_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->id(), target);
   }
 
-  // Extension range [100, 10001)
-  target = _extensions_.SerializeWithCachedSizesToArray(
-      100, 10001, target);
+  // optional bytes payload_data = 2;
+  if (has_payload_data()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->payload_data(), target);
+  }
 
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
@@ -256,16 +283,21 @@ int IpcMessage::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 msgId = 1;
-    if (has_msgid()) {
+    // optional int64 id = 1;
+    if (has_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->msgid());
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->id());
+    }
+
+    // optional bytes payload_data = 2;
+    if (has_payload_data()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->payload_data());
     }
 
   }
-  total_size += _extensions_.ByteSize();
-
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -292,11 +324,13 @@ void IpcMessage::MergeFrom(const ::google::protobuf::Message& from) {
 void IpcMessage::MergeFrom(const IpcMessage& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_msgid()) {
-      set_msgid(from.msgid());
+    if (from.has_id()) {
+      set_id(from.id());
+    }
+    if (from.has_payload_data()) {
+      set_payload_data(from.payload_data());
     }
   }
-  _extensions_.MergeFrom(from._extensions_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -313,19 +347,17 @@ void IpcMessage::CopyFrom(const IpcMessage& from) {
 }
 
 bool IpcMessage::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-
-  if (!_extensions_.IsInitialized()) return false;  return true;
+  return true;
 }
 
 void IpcMessage::Swap(IpcMessage* other) {
   if (other != this) {
-    std::swap(msgid_, other->msgid_);
+    std::swap(id_, other->id_);
+    std::swap(payload_data_, other->payload_data_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
-    _extensions_.Swap(&other->_extensions_);
   }
 }
 

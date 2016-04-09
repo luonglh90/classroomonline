@@ -80,22 +80,14 @@ void protobuf_AddDesc_TeacherOpenClass_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026TeacherOpenClass.proto\022\022METRO.CRO.MESS"
-    "AGES\032\020IpcMessage.proto\"\215\001\n\020TeacherOpenCl"
-    "ass\022\020\n\010username\030\001 \001(\t\022\017\n\007classid\030\002 \001(\t2V"
-    "\n\007message\022\036.METRO.CRO.MESSAGES.IpcMessag"
-    "e\030\255\002 \001(\0132$.METRO.CRO.MESSAGES.TeacherOpe"
-    "nClass", 206);
+    "AGES\"5\n\020TeacherOpenClass\022\020\n\010username\030\001 \001"
+    "(\t\022\017\n\007classid\030\002 \001(\t", 99);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "TeacherOpenClass.proto", &protobuf_RegisterTypes);
   TeacherOpenClass::default_instance_ = new TeacherOpenClass();
   TeacherOpenClass::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    301, 11, false, false,
-    &::METRO::CRO::MESSAGES::TeacherOpenClass::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_TeacherOpenClass_2eproto);
 }
 
@@ -113,12 +105,6 @@ const int TeacherOpenClass::kUsernameFieldNumber;
 const int TeacherOpenClass::kClassidFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int TeacherOpenClass::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::TeacherOpenClass >, 11, false >
-  TeacherOpenClass::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::TeacherOpenClass::default_instance());
 TeacherOpenClass::TeacherOpenClass()
   : ::google::protobuf::Message() {
   SharedCtor();

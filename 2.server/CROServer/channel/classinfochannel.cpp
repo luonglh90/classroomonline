@@ -26,7 +26,7 @@ void ClassInfoChannel::readMessage(IpcSocketEvelope *ipcevelope)
     if(ipcevelope) {
         IpcMessage *ipc = ipcevelope->ipcmsg;
         if(ipc) {
-            switch (ipc->msgid()) {
+            switch (ipc->id()) {
             case REQUEST_VIEW_CATEGORY_DETAIL_MSG: {
                 RequestViewCategoryDetail *msg = (RequestViewCategoryDetail*)IpcMsgHelper::getMessage(ipc);
                 processRequestViewCategoryDetail(ipcevelope->socketuid, msg);

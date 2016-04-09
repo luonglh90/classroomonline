@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "IpcMessage.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace METRO {
@@ -141,10 +140,6 @@ class ClassCategory : public ::google::protobuf::Message {
   inline ::std::string* release_imgurl();
   inline void set_allocated_imgurl(::std::string* imgurl);
 
-  static const int kMessageFieldNumber = 201;
-  static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-      ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassCategory >, 11, false >
-    message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.ClassCategory)
  private:
   inline void set_has_u_id();

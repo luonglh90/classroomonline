@@ -80,21 +80,14 @@ void protobuf_AddDesc_LoginStatus_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\021LoginStatus.proto\022\022METRO.CRO.MESSAGES\032"
-    "\020IpcMessage.proto\"z\n\013LoginStatus\022\014\n\004name"
-    "\030\001 \001(\t\022\013\n\003stt\030\002 \001(\t2P\n\007message\022\036.METRO.C"
-    "RO.MESSAGES.IpcMessage\030o \001(\0132\037.METRO.CRO"
-    ".MESSAGES.LoginStatus", 181);
+    "\n\021LoginStatus.proto\022\022METRO.CRO.MESSAGES\""
+    "(\n\013LoginStatus\022\014\n\004name\030\001 \001(\t\022\013\n\003stt\030\002 \001("
+    "\t", 81);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LoginStatus.proto", &protobuf_RegisterTypes);
   LoginStatus::default_instance_ = new LoginStatus();
   LoginStatus::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
-    &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    111, 11, false, false,
-    &::METRO::CRO::MESSAGES::LoginStatus::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_LoginStatus_2eproto);
 }
 
@@ -112,12 +105,6 @@ const int LoginStatus::kNameFieldNumber;
 const int LoginStatus::kSttFieldNumber;
 #endif  // !_MSC_VER
 
-#ifndef _MSC_VER
-const int LoginStatus::kMessageFieldNumber;
-#endif
-::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
-    ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::LoginStatus >, 11, false >
-  LoginStatus::message(kMessageFieldNumber, ::METRO::CRO::MESSAGES::LoginStatus::default_instance());
 LoginStatus::LoginStatus()
   : ::google::protobuf::Message() {
   SharedCtor();

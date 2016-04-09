@@ -34,7 +34,7 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
     }
 
 //    RequestViewCategoryDetail tmp;
-    MessageSender::instance()->sendIpcMessage(uid, &stt);
+//    MessageSender::instance()->sendIpcMessage(uid, &stt);
 //    tmp.set_cate_id(1);
 //
 
@@ -46,7 +46,7 @@ void UserChannel::readMessage(IpcSocketEvelope *ipcevelope)
     if(ipcevelope) {
         IpcMessage *ipc = ipcevelope->ipcmsg;
         if(ipc) {
-            switch (ipc->msgid()) {
+            switch (ipc->id()) {
             case REQUEST_LOGIN_MSG: {
                 RequestLogin *msg = (RequestLogin*)IpcMsgHelper::getMessage(ipc);
                 processRequestLogin(ipcevelope->socketuid, msg);
