@@ -2,11 +2,11 @@ import "IpcMessage.proto";
 
 package METRO.CRO.MESSAGES;
 
-message ResponseLogin {
+message LoginStatus {
 	extend IpcMessage {
-		optional ResponseLogin message = 104;
+		optional LoginStatus message = 106;
 	}
 
 	optional string username = 1;
-	optional int32 status = 2;
+	optional int32 stt = 2;
 }

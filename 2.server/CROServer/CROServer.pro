@@ -36,7 +36,8 @@ SOURCES += main.cpp \
     utils/messagesender.cpp \
     pgdao/classinfodao.cpp \
     ../../msg/cpp/ClassroomInfoOfCategory.pb.cc \
-    ../../msg/cpp/RequestViewCategoryDetail.pb.cc
+    ../../msg/cpp/RequestViewCategoryDetail.pb.cc \
+    ../../msg/cpp/LoginStatus.pb.cc
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -70,7 +71,8 @@ HEADERS += \
     utils/messagesender.h \
     pgdao/classinfodao.h \
     ../../msg/cpp/ClassroomInfoOfCategory.pb.h \
-    ../../msg/cpp/RequestViewCategoryDetail.pb.h
+    ../../msg/cpp/RequestViewCategoryDetail.pb.h \
+    ../../msg/cpp/LoginStatus.pb.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

@@ -7,6 +7,7 @@
  * - RequestLogin: 103
  * - ResponseLogin: 104
  * - UserInit: 105
+ * - LoginStatus: 106
  * Class
  * - Category: 201
  * - ClassroomInfo: 202

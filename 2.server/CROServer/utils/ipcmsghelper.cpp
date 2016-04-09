@@ -6,6 +6,7 @@
 #include "../../msg/cpp/UserInit.pb.h"
 #include "../../msg/cpp/RequestViewCategoryDetail.pb.h"
 #include "../../msg/cpp/ClassroomInfoOfCategory.pb.h"
+#include "../../msg/cpp/LoginStatus.pb.h"
 
 std::map<std::string, int> nameIdMap;
 
@@ -25,6 +26,7 @@ void IpcMsgHelper::init() {
         nameIdMap["METRO.CRO.MESSAGES.UserInit"] = USER_INIT_MSG;
         nameIdMap["METRO.CRO.MESSAGES.RequestViewCategoryDetail"] = REQUEST_VIEW_CATEGORY_DETAIL_MSG;
         nameIdMap["METRO.CRO.MESSAGES.ClassroomInfoOfCategory"] = CLASSES_OF_CATEGORY;
+        nameIdMap["METRO.CRO.MESSAGES.LoginStatus"] = LOGIN_STATUS_MSG;
     }
 }
 
@@ -61,6 +63,11 @@ IpcMessage* IpcMsgHelper::createIpcMessage(google::protobuf::Message* msg) {
     case CLASSES_OF_CATEGORY: {
         ClassroomInfoOfCategory* ipcExt = ipc->MutableExtension(ClassroomInfoOfCategory::message);
         (*ipcExt) = (*(ClassroomInfoOfCategory*) msg);
+        break;
+    }
+    case LOGIN_STATUS_MSG: {
+        LoginStatus* ipcExt = ipc->MutableExtension(LoginStatus::message);
+        (*ipcExt) = (*(LoginStatus*) msg);
         break;
     }
     default:
@@ -104,6 +111,11 @@ google::protobuf::Message* IpcMsgHelper::getMessage(IpcMessage* ipc) {
     case CLASSES_OF_CATEGORY: {
         if(ipc->HasExtension(ClassroomInfoOfCategory::message))
             msg = new ClassroomInfoOfCategory(ipc->GetExtension(ClassroomInfoOfCategory::message));
+        break;
+    }
+    case LOGIN_STATUS_MSG: {
+        if(ipc->HasExtension(LoginStatus::message))
+            msg = new LoginStatus(ipc->GetExtension(LoginStatus::message));
         break;
     }
     default:

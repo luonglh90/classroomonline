@@ -1,5 +1,6 @@
 #include "../../msg/cpp/ipcmessagetype.h"
-#include "../../msg/cpp/ResponseLogin.pb.h"
+#include "../../msg/cpp/LoginStatus.pb.h"
+#include "../../msg/cpp/RequestViewCategoryDetail.pb.h"
 #include "utils/ipcmsghelper.h"
 #include "base/cmmdefs.h"
 #include "utils/socketutils.h"
@@ -21,15 +22,18 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 
     bool isValid = UserManager::instance()->checkUserLogin(userName, passwd);
 
-    ResponseLogin response;
-    response.set_username(msg->username());
-    if(isValid) {
-        response.set_status(Enums_ResponseLoginEnums_SUCCESS);
-    } else {
-        response.set_status(Enums_ResponseLoginEnums_FAILD_WRONG_PASS);
-    }
+//    LoginStatus stt;
+//    stt.set_username(msg->username());
+//    if(isValid) {
+//        stt.set_stt(0);
+//    } else {
+//        stt.set_stt(1);
+//    }
 
-    MessageSender::instance()->sendIpcMessage(uid, &response);
+//    MessageSender::instance()->sendIpcMessage(uid, msg);
+//    RequestViewCategoryDetail tmp;
+//    tmp.set_cate_id(1);
+//    MessageSender::instance()->sendIpcMessage(uid, &stt);
 
     UserManager::instance()->initUserInfo(uid, userName);
 }
