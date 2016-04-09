@@ -18,6 +18,7 @@ public:
     User getUserByUserName(QString userName);
     bool checkUserOnline(int uid);
     User getUserOnlineByUid(int uid);
+    int getSocketuidOnlineByUsername(QString userName);
 
     bool checkUserLogin(QString username, QString password);
     void userLogOff(int socketuid);

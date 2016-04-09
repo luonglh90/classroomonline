@@ -8,5 +8,5 @@ message LoginStatus {
 	}
 
 	optional string name = 1;
-	optional int32 stt = 2;
+	optional string stt = 2;
 }

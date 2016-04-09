@@ -1,6 +1,7 @@
 #include "../../msg/cpp/ipcmessagetype.h"
 #include "base/cmmdefs.h"
 #include "utils/ipcmsghelper.h"
+#include "utils/stringutils.h"
 #include "manager/classinfomanager.h"
 #include "classinfochannel.h"
 
@@ -16,7 +17,7 @@ void ClassInfoChannel::onDisconnect(int socketuid)
 
 void ClassInfoChannel::processRequestViewCategoryDetail(int uid, RequestViewCategoryDetail *msg)
 {
-    int cate_id = msg->cate_id();
+    int cate_id = StringUtils::stringToInt(msg->cate_id());
     ClassInfoManager::instance()->sendClassroomOfCategory(uid, cate_id);
 }
 

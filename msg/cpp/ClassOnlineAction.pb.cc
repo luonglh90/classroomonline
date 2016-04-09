@@ -37,8 +37,9 @@ void protobuf_AssignDesc_ClassOnlineAction_2eproto() {
       "ClassOnlineAction.proto");
   GOOGLE_CHECK(file != NULL);
   ClassOnlineAction_descriptor_ = file->message_type(0);
-  static const int ClassOnlineAction_offsets_[3] = {
+  static const int ClassOnlineAction_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassOnlineAction, targetusername_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassOnlineAction, sourceusername_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassOnlineAction, classid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassOnlineAction, actiontype_),
   };
@@ -86,16 +87,15 @@ void protobuf_AddDesc_ClassOnlineAction_2eproto() {
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\027ClassOnlineAction.proto\022\022METRO.CRO.MES"
-    "SAGES\032\020IpcMessage.proto\"\337\002\n\021ClassOnlineA"
-    "ction\022\026\n\016targetusername\030\001 \001(\t\022\017\n\007classid"
-    "\030\002 \001(\005\022D\n\nactiontype\030\003 \001(\01620.METRO.CRO.M"
-    "ESSAGES.ClassOnlineAction.ActionType\"\201\001\n"
-    "\nActionType\022\016\n\nOPEN_CLASS\020\001\022\017\n\013CLOSE_CLA"
-    "SS\020\002\022\021\n\rREQUEST_JOINT\020\003\022\020\n\014ACCEPT_JOINT\020"
-    "\004\022\026\n\022REQUEST_DRAW_BOARD\020\005\022\025\n\021ACCEPT_DRAW"
-    "_BOARD\020\0062W\n\007message\022\036.METRO.CRO.MESSAGES"
-    ".IpcMessage\030\257\002 \001(\0132%.METRO.CRO.MESSAGES."
-    "ClassOnlineAction", 417);
+    "SAGES\032\020IpcMessage.proto\"\305\002\n\021ClassOnlineA"
+    "ction\022\026\n\016targetusername\030\001 \001(\t\022\026\n\016sourceu"
+    "sername\030\004 \001(\t\022\017\n\007classid\030\002 \001(\t\022\022\n\naction"
+    "type\030\003 \001(\t\"\201\001\n\nActionType\022\016\n\nOPEN_CLASS\020"
+    "\001\022\017\n\013CLOSE_CLASS\020\002\022\021\n\rREQUEST_JOINT\020\003\022\020\n"
+    "\014ACCEPT_JOINT\020\004\022\026\n\022REQUEST_DRAW_BOARD\020\005\022"
+    "\025\n\021ACCEPT_DRAW_BOARD\020\0062W\n\007message\022\036.METR"
+    "O.CRO.MESSAGES.IpcMessage\030\257\002 \001(\0132%.METRO"
+    ".CRO.MESSAGES.ClassOnlineAction", 391);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassOnlineAction.proto", &protobuf_RegisterTypes);
   ClassOnlineAction::default_instance_ = new ClassOnlineAction();
@@ -147,6 +147,7 @@ const int ClassOnlineAction::ActionType_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int ClassOnlineAction::kTargetusernameFieldNumber;
+const int ClassOnlineAction::kSourceusernameFieldNumber;
 const int ClassOnlineAction::kClassidFieldNumber;
 const int ClassOnlineAction::kActiontypeFieldNumber;
 #endif  // !_MSC_VER
@@ -177,8 +178,9 @@ void ClassOnlineAction::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   targetusername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  classid_ = 0;
-  actiontype_ = 1;
+  sourceusername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  classid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  actiontype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -190,6 +192,15 @@ ClassOnlineAction::~ClassOnlineAction() {
 void ClassOnlineAction::SharedDtor() {
   if (targetusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete targetusername_;
+  }
+  if (sourceusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete sourceusername_;
+  }
+  if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete classid_;
+  }
+  if (actiontype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete actiontype_;
   }
   if (this != default_instance_) {
   }
@@ -217,14 +228,27 @@ ClassOnlineAction* ClassOnlineAction::New() const {
 }
 
 void ClassOnlineAction::Clear() {
-  if (_has_bits_[0 / 32] & 7) {
+  if (_has_bits_[0 / 32] & 15) {
     if (has_targetusername()) {
       if (targetusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         targetusername_->clear();
       }
     }
-    classid_ = 0;
-    actiontype_ = 1;
+    if (has_sourceusername()) {
+      if (sourceusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        sourceusername_->clear();
+      }
+    }
+    if (has_classid()) {
+      if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        classid_->clear();
+      }
+    }
+    if (has_actiontype()) {
+      if (actiontype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        actiontype_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -252,38 +276,54 @@ bool ClassOnlineAction::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_classid;
+        if (input->ExpectTag(18)) goto parse_classid;
         break;
       }
 
-      // optional int32 classid = 2;
+      // optional string classid = 2;
       case 2: {
-        if (tag == 16) {
+        if (tag == 18) {
          parse_classid:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &classid_)));
-          set_has_classid();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_classid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->classid().data(), this->classid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "classid");
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_actiontype;
+        if (input->ExpectTag(26)) goto parse_actiontype;
         break;
       }
 
-      // optional .METRO.CRO.MESSAGES.ClassOnlineAction.ActionType actiontype = 3;
+      // optional string actiontype = 3;
       case 3: {
-        if (tag == 24) {
+        if (tag == 26) {
          parse_actiontype:
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType_IsValid(value)) {
-            set_actiontype(static_cast< ::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(3, value);
-          }
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_actiontype()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->actiontype().data(), this->actiontype().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "actiontype");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_sourceusername;
+        break;
+      }
+
+      // optional string sourceusername = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_sourceusername:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_sourceusername()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->sourceusername().data(), this->sourceusername().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "sourceusername");
         } else {
           goto handle_unusual;
         }
@@ -326,15 +366,34 @@ void ClassOnlineAction::SerializeWithCachedSizes(
       1, this->targetusername(), output);
   }
 
-  // optional int32 classid = 2;
+  // optional string classid = 2;
   if (has_classid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->classid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->classid().data(), this->classid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "classid");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->classid(), output);
   }
 
-  // optional .METRO.CRO.MESSAGES.ClassOnlineAction.ActionType actiontype = 3;
+  // optional string actiontype = 3;
   if (has_actiontype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->actiontype().data(), this->actiontype().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "actiontype");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->actiontype(), output);
+  }
+
+  // optional string sourceusername = 4;
+  if (has_sourceusername()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sourceusername().data(), this->sourceusername().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "sourceusername");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->sourceusername(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -358,15 +417,37 @@ void ClassOnlineAction::SerializeWithCachedSizes(
         1, this->targetusername(), target);
   }
 
-  // optional int32 classid = 2;
+  // optional string classid = 2;
   if (has_classid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->classid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->classid().data(), this->classid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "classid");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->classid(), target);
   }
 
-  // optional .METRO.CRO.MESSAGES.ClassOnlineAction.ActionType actiontype = 3;
+  // optional string actiontype = 3;
   if (has_actiontype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->actiontype(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->actiontype().data(), this->actiontype().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "actiontype");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->actiontype(), target);
+  }
+
+  // optional string sourceusername = 4;
+  if (has_sourceusername()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sourceusername().data(), this->sourceusername().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "sourceusername");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->sourceusername(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -388,17 +469,25 @@ int ClassOnlineAction::ByteSize() const {
           this->targetusername());
     }
 
-    // optional int32 classid = 2;
+    // optional string sourceusername = 4;
+    if (has_sourceusername()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->sourceusername());
+    }
+
+    // optional string classid = 2;
     if (has_classid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->classid());
     }
 
-    // optional .METRO.CRO.MESSAGES.ClassOnlineAction.ActionType actiontype = 3;
+    // optional string actiontype = 3;
     if (has_actiontype()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->actiontype());
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->actiontype());
     }
 
   }
@@ -431,6 +520,9 @@ void ClassOnlineAction::MergeFrom(const ClassOnlineAction& from) {
     if (from.has_targetusername()) {
       set_targetusername(from.targetusername());
     }
+    if (from.has_sourceusername()) {
+      set_sourceusername(from.sourceusername());
+    }
     if (from.has_classid()) {
       set_classid(from.classid());
     }
@@ -461,6 +553,7 @@ bool ClassOnlineAction::IsInitialized() const {
 void ClassOnlineAction::Swap(ClassOnlineAction* other) {
   if (other != this) {
     std::swap(targetusername_, other->targetusername_);
+    std::swap(sourceusername_, other->sourceusername_);
     std::swap(classid_, other->classid_);
     std::swap(actiontype_, other->actiontype_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

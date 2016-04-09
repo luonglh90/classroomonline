@@ -157,19 +157,41 @@ class ClassOnlineAction : public ::google::protobuf::Message {
   inline ::std::string* release_targetusername();
   inline void set_allocated_targetusername(::std::string* targetusername);
 
-  // optional int32 classid = 2;
+  // optional string sourceusername = 4;
+  inline bool has_sourceusername() const;
+  inline void clear_sourceusername();
+  static const int kSourceusernameFieldNumber = 4;
+  inline const ::std::string& sourceusername() const;
+  inline void set_sourceusername(const ::std::string& value);
+  inline void set_sourceusername(const char* value);
+  inline void set_sourceusername(const char* value, size_t size);
+  inline ::std::string* mutable_sourceusername();
+  inline ::std::string* release_sourceusername();
+  inline void set_allocated_sourceusername(::std::string* sourceusername);
+
+  // optional string classid = 2;
   inline bool has_classid() const;
   inline void clear_classid();
   static const int kClassidFieldNumber = 2;
-  inline ::google::protobuf::int32 classid() const;
-  inline void set_classid(::google::protobuf::int32 value);
+  inline const ::std::string& classid() const;
+  inline void set_classid(const ::std::string& value);
+  inline void set_classid(const char* value);
+  inline void set_classid(const char* value, size_t size);
+  inline ::std::string* mutable_classid();
+  inline ::std::string* release_classid();
+  inline void set_allocated_classid(::std::string* classid);
 
-  // optional .METRO.CRO.MESSAGES.ClassOnlineAction.ActionType actiontype = 3;
+  // optional string actiontype = 3;
   inline bool has_actiontype() const;
   inline void clear_actiontype();
   static const int kActiontypeFieldNumber = 3;
-  inline ::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType actiontype() const;
-  inline void set_actiontype(::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType value);
+  inline const ::std::string& actiontype() const;
+  inline void set_actiontype(const ::std::string& value);
+  inline void set_actiontype(const char* value);
+  inline void set_actiontype(const char* value, size_t size);
+  inline ::std::string* mutable_actiontype();
+  inline ::std::string* release_actiontype();
+  inline void set_allocated_actiontype(::std::string* actiontype);
 
   static const int kMessageFieldNumber = 303;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
@@ -179,6 +201,8 @@ class ClassOnlineAction : public ::google::protobuf::Message {
  private:
   inline void set_has_targetusername();
   inline void clear_has_targetusername();
+  inline void set_has_sourceusername();
+  inline void clear_has_sourceusername();
   inline void set_has_classid();
   inline void clear_has_classid();
   inline void set_has_actiontype();
@@ -189,8 +213,9 @@ class ClassOnlineAction : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* targetusername_;
-  ::google::protobuf::int32 classid_;
-  int actiontype_;
+  ::std::string* sourceusername_;
+  ::std::string* classid_;
+  ::std::string* actiontype_;
   friend void  protobuf_AddDesc_ClassOnlineAction_2eproto();
   friend void protobuf_AssignDesc_ClassOnlineAction_2eproto();
   friend void protobuf_ShutdownFile_ClassOnlineAction_2eproto();
@@ -281,53 +306,232 @@ inline void ClassOnlineAction::set_allocated_targetusername(::std::string* targe
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassOnlineAction.targetusername)
 }
 
-// optional int32 classid = 2;
-inline bool ClassOnlineAction::has_classid() const {
+// optional string sourceusername = 4;
+inline bool ClassOnlineAction::has_sourceusername() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ClassOnlineAction::set_has_classid() {
+inline void ClassOnlineAction::set_has_sourceusername() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ClassOnlineAction::clear_has_classid() {
+inline void ClassOnlineAction::clear_has_sourceusername() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ClassOnlineAction::clear_classid() {
-  classid_ = 0;
-  clear_has_classid();
+inline void ClassOnlineAction::clear_sourceusername() {
+  if (sourceusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    sourceusername_->clear();
+  }
+  clear_has_sourceusername();
 }
-inline ::google::protobuf::int32 ClassOnlineAction::classid() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
-  return classid_;
+inline const ::std::string& ClassOnlineAction::sourceusername() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassOnlineAction.sourceusername)
+  return *sourceusername_;
 }
-inline void ClassOnlineAction::set_classid(::google::protobuf::int32 value) {
-  set_has_classid();
-  classid_ = value;
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
+inline void ClassOnlineAction::set_sourceusername(const ::std::string& value) {
+  set_has_sourceusername();
+  if (sourceusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    sourceusername_ = new ::std::string;
+  }
+  sourceusername_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassOnlineAction.sourceusername)
+}
+inline void ClassOnlineAction::set_sourceusername(const char* value) {
+  set_has_sourceusername();
+  if (sourceusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    sourceusername_ = new ::std::string;
+  }
+  sourceusername_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassOnlineAction.sourceusername)
+}
+inline void ClassOnlineAction::set_sourceusername(const char* value, size_t size) {
+  set_has_sourceusername();
+  if (sourceusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    sourceusername_ = new ::std::string;
+  }
+  sourceusername_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassOnlineAction.sourceusername)
+}
+inline ::std::string* ClassOnlineAction::mutable_sourceusername() {
+  set_has_sourceusername();
+  if (sourceusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    sourceusername_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassOnlineAction.sourceusername)
+  return sourceusername_;
+}
+inline ::std::string* ClassOnlineAction::release_sourceusername() {
+  clear_has_sourceusername();
+  if (sourceusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = sourceusername_;
+    sourceusername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ClassOnlineAction::set_allocated_sourceusername(::std::string* sourceusername) {
+  if (sourceusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete sourceusername_;
+  }
+  if (sourceusername) {
+    set_has_sourceusername();
+    sourceusername_ = sourceusername;
+  } else {
+    clear_has_sourceusername();
+    sourceusername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassOnlineAction.sourceusername)
 }
 
-// optional .METRO.CRO.MESSAGES.ClassOnlineAction.ActionType actiontype = 3;
-inline bool ClassOnlineAction::has_actiontype() const {
+// optional string classid = 2;
+inline bool ClassOnlineAction::has_classid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ClassOnlineAction::set_has_actiontype() {
+inline void ClassOnlineAction::set_has_classid() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ClassOnlineAction::clear_has_actiontype() {
+inline void ClassOnlineAction::clear_has_classid() {
   _has_bits_[0] &= ~0x00000004u;
 }
+inline void ClassOnlineAction::clear_classid() {
+  if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_->clear();
+  }
+  clear_has_classid();
+}
+inline const ::std::string& ClassOnlineAction::classid() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
+  return *classid_;
+}
+inline void ClassOnlineAction::set_classid(const ::std::string& value) {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  classid_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
+}
+inline void ClassOnlineAction::set_classid(const char* value) {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  classid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
+}
+inline void ClassOnlineAction::set_classid(const char* value, size_t size) {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  classid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
+}
+inline ::std::string* ClassOnlineAction::mutable_classid() {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
+  return classid_;
+}
+inline ::std::string* ClassOnlineAction::release_classid() {
+  clear_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = classid_;
+    classid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ClassOnlineAction::set_allocated_classid(::std::string* classid) {
+  if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete classid_;
+  }
+  if (classid) {
+    set_has_classid();
+    classid_ = classid;
+  } else {
+    clear_has_classid();
+    classid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassOnlineAction.classid)
+}
+
+// optional string actiontype = 3;
+inline bool ClassOnlineAction::has_actiontype() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ClassOnlineAction::set_has_actiontype() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ClassOnlineAction::clear_has_actiontype() {
+  _has_bits_[0] &= ~0x00000008u;
+}
 inline void ClassOnlineAction::clear_actiontype() {
-  actiontype_ = 1;
+  if (actiontype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    actiontype_->clear();
+  }
   clear_has_actiontype();
 }
-inline ::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType ClassOnlineAction::actiontype() const {
+inline const ::std::string& ClassOnlineAction::actiontype() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassOnlineAction.actiontype)
-  return static_cast< ::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType >(actiontype_);
+  return *actiontype_;
 }
-inline void ClassOnlineAction::set_actiontype(::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType value) {
-  assert(::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType_IsValid(value));
+inline void ClassOnlineAction::set_actiontype(const ::std::string& value) {
   set_has_actiontype();
-  actiontype_ = value;
+  if (actiontype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    actiontype_ = new ::std::string;
+  }
+  actiontype_->assign(value);
   // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassOnlineAction.actiontype)
+}
+inline void ClassOnlineAction::set_actiontype(const char* value) {
+  set_has_actiontype();
+  if (actiontype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    actiontype_ = new ::std::string;
+  }
+  actiontype_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassOnlineAction.actiontype)
+}
+inline void ClassOnlineAction::set_actiontype(const char* value, size_t size) {
+  set_has_actiontype();
+  if (actiontype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    actiontype_ = new ::std::string;
+  }
+  actiontype_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassOnlineAction.actiontype)
+}
+inline ::std::string* ClassOnlineAction::mutable_actiontype() {
+  set_has_actiontype();
+  if (actiontype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    actiontype_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassOnlineAction.actiontype)
+  return actiontype_;
+}
+inline ::std::string* ClassOnlineAction::release_actiontype() {
+  clear_has_actiontype();
+  if (actiontype_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = actiontype_;
+    actiontype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ClassOnlineAction::set_allocated_actiontype(::std::string* actiontype) {
+  if (actiontype_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete actiontype_;
+  }
+  if (actiontype) {
+    set_has_actiontype();
+    actiontype_ = actiontype;
+  } else {
+    clear_has_actiontype();
+    actiontype_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassOnlineAction.actiontype)
 }
 
 

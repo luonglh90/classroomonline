@@ -91,11 +91,11 @@ void protobuf_AddDesc_ClassroomInfo_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ClassroomInfo.proto\022\022METRO.CRO.MESSAGE"
     "S\032\020IpcMessage.proto\032\nUser.proto\"\210\002\n\rClas"
-    "sroomInfo\022\014\n\004u_id\030\001 \002(\005\022\017\n\007cate_id\030\002 \002(\005"
+    "sroomInfo\022\014\n\004u_id\030\001 \002(\t\022\017\n\007cate_id\030\002 \002(\t"
     "\022\014\n\004name\030\003 \002(\t\022)\n\007teacher\030\004 \002(\0132\030.METRO."
     "CRO.MESSAGES.User\022\023\n\013description\030\005 \001(\t\022\016"
-    "\n\006imgurl\030\006 \001(\t\022\021\n\ttime_open\030\007 \001(\005\022\022\n\ntim"
-    "e_close\030\010 \001(\0052S\n\007message\022\036.METRO.CRO.MES"
+    "\n\006imgurl\030\006 \001(\t\022\021\n\ttime_open\030\007 \001(\t\022\022\n\ntim"
+    "e_close\030\010 \001(\t2S\n\007message\022\036.METRO.CRO.MES"
     "SAGES.IpcMessage\030\313\001 \001(\0132!.METRO.CRO.MESS"
     "AGES.ClassroomInfo", 338);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -155,14 +155,14 @@ ClassroomInfo::ClassroomInfo(const ClassroomInfo& from)
 void ClassroomInfo::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  u_id_ = 0;
-  cate_id_ = 0;
+  u_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   teacher_ = NULL;
   description_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  time_open_ = 0;
-  time_close_ = 0;
+  time_open_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  time_close_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -172,6 +172,12 @@ ClassroomInfo::~ClassroomInfo() {
 }
 
 void ClassroomInfo::SharedDtor() {
+  if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete u_id_;
+  }
+  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cate_id_;
+  }
   if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete name_;
   }
@@ -180,6 +186,12 @@ void ClassroomInfo::SharedDtor() {
   }
   if (imgurl_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete imgurl_;
+  }
+  if (time_open_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete time_open_;
+  }
+  if (time_close_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete time_close_;
   }
   if (this != default_instance_) {
     delete teacher_;
@@ -208,19 +220,17 @@ ClassroomInfo* ClassroomInfo::New() const {
 }
 
 void ClassroomInfo::Clear() {
-#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
-  &reinterpret_cast<ClassroomInfo*>(16)->f) - \
-   reinterpret_cast<char*>(16))
-
-#define ZR_(first, last) do {                              \
-    size_t f = OFFSET_OF_FIELD_(first);                    \
-    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
-    ::memset(&first, 0, n);                                \
-  } while (0)
-
   if (_has_bits_[0 / 32] & 255) {
-    ZR_(u_id_, cate_id_);
-    ZR_(time_open_, time_close_);
+    if (has_u_id()) {
+      if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        u_id_->clear();
+      }
+    }
+    if (has_cate_id()) {
+      if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        cate_id_->clear();
+      }
+    }
     if (has_name()) {
       if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         name_->clear();
@@ -239,11 +249,17 @@ void ClassroomInfo::Clear() {
         imgurl_->clear();
       }
     }
+    if (has_time_open()) {
+      if (time_open_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        time_open_->clear();
+      }
+    }
+    if (has_time_close()) {
+      if (time_close_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        time_close_->clear();
+      }
+    }
   }
-
-#undef OFFSET_OF_FIELD_
-#undef ZR_
-
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -258,28 +274,32 @@ bool ClassroomInfo::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 u_id = 1;
+      // required string u_id = 1;
       case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &u_id_)));
-          set_has_u_id();
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_u_id()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->u_id().data(), this->u_id().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "u_id");
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_cate_id;
+        if (input->ExpectTag(18)) goto parse_cate_id;
         break;
       }
 
-      // required int32 cate_id = 2;
+      // required string cate_id = 2;
       case 2: {
-        if (tag == 16) {
+        if (tag == 18) {
          parse_cate_id:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &cate_id_)));
-          set_has_cate_id();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cate_id()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->cate_id().data(), this->cate_id().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "cate_id");
         } else {
           goto handle_unusual;
         }
@@ -347,33 +367,37 @@ bool ClassroomInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(56)) goto parse_time_open;
+        if (input->ExpectTag(58)) goto parse_time_open;
         break;
       }
 
-      // optional int32 time_open = 7;
+      // optional string time_open = 7;
       case 7: {
-        if (tag == 56) {
+        if (tag == 58) {
          parse_time_open:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &time_open_)));
-          set_has_time_open();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_time_open()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->time_open().data(), this->time_open().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "time_open");
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(64)) goto parse_time_close;
+        if (input->ExpectTag(66)) goto parse_time_close;
         break;
       }
 
-      // optional int32 time_close = 8;
+      // optional string time_close = 8;
       case 8: {
-        if (tag == 64) {
+        if (tag == 66) {
          parse_time_close:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &time_close_)));
-          set_has_time_close();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_time_close()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->time_close().data(), this->time_close().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "time_close");
         } else {
           goto handle_unusual;
         }
@@ -406,14 +430,24 @@ failure:
 void ClassroomInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:METRO.CRO.MESSAGES.ClassroomInfo)
-  // required int32 u_id = 1;
+  // required string u_id = 1;
   if (has_u_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->u_id(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->u_id().data(), this->u_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "u_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->u_id(), output);
   }
 
-  // required int32 cate_id = 2;
+  // required string cate_id = 2;
   if (has_cate_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->cate_id(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cate_id().data(), this->cate_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "cate_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->cate_id(), output);
   }
 
   // required string name = 3;
@@ -452,14 +486,24 @@ void ClassroomInfo::SerializeWithCachedSizes(
       6, this->imgurl(), output);
   }
 
-  // optional int32 time_open = 7;
+  // optional string time_open = 7;
   if (has_time_open()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->time_open(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->time_open().data(), this->time_open().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "time_open");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      7, this->time_open(), output);
   }
 
-  // optional int32 time_close = 8;
+  // optional string time_close = 8;
   if (has_time_close()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->time_close(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->time_close().data(), this->time_close().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "time_close");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      8, this->time_close(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -472,14 +516,26 @@ void ClassroomInfo::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ClassroomInfo::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:METRO.CRO.MESSAGES.ClassroomInfo)
-  // required int32 u_id = 1;
+  // required string u_id = 1;
   if (has_u_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->u_id(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->u_id().data(), this->u_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "u_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->u_id(), target);
   }
 
-  // required int32 cate_id = 2;
+  // required string cate_id = 2;
   if (has_cate_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->cate_id(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cate_id().data(), this->cate_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "cate_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->cate_id(), target);
   }
 
   // required string name = 3;
@@ -522,14 +578,26 @@ void ClassroomInfo::SerializeWithCachedSizes(
         6, this->imgurl(), target);
   }
 
-  // optional int32 time_open = 7;
+  // optional string time_open = 7;
   if (has_time_open()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->time_open(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->time_open().data(), this->time_open().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "time_open");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->time_open(), target);
   }
 
-  // optional int32 time_close = 8;
+  // optional string time_close = 8;
   if (has_time_close()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->time_close(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->time_close().data(), this->time_close().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "time_close");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        8, this->time_close(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -544,17 +612,17 @@ int ClassroomInfo::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 u_id = 1;
+    // required string u_id = 1;
     if (has_u_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->u_id());
     }
 
-    // required int32 cate_id = 2;
+    // required string cate_id = 2;
     if (has_cate_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->cate_id());
     }
 
@@ -586,17 +654,17 @@ int ClassroomInfo::ByteSize() const {
           this->imgurl());
     }
 
-    // optional int32 time_open = 7;
+    // optional string time_open = 7;
     if (has_time_open()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->time_open());
     }
 
-    // optional int32 time_close = 8;
+    // optional string time_close = 8;
     if (has_time_close()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->time_close());
     }
 

@@ -93,12 +93,17 @@ class ClassCategory : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 u_id = 1;
+  // required string u_id = 1;
   inline bool has_u_id() const;
   inline void clear_u_id();
   static const int kUIdFieldNumber = 1;
-  inline ::google::protobuf::int32 u_id() const;
-  inline void set_u_id(::google::protobuf::int32 value);
+  inline const ::std::string& u_id() const;
+  inline void set_u_id(const ::std::string& value);
+  inline void set_u_id(const char* value);
+  inline void set_u_id(const char* value, size_t size);
+  inline ::std::string* mutable_u_id();
+  inline ::std::string* release_u_id();
+  inline void set_allocated_u_id(::std::string* u_id);
 
   // required string name = 2;
   inline bool has_name() const;
@@ -155,10 +160,10 @@ class ClassCategory : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::std::string* u_id_;
   ::std::string* name_;
   ::std::string* description_;
   ::std::string* imgurl_;
-  ::google::protobuf::int32 u_id_;
   friend void  protobuf_AddDesc_ClassCategory_2eproto();
   friend void protobuf_AssignDesc_ClassCategory_2eproto();
   friend void protobuf_ShutdownFile_ClassCategory_2eproto();
@@ -173,7 +178,7 @@ class ClassCategory : public ::google::protobuf::Message {
 
 // ClassCategory
 
-// required int32 u_id = 1;
+// required string u_id = 1;
 inline bool ClassCategory::has_u_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -184,17 +189,69 @@ inline void ClassCategory::clear_has_u_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void ClassCategory::clear_u_id() {
-  u_id_ = 0;
+  if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    u_id_->clear();
+  }
   clear_has_u_id();
 }
-inline ::google::protobuf::int32 ClassCategory::u_id() const {
+inline const ::std::string& ClassCategory::u_id() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassCategory.u_id)
+  return *u_id_;
+}
+inline void ClassCategory::set_u_id(const ::std::string& value) {
+  set_has_u_id();
+  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    u_id_ = new ::std::string;
+  }
+  u_id_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassCategory.u_id)
+}
+inline void ClassCategory::set_u_id(const char* value) {
+  set_has_u_id();
+  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    u_id_ = new ::std::string;
+  }
+  u_id_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassCategory.u_id)
+}
+inline void ClassCategory::set_u_id(const char* value, size_t size) {
+  set_has_u_id();
+  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    u_id_ = new ::std::string;
+  }
+  u_id_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassCategory.u_id)
+}
+inline ::std::string* ClassCategory::mutable_u_id() {
+  set_has_u_id();
+  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    u_id_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassCategory.u_id)
   return u_id_;
 }
-inline void ClassCategory::set_u_id(::google::protobuf::int32 value) {
-  set_has_u_id();
-  u_id_ = value;
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassCategory.u_id)
+inline ::std::string* ClassCategory::release_u_id() {
+  clear_has_u_id();
+  if (u_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = u_id_;
+    u_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ClassCategory::set_allocated_u_id(::std::string* u_id) {
+  if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete u_id_;
+  }
+  if (u_id) {
+    set_has_u_id();
+    u_id_ = u_id;
+  } else {
+    clear_has_u_id();
+    u_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassCategory.u_id)
 }
 
 // required string name = 2;

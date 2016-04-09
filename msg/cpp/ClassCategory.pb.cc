@@ -86,7 +86,7 @@ void protobuf_AddDesc_ClassCategory_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ClassCategory.proto\022\022METRO.CRO.MESSAGE"
     "S\032\020IpcMessage.proto\"\245\001\n\rClassCategory\022\014\n"
-    "\004u_id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\023\n\013description"
+    "\004u_id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\023\n\013description"
     "\030\003 \001(\t\022\016\n\006imgurl\030\004 \001(\t2S\n\007message\022\036.METR"
     "O.CRO.MESSAGES.IpcMessage\030\311\001 \001(\0132!.METRO"
     ".CRO.MESSAGES.ClassCategory", 227);
@@ -142,7 +142,7 @@ ClassCategory::ClassCategory(const ClassCategory& from)
 void ClassCategory::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  u_id_ = 0;
+  u_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   description_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -155,6 +155,9 @@ ClassCategory::~ClassCategory() {
 }
 
 void ClassCategory::SharedDtor() {
+  if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete u_id_;
+  }
   if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete name_;
   }
@@ -191,7 +194,11 @@ ClassCategory* ClassCategory::New() const {
 
 void ClassCategory::Clear() {
   if (_has_bits_[0 / 32] & 15) {
-    u_id_ = 0;
+    if (has_u_id()) {
+      if (u_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        u_id_->clear();
+      }
+    }
     if (has_name()) {
       if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         name_->clear();
@@ -222,13 +229,15 @@ bool ClassCategory::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 u_id = 1;
+      // required string u_id = 1;
       case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &u_id_)));
-          set_has_u_id();
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_u_id()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->u_id().data(), this->u_id().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "u_id");
         } else {
           goto handle_unusual;
         }
@@ -312,9 +321,14 @@ failure:
 void ClassCategory::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:METRO.CRO.MESSAGES.ClassCategory)
-  // required int32 u_id = 1;
+  // required string u_id = 1;
   if (has_u_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->u_id(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->u_id().data(), this->u_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "u_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->u_id(), output);
   }
 
   // required string name = 2;
@@ -357,9 +371,15 @@ void ClassCategory::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ClassCategory::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:METRO.CRO.MESSAGES.ClassCategory)
-  // required int32 u_id = 1;
+  // required string u_id = 1;
   if (has_u_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->u_id(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->u_id().data(), this->u_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "u_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->u_id(), target);
   }
 
   // required string name = 2;
@@ -407,10 +427,10 @@ int ClassCategory::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 u_id = 1;
+    // required string u_id = 1;
     if (has_u_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->u_id());
     }
 

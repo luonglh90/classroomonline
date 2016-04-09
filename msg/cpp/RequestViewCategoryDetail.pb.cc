@@ -83,7 +83,7 @@ void protobuf_AddDesc_RequestViewCategoryDetail_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037RequestViewCategoryDetail.proto\022\022METRO"
     ".CRO.MESSAGES\032\020IpcMessage.proto\"\215\001\n\031Requ"
-    "estViewCategoryDetail\022\017\n\007cate_id\030\001 \002(\0052_"
+    "estViewCategoryDetail\022\017\n\007cate_id\030\001 \002(\t2_"
     "\n\007message\022\036.METRO.CRO.MESSAGES.IpcMessag"
     "e\030\315\001 \001(\0132-.METRO.CRO.MESSAGES.RequestVie"
     "wCategoryDetail", 215);
@@ -134,8 +134,9 @@ RequestViewCategoryDetail::RequestViewCategoryDetail(const RequestViewCategoryDe
 }
 
 void RequestViewCategoryDetail::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  cate_id_ = 0;
+  cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -145,6 +146,9 @@ RequestViewCategoryDetail::~RequestViewCategoryDetail() {
 }
 
 void RequestViewCategoryDetail::SharedDtor() {
+  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cate_id_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -171,7 +175,11 @@ RequestViewCategoryDetail* RequestViewCategoryDetail::New() const {
 }
 
 void RequestViewCategoryDetail::Clear() {
-  cate_id_ = 0;
+  if (has_cate_id()) {
+    if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      cate_id_->clear();
+    }
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -186,13 +194,15 @@ bool RequestViewCategoryDetail::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 cate_id = 1;
+      // required string cate_id = 1;
       case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &cate_id_)));
-          set_has_cate_id();
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cate_id()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->cate_id().data(), this->cate_id().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "cate_id");
         } else {
           goto handle_unusual;
         }
@@ -225,9 +235,14 @@ failure:
 void RequestViewCategoryDetail::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:METRO.CRO.MESSAGES.RequestViewCategoryDetail)
-  // required int32 cate_id = 1;
+  // required string cate_id = 1;
   if (has_cate_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->cate_id(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cate_id().data(), this->cate_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "cate_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->cate_id(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -240,9 +255,15 @@ void RequestViewCategoryDetail::SerializeWithCachedSizes(
 ::google::protobuf::uint8* RequestViewCategoryDetail::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:METRO.CRO.MESSAGES.RequestViewCategoryDetail)
-  // required int32 cate_id = 1;
+  // required string cate_id = 1;
   if (has_cate_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->cate_id(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cate_id().data(), this->cate_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "cate_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->cate_id(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -257,10 +278,10 @@ int RequestViewCategoryDetail::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 cate_id = 1;
+    // required string cate_id = 1;
     if (has_cate_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->cate_id());
     }
 

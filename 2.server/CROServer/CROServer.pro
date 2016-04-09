@@ -42,7 +42,8 @@ SOURCES += main.cpp \
     entity/classroomonline.cpp \
     ../../msg/cpp/TeacherOpenClass.pb.cc \
     channel/classonlinechannel.cpp \
-    ../../msg/cpp/ClassOnlineAction.pb.cc
+    ../../msg/cpp/ClassOnlineAction.pb.cc \
+    utils/stringutils.cpp
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -82,7 +83,8 @@ HEADERS += \
     entity/classroomonline.h \
     ../../msg/cpp/TeacherOpenClass.pb.h \
     channel/classonlinechannel.h \
-    ../../msg/cpp/ClassOnlineAction.pb.h
+    ../../msg/cpp/ClassOnlineAction.pb.h \
+    utils/stringutils.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

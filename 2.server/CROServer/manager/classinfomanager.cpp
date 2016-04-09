@@ -3,6 +3,7 @@
 #include "pgdao/classcategorydao.h"
 #include "pgdao/classinfodao.h"
 #include "utils/messagesender.h"
+#include "utils/stringutils.h"
 #include "usermanager.h"
 #include "classinfomanager.h"
 
@@ -33,7 +34,7 @@ void ClassInfoManager::loadAllCategory()
     if(isOk) {
         qDebug() << "get class category: " << list.size();
         foreach (const ClassCategory &category, list) {
-            mHashClassCategory.insert(category.u_id(),
+            mHashClassCategory.insert(StringUtils::stringToInt(category.u_id()),
                                       category);
         }
     } else {
@@ -57,7 +58,7 @@ void ClassInfoManager::loadAllClassroomInfo()
             User *teacher = info.mutable_teacher();
             (*teacher) = user;
 
-            mHashClassroomInfo.insert(info.u_id(),
+            mHashClassroomInfo.insert(StringUtils::stringToInt(info.u_id()),
                                       info);
         }
     } else {
@@ -65,16 +66,31 @@ void ClassInfoManager::loadAllClassroomInfo()
     }
 }
 
+QList<ClassroomInfo> ClassInfoManager::getOwnerClasses(QString username)
+{
+
+}
+
+ClassroomInfo ClassInfoManager::getClassById(int classId)
+{
+    ClassroomInfo info;
+    if(mHashClassroomInfo.contains(classId)) {
+        info = mHashClassroomInfo.value(classId);
+    }
+
+    return info;
+}
+
 void ClassInfoManager::sendClassroomOfCategory(int socketuid, int cate_id)
 {
     QList<ClassroomInfo> listOfClasses;
     for(ClassroomInfo &info : mHashClassroomInfo.values()) {
-        if(info.cate_id() == cate_id) {
+        if(StringUtils::stringToInt(info.cate_id()) == cate_id) {
             listOfClasses.append(info);
         }
     }
     ClassroomInfoOfCategory msg;
-    msg.set_cate_id(cate_id);
+    msg.set_cate_id(std::to_string(cate_id));
     for(ClassroomInfo &info : listOfClasses) {
         ClassroomInfo *data = msg.add_listofclasses();
         (*data) = info;

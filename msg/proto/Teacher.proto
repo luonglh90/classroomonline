@@ -9,6 +9,6 @@ message Teacher {
 	}
 
 	required User userinfo = 1;
-	repeated int32 classid = 2;
+	repeated string classid = 2;
 	optional double rate = 3;
 }

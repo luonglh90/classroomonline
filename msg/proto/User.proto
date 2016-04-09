@@ -10,7 +10,7 @@ message User {
 	required string username = 1;
 	required string email = 2;
 	optional string fullname = 3;
-	required int32 yearofborn = 4;
+	required string yearofborn = 4;
 	optional string imgurl = 5;
 	optional string password = 6;
 }

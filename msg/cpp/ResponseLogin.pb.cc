@@ -83,17 +83,17 @@ void protobuf_AddDesc_ResponseLogin_2eproto() {
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ResponseLogin.proto\022\022METRO.CRO.MESSAGE"
-    "S\032\020IpcMessage.proto\"\205\001\n\rResponseLogin\022\020\n"
-    "\010username\030\001 \001(\t\022\016\n\006status\030\002 \001(\0052R\n\007messa"
-    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030k \001(\013"
-    "2!.METRO.CRO.MESSAGES.ResponseLogin", 195);
+    "S\032\020IpcMessage.proto\"\206\001\n\rResponseLogin\022\020\n"
+    "\010username\030\001 \001(\t\022\016\n\006status\030\002 \001(\t2S\n\007messa"
+    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030\275\005 \001("
+    "\0132!.METRO.CRO.MESSAGES.ResponseLogin", 196);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ResponseLogin.proto", &protobuf_RegisterTypes);
   ResponseLogin::default_instance_ = new ResponseLogin();
   ResponseLogin::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    107, 11, false, false,
+    701, 11, false, false,
     &::METRO::CRO::MESSAGES::ResponseLogin::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ResponseLogin_2eproto);
 }
@@ -138,7 +138,7 @@ void ResponseLogin::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  status_ = 0;
+  status_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -150,6 +150,9 @@ ResponseLogin::~ResponseLogin() {
 void ResponseLogin::SharedDtor() {
   if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete username_;
+  }
+  if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete status_;
   }
   if (this != default_instance_) {
   }
@@ -183,7 +186,11 @@ void ResponseLogin::Clear() {
         username_->clear();
       }
     }
-    status_ = 0;
+    if (has_status()) {
+      if (status_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        status_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -211,18 +218,20 @@ bool ResponseLogin::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_status;
+        if (input->ExpectTag(18)) goto parse_status;
         break;
       }
 
-      // optional int32 status = 2;
+      // optional string status = 2;
       case 2: {
-        if (tag == 16) {
+        if (tag == 18) {
          parse_status:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &status_)));
-          set_has_status();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_status()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->status().data(), this->status().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "status");
         } else {
           goto handle_unusual;
         }
@@ -265,9 +274,14 @@ void ResponseLogin::SerializeWithCachedSizes(
       1, this->username(), output);
   }
 
-  // optional int32 status = 2;
+  // optional string status = 2;
   if (has_status()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->status(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->status().data(), this->status().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "status");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->status(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -291,9 +305,15 @@ void ResponseLogin::SerializeWithCachedSizes(
         1, this->username(), target);
   }
 
-  // optional int32 status = 2;
+  // optional string status = 2;
   if (has_status()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->status(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->status().data(), this->status().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "status");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->status(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -315,10 +335,10 @@ int ResponseLogin::ByteSize() const {
           this->username());
     }
 
-    // optional int32 status = 2;
+    // optional string status = 2;
     if (has_status()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->status());
     }
 
