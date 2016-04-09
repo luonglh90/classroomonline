@@ -6,6 +6,7 @@
  * - Teacher: 102
  * - RequestLogin: 103
  * - ResponseLogin: 104
+ * - UserInit: 105
  * Class
  * - Category: 201
  * - ClassroomInfo: 202

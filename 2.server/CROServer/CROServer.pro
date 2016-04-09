@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     channel/messagereceivechannel.cpp \
     manager/usermanager.cpp \
     pgdao/userdao.cpp \
-    utils/ipcmsghelper.cpp
+    utils/ipcmsghelper.cpp \
+    ../../msg/cpp/UserInit.pb.cc
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -56,7 +57,8 @@ HEADERS += \
     channel/messagereceivechannel.h \
     manager/usermanager.h \
     pgdao/userdao.h \
-    utils/ipcmsghelper.h
+    utils/ipcmsghelper.h \
+    ../../msg/cpp/UserInit.pb.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf
