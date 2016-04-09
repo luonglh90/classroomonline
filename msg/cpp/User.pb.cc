@@ -36,12 +36,13 @@ void protobuf_AssignDesc_User_2eproto() {
       "User.proto");
   GOOGLE_CHECK(file != NULL);
   User_descriptor_ = file->message_type(0);
-  static const int User_offsets_[5] = {
+  static const int User_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, username_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, email_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, fullname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, yearofborn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, imgurl_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(User, password_),
   };
   User_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -86,11 +87,11 @@ void protobuf_AddDesc_User_2eproto() {
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\nUser.proto\022\022METRO.CRO.MESSAGES\032\020IpcMes"
-    "sage.proto\"\250\001\n\004User\022\020\n\010username\030\001 \002(\t\022\r\n"
+    "sage.proto\"\272\001\n\004User\022\020\n\010username\030\001 \002(\t\022\r\n"
     "\005email\030\002 \002(\t\022\020\n\010fullname\030\003 \001(\t\022\022\n\nyearof"
-    "born\030\004 \002(\005\022\016\n\006imgurl\030\005 \001(\t2I\n\007message\022\036."
-    "METRO.CRO.MESSAGES.IpcMessage\030e \001(\0132\030.ME"
-    "TRO.CRO.MESSAGES.User", 221);
+    "born\030\004 \002(\005\022\016\n\006imgurl\030\005 \001(\t\022\020\n\010password\030\006"
+    " \001(\t2I\n\007message\022\036.METRO.CRO.MESSAGES.Ipc"
+    "Message\030e \001(\0132\030.METRO.CRO.MESSAGES.User", 239);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "User.proto", &protobuf_RegisterTypes);
   User::default_instance_ = new User();
@@ -117,6 +118,7 @@ const int User::kEmailFieldNumber;
 const int User::kFullnameFieldNumber;
 const int User::kYearofbornFieldNumber;
 const int User::kImgurlFieldNumber;
+const int User::kPasswordFieldNumber;
 #endif  // !_MSC_VER
 
 #ifndef _MSC_VER
@@ -149,6 +151,7 @@ void User::SharedCtor() {
   fullname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   yearofborn_ = 0;
   imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  password_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -169,6 +172,9 @@ void User::SharedDtor() {
   }
   if (imgurl_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete imgurl_;
+  }
+  if (password_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete password_;
   }
   if (this != default_instance_) {
   }
@@ -196,7 +202,7 @@ User* User::New() const {
 }
 
 void User::Clear() {
-  if (_has_bits_[0 / 32] & 31) {
+  if (_has_bits_[0 / 32] & 63) {
     if (has_username()) {
       if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         username_->clear();
@@ -216,6 +222,11 @@ void User::Clear() {
     if (has_imgurl()) {
       if (imgurl_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         imgurl_->clear();
+      }
+    }
+    if (has_password()) {
+      if (password_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        password_->clear();
       }
     }
   }
@@ -311,6 +322,23 @@ bool User::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(50)) goto parse_password;
+        break;
+      }
+
+      // optional string password = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_password:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_password()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->password().data(), this->password().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "password");
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -385,6 +413,16 @@ void User::SerializeWithCachedSizes(
       5, this->imgurl(), output);
   }
 
+  // optional string password = 6;
+  if (has_password()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->password().data(), this->password().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "password");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      6, this->password(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -444,6 +482,17 @@ void User::SerializeWithCachedSizes(
         5, this->imgurl(), target);
   }
 
+  // optional string password = 6;
+  if (has_password()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->password().data(), this->password().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "password");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->password(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -491,6 +540,13 @@ int User::ByteSize() const {
           this->imgurl());
     }
 
+    // optional string password = 6;
+    if (has_password()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->password());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -533,6 +589,9 @@ void User::MergeFrom(const User& from) {
     if (from.has_imgurl()) {
       set_imgurl(from.imgurl());
     }
+    if (from.has_password()) {
+      set_password(from.password());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -562,6 +621,7 @@ void User::Swap(User* other) {
     std::swap(fullname_, other->fullname_);
     std::swap(yearofborn_, other->yearofborn_);
     std::swap(imgurl_, other->imgurl_);
+    std::swap(password_, other->password_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

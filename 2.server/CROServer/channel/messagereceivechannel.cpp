@@ -6,10 +6,11 @@ MessageReceiveChannel::MessageReceiveChannel(QMap<ChannelType, BaseChannel *> *c
     mRouter = new Router(channels);
 }
 
-void MessageReceiveChannel::onReceivedNewByteArray(QWebSocket *socket, QByteArray bytearray)
+void MessageReceiveChannel::onReceivedNewByteArray(int sockuid, QByteArray bytearray)
 {
-    IpcMessage *ipc = IpcMessage::ParseFromArray(bytearray.constData(), bytearray.size());
-    IpcSocketEvelope *ipcevelope = new IpcSocketEvelope(socket, ipc);
+    IpcMessage *ipc = new IpcMessage();
+    ipc->ParseFromArray(bytearray.constData(), bytearray.size());
+    IpcSocketEvelope *ipcevelope = new IpcSocketEvelope(sockuid, ipc);
 
     mRouter->routeMessage2Channel(ipcevelope);
 }

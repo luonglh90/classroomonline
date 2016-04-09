@@ -14,7 +14,7 @@ public:
     MessageReceiveChannel(QMap<ChannelType, BaseChannel*>* channels);
 
 public slots:
-    void onReceivedNewByteArray(QWebSocket *socket, QByteArray bytearray);
+    void onReceivedNewByteArray(int sockuid, QByteArray bytearray);
 protected:
     Router *mRouter;
 };
