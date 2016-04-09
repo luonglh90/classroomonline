@@ -1,14 +1,14 @@
 //
-//  BaseViewController.h
+//  PrefixHeader.pch
 //  classroomonline
 //
 //  Created by Luong Le Hoang on 4/9/16.
 //  Copyright © 2016 metroteam. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "AppDelegate.h"
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
 
-@interface BaseViewController : UIViewController
+#import "AppSetting.h"
 
-@end
+#endif /* PrefixHeader_pch */
