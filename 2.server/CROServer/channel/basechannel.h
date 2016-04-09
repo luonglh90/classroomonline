@@ -13,26 +13,30 @@ using namespace METRO::CRO::MESSAGES;
 
 struct IpcSocketEvelope {
     IpcSocketEvelope() {
-        this->socket = nullptr;
+        this->socketuid = -1;
         this->ipcmsg = nullptr;
     }
 
-    IpcSocketEvelope (QWebSocket *psocket, IpcMessage *ipc) {
-        this->socket = psocket;
+    IpcSocketEvelope (int uid, IpcMessage *ipc) {
+        this->socketuid = uid;
         this->ipcmsg = ipc;
     }
 
-    QWebSocket *socket;
+    int socketuid;
     IpcMessage *ipcmsg;
 };
 
 class BaseChannel : public QThread
 {
+    Q_OBJECT
 public:
     BaseChannel();
     void enqueueMessage(IpcSocketEvelope *ipcevelope);
 
     virtual void onDisconnect(QWebSocket *socket) = 0;
+
+signals:
+    void requestSendToSocketClient(int socketuid, QByteArray data);
 
 protected:
     void run();

@@ -5,6 +5,7 @@
 #include <QtWebSockets/QWebSocket>
 
 #include "../../msg/cpp/ResponseLogin.pb.h"
+#include "../../msg/cpp/RequestLogin.pb.h"
 
 using namespace METRO::CRO::MESSAGES;
 
@@ -14,7 +15,8 @@ public:
     SocketUtils();
     static int getUnitIp(QWebSocket* socket);
     static void sendIpcMsg(QWebSocket* socket, IpcMessage ipc);
-    static void sendResponseLogin(QWebSocket *socket, ResponseLogin msg);
+
+    static QByteArray convertMsgToByteArray(IpcMessage *ipc);
 };
 
 #endif // SOCKETUTILS_H

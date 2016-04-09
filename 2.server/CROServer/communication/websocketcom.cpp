@@ -29,13 +29,24 @@ bool WebsocketCom::startWebsocketServer()
     }
 }
 
+void WebsocketCom::onRequestSendToSocketClient(int uid, QByteArray data)
+{
+    if(mHashClients.contains(uid)) {
+        auto socket = mHashClients[uid];
+        qDebug() << "send to client " << socket->peerAddress().toString() << ": " << QString::fromStdString(data.toHex().toStdString());
+
+        socket->sendBinaryMessage(QByteArray(data));
+    }
+}
+
 void WebsocketCom::onBinaryMessageReceived(const QByteArray &message)
 {
     qDebug() << "New msg";
     QWebSocket *clientSocket = qobject_cast<QWebSocket *>(sender());
-    if(clientSocket) {
+    int uid = SocketUtils::getUnitIp(clientSocket);
+    if(clientSocket && mHashClients.contains(uid)) {
         qDebug() << "from: " << clientSocket->peerAddress().toString();
-        emit newMsgReceived(clientSocket, message);
+        emit newMsgReceived(uid, message);
     }
 }
 

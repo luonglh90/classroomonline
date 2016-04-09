@@ -15,8 +15,8 @@ void Server::startServer()
 
     connect(WebsocketCom::instance(), SIGNAL(disconnected(QWebSocket*)),
             this, SLOT(onDisconneced(QWebSocket*)));
-    connect(WebsocketCom::instance(), SIGNAL(newMsgReceived(QWebSocket*,QByteArray)),
-            mMsgReceivedChannel, SLOT(onReceivedNewByteArray(QWebSocket*,QByteArray)));
+    connect(WebsocketCom::instance(), SIGNAL(newMsgReceived(int,QByteArray)),
+            mMsgReceivedChannel, SLOT(onReceivedNewByteArray(int,QByteArray)));
 }
 
 void Server::onDisconneced(QWebSocket *socket)
@@ -32,6 +32,8 @@ void Server::initChannels()
     mChannels.insert(ChannelType::USER_CHANNEL, mUserChannel);
 
     foreach (BaseChannel *channel, mChannels.values()) {
+        connect(channel, SIGNAL(requestSendToSocketClient(int,QByteArray)),
+                WebsocketCom::instance(), SLOT(onRequestSendToSocketClient(int,QByteArray)));
         channel->start();
     }
 

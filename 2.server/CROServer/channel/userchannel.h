@@ -13,7 +13,7 @@ class UserChannel : public BaseChannel
 public:
     explicit UserChannel();
 
-    void processRequestLogin(QWebSocket *socket, METRO::CRO::MESSAGES::RequestLogin *msg);
+    void processRequestLogin(int uid, METRO::CRO::MESSAGES::RequestLogin *msg);
 signals:
 
 public slots:

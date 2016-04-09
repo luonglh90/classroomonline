@@ -1,6 +1,6 @@
 #include <sstream>
 #include "../../msg/cpp/ipcmessagetype.h"
-#include "utils/socketutils.h"
+#include "socketutils.h"
 
 SocketUtils::SocketUtils()
 {
@@ -22,11 +22,9 @@ void SocketUtils::sendIpcMsg(QWebSocket *socket, IpcMessage ipc)
     socket->sendBinaryMessage(byteArray);
 }
 
-void SocketUtils::sendResponseLogin(QWebSocket *socket, ResponseLogin msg)
+QByteArray SocketUtils::convertMsgToByteArray(IpcMessage* ipc)
 {
-    IpcMessage ipc;
-    ipc.set_msgid((int)RESPONSE_LOGIN_MSG);
-    ResponseLogin* ipcExt = ipc.MutableExtension(ResponseLogin::message);
-    (*ipcExt) = msg;
-    sendIpcMsg(socket, ipc);
+    std::ostringstream out;
+    ipc->SerializeToOstream(&out);
+    return QByteArray(out.str().c_str());
 }

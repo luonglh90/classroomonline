@@ -1,5 +1,7 @@
 #include "../../msg/cpp/ipcmessagetype.h"
 #include "../../msg/cpp/ResponseLogin.pb.h"
+#include "utils/ipcmsghelper.h"
+#include "base/cmmdefs.h"
 #include "utils/socketutils.h"
 #include "manager/usermanager.h"
 #include "channel/userchannel.h"
@@ -9,7 +11,7 @@ UserChannel::UserChannel() : BaseChannel()
 
 }
 
-void UserChannel::processRequestLogin(QWebSocket *socket, RequestLogin *msg)
+void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 {
     QString userName = QString::fromStdString(msg->username());
     QString passwd = QString::fromStdString(msg->password());
@@ -26,7 +28,10 @@ void UserChannel::processRequestLogin(QWebSocket *socket, RequestLogin *msg)
         response.set_status(Enums_ResponseLoginEnums_FAILD_WRONG_PASS);
     }
 
-    SocketUtils::sendResponseLogin(socket, response);
+    IpcMessage *ipc = IpcMsgHelper::createIpcMessage(&response);
+    QByteArray array = SocketUtils::convertMsgToByteArray(ipc);
+    emit requestSendToSocketClient(uid, QByteArray(array));
+    _DELETE_PTR(ipc);
 }
 
 void UserChannel::readMessage(IpcSocketEvelope *ipcevelope)
@@ -36,8 +41,9 @@ void UserChannel::readMessage(IpcSocketEvelope *ipcevelope)
         if(ipc) {
             switch (ipc->msgid()) {
             case REQUEST_LOGIN_MSG: {
-                RequestLogin *msg = ipc->MutableExtension(RequestLogin::message);
-                processRequestLogin(ipcevelope->socket, msg);
+                RequestLogin *msg = (RequestLogin*)IpcMsgHelper::getMessage(ipc);
+                processRequestLogin(ipcevelope->socketuid, msg);
+                _DELETE_PTR(msg);
                 break;
             }
             default:
