@@ -1,0 +1,20 @@
+/**
+ * Defines index with each message
+ * 
+ * User
+ * - User: 101
+ * - Teacher: 102
+ * - RequestLogin: 103
+ * - ResponseLogin: 104
+ * Class
+ * - Category: 201
+ * - ClassroomInfo: 202
+ */
+
+package METRO.CRO.MESSAGES;
+
+message IpcMessage {
+	extensions 100 to 10000;
+
+	required int32 msgId = 1;
+}
