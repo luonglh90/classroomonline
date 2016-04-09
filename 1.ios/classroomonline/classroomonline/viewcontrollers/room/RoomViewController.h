@@ -7,7 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import "SmoothedBIView.h"
 
-@interface RoomViewController : BaseViewController
+@interface RoomViewController : BaseViewController{
+    
+}
+@property (weak, nonatomic) IBOutlet SmoothedBIView *viewDraw;
+
+
 
 @end
