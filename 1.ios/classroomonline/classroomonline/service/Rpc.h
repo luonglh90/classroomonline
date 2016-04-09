@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "SRWebSocket.h"
-
+#import "UserInit.pb.h"
+#import "User.pb.h"
+#import "ClassCategory.pb.h"
+#import "ClassroomInfo.pb.h"
 
 @interface Rpc : NSObject <SRWebSocketDelegate>{
     
@@ -20,7 +23,7 @@
 @property (nonatomic, copy) void(^onSocketConnectFail)();
 @property (nonatomic, copy) void(^onSignInSuccess)(NSString *name);
 @property (nonatomic, copy) void(^onSignInFail)();
-@property (nonatomic, copy) void(^onResponseUserInit)();
+@property (nonatomic, copy) void(^onResponseUserInit)(User *user, NSArray *categories);
 
 
 + (instancetype)instance;

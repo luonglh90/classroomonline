@@ -35,6 +35,12 @@
 - (instancetype)init
 {
     if (self = [super init]) {
+        [IpcMessageRoot initialize];
+        [RequestLoginRoot initialize];
+        [ResponseLoginRoot initialize];
+        [UserInitRoot initialize];
+        [UserRoot initialize];
+        [ClassCategory initialize];
     }
     return self;
 }
@@ -61,11 +67,15 @@
 #pragma mark - Sign in methods
 // Login
 - (void)requestSigninWithName:(NSString*)name pass:(NSString*)pass{
-    [RequestLoginRoot initialize];
+    
     RequestLogin *request = [[[[RequestLogin builder] setUsername:name] setPassword:pass] build];
     IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:REQUEST_LOGIN_MSG] ;
     [ipc setExtension:[RequestLogin message] value:request];
-    [self.webSocket send:[[ipc build] data]];
+    
+    NSData *data = [[ipc build] data];
+    
+    [self.webSocket send:data];
+    
 }
 
 #pragma mark -
@@ -108,6 +118,10 @@
         NSLog(@"webSocket Response NIL");
         return;
     }
+//    IpcMessageBuilder* ipc = [IpcMessage builder];
+    
+    
+    
     IpcMessage *ipc = [IpcMessage parseFromData:message];
     NSLog(@"%@", ipc);
 //#define USER_BASE   100
@@ -130,14 +144,27 @@
         }
             break;
         case RESPONSE_LOGIN_MSG:{
-            [ResponseLoginRoot initialize];
-            ResponseLogin *response = [[ipc builder] getExtension:[ResponseLogin message]];
+            id<PBExtensionField> field = [ResponseLogin message];
+            ipc = [IpcMessage parseFromData:message extensionRegistry:[ResponseLoginRoot extensionRegistry]];
+            ResponseLogin *response = [ipc getExtension:field];
             if (response.status == EnumsResponseLoginEnumsSuccess && self.onSignInSuccess) {
                 self.onSignInSuccess(response.username);
             }
             else if (self.onSignInFail){
                 self.onSignInFail();
             }
+            self.onSignInSuccess = nil;
+            self.onSignInFail = nil;
+        }
+            break;
+        case USER_INIT_MSG:{
+            id<PBExtensionField> field = [UserInit message];
+            ipc = [IpcMessage parseFromData:message extensionRegistry:[UserInitRoot extensionRegistry]];
+            UserInit *response = [ipc getExtension:field];
+            if (self.onResponseUserInit) {
+                self.onResponseUserInit(response.userinfo, response.categories);
+            }
+            self.onResponseUserInit = nil;
         }
             break;
         // CLASS BASE

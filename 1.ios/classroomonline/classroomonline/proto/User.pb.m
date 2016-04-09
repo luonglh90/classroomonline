@@ -38,6 +38,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @property (strong) NSString* fullname;
 @property SInt32 yearofborn;
 @property (strong) NSString* imgurl;
+@property (strong) NSString* password;
 @end
 
 @implementation User
@@ -77,6 +78,13 @@ static PBExtensionRegistry* extensionRegistry = nil;
   hasImgurl_ = !!_value_;
 }
 @synthesize imgurl;
+- (BOOL) hasPassword {
+  return !!hasPassword_;
+}
+- (void) setHasPassword:(BOOL) _value_ {
+  hasPassword_ = !!_value_;
+}
+@synthesize password;
 - (instancetype) init {
   if ((self = [super init])) {
     self.username = @"";
@@ -84,6 +92,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.fullname = @"";
     self.yearofborn = 0;
     self.imgurl = @"";
+    self.password = @"";
   }
   return self;
 }
@@ -130,6 +139,9 @@ static User* defaultUserInstance = nil;
   if (self.hasImgurl) {
     [output writeString:5 value:self.imgurl];
   }
+  if (self.hasPassword) {
+    [output writeString:6 value:self.password];
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (SInt32) serializedSize {
@@ -153,6 +165,9 @@ static User* defaultUserInstance = nil;
   }
   if (self.hasImgurl) {
     size_ += computeStringSize(5, self.imgurl);
+  }
+  if (self.hasPassword) {
+    size_ += computeStringSize(6, self.password);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -204,6 +219,9 @@ static User* defaultUserInstance = nil;
   if (self.hasImgurl) {
     [output appendFormat:@"%@%@: %@\n", indent, @"imgurl", self.imgurl];
   }
+  if (self.hasPassword) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"password", self.password];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (void) storeInDictionary:(NSMutableDictionary *)dictionary {
@@ -221,6 +239,9 @@ static User* defaultUserInstance = nil;
   }
   if (self.hasImgurl) {
     [dictionary setObject: self.imgurl forKey: @"imgurl"];
+  }
+  if (self.hasPassword) {
+    [dictionary setObject: self.password forKey: @"password"];
   }
   [self.unknownFields storeInDictionary:dictionary];
 }
@@ -243,6 +264,8 @@ static User* defaultUserInstance = nil;
       (!self.hasYearofborn || self.yearofborn == otherMessage.yearofborn) &&
       self.hasImgurl == otherMessage.hasImgurl &&
       (!self.hasImgurl || [self.imgurl isEqual:otherMessage.imgurl]) &&
+      self.hasPassword == otherMessage.hasPassword &&
+      (!self.hasPassword || [self.password isEqual:otherMessage.password]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -261,6 +284,9 @@ static User* defaultUserInstance = nil;
   }
   if (self.hasImgurl) {
     hashCode = hashCode * 31 + [self.imgurl hash];
+  }
+  if (self.hasPassword) {
+    hashCode = hashCode * 31 + [self.password hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -320,6 +346,9 @@ static User* defaultUserInstance = nil;
   if (other.hasImgurl) {
     [self setImgurl:other.imgurl];
   }
+  if (other.hasPassword) {
+    [self setPassword:other.password];
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -359,6 +388,10 @@ static User* defaultUserInstance = nil;
       }
       case 42: {
         [self setImgurl:[input readString]];
+        break;
+      }
+      case 50: {
+        [self setPassword:[input readString]];
         break;
       }
     }
@@ -442,6 +475,22 @@ static User* defaultUserInstance = nil;
 - (UserBuilder*) clearImgurl {
   resultUser.hasImgurl = NO;
   resultUser.imgurl = @"";
+  return self;
+}
+- (BOOL) hasPassword {
+  return resultUser.hasPassword;
+}
+- (NSString*) password {
+  return resultUser.password;
+}
+- (UserBuilder*) setPassword:(NSString*) value {
+  resultUser.hasPassword = YES;
+  resultUser.password = value;
+  return self;
+}
+- (UserBuilder*) clearPassword {
+  resultUser.hasPassword = NO;
+  resultUser.password = @"";
   return self;
 }
 @end

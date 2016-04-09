@@ -23,6 +23,7 @@
 #define User_fullname @"fullname"
 #define User_yearofborn @"yearofborn"
 #define User_imgurl @"imgurl"
+#define User_password @"password"
 @interface User : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
   BOOL hasYearofborn_:1;
@@ -30,22 +31,26 @@
   BOOL hasEmail_:1;
   BOOL hasFullname_:1;
   BOOL hasImgurl_:1;
+  BOOL hasPassword_:1;
   SInt32 yearofborn;
   NSString* username;
   NSString* email;
   NSString* fullname;
   NSString* imgurl;
+  NSString* password;
 }
 - (BOOL) hasUsername;
 - (BOOL) hasEmail;
 - (BOOL) hasFullname;
 - (BOOL) hasYearofborn;
 - (BOOL) hasImgurl;
+- (BOOL) hasPassword;
 @property (readonly, strong) NSString* username;
 @property (readonly, strong) NSString* email;
 @property (readonly, strong) NSString* fullname;
 @property (readonly) SInt32 yearofborn;
 @property (readonly, strong) NSString* imgurl;
+@property (readonly, strong) NSString* password;
 
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
@@ -107,6 +112,11 @@
 - (NSString*) imgurl;
 - (UserBuilder*) setImgurl:(NSString*) value;
 - (UserBuilder*) clearImgurl;
+
+- (BOOL) hasPassword;
+- (NSString*) password;
+- (UserBuilder*) setPassword:(NSString*) value;
+- (UserBuilder*) clearPassword;
 @end
 
 

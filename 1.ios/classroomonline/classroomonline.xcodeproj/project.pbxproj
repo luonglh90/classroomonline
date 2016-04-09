@@ -18,6 +18,15 @@
 		411979EB1CB920480097CD4F /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411979E01CB920480097CD4F /* SignUpViewController.xib */; };
 		411979EC1CB920480097CD4F /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979E31CB920480097CD4F /* RoomViewController.m */; };
 		411979ED1CB920480097CD4F /* RoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411979E41CB920480097CD4F /* RoomViewController.xib */; };
+		41197A021CB926460097CD4F /* ClassCategory.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979F01CB926460097CD4F /* ClassCategory.pb.m */; };
+		41197A031CB926460097CD4F /* ClassroomInfo.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979F21CB926460097CD4F /* ClassroomInfo.pb.m */; };
+		41197A041CB926460097CD4F /* Enums.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979F41CB926460097CD4F /* Enums.pb.m */; };
+		41197A051CB926460097CD4F /* IpcMessage.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979F61CB926460097CD4F /* IpcMessage.pb.m */; };
+		41197A061CB926460097CD4F /* RequestLogin.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979F91CB926460097CD4F /* RequestLogin.pb.m */; };
+		41197A071CB926460097CD4F /* ResponseLogin.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979FB1CB926460097CD4F /* ResponseLogin.pb.m */; };
+		41197A081CB926460097CD4F /* Teacher.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979FD1CB926460097CD4F /* Teacher.pb.m */; };
+		41197A091CB926460097CD4F /* User.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 411979FF1CB926460097CD4F /* User.pb.m */; };
+		41197A0A1CB926460097CD4F /* UserInit.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41197A011CB926460097CD4F /* UserInit.pb.m */; };
 		4195378A1CB8BBCA00773F93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537891CB8BBCA00773F93 /* main.m */; };
 		4195378D1CB8BBCA00773F93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4195378C1CB8BBCA00773F93 /* AppDelegate.m */; };
 		419537951CB8BBCA00773F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419537941CB8BBCA00773F93 /* Assets.xcassets */; };
@@ -26,14 +35,6 @@
 		419537E71CB8E39E00773F93 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 419537DC1CB8E39E00773F93 /* base64.c */; };
 		419537E81CB8E39E00773F93 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537DF1CB8E39E00773F93 /* NSData+SRB64Additions.m */; };
 		419537EA1CB8E39E00773F93 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537E61CB8E39E00773F93 /* SRWebSocket.m */; };
-		419537FF1CB8EA5800773F93 /* ClassCategory.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F01CB8EA5800773F93 /* ClassCategory.pb.m */; };
-		419538001CB8EA5800773F93 /* ClassroomInfo.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F21CB8EA5800773F93 /* ClassroomInfo.pb.m */; };
-		419538011CB8EA5800773F93 /* Enums.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F41CB8EA5800773F93 /* Enums.pb.m */; };
-		419538021CB8EA5800773F93 /* IpcMessage.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F61CB8EA5800773F93 /* IpcMessage.pb.m */; };
-		419538031CB8EA5800773F93 /* RequestLogin.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F81CB8EA5800773F93 /* RequestLogin.pb.m */; };
-		419538041CB8EA5800773F93 /* ResponseLogin.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537FA1CB8EA5800773F93 /* ResponseLogin.pb.m */; };
-		419538051CB8EA5800773F93 /* Teacher.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537FC1CB8EA5800773F93 /* Teacher.pb.m */; };
-		419538061CB8EA5800773F93 /* User.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537FE1CB8EA5800773F93 /* User.pb.m */; };
 		41F5955F1CB8EC320092C005 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F5955E1CB8EC320092C005 /* CFNetwork.framework */; };
 		41F595611CB8EC3B0092C005 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595601CB8EC3B0092C005 /* Security.framework */; };
 		41F595651CB8ED010092C005 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595641CB8ED010092C005 /* libicucore.A.dylib */; };
@@ -62,6 +63,25 @@
 		411979E21CB920480097CD4F /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
 		411979E31CB920480097CD4F /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
 		411979E41CB920480097CD4F /* RoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomViewController.xib; sourceTree = "<group>"; };
+		411979EF1CB926460097CD4F /* ClassCategory.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCategory.pb.h; sourceTree = "<group>"; };
+		411979F01CB926460097CD4F /* ClassCategory.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCategory.pb.m; sourceTree = "<group>"; };
+		411979F11CB926460097CD4F /* ClassroomInfo.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassroomInfo.pb.h; sourceTree = "<group>"; };
+		411979F21CB926460097CD4F /* ClassroomInfo.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassroomInfo.pb.m; sourceTree = "<group>"; };
+		411979F31CB926460097CD4F /* Enums.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.pb.h; sourceTree = "<group>"; };
+		411979F41CB926460097CD4F /* Enums.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enums.pb.m; sourceTree = "<group>"; };
+		411979F51CB926460097CD4F /* IpcMessage.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpcMessage.pb.h; sourceTree = "<group>"; };
+		411979F61CB926460097CD4F /* IpcMessage.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpcMessage.pb.m; sourceTree = "<group>"; };
+		411979F71CB926460097CD4F /* ipcmessagetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipcmessagetype.h; sourceTree = "<group>"; };
+		411979F81CB926460097CD4F /* RequestLogin.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestLogin.pb.h; sourceTree = "<group>"; };
+		411979F91CB926460097CD4F /* RequestLogin.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestLogin.pb.m; sourceTree = "<group>"; };
+		411979FA1CB926460097CD4F /* ResponseLogin.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLogin.pb.h; sourceTree = "<group>"; };
+		411979FB1CB926460097CD4F /* ResponseLogin.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseLogin.pb.m; sourceTree = "<group>"; };
+		411979FC1CB926460097CD4F /* Teacher.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.pb.h; sourceTree = "<group>"; };
+		411979FD1CB926460097CD4F /* Teacher.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.pb.m; sourceTree = "<group>"; };
+		411979FE1CB926460097CD4F /* User.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.pb.h; sourceTree = "<group>"; };
+		411979FF1CB926460097CD4F /* User.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.pb.m; sourceTree = "<group>"; };
+		41197A001CB926460097CD4F /* UserInit.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInit.pb.h; sourceTree = "<group>"; };
+		41197A011CB926460097CD4F /* UserInit.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInit.pb.m; sourceTree = "<group>"; };
 		419537851CB8BBCA00773F93 /* classroomonline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = classroomonline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		419537891CB8BBCA00773F93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4195378B1CB8BBCA00773F93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,27 +100,11 @@
 		419537E41CB8E39E00773F93 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		419537E51CB8E39E00773F93 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		419537E61CB8E39E00773F93 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
-		419537EF1CB8EA5800773F93 /* ClassCategory.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCategory.pb.h; sourceTree = "<group>"; };
-		419537F01CB8EA5800773F93 /* ClassCategory.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCategory.pb.m; sourceTree = "<group>"; };
-		419537F11CB8EA5800773F93 /* ClassroomInfo.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassroomInfo.pb.h; sourceTree = "<group>"; };
-		419537F21CB8EA5800773F93 /* ClassroomInfo.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassroomInfo.pb.m; sourceTree = "<group>"; };
-		419537F31CB8EA5800773F93 /* Enums.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.pb.h; sourceTree = "<group>"; };
-		419537F41CB8EA5800773F93 /* Enums.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enums.pb.m; sourceTree = "<group>"; };
-		419537F51CB8EA5800773F93 /* IpcMessage.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpcMessage.pb.h; sourceTree = "<group>"; };
-		419537F61CB8EA5800773F93 /* IpcMessage.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpcMessage.pb.m; sourceTree = "<group>"; };
-		419537F71CB8EA5800773F93 /* RequestLogin.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestLogin.pb.h; sourceTree = "<group>"; };
-		419537F81CB8EA5800773F93 /* RequestLogin.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestLogin.pb.m; sourceTree = "<group>"; };
-		419537F91CB8EA5800773F93 /* ResponseLogin.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLogin.pb.h; sourceTree = "<group>"; };
-		419537FA1CB8EA5800773F93 /* ResponseLogin.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseLogin.pb.m; sourceTree = "<group>"; };
-		419537FB1CB8EA5800773F93 /* Teacher.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.pb.h; sourceTree = "<group>"; };
-		419537FC1CB8EA5800773F93 /* Teacher.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.pb.m; sourceTree = "<group>"; };
-		419537FD1CB8EA5800773F93 /* User.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.pb.h; sourceTree = "<group>"; };
-		419537FE1CB8EA5800773F93 /* User.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.pb.m; sourceTree = "<group>"; };
+		41F0B2E01CB93BDF0046BF63 /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
 		41F5955E1CB8EC320092C005 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		41F595601CB8EC3B0092C005 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		41F595621CB8EC430092C005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		41F595641CB8ED010092C005 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = ../../../../../../usr/lib/libicucore.A.dylib; sourceTree = "<group>"; };
-		41F595661CB8F4840092C005 /* ipcmessagetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipcmessagetype.h; sourceTree = "<group>"; };
 		41F595681CB909B30092C005 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		41F595691CB909B30092C005 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -271,6 +275,7 @@
 		419537DB1CB8E39E00773F93 /* SocketRocket */ = {
 			isa = PBXGroup;
 			children = (
+				41F0B2E01CB93BDF0046BF63 /* SocketRocket.h */,
 				419537DC1CB8E39E00773F93 /* base64.c */,
 				419537DD1CB8E39E00773F93 /* base64.h */,
 				419537DE1CB8E39E00773F93 /* NSData+SRB64Additions.h */,
@@ -285,23 +290,25 @@
 		419537EE1CB8EA5800773F93 /* proto */ = {
 			isa = PBXGroup;
 			children = (
-				41F595661CB8F4840092C005 /* ipcmessagetype.h */,
-				419537EF1CB8EA5800773F93 /* ClassCategory.pb.h */,
-				419537F01CB8EA5800773F93 /* ClassCategory.pb.m */,
-				419537F11CB8EA5800773F93 /* ClassroomInfo.pb.h */,
-				419537F21CB8EA5800773F93 /* ClassroomInfo.pb.m */,
-				419537F31CB8EA5800773F93 /* Enums.pb.h */,
-				419537F41CB8EA5800773F93 /* Enums.pb.m */,
-				419537F51CB8EA5800773F93 /* IpcMessage.pb.h */,
-				419537F61CB8EA5800773F93 /* IpcMessage.pb.m */,
-				419537F71CB8EA5800773F93 /* RequestLogin.pb.h */,
-				419537F81CB8EA5800773F93 /* RequestLogin.pb.m */,
-				419537F91CB8EA5800773F93 /* ResponseLogin.pb.h */,
-				419537FA1CB8EA5800773F93 /* ResponseLogin.pb.m */,
-				419537FB1CB8EA5800773F93 /* Teacher.pb.h */,
-				419537FC1CB8EA5800773F93 /* Teacher.pb.m */,
-				419537FD1CB8EA5800773F93 /* User.pb.h */,
-				419537FE1CB8EA5800773F93 /* User.pb.m */,
+				411979EF1CB926460097CD4F /* ClassCategory.pb.h */,
+				411979F01CB926460097CD4F /* ClassCategory.pb.m */,
+				411979F11CB926460097CD4F /* ClassroomInfo.pb.h */,
+				411979F21CB926460097CD4F /* ClassroomInfo.pb.m */,
+				411979F31CB926460097CD4F /* Enums.pb.h */,
+				411979F41CB926460097CD4F /* Enums.pb.m */,
+				411979F51CB926460097CD4F /* IpcMessage.pb.h */,
+				411979F61CB926460097CD4F /* IpcMessage.pb.m */,
+				411979F71CB926460097CD4F /* ipcmessagetype.h */,
+				411979F81CB926460097CD4F /* RequestLogin.pb.h */,
+				411979F91CB926460097CD4F /* RequestLogin.pb.m */,
+				411979FA1CB926460097CD4F /* ResponseLogin.pb.h */,
+				411979FB1CB926460097CD4F /* ResponseLogin.pb.m */,
+				411979FC1CB926460097CD4F /* Teacher.pb.h */,
+				411979FD1CB926460097CD4F /* Teacher.pb.m */,
+				411979FE1CB926460097CD4F /* User.pb.h */,
+				411979FF1CB926460097CD4F /* User.pb.m */,
+				41197A001CB926460097CD4F /* UserInit.pb.h */,
+				41197A011CB926460097CD4F /* UserInit.pb.m */,
 			);
 			path = proto;
 			sourceTree = "<group>";
@@ -432,26 +439,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419538061CB8EA5800773F93 /* User.pb.m in Sources */,
-				419538051CB8EA5800773F93 /* Teacher.pb.m in Sources */,
 				419537D91CB8E36900773F93 /* Rpc.m in Sources */,
+				41197A091CB926460097CD4F /* User.pb.m in Sources */,
 				419537E71CB8E39E00773F93 /* base64.c in Sources */,
 				411979EC1CB920480097CD4F /* RoomViewController.m in Sources */,
+				41197A081CB926460097CD4F /* Teacher.pb.m in Sources */,
 				4195378D1CB8BBCA00773F93 /* AppDelegate.m in Sources */,
-				419538031CB8EA5800773F93 /* RequestLogin.pb.m in Sources */,
 				411979EA1CB920480097CD4F /* SignUpViewController.m in Sources */,
-				419538021CB8EA5800773F93 /* IpcMessage.pb.m in Sources */,
 				411979E61CB920480097CD4F /* DashboardViewController.m in Sources */,
+				41197A061CB926460097CD4F /* RequestLogin.pb.m in Sources */,
+				41197A051CB926460097CD4F /* IpcMessage.pb.m in Sources */,
 				411979E51CB920480097CD4F /* BaseViewController.m in Sources */,
 				41F5956A1CB909B30092C005 /* Utils.m in Sources */,
-				419538041CB8EA5800773F93 /* ResponseLogin.pb.m in Sources */,
 				411979D11CB9138D0097CD4F /* ROSession.m in Sources */,
+				41197A071CB926460097CD4F /* ResponseLogin.pb.m in Sources */,
 				419537EA1CB8E39E00773F93 /* SRWebSocket.m in Sources */,
-				419537FF1CB8EA5800773F93 /* ClassCategory.pb.m in Sources */,
+				41197A0A1CB926460097CD4F /* UserInit.pb.m in Sources */,
 				4195378A1CB8BBCA00773F93 /* main.m in Sources */,
-				419538011CB8EA5800773F93 /* Enums.pb.m in Sources */,
-				419538001CB8EA5800773F93 /* ClassroomInfo.pb.m in Sources */,
+				41197A021CB926460097CD4F /* ClassCategory.pb.m in Sources */,
 				411979E81CB920480097CD4F /* HomeViewController.m in Sources */,
+				41197A041CB926460097CD4F /* Enums.pb.m in Sources */,
+				41197A031CB926460097CD4F /* ClassroomInfo.pb.m in Sources */,
 				419537E81CB8E39E00773F93 /* NSData+SRB64Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

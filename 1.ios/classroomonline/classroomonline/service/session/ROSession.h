@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.pb.h"
 
 @interface ROSession : NSObject{
     
 }
 @property (nonatomic, assign) BOOL isSignedIn;
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) NSArray *categories;
 
 + (instancetype)instance;
 

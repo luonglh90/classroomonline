@@ -56,14 +56,22 @@
         [Utils showAlertTitle:app_name content:socket_connect_fail];
     }];
     [[Rpc instance] setOnSignInSuccess:^(NSString *name){
-        [[ROSession instance] setUsername:username];
-        [ROAppDelegate hideLoading];
-        DashboardViewController *dashboard = [[DashboardViewController alloc] initWithNibName:NSStringFromClass([DashboardViewController class]) bundle:nil];
-        [self.navigationController pushViewController:dashboard animated:YES];
+        // Waiting for UserInit
     }];
     [[Rpc instance] setOnSignInFail:^(){
         [ROAppDelegate hideLoading];
         [Utils showAlertTitle:app_name content:signin_fail];
+    }];
+    [[Rpc instance] setOnResponseUserInit:^(User *user, NSArray *categories){
+        // handle user info and categories info
+        [[ROSession instance] setUser:user];
+        [[ROSession instance] setCategories:categories];
+        // hide loading
+        [ROAppDelegate hideLoading];
+        // Transition screen
+        DashboardViewController *dashboard = [[DashboardViewController alloc] initWithNibName:NSStringFromClass([DashboardViewController class]) bundle:nil];
+        [self.navigationController pushViewController:dashboard animated:YES];
+        
     }];
 }
 
