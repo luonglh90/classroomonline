@@ -35,6 +35,9 @@
 		419537E71CB8E39E00773F93 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 419537DC1CB8E39E00773F93 /* base64.c */; };
 		419537E81CB8E39E00773F93 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537DF1CB8E39E00773F93 /* NSData+SRB64Additions.m */; };
 		419537EA1CB8E39E00773F93 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537E61CB8E39E00773F93 /* SRWebSocket.m */; };
+		41F0B2E51CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2E21CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m */; };
+		41F0B2E61CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2E41CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m */; };
+		41F0B2E91CB94A900046BF63 /* LoginStatus.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2E81CB94A900046BF63 /* LoginStatus.pb.m */; };
 		41F5955F1CB8EC320092C005 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F5955E1CB8EC320092C005 /* CFNetwork.framework */; };
 		41F595611CB8EC3B0092C005 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595601CB8EC3B0092C005 /* Security.framework */; };
 		41F595651CB8ED010092C005 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595641CB8ED010092C005 /* libicucore.A.dylib */; };
@@ -101,6 +104,12 @@
 		419537E51CB8E39E00773F93 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		419537E61CB8E39E00773F93 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		41F0B2E01CB93BDF0046BF63 /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
+		41F0B2E11CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassroomInfoOfCategory.pb.h; sourceTree = "<group>"; };
+		41F0B2E21CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassroomInfoOfCategory.pb.m; sourceTree = "<group>"; };
+		41F0B2E31CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestViewCategoryDetail.pb.h; sourceTree = "<group>"; };
+		41F0B2E41CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestViewCategoryDetail.pb.m; sourceTree = "<group>"; };
+		41F0B2E71CB94A900046BF63 /* LoginStatus.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginStatus.pb.h; sourceTree = "<group>"; };
+		41F0B2E81CB94A900046BF63 /* LoginStatus.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginStatus.pb.m; sourceTree = "<group>"; };
 		41F5955E1CB8EC320092C005 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		41F595601CB8EC3B0092C005 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		41F595621CB8EC430092C005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -290,6 +299,12 @@
 		419537EE1CB8EA5800773F93 /* proto */ = {
 			isa = PBXGroup;
 			children = (
+				41F0B2E71CB94A900046BF63 /* LoginStatus.pb.h */,
+				41F0B2E81CB94A900046BF63 /* LoginStatus.pb.m */,
+				41F0B2E11CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.h */,
+				41F0B2E21CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m */,
+				41F0B2E31CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.h */,
+				41F0B2E41CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m */,
 				411979EF1CB926460097CD4F /* ClassCategory.pb.h */,
 				411979F01CB926460097CD4F /* ClassCategory.pb.m */,
 				411979F11CB926460097CD4F /* ClassroomInfo.pb.h */,
@@ -445,9 +460,12 @@
 				411979EC1CB920480097CD4F /* RoomViewController.m in Sources */,
 				41197A081CB926460097CD4F /* Teacher.pb.m in Sources */,
 				4195378D1CB8BBCA00773F93 /* AppDelegate.m in Sources */,
+				41F0B2E61CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m in Sources */,
 				411979EA1CB920480097CD4F /* SignUpViewController.m in Sources */,
 				411979E61CB920480097CD4F /* DashboardViewController.m in Sources */,
+				41F0B2E91CB94A900046BF63 /* LoginStatus.pb.m in Sources */,
 				41197A061CB926460097CD4F /* RequestLogin.pb.m in Sources */,
+				41F0B2E51CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m in Sources */,
 				41197A051CB926460097CD4F /* IpcMessage.pb.m in Sources */,
 				411979E51CB920480097CD4F /* BaseViewController.m in Sources */,
 				41F5956A1CB909B30092C005 /* Utils.m in Sources */,

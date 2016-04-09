@@ -9,7 +9,8 @@
 #import "Rpc.h"
 #import "RequestLogin.pb.h"
 #import "ipcmessagetype.h"
-#import "ResponseLogin.pb.h"
+#import "LoginStatus.pb.h"
+
 
 @interface Rpc(){
 }
@@ -37,7 +38,7 @@
     if (self = [super init]) {
         [IpcMessageRoot initialize];
         [RequestLoginRoot initialize];
-        [ResponseLoginRoot initialize];
+        [LoginStatusRoot initialize];
         [UserInitRoot initialize];
         [UserRoot initialize];
         [ClassCategory initialize];
@@ -118,21 +119,8 @@
         NSLog(@"webSocket Response NIL");
         return;
     }
-//    IpcMessageBuilder* ipc = [IpcMessage builder];
-    
-    
-    
     IpcMessage *ipc = [IpcMessage parseFromData:message];
     NSLog(@"%@", ipc);
-//#define USER_BASE   100
-//#define USER_MSG    (USER_BASE + 1)
-//#define TEACHER_MSG (USER_BASE + 2)
-//#define REQUEST_LOGIN_MSG (USER_BASE + 3)
-//#define RESPONSE_LOGIN_MSG (USER_BASE + 4)
-//    
-//#define CLASS_BASE 200
-//#define CATEGORY_MSG (CLASS_BASE + 1)
-//#define CALSSROOM_MSG (CLASS_BASE + 2)
     switch (ipc.msgId) {
         // USER_BASE
         case USER_MSG:{
@@ -144,15 +132,26 @@
         }
             break;
         case RESPONSE_LOGIN_MSG:{
-            id<PBExtensionField> field = [ResponseLogin message];
-            ipc = [IpcMessage parseFromData:message extensionRegistry:[ResponseLoginRoot extensionRegistry]];
-            ResponseLogin *response = [ipc getExtension:field];
-            if (response.status == EnumsResponseLoginEnumsSuccess && self.onSignInSuccess) {
+//            id<PBExtensionField> field = [ResponseLogin message];
+//            ipc = [IpcMessage parseFromData:message extensionRegistry:[ResponseLoginRoot extensionRegistry]];
+//            ResponseLogin *response = [ipc getExtension:field];
+//            if (response.status == 0 && self.onSignInSuccess) {
+//                self.onSignInSuccess(response.username);
+//            }
+//            else if (self.onSignInFail){
+//                self.onSignInFail();
+//            }
+            
+            id<PBExtensionField> field = [LoginStatus message];
+            ipc = [IpcMessage parseFromData:message extensionRegistry:[LoginStatusRoot extensionRegistry]];
+            LoginStatus *response = [ipc getExtension:field];
+            if (response.stt == 0 && self.onSignInSuccess) {
                 self.onSignInSuccess(response.username);
             }
             else if (self.onSignInFail){
                 self.onSignInFail();
             }
+            
             self.onSignInSuccess = nil;
             self.onSignInFail = nil;
         }
