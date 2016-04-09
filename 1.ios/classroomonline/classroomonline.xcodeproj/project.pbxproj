@@ -40,6 +40,9 @@
 		41F0B2E91CB94A900046BF63 /* LoginStatus.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2E81CB94A900046BF63 /* LoginStatus.pb.m */; };
 		41F0B2EC1CB952770046BF63 /* school-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41F0B2EB1CB952770046BF63 /* school-bg.jpg */; };
 		41F0B2F01CB953DF0046BF63 /* learning-study-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */; };
+		41F0B2F81CB9708E0046BF63 /* BezierInterpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2F31CB9708E0046BF63 /* BezierInterpView.m */; };
+		41F0B2F91CB9708E0046BF63 /* LinearInterpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2F51CB9708E0046BF63 /* LinearInterpView.m */; };
+		41F0B2FA1CB9708E0046BF63 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2F71CB9708E0046BF63 /* SmoothedBIView.m */; };
 		41F5955F1CB8EC320092C005 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F5955E1CB8EC320092C005 /* CFNetwork.framework */; };
 		41F595611CB8EC3B0092C005 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595601CB8EC3B0092C005 /* Security.framework */; };
 		41F595651CB8ED010092C005 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595641CB8ED010092C005 /* libicucore.A.dylib */; };
@@ -114,6 +117,12 @@
 		41F0B2E81CB94A900046BF63 /* LoginStatus.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginStatus.pb.m; sourceTree = "<group>"; };
 		41F0B2EB1CB952770046BF63 /* school-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "school-bg.jpg"; sourceTree = "<group>"; };
 		41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning-study-bg.png"; sourceTree = "<group>"; };
+		41F0B2F21CB9708E0046BF63 /* BezierInterpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierInterpView.h; sourceTree = "<group>"; };
+		41F0B2F31CB9708E0046BF63 /* BezierInterpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierInterpView.m; sourceTree = "<group>"; };
+		41F0B2F41CB9708E0046BF63 /* LinearInterpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearInterpView.h; sourceTree = "<group>"; };
+		41F0B2F51CB9708E0046BF63 /* LinearInterpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearInterpView.m; sourceTree = "<group>"; };
+		41F0B2F61CB9708E0046BF63 /* SmoothedBIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothedBIView.h; sourceTree = "<group>"; };
+		41F0B2F71CB9708E0046BF63 /* SmoothedBIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmoothedBIView.m; sourceTree = "<group>"; };
 		41F5955E1CB8EC320092C005 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		41F595601CB8EC3B0092C005 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		41F595621CB8EC430092C005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -281,6 +290,7 @@
 		419537DA1CB8E39E00773F93 /* vendors */ = {
 			isa = PBXGroup;
 			children = (
+				41F0B2F11CB9708E0046BF63 /* DrawView */,
 				419537DB1CB8E39E00773F93 /* SocketRocket */,
 			);
 			path = vendors;
@@ -340,6 +350,19 @@
 				41F0B2EB1CB952770046BF63 /* school-bg.jpg */,
 			);
 			path = art;
+			sourceTree = "<group>";
+		};
+		41F0B2F11CB9708E0046BF63 /* DrawView */ = {
+			isa = PBXGroup;
+			children = (
+				41F0B2F21CB9708E0046BF63 /* BezierInterpView.h */,
+				41F0B2F31CB9708E0046BF63 /* BezierInterpView.m */,
+				41F0B2F41CB9708E0046BF63 /* LinearInterpView.h */,
+				41F0B2F51CB9708E0046BF63 /* LinearInterpView.m */,
+				41F0B2F61CB9708E0046BF63 /* SmoothedBIView.h */,
+				41F0B2F71CB9708E0046BF63 /* SmoothedBIView.m */,
+			);
+			path = DrawView;
 			sourceTree = "<group>";
 		};
 		41F595671CB909A70092C005 /* utils */ = {
@@ -479,6 +502,7 @@
 				41F0B2E61CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m in Sources */,
 				411979EA1CB920480097CD4F /* SignUpViewController.m in Sources */,
 				411979E61CB920480097CD4F /* DashboardViewController.m in Sources */,
+				41F0B2F81CB9708E0046BF63 /* BezierInterpView.m in Sources */,
 				41F0B2E91CB94A900046BF63 /* LoginStatus.pb.m in Sources */,
 				41197A061CB926460097CD4F /* RequestLogin.pb.m in Sources */,
 				41F0B2E51CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m in Sources */,
@@ -488,6 +512,8 @@
 				411979D11CB9138D0097CD4F /* ROSession.m in Sources */,
 				41197A071CB926460097CD4F /* ResponseLogin.pb.m in Sources */,
 				419537EA1CB8E39E00773F93 /* SRWebSocket.m in Sources */,
+				41F0B2F91CB9708E0046BF63 /* LinearInterpView.m in Sources */,
+				41F0B2FA1CB9708E0046BF63 /* SmoothedBIView.m in Sources */,
 				41197A0A1CB926460097CD4F /* UserInit.pb.m in Sources */,
 				4195378A1CB8BBCA00773F93 /* main.m in Sources */,
 				41197A021CB926460097CD4F /* ClassCategory.pb.m in Sources */,
