@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "DashboardViewController.h"
 #import "SignUpViewController.h"
+#import "Rpc.h"
 
 @interface HomeViewController ()
 
@@ -37,8 +38,15 @@
 */
 
 - (IBAction)actionSignIn:(id)sender {
-    DashboardViewController *dashboard = [[DashboardViewController alloc] initWithNibName:NSStringFromClass([DashboardViewController class]) bundle:nil];
-    [self.navigationController pushViewController:dashboard animated:YES];
+    
+    [[Rpc sharedInstance] connectSocket];
+    [[Rpc sharedInstance] setOnSocketConnected:^(){
+        [[Rpc sharedInstance] requestSigninWithName:@"teacher1" pass:@"123456"];
+    }];
+    
+    
+//    DashboardViewController *dashboard = [[DashboardViewController alloc] initWithNibName:NSStringFromClass([DashboardViewController class]) bundle:nil];
+//    [self.navigationController pushViewController:dashboard animated:YES];
 }
 
 - (IBAction)actionSignUp:(id)sender {

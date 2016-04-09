@@ -21,6 +21,22 @@
 		419537B41CB8BD4200773F93 /* RoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419537B21CB8BD4200773F93 /* RoomViewController.xib */; };
 		419537B81CB8D6D500773F93 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537B61CB8D6D500773F93 /* SignUpViewController.m */; };
 		419537B91CB8D6D500773F93 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419537B71CB8D6D500773F93 /* SignUpViewController.xib */; };
+		419537D91CB8E36900773F93 /* Rpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537D81CB8E36900773F93 /* Rpc.m */; };
+		419537E71CB8E39E00773F93 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 419537DC1CB8E39E00773F93 /* base64.c */; };
+		419537E81CB8E39E00773F93 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537DF1CB8E39E00773F93 /* NSData+SRB64Additions.m */; };
+		419537EA1CB8E39E00773F93 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537E61CB8E39E00773F93 /* SRWebSocket.m */; };
+		419537FF1CB8EA5800773F93 /* ClassCategory.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F01CB8EA5800773F93 /* ClassCategory.pb.m */; };
+		419538001CB8EA5800773F93 /* ClassroomInfo.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F21CB8EA5800773F93 /* ClassroomInfo.pb.m */; };
+		419538011CB8EA5800773F93 /* Enums.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F41CB8EA5800773F93 /* Enums.pb.m */; };
+		419538021CB8EA5800773F93 /* IpcMessage.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F61CB8EA5800773F93 /* IpcMessage.pb.m */; };
+		419538031CB8EA5800773F93 /* RequestLogin.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537F81CB8EA5800773F93 /* RequestLogin.pb.m */; };
+		419538041CB8EA5800773F93 /* ResponseLogin.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537FA1CB8EA5800773F93 /* ResponseLogin.pb.m */; };
+		419538051CB8EA5800773F93 /* Teacher.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537FC1CB8EA5800773F93 /* Teacher.pb.m */; };
+		419538061CB8EA5800773F93 /* User.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537FE1CB8EA5800773F93 /* User.pb.m */; };
+		41F5955F1CB8EC320092C005 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F5955E1CB8EC320092C005 /* CFNetwork.framework */; };
+		41F595611CB8EC3B0092C005 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595601CB8EC3B0092C005 /* Security.framework */; };
+		41F595631CB8EC430092C005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595621CB8EC430092C005 /* Foundation.framework */; };
+		41F595651CB8ED010092C005 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595641CB8ED010092C005 /* libicucore.A.dylib */; };
 		6EABBE8061626A3B6D4C361E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03918B0BA44192B9F51B77AF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +69,36 @@
 		419537B71CB8D6D500773F93 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		419537BB1CB8D94600773F93 /* AppSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSetting.h; sourceTree = "<group>"; };
 		419537BC1CB8D97D00773F93 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		419537D71CB8E36900773F93 /* Rpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rpc.h; sourceTree = "<group>"; };
+		419537D81CB8E36900773F93 /* Rpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rpc.m; sourceTree = "<group>"; };
+		419537DC1CB8E39E00773F93 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		419537DD1CB8E39E00773F93 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		419537DE1CB8E39E00773F93 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		419537DF1CB8E39E00773F93 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		419537E41CB8E39E00773F93 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		419537E51CB8E39E00773F93 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		419537E61CB8E39E00773F93 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		419537EF1CB8EA5800773F93 /* ClassCategory.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCategory.pb.h; sourceTree = "<group>"; };
+		419537F01CB8EA5800773F93 /* ClassCategory.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCategory.pb.m; sourceTree = "<group>"; };
+		419537F11CB8EA5800773F93 /* ClassroomInfo.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassroomInfo.pb.h; sourceTree = "<group>"; };
+		419537F21CB8EA5800773F93 /* ClassroomInfo.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassroomInfo.pb.m; sourceTree = "<group>"; };
+		419537F31CB8EA5800773F93 /* Enums.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.pb.h; sourceTree = "<group>"; };
+		419537F41CB8EA5800773F93 /* Enums.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enums.pb.m; sourceTree = "<group>"; };
+		419537F51CB8EA5800773F93 /* IpcMessage.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpcMessage.pb.h; sourceTree = "<group>"; };
+		419537F61CB8EA5800773F93 /* IpcMessage.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpcMessage.pb.m; sourceTree = "<group>"; };
+		419537F71CB8EA5800773F93 /* RequestLogin.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestLogin.pb.h; sourceTree = "<group>"; };
+		419537F81CB8EA5800773F93 /* RequestLogin.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestLogin.pb.m; sourceTree = "<group>"; };
+		419537F91CB8EA5800773F93 /* ResponseLogin.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLogin.pb.h; sourceTree = "<group>"; };
+		419537FA1CB8EA5800773F93 /* ResponseLogin.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseLogin.pb.m; sourceTree = "<group>"; };
+		419537FB1CB8EA5800773F93 /* Teacher.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.pb.h; sourceTree = "<group>"; };
+		419537FC1CB8EA5800773F93 /* Teacher.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.pb.m; sourceTree = "<group>"; };
+		419537FD1CB8EA5800773F93 /* User.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.pb.h; sourceTree = "<group>"; };
+		419537FE1CB8EA5800773F93 /* User.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.pb.m; sourceTree = "<group>"; };
+		41F5955E1CB8EC320092C005 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		41F595601CB8EC3B0092C005 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		41F595621CB8EC430092C005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		41F595641CB8ED010092C005 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = ../../../../../../usr/lib/libicucore.A.dylib; sourceTree = "<group>"; };
+		41F595661CB8F4840092C005 /* ipcmessagetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipcmessagetype.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +106,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41F595651CB8ED010092C005 /* libicucore.A.dylib in Frameworks */,
+				41F595631CB8EC430092C005 /* Foundation.framework in Frameworks */,
+				41F595611CB8EC3B0092C005 /* Security.framework in Frameworks */,
+				41F5955F1CB8EC320092C005 /* CFNetwork.framework in Frameworks */,
 				6EABBE8061626A3B6D4C361E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +120,10 @@
 		17D66CE90ED6FF1F8B59CB32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41F595641CB8ED010092C005 /* libicucore.A.dylib */,
+				41F595621CB8EC430092C005 /* Foundation.framework */,
+				41F595601CB8EC3B0092C005 /* Security.framework */,
+				41F5955E1CB8EC320092C005 /* CFNetwork.framework */,
 				03918B0BA44192B9F51B77AF /* libPods.a */,
 			);
 			name = Frameworks;
@@ -96,6 +150,9 @@
 		419537871CB8BBCA00773F93 /* classroomonline */ = {
 			isa = PBXGroup;
 			children = (
+				419537EE1CB8EA5800773F93 /* proto */,
+				419537DA1CB8E39E00773F93 /* vendors */,
+				419537D61CB8E33300773F93 /* service */,
 				4195379F1CB8BCF600773F93 /* base */,
 				419537A01CB8BCF600773F93 /* dashboard */,
 				419537A11CB8BCF600773F93 /* home */,
@@ -166,6 +223,61 @@
 			);
 			name = room;
 			path = viewcontrollers/room;
+			sourceTree = "<group>";
+		};
+		419537D61CB8E33300773F93 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				419537D71CB8E36900773F93 /* Rpc.h */,
+				419537D81CB8E36900773F93 /* Rpc.m */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		419537DA1CB8E39E00773F93 /* vendors */ = {
+			isa = PBXGroup;
+			children = (
+				419537DB1CB8E39E00773F93 /* SocketRocket */,
+			);
+			path = vendors;
+			sourceTree = "<group>";
+		};
+		419537DB1CB8E39E00773F93 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				419537DC1CB8E39E00773F93 /* base64.c */,
+				419537DD1CB8E39E00773F93 /* base64.h */,
+				419537DE1CB8E39E00773F93 /* NSData+SRB64Additions.h */,
+				419537DF1CB8E39E00773F93 /* NSData+SRB64Additions.m */,
+				419537E41CB8E39E00773F93 /* SocketRocket-Prefix.pch */,
+				419537E51CB8E39E00773F93 /* SRWebSocket.h */,
+				419537E61CB8E39E00773F93 /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+		419537EE1CB8EA5800773F93 /* proto */ = {
+			isa = PBXGroup;
+			children = (
+				41F595661CB8F4840092C005 /* ipcmessagetype.h */,
+				419537EF1CB8EA5800773F93 /* ClassCategory.pb.h */,
+				419537F01CB8EA5800773F93 /* ClassCategory.pb.m */,
+				419537F11CB8EA5800773F93 /* ClassroomInfo.pb.h */,
+				419537F21CB8EA5800773F93 /* ClassroomInfo.pb.m */,
+				419537F31CB8EA5800773F93 /* Enums.pb.h */,
+				419537F41CB8EA5800773F93 /* Enums.pb.m */,
+				419537F51CB8EA5800773F93 /* IpcMessage.pb.h */,
+				419537F61CB8EA5800773F93 /* IpcMessage.pb.m */,
+				419537F71CB8EA5800773F93 /* RequestLogin.pb.h */,
+				419537F81CB8EA5800773F93 /* RequestLogin.pb.m */,
+				419537F91CB8EA5800773F93 /* ResponseLogin.pb.h */,
+				419537FA1CB8EA5800773F93 /* ResponseLogin.pb.m */,
+				419537FB1CB8EA5800773F93 /* Teacher.pb.h */,
+				419537FC1CB8EA5800773F93 /* Teacher.pb.m */,
+				419537FD1CB8EA5800773F93 /* User.pb.h */,
+				419537FE1CB8EA5800773F93 /* User.pb.m */,
+			);
+			path = proto;
 			sourceTree = "<group>";
 		};
 		E6D41EF9B2217026DA51205D /* Pods */ = {
@@ -286,13 +398,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				419537901CB8BBCA00773F93 /* ViewController.m in Sources */,
+				419538061CB8EA5800773F93 /* User.pb.m in Sources */,
 				419537AE1CB8BD2700773F93 /* DashboardViewController.m in Sources */,
 				419537A51CB8BD0200773F93 /* BaseViewController.m in Sources */,
+				419538051CB8EA5800773F93 /* Teacher.pb.m in Sources */,
+				419537D91CB8E36900773F93 /* Rpc.m in Sources */,
+				419537E71CB8E39E00773F93 /* base64.c in Sources */,
 				4195378D1CB8BBCA00773F93 /* AppDelegate.m in Sources */,
+				419538031CB8EA5800773F93 /* RequestLogin.pb.m in Sources */,
+				419538021CB8EA5800773F93 /* IpcMessage.pb.m in Sources */,
 				419537B31CB8BD4200773F93 /* RoomViewController.m in Sources */,
 				419537A91CB8BD1600773F93 /* HomeViewController.m in Sources */,
+				419538041CB8EA5800773F93 /* ResponseLogin.pb.m in Sources */,
 				419537B81CB8D6D500773F93 /* SignUpViewController.m in Sources */,
+				419537EA1CB8E39E00773F93 /* SRWebSocket.m in Sources */,
+				419537FF1CB8EA5800773F93 /* ClassCategory.pb.m in Sources */,
 				4195378A1CB8BBCA00773F93 /* main.m in Sources */,
+				419538011CB8EA5800773F93 /* Enums.pb.m in Sources */,
+				419538001CB8EA5800773F93 /* ClassroomInfo.pb.m in Sources */,
+				419537E81CB8E39E00773F93 /* NSData+SRB64Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +520,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2152F778B7CCE8B7A21F7F80 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				APIHost = "ws://192.168.1.92";
+				APIPort = 1234;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -412,6 +538,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EA645C66A64E3A3255E49EB /* Pods.release.xcconfig */;
 			buildSettings = {
+				APIHost = "ws://192.168.1.92";
+				APIPort = 1234;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
