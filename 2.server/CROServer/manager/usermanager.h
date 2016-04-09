@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QHash>
 #include "../../msg/cpp/User.pb.h"
+#include "../../msg/cpp/ClassOnlineAction.pb.h"
 #include "../../msg/cpp/Enums.pb.h"
 
 using namespace METRO::CRO::MESSAGES;
@@ -24,7 +25,8 @@ public:
     void userLogOff(int socketuid);
     void initUserInfo(int sockuid, QString userName);
 
-    void boardcastMsgToOnlineUsers(google::protobuf::Message *msg);
+    void boardcastMsgActionToOnlineUsers(ClassOnlineAction *msg);
+    void boardcastMsgActionToOnlineUsersExcept(ClassOnlineAction *msg, int exceptUid);
 signals:
     void requestSendToSocketClient(int socketuid, QByteArray data);
 private:

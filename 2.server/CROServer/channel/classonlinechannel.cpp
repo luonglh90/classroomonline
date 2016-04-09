@@ -30,6 +30,16 @@ void ClassOnlineChannel::processRequestClassAction(int uid, ClassOnlineAction *m
         userAcceptJointClass(uid, msg);
         break;
     }
+    case (int)ClassOnlineAction_ActionType_REQUEST_DRAW_BOARD: {
+        qDebug() << "Request draw board, form: " << QString::fromStdString(msg->sourceusername());
+        userRequestDrawBoard(uid, msg);
+        break;
+    }
+    case (int)ClassOnlineAction_ActionType_ACCEPT_DRAW_BOARD: {
+        qDebug() << "Accept draw board: " << QString::fromStdString(msg->targetusername());
+        userAcceptDrawBoard(uid, msg);
+        break;
+    }
     case (int)ClassOnlineAction_ActionType_CLOSE_CLASS:
     {
         break;
@@ -46,10 +56,10 @@ void ClassOnlineChannel::userOpenClass(int uid, ClassOnlineAction *msg)
         User teacher = UserManager::instance()->getUserOnlineByUid(uid);
         ClassroomInfo classInfo = ClassInfoManager::instance()->getClassById(StringUtils::stringToInt(msg->classid()));
         ClassroomOnline room(teacher, uid, classInfo);
-        mHashClassroomOnline.insert(uid, room);
+        mHashClassroomOnline.insert(StringUtils::stringToInt(classInfo.uid()), room);
 
         // broadcast info
-        UserManager::instance()->boardcastMsgToOnlineUsers(msg);
+        UserManager::instance()->boardcastMsgActionToOnlineUsersExcept(msg, uid);
     }
 }
 
@@ -57,7 +67,7 @@ void ClassOnlineChannel::userRequestJointClass(int uid, ClassOnlineAction *msg)
 {
     if(UserManager::instance()->checkUserOnline(uid)) {
         // get opening class
-        int classId =StringUtils::stringToInt(msg->classid());
+        int classId = StringUtils::stringToInt(msg->classid());
         if(mHashClassroomOnline.contains(classId)) {
             qDebug() << "forward request to teacher";
             int teacherUid = mHashClassroomOnline[classId].teacherUid();
@@ -83,6 +93,38 @@ void ClassOnlineChannel::userAcceptJointClass(int uid, ClassOnlineAction *msg)
             qDebug() << "Add student to class";
             User student = UserManager::instance()->getUserOnlineByUid(studentUid);
             mHashClassroomOnline[classId].addStudentToClass(studentUid, student);
+        } else {
+            qDebug() << "class not exist";
+        }
+    }
+}
+
+void ClassOnlineChannel::userRequestDrawBoard(int uid, ClassOnlineAction *msg)
+{
+    if(UserManager::instance()->checkUserOnline(uid)) {
+        // get opening class
+        int classId = StringUtils::stringToInt(msg->classid());
+        if(mHashClassroomOnline.contains(classId)) {
+            qDebug() << "forward request to teacher";
+            int teacherUid = mHashClassroomOnline[classId].teacherUid();
+            MessageSender::instance()->sendIpcMessage(teacherUid, msg);
+        } else {
+            qDebug() << "class not exist";
+        }
+    }
+}
+
+void ClassOnlineChannel::userAcceptDrawBoard(int uid, ClassOnlineAction *msg)
+{
+    if(UserManager::instance()->checkUserOnline(uid)) {
+        // get opening class
+        int classId = StringUtils::stringToInt(msg->classid());
+        if(mHashClassroomOnline.contains(classId)) {
+            qDebug() << "forward accept to student";
+            // get student
+            QString studentname = QString::fromStdString(msg->targetusername());
+            int studentUid = UserManager::instance()->getSocketuidOnlineByUsername(studentname);
+            MessageSender::instance()->sendIpcMessage(studentUid, msg);
         } else {
             qDebug() << "class not exist";
         }

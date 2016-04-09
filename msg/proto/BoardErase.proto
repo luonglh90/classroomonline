@@ -1,0 +1,5 @@
+package METRO.CRO.MESSAGES;
+
+message BoardErase {
+	required int32 lineid = 1;
+}

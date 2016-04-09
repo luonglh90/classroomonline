@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     parser.process(a);
     bool debug = parser.isSet(dbgOption);
 
-    EchoClient client(QUrl(QStringLiteral("ws://localhost:1234")), debug);
+    EchoClient client(QUrl(QStringLiteral("ws://localhost:8668")), debug);
     QObject::connect(&client, &EchoClient::closed, &a, &QCoreApplication::quit);
 
     return a.exec();

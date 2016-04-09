@@ -34,6 +34,8 @@
 #include "../../2.server/CROServer/utils/socketutils.h"
 #include "../../2.server/CROServer/utils/ipcmsghelper.h"
 #include "../../msg/cpp/RequestLogin.pb.h"
+#include "../../msg/cpp/ipcmessagetype.h"
+#include "../../msg/cpp/UserInit.pb.h"
 #include <QtCore/QDebug>
 
 QT_USE_NAMESPACE
@@ -84,6 +86,26 @@ void EchoClient::onBinaryMessageReceived(QByteArray msg)
 {
     IpcMessage ipc;
     ipc.ParseFromArray(msg.constData(), msg.size());
+
+    qDebug() << msg.size();
+
+    switch (ipc.id()) {
+    case USER_INIT_MSG:
+    {
+        UserInit *userinit = (UserInit*)IpcMsgHelper::getMessage(&ipc);
+        if(userinit) {
+            qDebug() << userinit->categories_size();
+            int ownersize = userinit->ownerclass_size();
+            for(int i = 0; i < ownersize; i ++) {
+                ClassroomInfo classInfo = userinit->ownerclass(i);
+                qDebug() << "id: " << QString::fromStdString(classInfo.uid());
+            }
+        }
+        break;
+    }
+    default:
+        break;
+    }
 
     qDebug() << QString::fromStdString(msg.toHex().toStdString());
 

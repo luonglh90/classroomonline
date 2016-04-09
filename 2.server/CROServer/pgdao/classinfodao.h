@@ -16,7 +16,7 @@ class ClassInfoDAO
 {
 public:
     ClassInfoDAO();
-    void getAllClassInfo(QList<ClassroomCpp> &listClass, bool &isOk, QString &errMsg);
+    void getAllClassInfo(QList<ClassroomInfo> &listClass, bool &isOk, QString &errMsg);
 
 private:
     QString GETALL;

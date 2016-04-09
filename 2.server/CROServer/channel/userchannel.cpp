@@ -24,7 +24,6 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 
     bool isValid = UserManager::instance()->checkUserLogin(userName, passwd);
 
-
     ResponseLogin stt;
     stt.set_username(msg->username());
     if(isValid) {
@@ -34,7 +33,7 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
     }
 
 //    RequestViewCategoryDetail tmp;
-//    MessageSender::instance()->sendIpcMessage(uid, &stt);
+    MessageSender::instance()->sendIpcMessage(uid, &stt);
 //    tmp.set_cate_id(1);
 //
 
