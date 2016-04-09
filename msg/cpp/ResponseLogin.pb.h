@@ -112,7 +112,7 @@ class ResponseLogin : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 status() const;
   inline void set_status(::google::protobuf::int32 value);
 
-  static const int kMessageFieldNumber = 104;
+  static const int kMessageFieldNumber = 107;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ResponseLogin >, 11, false >
     message;

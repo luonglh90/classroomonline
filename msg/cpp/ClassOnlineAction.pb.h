@@ -145,17 +145,17 @@ class ClassOnlineAction : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional string username = 1;
-  inline bool has_username() const;
-  inline void clear_username();
-  static const int kUsernameFieldNumber = 1;
-  inline const ::std::string& username() const;
-  inline void set_username(const ::std::string& value);
-  inline void set_username(const char* value);
-  inline void set_username(const char* value, size_t size);
-  inline ::std::string* mutable_username();
-  inline ::std::string* release_username();
-  inline void set_allocated_username(::std::string* username);
+  // optional string targetusername = 1;
+  inline bool has_targetusername() const;
+  inline void clear_targetusername();
+  static const int kTargetusernameFieldNumber = 1;
+  inline const ::std::string& targetusername() const;
+  inline void set_targetusername(const ::std::string& value);
+  inline void set_targetusername(const char* value);
+  inline void set_targetusername(const char* value, size_t size);
+  inline ::std::string* mutable_targetusername();
+  inline ::std::string* release_targetusername();
+  inline void set_allocated_targetusername(::std::string* targetusername);
 
   // optional int32 classid = 2;
   inline bool has_classid() const;
@@ -171,14 +171,14 @@ class ClassOnlineAction : public ::google::protobuf::Message {
   inline ::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType actiontype() const;
   inline void set_actiontype(::METRO::CRO::MESSAGES::ClassOnlineAction_ActionType value);
 
-  static const int kMessageFieldNumber = 302;
+  static const int kMessageFieldNumber = 303;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassOnlineAction >, 11, false >
     message;
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.ClassOnlineAction)
  private:
-  inline void set_has_username();
-  inline void clear_has_username();
+  inline void set_has_targetusername();
+  inline void clear_has_targetusername();
   inline void set_has_classid();
   inline void clear_has_classid();
   inline void set_has_actiontype();
@@ -188,7 +188,7 @@ class ClassOnlineAction : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::std::string* username_;
+  ::std::string* targetusername_;
   ::google::protobuf::int32 classid_;
   int actiontype_;
   friend void  protobuf_AddDesc_ClassOnlineAction_2eproto();
@@ -205,80 +205,80 @@ class ClassOnlineAction : public ::google::protobuf::Message {
 
 // ClassOnlineAction
 
-// optional string username = 1;
-inline bool ClassOnlineAction::has_username() const {
+// optional string targetusername = 1;
+inline bool ClassOnlineAction::has_targetusername() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ClassOnlineAction::set_has_username() {
+inline void ClassOnlineAction::set_has_targetusername() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ClassOnlineAction::clear_has_username() {
+inline void ClassOnlineAction::clear_has_targetusername() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ClassOnlineAction::clear_username() {
-  if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    username_->clear();
+inline void ClassOnlineAction::clear_targetusername() {
+  if (targetusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    targetusername_->clear();
   }
-  clear_has_username();
+  clear_has_targetusername();
 }
-inline const ::std::string& ClassOnlineAction::username() const {
-  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassOnlineAction.username)
-  return *username_;
+inline const ::std::string& ClassOnlineAction::targetusername() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassOnlineAction.targetusername)
+  return *targetusername_;
 }
-inline void ClassOnlineAction::set_username(const ::std::string& value) {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    username_ = new ::std::string;
+inline void ClassOnlineAction::set_targetusername(const ::std::string& value) {
+  set_has_targetusername();
+  if (targetusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    targetusername_ = new ::std::string;
   }
-  username_->assign(value);
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassOnlineAction.username)
+  targetusername_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassOnlineAction.targetusername)
 }
-inline void ClassOnlineAction::set_username(const char* value) {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    username_ = new ::std::string;
+inline void ClassOnlineAction::set_targetusername(const char* value) {
+  set_has_targetusername();
+  if (targetusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    targetusername_ = new ::std::string;
   }
-  username_->assign(value);
-  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassOnlineAction.username)
+  targetusername_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassOnlineAction.targetusername)
 }
-inline void ClassOnlineAction::set_username(const char* value, size_t size) {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    username_ = new ::std::string;
+inline void ClassOnlineAction::set_targetusername(const char* value, size_t size) {
+  set_has_targetusername();
+  if (targetusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    targetusername_ = new ::std::string;
   }
-  username_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassOnlineAction.username)
+  targetusername_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassOnlineAction.targetusername)
 }
-inline ::std::string* ClassOnlineAction::mutable_username() {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    username_ = new ::std::string;
+inline ::std::string* ClassOnlineAction::mutable_targetusername() {
+  set_has_targetusername();
+  if (targetusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    targetusername_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassOnlineAction.username)
-  return username_;
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassOnlineAction.targetusername)
+  return targetusername_;
 }
-inline ::std::string* ClassOnlineAction::release_username() {
-  clear_has_username();
-  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* ClassOnlineAction::release_targetusername() {
+  clear_has_targetusername();
+  if (targetusername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = username_;
-    username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = targetusername_;
+    targetusername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void ClassOnlineAction::set_allocated_username(::std::string* username) {
-  if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete username_;
+inline void ClassOnlineAction::set_allocated_targetusername(::std::string* targetusername) {
+  if (targetusername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete targetusername_;
   }
-  if (username) {
-    set_has_username();
-    username_ = username;
+  if (targetusername) {
+    set_has_targetusername();
+    targetusername_ = targetusername;
   } else {
-    clear_has_username();
-    username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_targetusername();
+    targetusername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassOnlineAction.username)
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassOnlineAction.targetusername)
 }
 
 // optional int32 classid = 2;

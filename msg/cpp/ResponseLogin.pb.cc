@@ -85,7 +85,7 @@ void protobuf_AddDesc_ResponseLogin_2eproto() {
     "\n\023ResponseLogin.proto\022\022METRO.CRO.MESSAGE"
     "S\032\020IpcMessage.proto\"\205\001\n\rResponseLogin\022\020\n"
     "\010username\030\001 \001(\t\022\016\n\006status\030\002 \001(\0052R\n\007messa"
-    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030h \001(\013"
+    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030k \001(\013"
     "2!.METRO.CRO.MESSAGES.ResponseLogin", 195);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ResponseLogin.proto", &protobuf_RegisterTypes);
@@ -93,7 +93,7 @@ void protobuf_AddDesc_ResponseLogin_2eproto() {
   ResponseLogin::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    104, 11, false, false,
+    107, 11, false, false,
     &::METRO::CRO::MESSAGES::ResponseLogin::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ResponseLogin_2eproto);
 }

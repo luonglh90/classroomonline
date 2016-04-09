@@ -15,6 +15,8 @@ UserChannel::UserChannel() : BaseChannel()
 
 void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 {
+    qDebug() << QString::fromStdString(msg->SerializeAsString());
+
     QString userName = QString::fromStdString(msg->username());
     QString passwd = QString::fromStdString(msg->password());
 
@@ -22,16 +24,17 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 
     bool isValid = UserManager::instance()->checkUserLogin(userName, passwd);
 
-//    LoginStatus stt;
-//    stt.set_username(msg->username());
-//    if(isValid) {
-//        stt.set_stt(0);
-//    } else {
-//        stt.set_stt(1);
-//    }
 
-//    MessageSender::instance()->sendIpcMessage(uid, msg);
+    LoginStatus stt;
+    stt.set_name(msg->username());
+    if(isValid) {
+        stt.set_stt(0);
+    } else {
+        stt.set_stt(1);
+    }
+
 //    RequestViewCategoryDetail tmp;
+    MessageSender::instance()->sendIpcMessage(uid, &stt);
 //    tmp.set_cate_id(1);
 //
 

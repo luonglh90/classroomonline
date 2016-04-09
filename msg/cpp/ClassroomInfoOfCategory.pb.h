@@ -113,7 +113,7 @@ class ClassroomInfoOfCategory : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo >*
       mutable_listofclasses();
 
-  static const int kMessageFieldNumber = 204;
+  static const int kMessageFieldNumber = 207;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassroomInfoOfCategory >, 11, false >
     message;

@@ -90,14 +90,14 @@ void protobuf_AddDesc_UserInit_2eproto() {
     ".METRO.CRO.MESSAGES.User\0225\n\ncategories\030\002"
     " \003(\0132!.METRO.CRO.MESSAGES.ClassCategory2"
     "M\n\007message\022\036.METRO.CRO.MESSAGES.IpcMessa"
-    "ge\030i \001(\0132\034.METRO.CRO.MESSAGES.UserInit", 278);
+    "ge\030m \001(\0132\034.METRO.CRO.MESSAGES.UserInit", 278);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "UserInit.proto", &protobuf_RegisterTypes);
   UserInit::default_instance_ = new UserInit();
   UserInit::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    105, 11, false, false,
+    109, 11, false, false,
     &::METRO::CRO::MESSAGES::UserInit::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_UserInit_2eproto);
 }

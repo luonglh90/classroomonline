@@ -4,7 +4,7 @@ package METRO.CRO.MESSAGES;
 
 message ResponseLogin {
 	extend IpcMessage {
-		optional ResponseLogin message = 104;
+		optional ResponseLogin message = 107;
 	}
 
 	optional string username = 1;

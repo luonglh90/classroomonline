@@ -1,4 +1,3 @@
-
 #include "IpcMsgHelper.h"
 #include "../../msg/cpp/ipcmessagetype.h"
 #include "../../msg/cpp/RequestLogin.pb.h"
@@ -8,6 +7,7 @@
 #include "../../msg/cpp/ClassroomInfoOfCategory.pb.h"
 #include "../../msg/cpp/LoginStatus.pb.h"
 #include "../../msg/cpp/TeacherOpenClass.pb.h"
+#include "../../msg/cpp/ClassOnlineAction.pb.h"
 
 std::map<std::string, int> nameIdMap;
 
@@ -29,6 +29,7 @@ void IpcMsgHelper::init() {
         nameIdMap["METRO.CRO.MESSAGES.ClassroomInfoOfCategory"] = CLASSES_OF_CATEGORY;
         nameIdMap["METRO.CRO.MESSAGES.LoginStatus"] = LOGIN_STATUS_MSG;
         nameIdMap["METRO.CRO.MESSAGES.TeacherOpenClass"] = TEACHER_OPEN_CLASS_MSG;
+        nameIdMap["METRO.CRO.MESSAGES.ClassOnlineAction"] = CLASS_ONLINE_ACTION_MSG;
     }
 }
 
@@ -75,6 +76,11 @@ IpcMessage* IpcMsgHelper::createIpcMessage(google::protobuf::Message* msg) {
     case TEACHER_OPEN_CLASS_MSG: {
         TeacherOpenClass* ipcExt = ipc->MutableExtension(TeacherOpenClass::message);
         (*ipcExt) = (*(TeacherOpenClass*) msg);
+        break;
+    }
+    case CLASS_ONLINE_ACTION_MSG: {
+        ClassOnlineAction* ipcExt = ipc->MutableExtension(ClassOnlineAction::message);
+        (*ipcExt) = (*(ClassOnlineAction*) msg);
         break;
     }
     default:
@@ -128,6 +134,11 @@ google::protobuf::Message* IpcMsgHelper::getMessage(IpcMessage* ipc) {
     case TEACHER_OPEN_CLASS_MSG: {
         if(ipc->HasExtension(TeacherOpenClass::message))
             msg = new TeacherOpenClass(ipc->GetExtension(TeacherOpenClass::message));
+        break;
+    }
+    case CLASS_ONLINE_ACTION_MSG: {
+        if(ipc->HasExtension(ClassOnlineAction::message))
+            msg = new ClassOnlineAction(ipc->GetExtension(ClassOnlineAction::message));
         break;
     }
     default:

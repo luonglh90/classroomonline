@@ -1,4 +1,5 @@
 #include "../../msg/cpp/ipcmessagetype.h"
+#include "../../msg/cpp/ClassOnlineAction.pb.h"
 #include "base/cmmdefs.h"
 #include "utils/ipcmsghelper.h"
 #include "manager/usermanager.h"
@@ -18,14 +19,20 @@ void ClassOnlineChannel::processRequestOpenClass(int uid, TeacherOpenClass *msg)
         mHashClassroomOnline.insert(uid, room);
 
         // broadcast info
-        UserManager::instance()->boardcastMsgToOnlineUsers(msg);
+        ClassOnlineAction actionMsg;
+        actionMsg.set_actiontype(ClassOnlineAction_ActionType_OPEN_CLASS);
+        actionMsg.set_targetusername(msg->username());
+        actionMsg.set_classid(msg->classid());
+        UserManager::instance()->boardcastMsgToOnlineUsers(&actionMsg);
     }
 }
 
 void ClassOnlineChannel::onDisconnect(int socketuid)
 {
     // check socketuid
-
+    if(mHashClassroomOnline.contains(socketuid)) { // teacher disconnect
+        mHashClassroomOnline[socketuid].processTeacherDisconnect();
+    }
 }
 
 void ClassOnlineChannel::readMessage(IpcSocketEvelope *ipcevelope)

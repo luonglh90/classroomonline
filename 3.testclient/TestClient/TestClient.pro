@@ -21,7 +21,13 @@ SOURCES += main.cpp \
     echoclient.cpp \
     ../../2.server/CROServer/utils/socketutils.cpp \
     ../../2.server/CROServer/utils/ipcmsghelper.cpp \
-    ../../msg/cpp/UserInit.pb.cc
+    ../../msg/cpp/UserInit.pb.cc \
+    ../../msg/cpp/Category.pb.cc \
+    ../../msg/cpp/ClassOnlineAction.pb.cc \
+    ../../msg/cpp/ClassroomInfoOfCategory.pb.cc \
+    ../../msg/cpp/LoginStatus.pb.cc \
+    ../../msg/cpp/RequestViewCategoryDetail.pb.cc \
+    ../../msg/cpp/TeacherOpenClass.pb.cc
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -36,7 +42,13 @@ HEADERS += \
     echoclient.h \
     ../../2.server/CROServer/utils/socketutils.h \
     ../../2.server/CROServer/utils/ipcmsghelper.h \
-    ../../msg/cpp/UserInit.pb.h
+    ../../msg/cpp/UserInit.pb.h \
+    ../../msg/cpp/Category.pb.h \
+    ../../msg/cpp/ClassOnlineAction.pb.h \
+    ../../msg/cpp/ClassroomInfoOfCategory.pb.h \
+    ../../msg/cpp/LoginStatus.pb.h \
+    ../../msg/cpp/RequestViewCategoryDetail.pb.h \
+    ../../msg/cpp/TeacherOpenClass.pb.h
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf
 

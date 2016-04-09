@@ -4,7 +4,7 @@ package METRO.CRO.MESSAGES;
 
 message ClassOnlineAction {
 	extend IpcMessage {
-		optional ClassOnlineAction message = 302;
+		optional ClassOnlineAction message = 303;
 	}
 
 	enum ActionType {
@@ -16,7 +16,7 @@ message ClassOnlineAction {
 		ACCEPT_DRAW_BOARD = 6;
 	}
 
-	optional string username = 1;
+	optional string targetusername = 1;
 	optional int32 classid = 2;
 	optional ActionType actiontype = 3;
 }

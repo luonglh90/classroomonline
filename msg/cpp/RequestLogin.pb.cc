@@ -85,7 +85,7 @@ void protobuf_AddDesc_RequestLogin_2eproto() {
     "\n\022RequestLogin.proto\022\022METRO.CRO.MESSAGES"
     "\032\020IpcMessage.proto\"\205\001\n\014RequestLogin\022\020\n\010u"
     "sername\030\001 \002(\t\022\020\n\010password\030\002 \002(\t2Q\n\007messa"
-    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030g \001(\013"
+    "ge\022\036.METRO.CRO.MESSAGES.IpcMessage\030i \001(\013"
     "2 .METRO.CRO.MESSAGES.RequestLogin", 194);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "RequestLogin.proto", &protobuf_RegisterTypes);
@@ -93,7 +93,7 @@ void protobuf_AddDesc_RequestLogin_2eproto() {
   RequestLogin::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    103, 11, false, false,
+    105, 11, false, false,
     &::METRO::CRO::MESSAGES::RequestLogin::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_RequestLogin_2eproto);
 }

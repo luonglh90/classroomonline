@@ -37,7 +37,7 @@ void protobuf_AssignDesc_LoginStatus_2eproto() {
   GOOGLE_CHECK(file != NULL);
   LoginStatus_descriptor_ = file->message_type(0);
   static const int LoginStatus_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginStatus, username_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginStatus, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginStatus, stt_),
   };
   LoginStatus_reflection_ =
@@ -83,17 +83,17 @@ void protobuf_AddDesc_LoginStatus_2eproto() {
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\021LoginStatus.proto\022\022METRO.CRO.MESSAGES\032"
-    "\020IpcMessage.proto\"~\n\013LoginStatus\022\020\n\010user"
-    "name\030\001 \001(\t\022\013\n\003stt\030\002 \001(\0052P\n\007message\022\036.MET"
-    "RO.CRO.MESSAGES.IpcMessage\030j \001(\0132\037.METRO"
-    ".CRO.MESSAGES.LoginStatus", 185);
+    "\020IpcMessage.proto\"z\n\013LoginStatus\022\014\n\004name"
+    "\030\001 \001(\t\022\013\n\003stt\030\002 \001(\0052P\n\007message\022\036.METRO.C"
+    "RO.MESSAGES.IpcMessage\030o \001(\0132\037.METRO.CRO"
+    ".MESSAGES.LoginStatus", 181);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LoginStatus.proto", &protobuf_RegisterTypes);
   LoginStatus::default_instance_ = new LoginStatus();
   LoginStatus::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    106, 11, false, false,
+    111, 11, false, false,
     &::METRO::CRO::MESSAGES::LoginStatus::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_LoginStatus_2eproto);
 }
@@ -108,7 +108,7 @@ struct StaticDescriptorInitializer_LoginStatus_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int LoginStatus::kUsernameFieldNumber;
+const int LoginStatus::kNameFieldNumber;
 const int LoginStatus::kSttFieldNumber;
 #endif  // !_MSC_VER
 
@@ -137,7 +137,7 @@ LoginStatus::LoginStatus(const LoginStatus& from)
 void LoginStatus::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   stt_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -148,8 +148,8 @@ LoginStatus::~LoginStatus() {
 }
 
 void LoginStatus::SharedDtor() {
-  if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete username_;
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
   }
   if (this != default_instance_) {
   }
@@ -178,9 +178,9 @@ LoginStatus* LoginStatus::New() const {
 
 void LoginStatus::Clear() {
   if (_has_bits_[0 / 32] & 3) {
-    if (has_username()) {
-      if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        username_->clear();
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        name_->clear();
       }
     }
     stt_ = 0;
@@ -199,15 +199,15 @@ bool LoginStatus::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string username = 1;
+      // optional string name = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_username()));
+                input, this->mutable_name()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->username().data(), this->username().length(),
+            this->name().data(), this->name().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "username");
+            "name");
         } else {
           goto handle_unusual;
         }
@@ -255,14 +255,14 @@ failure:
 void LoginStatus::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:METRO.CRO.MESSAGES.LoginStatus)
-  // optional string username = 1;
-  if (has_username()) {
+  // optional string name = 1;
+  if (has_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->username().data(), this->username().length(),
+      this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "username");
+      "name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->username(), output);
+      1, this->name(), output);
   }
 
   // optional int32 stt = 2;
@@ -280,15 +280,15 @@ void LoginStatus::SerializeWithCachedSizes(
 ::google::protobuf::uint8* LoginStatus::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:METRO.CRO.MESSAGES.LoginStatus)
-  // optional string username = 1;
-  if (has_username()) {
+  // optional string name = 1;
+  if (has_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->username().data(), this->username().length(),
+      this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "username");
+      "name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->username(), target);
+        1, this->name(), target);
   }
 
   // optional int32 stt = 2;
@@ -308,11 +308,11 @@ int LoginStatus::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string username = 1;
-    if (has_username()) {
+    // optional string name = 1;
+    if (has_name()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->username());
+          this->name());
     }
 
     // optional int32 stt = 2;
@@ -349,8 +349,8 @@ void LoginStatus::MergeFrom(const ::google::protobuf::Message& from) {
 void LoginStatus::MergeFrom(const LoginStatus& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_username()) {
-      set_username(from.username());
+    if (from.has_name()) {
+      set_name(from.name());
     }
     if (from.has_stt()) {
       set_stt(from.stt());
@@ -378,7 +378,7 @@ bool LoginStatus::IsInitialized() const {
 
 void LoginStatus::Swap(LoginStatus* other) {
   if (other != this) {
-    std::swap(username_, other->username_);
+    std::swap(name_, other->name_);
     std::swap(stt_, other->stt_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

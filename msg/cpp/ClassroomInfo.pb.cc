@@ -96,7 +96,7 @@ void protobuf_AddDesc_ClassroomInfo_2eproto() {
     "CRO.MESSAGES.User\022\023\n\013description\030\005 \001(\t\022\016"
     "\n\006imgurl\030\006 \001(\t\022\021\n\ttime_open\030\007 \001(\005\022\022\n\ntim"
     "e_close\030\010 \001(\0052S\n\007message\022\036.METRO.CRO.MES"
-    "SAGES.IpcMessage\030\312\001 \001(\0132!.METRO.CRO.MESS"
+    "SAGES.IpcMessage\030\313\001 \001(\0132!.METRO.CRO.MESS"
     "AGES.ClassroomInfo", 338);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassroomInfo.proto", &protobuf_RegisterTypes);
@@ -104,7 +104,7 @@ void protobuf_AddDesc_ClassroomInfo_2eproto() {
   ClassroomInfo::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    202, 11, false, false,
+    203, 11, false, false,
     &::METRO::CRO::MESSAGES::ClassroomInfo::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ClassroomInfo_2eproto);
 }

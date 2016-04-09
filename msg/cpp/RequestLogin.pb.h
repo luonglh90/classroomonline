@@ -117,7 +117,7 @@ class RequestLogin : public ::google::protobuf::Message {
   inline ::std::string* release_password();
   inline void set_allocated_password(::std::string* password);
 
-  static const int kMessageFieldNumber = 103;
+  static const int kMessageFieldNumber = 105;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::RequestLogin >, 11, false >
     message;

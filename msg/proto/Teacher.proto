@@ -5,7 +5,7 @@ package METRO.CRO.MESSAGES;
 
 message Teacher {
 	extend IpcMessage {
-		optional Teacher message = 102;
+		optional Teacher message = 103;
 	}
 
 	required User userinfo = 1;

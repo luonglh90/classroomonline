@@ -8,14 +8,15 @@
 
 using namespace METRO::CRO::MESSAGES;
 
-class ClassroomOnline : public QObject
+class ClassroomOnline
 {
-    Q_OBJECT
 public:
+    ClassroomOnline(){}
     explicit ClassroomOnline(User teacher, int uid);
     bool checkUidOfClass(int uid);
 
     void routeMsg(int uid, IpcMessage *ipc);
+    void processTeacherDisconnect();
 
 signals:
 

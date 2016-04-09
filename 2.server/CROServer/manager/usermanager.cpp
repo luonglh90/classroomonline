@@ -54,7 +54,7 @@ User UserManager::getUserOnlineByUid(int uid) {
     User user;
     if(mHashUserOnline.contains(uid)) {
         QString username = mHashUserOnline.value(uid);
-        if(mMapAllUser.contains(usernamer)) {
+        if(mMapAllUser.contains(username)) {
             return mMapAllUser.value(username);
         }
     }

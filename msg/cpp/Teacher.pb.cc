@@ -88,7 +88,7 @@ void protobuf_AddDesc_Teacher_2eproto() {
     "Message.proto\032\nUser.proto\"\242\001\n\007Teacher\022*\n"
     "\010userinfo\030\001 \002(\0132\030.METRO.CRO.MESSAGES.Use"
     "r\022\017\n\007classid\030\002 \003(\005\022\014\n\004rate\030\003 \001(\0012L\n\007mess"
-    "age\022\036.METRO.CRO.MESSAGES.IpcMessage\030f \001("
+    "age\022\036.METRO.CRO.MESSAGES.IpcMessage\030g \001("
     "\0132\033.METRO.CRO.MESSAGES.Teacher", 230);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Teacher.proto", &protobuf_RegisterTypes);
@@ -96,7 +96,7 @@ void protobuf_AddDesc_Teacher_2eproto() {
   Teacher::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    102, 11, false, false,
+    103, 11, false, false,
     &::METRO::CRO::MESSAGES::Teacher::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Teacher_2eproto);
 }

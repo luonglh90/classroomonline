@@ -52,8 +52,8 @@ void Server::initChannels()
 
 void Server::openSocket()
 {
-    int port = 1234;
-    WebsocketCom::instance()->initWebsocket(1234);
+    int port = 8668;
+    WebsocketCom::instance()->initWebsocket(port);
     qDebug() << "CRO websocket listens at " << port;
     if(WebsocketCom::instance()->startWebsocketServer()) {
         qDebug() << "CRO websocket listen ok";

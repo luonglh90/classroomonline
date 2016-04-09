@@ -4,7 +4,7 @@ package METRO.CRO.MESSAGES;
 
 message RequestViewCategoryDetail {
 	extend IpcMessage {
-		optional RequestViewCategoryDetail message = 203;
+		optional RequestViewCategoryDetail message = 205;
 	}
 
 	required int32 cate_id = 1;
