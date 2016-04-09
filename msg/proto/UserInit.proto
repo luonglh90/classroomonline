@@ -6,7 +6,7 @@ package METRO.CRO.MESSAGES;
 
 message UserInit {
 	extend IpcMessage {
-		optional UserInit message = 105;
+		optional UserInit message = 109;
 	}
 
 	required User userinfo = 1;

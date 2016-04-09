@@ -167,7 +167,7 @@ class ClassroomInfo : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 time_close() const;
   inline void set_time_close(::google::protobuf::int32 value);
 
-  static const int kMessageFieldNumber = 202;
+  static const int kMessageFieldNumber = 203;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassroomInfo >, 11, false >
     message;

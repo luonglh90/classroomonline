@@ -85,7 +85,7 @@ void protobuf_AddDesc_RequestViewCategoryDetail_2eproto() {
     ".CRO.MESSAGES\032\020IpcMessage.proto\"\215\001\n\031Requ"
     "estViewCategoryDetail\022\017\n\007cate_id\030\001 \002(\0052_"
     "\n\007message\022\036.METRO.CRO.MESSAGES.IpcMessag"
-    "e\030\313\001 \001(\0132-.METRO.CRO.MESSAGES.RequestVie"
+    "e\030\315\001 \001(\0132-.METRO.CRO.MESSAGES.RequestVie"
     "wCategoryDetail", 215);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "RequestViewCategoryDetail.proto", &protobuf_RegisterTypes);
@@ -93,7 +93,7 @@ void protobuf_AddDesc_RequestViewCategoryDetail_2eproto() {
   RequestViewCategoryDetail::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    203, 11, false, false,
+    205, 11, false, false,
     &::METRO::CRO::MESSAGES::RequestViewCategoryDetail::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_RequestViewCategoryDetail_2eproto);
 }

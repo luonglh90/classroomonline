@@ -7,6 +7,8 @@
 #include "websocketcom.h"
 
 class UserChannel;
+class ClassInfoChannel;
+class ClassOnlineChannel;
 class MessageReceiveChannel;
 
 class Server : public QObject
@@ -25,6 +27,8 @@ private:
 
     QMap<ChannelType, BaseChannel*> mChannels;
     UserChannel *mUserChannel;
+    ClassInfoChannel *mClassInfoChannel;
+    ClassOnlineChannel *mClassOnlineChannel;
     MessageReceiveChannel *mMsgReceivedChannel;
 };
 

@@ -33,7 +33,7 @@ void WebsocketCom::onRequestSendToSocketClient(int uid, QByteArray data)
 {
     if(mHashClients.contains(uid)) {
         auto socket = mHashClients[uid];
-        qDebug() << "send to client " << socket->peerAddress().toString() << ": " << QString::fromStdString(data.toHex().toStdString());
+        qDebug() << "send to client: " << data.size() << " bytes, " << socket->peerAddress().toString() << ": " << QString::fromStdString(data.toHex().toStdString());
 
         socket->sendBinaryMessage(QByteArray(data));
     }

@@ -1,5 +1,6 @@
 #include "../../msg/cpp/ipcmessagetype.h"
-#include "../../msg/cpp/ResponseLogin.pb.h"
+#include "../../msg/cpp/LoginStatus.pb.h"
+#include "../../msg/cpp/RequestViewCategoryDetail.pb.h"
 #include "utils/ipcmsghelper.h"
 #include "base/cmmdefs.h"
 #include "utils/socketutils.h"
@@ -14,6 +15,8 @@ UserChannel::UserChannel() : BaseChannel()
 
 void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 {
+    qDebug() << QString::fromStdString(msg->SerializeAsString());
+
     QString userName = QString::fromStdString(msg->username());
     QString passwd = QString::fromStdString(msg->password());
 
@@ -21,15 +24,19 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 
     bool isValid = UserManager::instance()->checkUserLogin(userName, passwd);
 
-    ResponseLogin response;
-    response.set_username(msg->username());
+
+    LoginStatus stt;
+    stt.set_name(msg->username());
     if(isValid) {
-        response.set_status(Enums_ResponseLoginEnums_SUCCESS);
+        stt.set_stt(0);
     } else {
-        response.set_status(Enums_ResponseLoginEnums_FAILD_WRONG_PASS);
+        stt.set_stt(1);
     }
 
-    MessageSender::instance()->sendIpcMessage(uid, &response);
+//    RequestViewCategoryDetail tmp;
+    MessageSender::instance()->sendIpcMessage(uid, &stt);
+//    tmp.set_cate_id(1);
+//
 
     UserManager::instance()->initUserInfo(uid, userName);
 }

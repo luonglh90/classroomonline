@@ -18,6 +18,7 @@ public:
     QList<ClassCategory> getListCategories() {
         return mHashClassCategory.values();
     }
+    void sendClassroomOfCategory(int socketuid, int cate_id);
 
 signals:
 

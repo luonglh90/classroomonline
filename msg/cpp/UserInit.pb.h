@@ -116,7 +116,7 @@ class UserInit : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassCategory >*
       mutable_categories();
 
-  static const int kMessageFieldNumber = 105;
+  static const int kMessageFieldNumber = 109;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::UserInit >, 11, false >
     message;

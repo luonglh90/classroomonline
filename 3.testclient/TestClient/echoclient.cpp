@@ -91,6 +91,7 @@ void EchoClient::onBinaryMessageReceived(QByteArray msg)
         ResponseLogin *res = (ResponseLogin*)IpcMsgHelper::getMessage(&ipc);
         if(res) {
             qDebug() << QString::fromStdString(res->username());
+            qDebug() << QString::fromStdString(res->SerializeAsString());
         }
         break;
     }

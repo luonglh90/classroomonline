@@ -1,6 +1,8 @@
 #include <QDebug>
+#include "../../msg/cpp/ClassroomInfoOfCategory.pb.h"
 #include "pgdao/classcategorydao.h"
 #include "pgdao/classinfodao.h"
+#include "utils/messagesender.h"
 #include "usermanager.h"
 #include "classinfomanager.h"
 
@@ -61,4 +63,22 @@ void ClassInfoManager::loadAllClassroomInfo()
     } else {
         qDebug() << "error: " << errMsg;
     }
+}
+
+void ClassInfoManager::sendClassroomOfCategory(int socketuid, int cate_id)
+{
+    QList<ClassroomInfo> listOfClasses;
+    for(ClassroomInfo &info : mHashClassroomInfo.values()) {
+        if(info.cate_id() == cate_id) {
+            listOfClasses.append(info);
+        }
+    }
+    ClassroomInfoOfCategory msg;
+    msg.set_cate_id(cate_id);
+    for(ClassroomInfo &info : listOfClasses) {
+        ClassroomInfo *data = msg.add_listofclasses();
+        (*data) = info;
+    }
+
+    MessageSender::instance()->sendIpcMessage(socketuid, &msg);
 }

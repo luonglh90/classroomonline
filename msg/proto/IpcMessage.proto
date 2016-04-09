@@ -1,17 +1,21 @@
 /**
  * Defines index with each message
  * 
- * User
+ * User 100
  * - User: 101
- * - Teacher: 102
- * - RequestLogin: 103
- * - ResponseLogin: 104
- * - UserInit: 105
- * Class
+ * - Teacher: 103
+ * - RequestLogin: 105
+ * - ResponseLogin: 107
+ * - UserInit: 109
+ * - LoginStatus: 111
+ * Class 200
  * - Category: 201
- * - ClassroomInfo: 202
- * - RequestViewCategoryDetail: 203
- * - ClassroomInfoOfCategory: 204
+ * - ClassroomInfo: 203
+ * - RequestViewCategoryDetail: 205
+ * - ClassroomInfoOfCategory: 207
+ * Class Online 300
+ * - TeacherOpenClass = 301
+ * - ClassOnlineAction = 303
  */
 
 package METRO.CRO.MESSAGES;

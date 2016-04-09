@@ -122,7 +122,7 @@ class Teacher : public ::google::protobuf::Message {
   inline double rate() const;
   inline void set_rate(double value);
 
-  static const int kMessageFieldNumber = 102;
+  static const int kMessageFieldNumber = 103;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::Teacher >, 11, false >
     message;

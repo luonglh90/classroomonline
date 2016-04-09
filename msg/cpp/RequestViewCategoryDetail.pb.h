@@ -100,7 +100,7 @@ class RequestViewCategoryDetail : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 cate_id() const;
   inline void set_cate_id(::google::protobuf::int32 value);
 
-  static const int kMessageFieldNumber = 203;
+  static const int kMessageFieldNumber = 205;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::RequestViewCategoryDetail >, 11, false >
     message;

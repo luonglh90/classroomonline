@@ -88,7 +88,7 @@ void protobuf_AddDesc_ClassroomInfoOfCategory_2eproto() {
     "Info.proto\"\303\001\n\027ClassroomInfoOfCategory\022\017"
     "\n\007cate_id\030\001 \002(\005\0228\n\rlistOfClasses\030\002 \003(\0132!"
     ".METRO.CRO.MESSAGES.ClassroomInfo2]\n\007mes"
-    "sage\022\036.METRO.CRO.MESSAGES.IpcMessage\030\314\001 "
+    "sage\022\036.METRO.CRO.MESSAGES.IpcMessage\030\317\001 "
     "\001(\0132+.METRO.CRO.MESSAGES.ClassroomInfoOf"
     "Category", 288);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -97,7 +97,7 @@ void protobuf_AddDesc_ClassroomInfoOfCategory_2eproto() {
   ClassroomInfoOfCategory::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::ExtensionSet::RegisterMessageExtension(
     &::METRO::CRO::MESSAGES::IpcMessage::default_instance(),
-    204, 11, false, false,
+    207, 11, false, false,
     &::METRO::CRO::MESSAGES::ClassroomInfoOfCategory::default_instance());
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ClassroomInfoOfCategory_2eproto);
 }

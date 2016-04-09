@@ -1,0 +1,22 @@
+import "IpcMessage.proto";
+
+package METRO.CRO.MESSAGES;
+
+message ClassOnlineAction {
+	extend IpcMessage {
+		optional ClassOnlineAction message = 303;
+	}
+
+	enum ActionType {
+		OPEN_CLASS = 1;
+		CLOSE_CLASS = 2;
+		REQUEST_JOINT = 3;
+		ACCEPT_JOINT = 4;
+		REQUEST_DRAW_BOARD = 5;
+		ACCEPT_DRAW_BOARD = 6;
+	}
+
+	optional string targetusername = 1;
+	optional int32 classid = 2;
+	optional ActionType actiontype = 3;
+}
