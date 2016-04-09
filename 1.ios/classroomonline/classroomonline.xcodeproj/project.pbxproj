@@ -10,9 +10,15 @@
 		4195378A1CB8BBCA00773F93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537891CB8BBCA00773F93 /* main.m */; };
 		4195378D1CB8BBCA00773F93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4195378C1CB8BBCA00773F93 /* AppDelegate.m */; };
 		419537901CB8BBCA00773F93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4195378F1CB8BBCA00773F93 /* ViewController.m */; };
-		419537931CB8BBCA00773F93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419537911CB8BBCA00773F93 /* Main.storyboard */; };
 		419537951CB8BBCA00773F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419537941CB8BBCA00773F93 /* Assets.xcassets */; };
 		419537981CB8BBCA00773F93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419537961CB8BBCA00773F93 /* LaunchScreen.storyboard */; };
+		419537A51CB8BD0200773F93 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537A41CB8BD0200773F93 /* BaseViewController.m */; };
+		419537A91CB8BD1600773F93 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537A71CB8BD1600773F93 /* HomeViewController.m */; };
+		419537AA1CB8BD1600773F93 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419537A81CB8BD1600773F93 /* HomeViewController.xib */; };
+		419537AE1CB8BD2700773F93 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537AC1CB8BD2700773F93 /* DashboardViewController.m */; };
+		419537AF1CB8BD2700773F93 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419537AD1CB8BD2700773F93 /* DashboardViewController.xib */; };
+		419537B31CB8BD4200773F93 /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 419537B11CB8BD4200773F93 /* RoomViewController.m */; };
+		419537B41CB8BD4200773F93 /* RoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419537B21CB8BD4200773F93 /* RoomViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +28,20 @@
 		4195378C1CB8BBCA00773F93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4195378E1CB8BBCA00773F93 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4195378F1CB8BBCA00773F93 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		419537921CB8BBCA00773F93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		419537941CB8BBCA00773F93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		419537971CB8BBCA00773F93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		419537991CB8BBCA00773F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		419537A31CB8BD0200773F93 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		419537A41CB8BD0200773F93 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		419537A61CB8BD1600773F93 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		419537A71CB8BD1600773F93 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		419537A81CB8BD1600773F93 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		419537AB1CB8BD2700773F93 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		419537AC1CB8BD2700773F93 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		419537AD1CB8BD2700773F93 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		419537B01CB8BD4200773F93 /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
+		419537B11CB8BD4200773F93 /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		419537B21CB8BD4200773F93 /* RoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +74,14 @@
 		419537871CB8BBCA00773F93 /* classroomonline */ = {
 			isa = PBXGroup;
 			children = (
+				4195379F1CB8BCF600773F93 /* base */,
+				419537A01CB8BCF600773F93 /* dashboard */,
+				419537A11CB8BCF600773F93 /* home */,
+				419537A21CB8BCF600773F93 /* room */,
 				4195378B1CB8BBCA00773F93 /* AppDelegate.h */,
 				4195378C1CB8BBCA00773F93 /* AppDelegate.m */,
 				4195378E1CB8BBCA00773F93 /* ViewController.h */,
 				4195378F1CB8BBCA00773F93 /* ViewController.m */,
-				419537911CB8BBCA00773F93 /* Main.storyboard */,
 				419537941CB8BBCA00773F93 /* Assets.xcassets */,
 				419537961CB8BBCA00773F93 /* LaunchScreen.storyboard */,
 				419537991CB8BBCA00773F93 /* Info.plist */,
@@ -77,6 +96,49 @@
 				419537891CB8BBCA00773F93 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4195379F1CB8BCF600773F93 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				419537A31CB8BD0200773F93 /* BaseViewController.h */,
+				419537A41CB8BD0200773F93 /* BaseViewController.m */,
+			);
+			name = base;
+			path = viewcontrollers/base;
+			sourceTree = "<group>";
+		};
+		419537A01CB8BCF600773F93 /* dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				419537AB1CB8BD2700773F93 /* DashboardViewController.h */,
+				419537AC1CB8BD2700773F93 /* DashboardViewController.m */,
+				419537AD1CB8BD2700773F93 /* DashboardViewController.xib */,
+			);
+			name = dashboard;
+			path = viewcontrollers/dashboard;
+			sourceTree = "<group>";
+		};
+		419537A11CB8BCF600773F93 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				419537A61CB8BD1600773F93 /* HomeViewController.h */,
+				419537A71CB8BD1600773F93 /* HomeViewController.m */,
+				419537A81CB8BD1600773F93 /* HomeViewController.xib */,
+			);
+			name = home;
+			path = viewcontrollers/home;
+			sourceTree = "<group>";
+		};
+		419537A21CB8BCF600773F93 /* room */ = {
+			isa = PBXGroup;
+			children = (
+				419537B01CB8BD4200773F93 /* RoomViewController.h */,
+				419537B11CB8BD4200773F93 /* RoomViewController.m */,
+				419537B21CB8BD4200773F93 /* RoomViewController.xib */,
+			);
+			name = room;
+			path = viewcontrollers/room;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +198,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419537B41CB8BD4200773F93 /* RoomViewController.xib in Resources */,
 				419537981CB8BBCA00773F93 /* LaunchScreen.storyboard in Resources */,
 				419537951CB8BBCA00773F93 /* Assets.xcassets in Resources */,
-				419537931CB8BBCA00773F93 /* Main.storyboard in Resources */,
+				419537AA1CB8BD1600773F93 /* HomeViewController.xib in Resources */,
+				419537AF1CB8BD2700773F93 /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +214,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				419537901CB8BBCA00773F93 /* ViewController.m in Sources */,
+				419537AE1CB8BD2700773F93 /* DashboardViewController.m in Sources */,
+				419537A51CB8BD0200773F93 /* BaseViewController.m in Sources */,
 				4195378D1CB8BBCA00773F93 /* AppDelegate.m in Sources */,
+				419537B31CB8BD4200773F93 /* RoomViewController.m in Sources */,
+				419537A91CB8BD1600773F93 /* HomeViewController.m in Sources */,
 				4195378A1CB8BBCA00773F93 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,14 +226,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		419537911CB8BBCA00773F93 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				419537921CB8BBCA00773F93 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		419537961CB8BBCA00773F93 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -264,6 +324,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = classroomonline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nta.classroomonline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -275,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = classroomonline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nta.classroomonline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
