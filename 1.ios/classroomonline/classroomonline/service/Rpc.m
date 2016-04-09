@@ -9,7 +9,7 @@
 #import "Rpc.h"
 #import "RequestLogin.pb.h"
 #import "ipcmessagetype.h"
-
+#import "ResponseLogin.pb.h"
 
 @interface Rpc(){
 }
@@ -20,7 +20,7 @@
 
 @implementation Rpc
 
-+ (instancetype)sharedInstance
++ (instancetype)instance
 {
     static Rpc *rpc = nil;
     static dispatch_once_t onceToken;
@@ -59,50 +59,14 @@
 
 #pragma mark -
 #pragma mark - Sign in methods
-
+// Login
 - (void)requestSigninWithName:(NSString*)name pass:(NSString*)pass{
     [RequestLoginRoot initialize];
     RequestLogin *request = [[[[RequestLogin builder] setUsername:name] setPassword:pass] build];
     IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:REQUEST_LOGIN_MSG] ;
     [ipc setExtension:[RequestLogin message] value:request];
-    
-    
-//    [ipc addExtension:[RequestLogin message] value:[request data]];
-    
-    
-    
-//
-//    IpcMessage *ipc = [[IpcMessage alloc] init];
-//    [ipc setex
-//    
-//    
-//    
-//    Foo *fooMsg = [[Foo alloc] init];
-//    
-//    // Set the single field extensions
-//    [fooMsg setExtension:[Test2Root foo] value:@5];
-//    NSAssert([fooMsg hasExtension:[Test2Root foo]]);
-//    NSAssert([[fooMsg getExtension:[Test2Root foo]] intValue] == 5);
-//    
-//    // Add two things to the repeated extension:
-//    [fooMsg addExtension:[Test2Root repeatedFoo] value:@1];
-//    [fooMsg addExtension:[Test2Root repeatedFoo] value:@2];
-//    NSAssert([fooMsg hasExtension:[Test2Root repeatedFoo]]);
-//    NSAssert([[fooMsg getExtension:[Test2Root repeatedFoo]] count] == 2);
-//    
-//    // Clearing
-//    [fooMsg clearExtension:[Test2Root foo]];
-//    [fooMsg clearExtension:[Test2Root repeatedFoo]];
-//    NSAssert(![fooMsg hasExtension:[Test2Root foo]]);
-//    NSAssert(![fooMsg hasExtension:[Test2Root repeatedFoo]]);
-    
-    
-//    [IpcMessage builder] set
-    
-    
     [self.webSocket send:[[ipc build] data]];
 }
-
 
 #pragma mark -
 #pragma mark - SRWebSocket delegate
@@ -146,6 +110,48 @@
     }
     IpcMessage *ipc = [IpcMessage parseFromData:message];
     NSLog(@"%@", ipc);
+//#define USER_BASE   100
+//#define USER_MSG    (USER_BASE + 1)
+//#define TEACHER_MSG (USER_BASE + 2)
+//#define REQUEST_LOGIN_MSG (USER_BASE + 3)
+//#define RESPONSE_LOGIN_MSG (USER_BASE + 4)
+//    
+//#define CLASS_BASE 200
+//#define CATEGORY_MSG (CLASS_BASE + 1)
+//#define CALSSROOM_MSG (CLASS_BASE + 2)
+    switch (ipc.msgId) {
+        // USER_BASE
+        case USER_MSG:{
+            
+        }
+            break;
+        case TEACHER_MSG:{
+            
+        }
+            break;
+        case RESPONSE_LOGIN_MSG:{
+            [ResponseLoginRoot initialize];
+            ResponseLogin *response = [ResponseLogin parseFromData:[ipc getExtension:[ResponseLogin message]]];
+            if (response.status == EnumsResponseLoginEnumsSuccess && self.onSignInSuccess) {
+                self.onSignInSuccess(response.username);
+            }
+            else if (self.onSignInFail){
+                self.onSignInFail();
+            }
+        }
+            break;
+        // CLASS BASE
+        case CATEGORY_MSG:{
+            
+        }
+            break;
+        case CALSSROOM_MSG:{
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomeViewController.h"
+#import "MBProgressHUD.h"
 
 @interface AppDelegate ()
 
@@ -46,6 +47,21 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+// Show HUB progress
+- (void)showLoading{
+    [MBProgressHUD showHUDAddedTo:self.window animated:YES];
+//    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+//        // Do something...
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            
+//        });
+//    });
+}
+
+- (void)hideLoading{
+    [MBProgressHUD hideHUDForView:self.window animated:YES];
 }
 
 @end

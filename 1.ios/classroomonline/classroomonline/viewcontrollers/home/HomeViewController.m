@@ -10,6 +10,8 @@
 #import "DashboardViewController.h"
 #import "SignUpViewController.h"
 #import "Rpc.h"
+#import "ROSession.h"
+#import "Utils.h"
 
 @interface HomeViewController ()
 
@@ -36,17 +38,32 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 - (IBAction)actionSignIn:(id)sender {
+    NSString *username = self.txtName.text;
+    NSString *pass = self.txtPass.text;
     
-    [[Rpc sharedInstance] connectSocket];
-    [[Rpc sharedInstance] setOnSocketConnected:^(){
-        [[Rpc sharedInstance] requestSigninWithName:@"teacher1" pass:@"123456"];
+    if (!username || ![username isEqualToString:@""] || !pass || ![pass isEqualToString:@""]) {
+        [Utils showAlertTitle:app_name content:signin_empty_name_pass];
+        return;
+    }
+    [ROAppDelegate showLoading];
+    [[Rpc instance] connectSocket];
+    [[Rpc instance] setOnSocketConnected:^(){
+        [[Rpc instance] requestSigninWithName:@"teacher1" pass:@"123456"];
     }];
-    
-    
-//    DashboardViewController *dashboard = [[DashboardViewController alloc] initWithNibName:NSStringFromClass([DashboardViewController class]) bundle:nil];
-//    [self.navigationController pushViewController:dashboard animated:YES];
+    [[Rpc instance] setOnSocketConnectFail:^(){
+        [Utils showAlertTitle:app_name content:socket_connect_fail];
+    }];
+    [[Rpc instance] setOnSignInSuccess:^(NSString *name){
+        [[ROSession instance] setUsername:name];
+        [ROAppDelegate hideLoading];
+        DashboardViewController *dashboard = [[DashboardViewController alloc] initWithNibName:NSStringFromClass([DashboardViewController class]) bundle:nil];
+        [self.navigationController pushViewController:dashboard animated:YES];
+    }];
+    [[Rpc instance] setOnSignInFail:^(){
+        [ROAppDelegate hideLoading];
+        [Utils showAlertTitle:app_name content:signin_fail];
+    }];
 }
 
 - (IBAction)actionSignUp:(id)sender {

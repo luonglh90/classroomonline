@@ -11,6 +11,4 @@
 
 #define ROAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 
-
-
 #endif /* AppSetting_h */

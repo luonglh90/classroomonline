@@ -17,9 +17,11 @@
 // block
 @property (nonatomic, copy) void(^onSocketConnected)();
 @property (nonatomic, copy) void(^onSocketConnectFail)();
+@property (nonatomic, copy) void(^onSignInSuccess)(NSString *name);
+@property (nonatomic, copy) void(^onSignInFail)();
 
 
-+ (instancetype)sharedInstance;
++ (instancetype)instance;
 
 - (void)connectSocket;
 - (void)requestSigninWithName:(NSString*)name pass:(NSString*)pass;
