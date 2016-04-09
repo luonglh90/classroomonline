@@ -1,6 +1,7 @@
 import "IpcMessage.proto";
 import "User.proto";
 import "ClassCategory.proto";
+import "ClassroomInfo.proto";
 
 package METRO.CRO.MESSAGES;
 
@@ -11,4 +12,5 @@ message UserInit {
 
 	required User userinfo = 1;
 	repeated ClassCategory categories = 2;
+	repeated ClassroomInfo ownerclass = 3;
 }

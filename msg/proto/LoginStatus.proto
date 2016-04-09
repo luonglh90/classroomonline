@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import "IpcMessage.proto";
-
-package METRO.CRO.MESSAGES;
-
-message LoginStatus {
-	extend IpcMessage {
-		optional LoginStatus message = 109;
-	}
-
-	optional string name = 1;
-	optional int32 stt = 2;
-=======
 import "IpcMessage.proto";
 
 package METRO.CRO.MESSAGES;
@@ -22,5 +9,4 @@ message LoginStatus {
 
 	optional string name = 1;
 	optional int32 stt = 2;
->>>>>>> thanhtt
 }
