@@ -1,0 +1,11 @@
+import "IpcMessage.proto";
+
+package METRO.CRO.MESSAGES;
+
+message RequestViewCategoryDetail {
+	extend IpcMessage {
+		optional RequestViewCategoryDetail message = 203;
+	}
+
+	required int32 cate_id = 1;
+}

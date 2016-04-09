@@ -15,6 +15,7 @@ class UserManager : public QObject
 public:
     static UserManager *instance();
     void loadAllUser();
+    User getUserByUserName(QString userName);
 
     bool checkUserLogin(QString username, QString password);
     void userLogOff(int socketuid);

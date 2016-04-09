@@ -37,10 +37,20 @@ void UserManager::loadAllUser()
     }
 }
 
+User UserManager::getUserByUserName(QString userName)
+{
+    if(mMapAllUser.contains(userName)) {
+        return mMapAllUser.value(userName);
+    } else {
+        return User();
+    }
+}
+
 bool UserManager::checkUserLogin(QString username, QString password)
 {
     if(mMapAllUser.contains(username)) {
-        return mMapAllUser[username].username() == password.toStdString();
+        QString pass = QString::fromStdString(mMapAllUser[username].password());
+        return pass.compare(password) == 0;
     } else {
         return false;
     }

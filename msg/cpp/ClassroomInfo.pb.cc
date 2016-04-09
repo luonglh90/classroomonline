@@ -87,17 +87,17 @@ void protobuf_AddDesc_ClassroomInfo_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_Teacher_2eproto();
+  ::METRO::CRO::MESSAGES::protobuf_AddDesc_User_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ClassroomInfo.proto\022\022METRO.CRO.MESSAGE"
-    "S\032\020IpcMessage.proto\032\rTeacher.proto\"\213\002\n\rC"
-    "lassroomInfo\022\014\n\004u_id\030\001 \002(\005\022\017\n\007cate_id\030\002 "
-    "\002(\005\022\014\n\004name\030\003 \002(\t\022,\n\007teacher\030\004 \002(\0132\033.MET"
-    "RO.CRO.MESSAGES.Teacher\022\023\n\013description\030\005"
-    " \001(\t\022\016\n\006imgurl\030\006 \001(\t\022\021\n\ttime_open\030\007 \001(\005\022"
-    "\022\n\ntime_close\030\010 \001(\0052S\n\007message\022\036.METRO.C"
-    "RO.MESSAGES.IpcMessage\030\312\001 \001(\0132!.METRO.CR"
-    "O.MESSAGES.ClassroomInfo", 344);
+    "S\032\020IpcMessage.proto\032\nUser.proto\"\210\002\n\rClas"
+    "sroomInfo\022\014\n\004u_id\030\001 \002(\005\022\017\n\007cate_id\030\002 \002(\005"
+    "\022\014\n\004name\030\003 \002(\t\022)\n\007teacher\030\004 \002(\0132\030.METRO."
+    "CRO.MESSAGES.User\022\023\n\013description\030\005 \001(\t\022\016"
+    "\n\006imgurl\030\006 \001(\t\022\021\n\ttime_open\030\007 \001(\005\022\022\n\ntim"
+    "e_close\030\010 \001(\0052S\n\007message\022\036.METRO.CRO.MES"
+    "SAGES.IpcMessage\030\312\001 \001(\0132!.METRO.CRO.MESS"
+    "AGES.ClassroomInfo", 338);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassroomInfo.proto", &protobuf_RegisterTypes);
   ClassroomInfo::default_instance_ = new ClassroomInfo();
@@ -142,7 +142,7 @@ ClassroomInfo::ClassroomInfo()
 }
 
 void ClassroomInfo::InitAsDefaultInstance() {
-  teacher_ = const_cast< ::METRO::CRO::MESSAGES::Teacher*>(&::METRO::CRO::MESSAGES::Teacher::default_instance());
+  teacher_ = const_cast< ::METRO::CRO::MESSAGES::User*>(&::METRO::CRO::MESSAGES::User::default_instance());
 }
 
 ClassroomInfo::ClassroomInfo(const ClassroomInfo& from)
@@ -227,7 +227,7 @@ void ClassroomInfo::Clear() {
       }
     }
     if (has_teacher()) {
-      if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::Teacher::Clear();
+      if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::User::Clear();
     }
     if (has_description()) {
       if (description_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -304,7 +304,7 @@ bool ClassroomInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+      // required .METRO.CRO.MESSAGES.User teacher = 4;
       case 4: {
         if (tag == 34) {
          parse_teacher:
@@ -426,7 +426,7 @@ void ClassroomInfo::SerializeWithCachedSizes(
       3, this->name(), output);
   }
 
-  // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+  // required .METRO.CRO.MESSAGES.User teacher = 4;
   if (has_teacher()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->teacher(), output);
@@ -493,7 +493,7 @@ void ClassroomInfo::SerializeWithCachedSizes(
         3, this->name(), target);
   }
 
-  // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+  // required .METRO.CRO.MESSAGES.User teacher = 4;
   if (has_teacher()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -565,7 +565,7 @@ int ClassroomInfo::ByteSize() const {
           this->name());
     }
 
-    // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+    // required .METRO.CRO.MESSAGES.User teacher = 4;
     if (has_teacher()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -637,7 +637,7 @@ void ClassroomInfo::MergeFrom(const ClassroomInfo& from) {
       set_name(from.name());
     }
     if (from.has_teacher()) {
-      mutable_teacher()->::METRO::CRO::MESSAGES::Teacher::MergeFrom(from.teacher());
+      mutable_teacher()->::METRO::CRO::MESSAGES::User::MergeFrom(from.teacher());
     }
     if (from.has_description()) {
       set_description(from.description());

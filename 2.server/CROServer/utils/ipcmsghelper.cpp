@@ -4,6 +4,8 @@
 #include "../../msg/cpp/RequestLogin.pb.h"
 #include "../../msg/cpp/ResponseLogin.pb.h"
 #include "../../msg/cpp/UserInit.pb.h"
+#include "../../msg/cpp/RequestViewCategoryDetail.pb.h"
+#include "../../msg/cpp/ClassroomInfoOfCategory.pb.h"
 
 std::map<std::string, int> nameIdMap;
 
@@ -21,6 +23,8 @@ void IpcMsgHelper::init() {
         nameIdMap["METRO.CRO.MESSAGES.RequestLogin"] = REQUEST_LOGIN_MSG;
         nameIdMap["METRO.CRO.MESSAGES.ResponseLogin"] = RESPONSE_LOGIN_MSG;
         nameIdMap["METRO.CRO.MESSAGES.UserInit"] = USER_INIT_MSG;
+        nameIdMap["METRO.CRO.MESSAGES.RequestViewCategoryDetail"] = REQUEST_VIEW_CATEGORY_DETAIL_MSG;
+        nameIdMap["METRO.CRO.MESSAGES.ClassroomInfoOfCategory"] = CLASSES_OF_CATEGORY;
     }
 }
 
@@ -47,6 +51,16 @@ IpcMessage* IpcMsgHelper::createIpcMessage(google::protobuf::Message* msg) {
     case USER_INIT_MSG: {
         UserInit* ipcExt = ipc->MutableExtension(UserInit::message);
         (*ipcExt) = (*(UserInit*) msg);
+        break;
+    }
+    case REQUEST_VIEW_CATEGORY_DETAIL_MSG: {
+        RequestViewCategoryDetail* ipcExt = ipc->MutableExtension(RequestViewCategoryDetail::message);
+        (*ipcExt) = (*(RequestViewCategoryDetail*) msg);
+        break;
+    }
+    case CLASSES_OF_CATEGORY: {
+        ClassroomInfoOfCategory* ipcExt = ipc->MutableExtension(ClassroomInfoOfCategory::message);
+        (*ipcExt) = (*(ClassroomInfoOfCategory*) msg);
         break;
     }
     default:
@@ -80,6 +94,16 @@ google::protobuf::Message* IpcMsgHelper::getMessage(IpcMessage* ipc) {
     case USER_INIT_MSG: {
         if(ipc->HasExtension(UserInit::message))
             msg = new UserInit(ipc->GetExtension(UserInit::message));
+        break;
+    }
+    case REQUEST_VIEW_CATEGORY_DETAIL_MSG: {
+        if(ipc->HasExtension(RequestViewCategoryDetail::message))
+            msg = new RequestViewCategoryDetail(ipc->GetExtension(RequestViewCategoryDetail::message));
+        break;
+    }
+    case CLASSES_OF_CATEGORY: {
+        if(ipc->HasExtension(ClassroomInfoOfCategory::message))
+            msg = new ClassroomInfoOfCategory(ipc->GetExtension(ClassroomInfoOfCategory::message));
         break;
     }
     default:

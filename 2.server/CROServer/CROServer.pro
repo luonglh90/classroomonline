@@ -33,7 +33,8 @@ SOURCES += main.cpp \
     ../../msg/cpp/UserInit.pb.cc \
     pgdao/classcategorydao.cpp \
     manager/classinfomanager.cpp \
-    utils/messagesender.cpp
+    utils/messagesender.cpp \
+    pgdao/classinfodao.cpp
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -64,7 +65,8 @@ HEADERS += \
     ../../msg/cpp/UserInit.pb.h \
     pgdao/classcategorydao.h \
     manager/classinfomanager.h \
-    utils/messagesender.h
+    utils/messagesender.h \
+    pgdao/classinfodao.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

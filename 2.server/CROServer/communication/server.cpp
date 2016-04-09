@@ -15,6 +15,7 @@ void Server::startServer()
     initChannels();
     UserManager::instance()->loadAllUser();
     ClassInfoManager::instance()->loadAllCategory();
+    ClassInfoManager::instance()->loadAllClassroomInfo();
 
     connect(WebsocketCom::instance(), SIGNAL(disconnected(int)),
             this, SLOT(onDisconneced(int)));
