@@ -73,8 +73,9 @@ void WebsocketCom::onDisconnected()
     if (clientSocket)
     {
         qDebug() << "ip: " << clientSocket->peerAddress().toString();
-        mHashClients.remove(SocketUtils::getUnitIp(clientSocket));
-        emit disconnected(clientSocket);
+        int uid = SocketUtils::getUnitIp(clientSocket);
+        mHashClients.remove(uid);
+        emit disconnected(uid);
         clientSocket->deleteLater();
     }
 }

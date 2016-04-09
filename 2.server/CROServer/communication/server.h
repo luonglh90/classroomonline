@@ -17,7 +17,7 @@ public:
     void startServer();
 
 private slots:
-    void onDisconneced(QWebSocket *socket);
+    void onDisconneced(int socketuid);
 
 private:
     void initChannels();

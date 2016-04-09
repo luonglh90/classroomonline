@@ -3,6 +3,7 @@
 #include "../../msg/cpp/ipcmessagetype.h"
 #include "../../msg/cpp/RequestLogin.pb.h"
 #include "../../msg/cpp/ResponseLogin.pb.h"
+#include "../../msg/cpp/UserInit.pb.h"
 
 std::map<std::string, int> nameIdMap;
 
@@ -19,6 +20,7 @@ void IpcMsgHelper::init() {
         // TODO: add all message name and id here
         nameIdMap["METRO.CRO.MESSAGES.RequestLogin"] = REQUEST_LOGIN_MSG;
         nameIdMap["METRO.CRO.MESSAGES.ResponseLogin"] = RESPONSE_LOGIN_MSG;
+        nameIdMap["METRO.CRO.MESSAGES.UserInit"] = USER_INIT_MSG;
     }
 }
 
@@ -40,6 +42,11 @@ IpcMessage* IpcMsgHelper::createIpcMessage(google::protobuf::Message* msg) {
     case RESPONSE_LOGIN_MSG: {
         ResponseLogin* ipcExt = ipc->MutableExtension(ResponseLogin::message);
         (*ipcExt) = (*(ResponseLogin*) msg);
+        break;
+    }
+    case USER_INIT_MSG: {
+        UserInit* ipcExt = ipc->MutableExtension(UserInit::message);
+        (*ipcExt) = (*(UserInit*) msg);
         break;
     }
     default:
@@ -68,6 +75,11 @@ google::protobuf::Message* IpcMsgHelper::getMessage(IpcMessage* ipc) {
     case RESPONSE_LOGIN_MSG: {
         if(ipc->HasExtension(ResponseLogin::message))
             msg = new ResponseLogin(ipc->GetExtension(ResponseLogin::message));
+        break;
+    }
+    case USER_INIT_MSG: {
+        if(ipc->HasExtension(UserInit::message))
+            msg = new UserInit(ipc->GetExtension(UserInit::message));
         break;
     }
     default:

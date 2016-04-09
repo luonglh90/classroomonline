@@ -13,6 +13,10 @@ class ClassInfoManager : public QObject
 public:
     static ClassInfoManager *instance();
     void loadAllCategory();
+    QList<ClassCategory> getListCategories() {
+        return mHashClassCategory.values();
+    }
+
 signals:
 
 public slots:

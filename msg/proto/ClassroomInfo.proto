@@ -16,4 +16,6 @@ message ClassroomInfo {
 
 	optional string description = 5;
 	optional string imgurl = 6;
+	optional int32 time_open = 7;
+	optional int32 time_close = 8;
 }

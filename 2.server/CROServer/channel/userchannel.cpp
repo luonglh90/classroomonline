@@ -3,6 +3,7 @@
 #include "utils/ipcmsghelper.h"
 #include "base/cmmdefs.h"
 #include "utils/socketutils.h"
+#include "utils/messagesender.h"
 #include "manager/usermanager.h"
 #include "channel/userchannel.h"
 
@@ -28,10 +29,9 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
         response.set_status(Enums_ResponseLoginEnums_FAILD_WRONG_PASS);
     }
 
-    IpcMessage *ipc = IpcMsgHelper::createIpcMessage(&response);
-    QByteArray array = SocketUtils::convertMsgToByteArray(ipc);
-    emit requestSendToSocketClient(uid, QByteArray(array));
-    _DELETE_PTR(ipc);
+    MessageSender::instance()->sendIpcMessage(uid, &response);
+
+    UserManager::instance()->initUserInfo(uid, userName);
 }
 
 void UserChannel::readMessage(IpcSocketEvelope *ipcevelope)
@@ -53,7 +53,7 @@ void UserChannel::readMessage(IpcSocketEvelope *ipcevelope)
     }
 }
 
-void UserChannel::onDisconnect(QWebSocket *socket)
+void UserChannel::onDisconnect(int socketuid)
 {
-
+    UserManager::instance()->userLogOff(socketuid);
 }
