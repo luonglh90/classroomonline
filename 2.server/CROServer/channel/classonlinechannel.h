@@ -5,6 +5,8 @@
 #include "entity/classroomonline.h"
 #include "basechannel.h"
 #include "../../msg/cpp/ClassOnlineAction.pb.h"
+#include "../../msg/cpp/BoardDrawLine.pb.h"
+#include "../../msg/cpp/BoardErase.pb.h"
 
 using namespace METRO::CRO::MESSAGES;
 
@@ -13,6 +15,7 @@ class ClassOnlineChannel : public BaseChannel
 public:
     ClassOnlineChannel();
     void processRequestClassAction(int uid, METRO::CRO::MESSAGES::ClassOnlineAction *msg);
+    void processRequestDrawBoard(int uid, METRO::CRO::MESSAGES::BoardDrawLine *msg);
     // action
     void userOpenClass(int uid, ClassOnlineAction *msg);
     void userRequestJointClass(int uid, ClassOnlineAction *msg);

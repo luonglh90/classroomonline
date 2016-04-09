@@ -5,4 +5,5 @@ package METRO.CRO.MESSAGES;
 message BoardDrawLine {
 	optional int32 lineid = 1;
 	repeated MetroPointXY points = 2;
+	optional int32 classid = 3;
 }

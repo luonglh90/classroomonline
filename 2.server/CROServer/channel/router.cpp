@@ -42,6 +42,9 @@ void Router::init()
     registerMessageWithChannel(REQUEST_LOGIN_MSG, ChannelType::USER_CHANNEL);
     registerMessageWithChannel(REQUEST_VIEW_CATEGORY_DETAIL_MSG, ChannelType::CLASS_CHANNEL);
     registerMessageWithChannel(CLASS_ONLINE_ACTION_MSG, ChannelType::CLASS_ONLINE_CHANNEL);
+    registerMessageWithChannel(BOARD_CHANGE_SETTING_MSG, ChannelType::CLASS_ONLINE_CHANNEL);
+    registerMessageWithChannel(BOARD_DRAW_LINE_MSG, ChannelType::CLASS_ONLINE_CHANNEL);
+    registerMessageWithChannel(BOARD_ERASE_MSG, ChannelType::CLASS_ONLINE_CHANNEL);
 }
 
 
