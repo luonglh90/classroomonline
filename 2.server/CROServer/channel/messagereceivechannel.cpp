@@ -8,7 +8,8 @@ MessageReceiveChannel::MessageReceiveChannel(QMap<ChannelType, BaseChannel *> *c
 
 void MessageReceiveChannel::onReceivedNewByteArray(QWebSocket *socket, QByteArray bytearray)
 {
-    IpcMessage *ipc = IpcMessage::ParseFromArray(bytearray.constData(), bytearray.size());
+    IpcMessage *ipc = new IpcMessage();
+    ipc->ParseFromArray(bytearray.constData(), bytearray.size());
     IpcSocketEvelope *ipcevelope = new IpcSocketEvelope(socket, ipc);
 
     mRouter->routeMessage2Channel(ipcevelope);

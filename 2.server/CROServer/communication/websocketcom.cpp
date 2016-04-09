@@ -29,6 +29,16 @@ bool WebsocketCom::startWebsocketServer()
     }
 }
 
+void WebsocketCom::onBinaryMessageReceived(const QByteArray &message)
+{
+    qDebug() << "New msg";
+    QWebSocket *clientSocket = qobject_cast<QWebSocket *>(sender());
+    if(clientSocket) {
+        qDebug() << "from: " << clientSocket->peerAddress().toString();
+        emit newMsgReceived(clientSocket, message);
+    }
+}
+
 // private slots
 void WebsocketCom::onNewConnection()
 {
@@ -37,6 +47,8 @@ void WebsocketCom::onNewConnection()
     if(clientSocket) {
         qDebug() << "ip: " << clientSocket->peerAddress().toString();
         connect(clientSocket, &QWebSocket::disconnected, this, &WebsocketCom::onDisconnected);
+        connect(clientSocket, SIGNAL(binaryMessageReceived(QByteArray)),
+                this, SLOT(onBinaryMessageReceived(QByteArray)));
         mHashClients.insert(SocketUtils::getUnitIp(clientSocket), clientSocket);
     } else {
         qDebug() << "but it not valid";
@@ -51,6 +63,7 @@ void WebsocketCom::onDisconnected()
     {
         qDebug() << "ip: " << clientSocket->peerAddress().toString();
         mHashClients.remove(SocketUtils::getUnitIp(clientSocket));
+        emit disconnected(clientSocket);
         clientSocket->deleteLater();
     }
 }

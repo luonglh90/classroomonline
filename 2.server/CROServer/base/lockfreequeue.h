@@ -55,7 +55,7 @@ public:
             // acquire exclusivity
             QThread::yieldCurrentThread();
         }
-        last->next.fetchAndStoreOrdered(tmp);         // publish to consumers
+        last.load()->next.fetchAndStoreOrdered(tmp);         // publish to consumers
         last.fetchAndStoreOrdered(tmp);             // swing last forward
         producerLock.fetchAndStoreOrdered(0);       // release exclusivity
         length++;

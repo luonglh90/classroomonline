@@ -8,7 +8,7 @@ class UserChannel : public BaseChannel
 {
     Q_OBJECT
 public:
-    explicit UserChannel(QObject *parent = 0);
+    explicit UserChannel();
 
 signals:
 
@@ -19,6 +19,7 @@ protected:
     void run();
     // BaseChannel interface
     void readMessage(IpcSocketEvelope *ipcevelope);
+    void onDisconnect(QWebSocket *socket);
 };
 
 #endif // USERCHANNEL_H

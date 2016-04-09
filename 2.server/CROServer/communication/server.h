@@ -4,18 +4,28 @@
 #include <QObject>
 #include "base/enums.h"
 #include "channel/basechannel.h"
+#include "websocketcom.h"
 
 class UserChannel;
+class MessageReceiveChannel;
 
 class Server : public QObject
 {
+    Q_OBJECT
 public:
     Server();
-    void initChannels();
+    void startServer();
+
+private slots:
+    void onDisconneced(QWebSocket *socket);
 
 private:
+    void initChannels();
+    void openSocket();
+
     QMap<ChannelType, BaseChannel*> mChannels;
     UserChannel *mUserChannel;
+    MessageReceiveChannel *mMsgReceivedChannel;
 };
 
 #endif // SERVER_H

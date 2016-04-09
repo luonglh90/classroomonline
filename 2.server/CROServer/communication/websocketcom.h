@@ -17,10 +17,13 @@ public:
     bool startWebsocketServer();
 
 signals:
-
+    void newMsgReceived(QWebSocket *socket, QByteArray byteArray);
+    void disconnected(QWebSocket *socket);
 public slots:
 
 private slots:
+
+    void onBinaryMessageReceived(const QByteArray &message);
     void onNewConnection();
     void onDisconnected();
 private:
