@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QHash>
 #include "../../msg/cpp/ClassCategory.pb.h"
+#include "../../msg/cpp/ClassroomInfo.pb.h"
 
 using namespace METRO::CRO::MESSAGES;
 
@@ -13,6 +14,11 @@ class ClassInfoManager : public QObject
 public:
     static ClassInfoManager *instance();
     void loadAllCategory();
+    void loadAllClassroomInfo();
+    QList<ClassCategory> getListCategories() {
+        return mHashClassCategory.values();
+    }
+
 signals:
 
 public slots:
@@ -21,6 +27,7 @@ private:
     explicit ClassInfoManager(QObject *parent = 0);
     static ClassInfoManager *mInstance;
     QHash<int, ClassCategory> mHashClassCategory;
+    QHash<int, ClassroomInfo> mHashClassroomInfo;
 };
 
 #endif // CLASSINFOMANAGER_H

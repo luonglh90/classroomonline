@@ -70,7 +70,7 @@ void EchoClient::onConnected()
     delete ipc;
     ipc = nullptr;
 
-//    m_webSocket.sendTextMessage(QStringLiteral("Hello, world!"));
+    //    m_webSocket.sendTextMessage(QStringLiteral("Hello, world!"));
 }
 
 void EchoClient::onTextMessageReceived(QString message)
@@ -82,5 +82,22 @@ void EchoClient::onTextMessageReceived(QString message)
 
 void EchoClient::onBinaryMessageReceived(QByteArray msg)
 {
+    IpcMessage ipc;
+    ipc.ParseFromArray(msg.constData(), msg.size());
+
+    switch (ipc.msgid()) {
+    case 104:
+    {
+        ResponseLogin *res = (ResponseLogin*)IpcMsgHelper::getMessage(&ipc);
+        if(res) {
+            qDebug() << QString::fromStdString(res->username());
+        }
+        break;
+    }
+    default:
+        break;
+    }
+
     qDebug() << QString::fromStdString(msg.toHex().toStdString());
+
 }

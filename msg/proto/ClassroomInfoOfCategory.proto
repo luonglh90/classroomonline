@@ -1,0 +1,13 @@
+import "IpcMessage.proto";
+import "ClassroomInfo.proto";
+
+package METRO.CRO.MESSAGES;
+
+message ClassroomInfoOfCategory {
+	extend IpcMessage {
+		optional ClassroomInfoOfCategory message = 204;
+	}
+
+	required int32 cate_id = 1;
+	repeated ClassroomInfo listOfClasses = 2;
+}

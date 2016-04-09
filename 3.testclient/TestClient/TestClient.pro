@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     ../../msg/cpp/User.pb.cc \
     echoclient.cpp \
     ../../2.server/CROServer/utils/socketutils.cpp \
-    ../../2.server/CROServer/utils/ipcmsghelper.cpp
+    ../../2.server/CROServer/utils/ipcmsghelper.cpp \
+    ../../msg/cpp/UserInit.pb.cc
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -34,7 +35,8 @@ HEADERS += \
     ../../msg/cpp/User.pb.h \
     echoclient.h \
     ../../2.server/CROServer/utils/socketutils.h \
-    ../../2.server/CROServer/utils/ipcmsghelper.h
+    ../../2.server/CROServer/utils/ipcmsghelper.h \
+    ../../msg/cpp/UserInit.pb.h
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf
 
