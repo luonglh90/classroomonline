@@ -46,6 +46,22 @@ User UserManager::getUserByUserName(QString userName)
     }
 }
 
+bool UserManager::checkUserOnline(int uid) {
+    return mHashUserOnline.contains(uid);
+}
+
+User UserManager::getUserOnlineByUid(int uid) {
+    User user;
+    if(mHashUserOnline.contains(uid)) {
+        QString username = mHashUserOnline.value(uid);
+        if(mMapAllUser.contains(usernamer)) {
+            return mMapAllUser.value(username);
+        }
+    }
+
+    return user;
+}
+
 bool UserManager::checkUserLogin(QString username, QString password)
 {
     if(mMapAllUser.contains(username)) {
@@ -70,6 +86,13 @@ void UserManager::initUserInfo(int sockuid, QString userName)
     }
 
     sendInitUser(sockuid, userName);
+}
+
+void UserManager::boardcastMsgToOnlineUsers(google::protobuf::Message *msg)
+{
+    for(int uid : mHashUserOnline.keys()) {
+        MessageSender::instance()->sendIpcMessage(uid, msg);
+    }
 }
 
 UserManager::UserManager()

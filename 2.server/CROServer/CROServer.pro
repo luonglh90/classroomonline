@@ -38,7 +38,10 @@ SOURCES += main.cpp \
     ../../msg/cpp/ClassroomInfoOfCategory.pb.cc \
     ../../msg/cpp/RequestViewCategoryDetail.pb.cc \
     ../../msg/cpp/LoginStatus.pb.cc \
-    channel/classinfochannel.cpp
+    channel/classinfochannel.cpp \
+    entity/classroomonline.cpp \
+    ../../msg/cpp/TeacherOpenClass.pb.cc \
+    channel/classonlinechannel.cpp
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -74,7 +77,10 @@ HEADERS += \
     ../../msg/cpp/ClassroomInfoOfCategory.pb.h \
     ../../msg/cpp/RequestViewCategoryDetail.pb.h \
     ../../msg/cpp/LoginStatus.pb.h \
-    channel/classinfochannel.h
+    channel/classinfochannel.h \
+    entity/classroomonline.h \
+    ../../msg/cpp/TeacherOpenClass.pb.h \
+    channel/classonlinechannel.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

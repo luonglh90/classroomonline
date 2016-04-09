@@ -4,7 +4,7 @@
 #include "manager/classinfomanager.h"
 #include "classinfochannel.h"
 
-ClassInfoChannel::ClassInfoChannel()
+ClassInfoChannel::ClassInfoChannel() : BaseChannel()
 {
 
 }

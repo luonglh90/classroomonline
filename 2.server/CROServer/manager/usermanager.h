@@ -16,10 +16,14 @@ public:
     static UserManager *instance();
     void loadAllUser();
     User getUserByUserName(QString userName);
+    bool checkUserOnline(int uid);
+    User getUserOnlineByUid(int uid);
 
     bool checkUserLogin(QString username, QString password);
     void userLogOff(int socketuid);
     void initUserInfo(int sockuid, QString userName);
+
+    void boardcastMsgToOnlineUsers(google::protobuf::Message *msg);
 signals:
     void requestSendToSocketClient(int socketuid, QByteArray data);
 private:

@@ -41,6 +41,7 @@ void Router::init()
 {
     registerMessageWithChannel(REQUEST_LOGIN_MSG, ChannelType::USER_CHANNEL);
     registerMessageWithChannel(REQUEST_VIEW_CATEGORY_DETAIL_MSG, ChannelType::CLASS_CHANNEL);
+    registerMessageWithChannel(TEACHER_OPEN_CLASS_MSG, ChannelType::CLASS_ONLINE_CHANNEL);
 }
 
 
