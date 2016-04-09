@@ -100,10 +100,21 @@ void UserManager::initUserInfo(int sockuid, QString userName)
     sendInitUser(sockuid, userName);
 }
 
-void UserManager::boardcastMsgToOnlineUsers(google::protobuf::Message *msg)
+void UserManager::boardcastMsgActionToOnlineUsers(ClassOnlineAction *msg)
 {
     for(int uid : mHashUserOnline.keys()) {
+        msg->set_targetusername(mHashUserOnline[uid].toStdString());
         MessageSender::instance()->sendIpcMessage(uid, msg);
+    }
+}
+
+void UserManager::boardcastMsgActionToOnlineUsersExcept(ClassOnlineAction *msg, int exceptUid)
+{
+    for(int uid : mHashUserOnline.keys()) {
+        if(uid != exceptUid) {
+            msg->set_targetusername(mHashUserOnline[uid].toStdString());
+            MessageSender::instance()->sendIpcMessage(uid, msg);
+        }
     }
 }
 
@@ -126,11 +137,12 @@ void UserManager::sendInitUser(int sockuid, QString userName)
             (*cate) = category;
         }
         // owner class
-        QList<ClassroomInfo> listOwnerClasses = ClassInfoManager::instance()->getOwnerClasses(userName);
-        for(const ClassroomInfo &classInfo : listOwnerClasses) {
-            ClassroomInfo *info = msg.add_ownerclass();
-            (*info) = classInfo;
-        }
+//        QList<ClassroomInfo> listOwnerClasses = ClassInfoManager::instance()->getOwnerClasses(userName);
+//        for(const ClassroomInfo &classInfo : listOwnerClasses) {
+//            ClassroomInfo *info = msg.add_ownerclass();
+//            (*info) = classInfo;
+//        }
+//        qDebug() << "owner class size: " << msg.ownerclass_size();
 
         MessageSender::instance()->sendIpcMessage(sockuid, &msg);
     }

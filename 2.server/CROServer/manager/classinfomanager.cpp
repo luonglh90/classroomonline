@@ -45,21 +45,16 @@ void ClassInfoManager::loadAllCategory()
 void ClassInfoManager::loadAllClassroomInfo()
 {
     ClassInfoDAO classDAO;
-    QList<ClassroomCpp> list;
+    QList<ClassroomInfo> list;
     bool isOk;
     QString errMsg;
 
     classDAO.getAllClassInfo(list, isOk, errMsg);
     if(isOk) {
         qDebug() << "get class: " << list.size();
-        foreach (const ClassroomCpp &classInfo, list) {
-            User user = UserManager::instance()->getUserByUserName(classInfo.teacher_userName);
-            ClassroomInfo info = classInfo.info;
-            User *teacher = info.mutable_teacher();
-            (*teacher) = user;
-
-            mHashClassroomInfo.insert(StringUtils::stringToInt(info.uid()),
-                                      info);
+        foreach (const ClassroomInfo &classInfo, list) {
+            mHashClassroomInfo.insert(StringUtils::stringToInt(classInfo.uid()),
+                                      classInfo);
         }
     } else {
         qDebug() << "error: " << errMsg;
@@ -70,7 +65,7 @@ QList<ClassroomInfo> ClassInfoManager::getOwnerClasses(QString username)
 {
     QList<ClassroomInfo> result;
     for(const ClassroomInfo &info : mHashClassroomInfo.values()) {
-        if(QString::fromStdString(info.teacher().username()).compare(username) == 0) {
+        if(QString::fromStdString(info.teacher()).compare(username) == 0) {
             result.append(info);
         }
     }

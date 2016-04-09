@@ -129,14 +129,17 @@ class ClassroomInfo : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // required .METRO.CRO.MESSAGES.User teacher = 4;
+  // optional string teacher = 4;
   inline bool has_teacher() const;
   inline void clear_teacher();
   static const int kTeacherFieldNumber = 4;
-  inline const ::METRO::CRO::MESSAGES::User& teacher() const;
-  inline ::METRO::CRO::MESSAGES::User* mutable_teacher();
-  inline ::METRO::CRO::MESSAGES::User* release_teacher();
-  inline void set_allocated_teacher(::METRO::CRO::MESSAGES::User* teacher);
+  inline const ::std::string& teacher() const;
+  inline void set_teacher(const ::std::string& value);
+  inline void set_teacher(const char* value);
+  inline void set_teacher(const char* value, size_t size);
+  inline ::std::string* mutable_teacher();
+  inline ::std::string* release_teacher();
+  inline void set_allocated_teacher(::std::string* teacher);
 
   // optional string description = 5;
   inline bool has_description() const;
@@ -212,7 +215,7 @@ class ClassroomInfo : public ::google::protobuf::Message {
   ::std::string* uid_;
   ::std::string* cateid_;
   ::std::string* name_;
-  ::METRO::CRO::MESSAGES::User* teacher_;
+  ::std::string* teacher_;
   ::std::string* description_;
   ::std::string* imgurl_;
   ::std::string* timeopen_;
@@ -459,7 +462,7 @@ inline void ClassroomInfo::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.name)
 }
 
-// required .METRO.CRO.MESSAGES.User teacher = 4;
+// optional string teacher = 4;
 inline bool ClassroomInfo::has_teacher() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -470,32 +473,67 @@ inline void ClassroomInfo::clear_has_teacher() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void ClassroomInfo::clear_teacher() {
-  if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::User::Clear();
+  if (teacher_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    teacher_->clear();
+  }
   clear_has_teacher();
 }
-inline const ::METRO::CRO::MESSAGES::User& ClassroomInfo::teacher() const {
+inline const ::std::string& ClassroomInfo::teacher() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
-  return teacher_ != NULL ? *teacher_ : *default_instance_->teacher_;
+  return *teacher_;
 }
-inline ::METRO::CRO::MESSAGES::User* ClassroomInfo::mutable_teacher() {
+inline void ClassroomInfo::set_teacher(const ::std::string& value) {
   set_has_teacher();
-  if (teacher_ == NULL) teacher_ = new ::METRO::CRO::MESSAGES::User;
+  if (teacher_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    teacher_ = new ::std::string;
+  }
+  teacher_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
+}
+inline void ClassroomInfo::set_teacher(const char* value) {
+  set_has_teacher();
+  if (teacher_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    teacher_ = new ::std::string;
+  }
+  teacher_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
+}
+inline void ClassroomInfo::set_teacher(const char* value, size_t size) {
+  set_has_teacher();
+  if (teacher_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    teacher_ = new ::std::string;
+  }
+  teacher_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
+}
+inline ::std::string* ClassroomInfo::mutable_teacher() {
+  set_has_teacher();
+  if (teacher_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    teacher_ = new ::std::string;
+  }
   // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
   return teacher_;
 }
-inline ::METRO::CRO::MESSAGES::User* ClassroomInfo::release_teacher() {
+inline ::std::string* ClassroomInfo::release_teacher() {
   clear_has_teacher();
-  ::METRO::CRO::MESSAGES::User* temp = teacher_;
-  teacher_ = NULL;
-  return temp;
+  if (teacher_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = teacher_;
+    teacher_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
 }
-inline void ClassroomInfo::set_allocated_teacher(::METRO::CRO::MESSAGES::User* teacher) {
-  delete teacher_;
-  teacher_ = teacher;
+inline void ClassroomInfo::set_allocated_teacher(::std::string* teacher) {
+  if (teacher_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete teacher_;
+  }
   if (teacher) {
     set_has_teacher();
+    teacher_ = teacher;
   } else {
     clear_has_teacher();
+    teacher_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
 }

@@ -17,6 +17,8 @@ public:
     void userOpenClass(int uid, ClassOnlineAction *msg);
     void userRequestJointClass(int uid, ClassOnlineAction *msg);
     void userAcceptJointClass(int uid, ClassOnlineAction *msg);
+    void userRequestDrawBoard(int uid, ClassOnlineAction *msg);
+    void userAcceptDrawBoard(int uid, ClassOnlineAction *msg);
     // BaseChannel interface
 public:
     void onDisconnect(int socketuid);

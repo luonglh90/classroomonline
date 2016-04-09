@@ -89,11 +89,11 @@ void protobuf_AddDesc_ClassroomInfo_2eproto() {
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_User_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ClassroomInfo.proto\022\022METRO.CRO.MESSAGE"
-    "S\032\nUser.proto\"\257\001\n\rClassroomInfo\022\013\n\003uid\030\001"
-    " \002(\t\022\016\n\006cateid\030\002 \002(\t\022\014\n\004name\030\003 \002(\t\022)\n\007te"
-    "acher\030\004 \002(\0132\030.METRO.CRO.MESSAGES.User\022\023\n"
-    "\013description\030\005 \001(\t\022\016\n\006imgurl\030\006 \001(\t\022\020\n\010ti"
-    "meopen\030\007 \001(\t\022\021\n\ttimeclose\030\010 \001(\t", 231);
+    "S\032\nUser.proto\"\225\001\n\rClassroomInfo\022\013\n\003uid\030\001"
+    " \002(\t\022\016\n\006cateid\030\002 \002(\t\022\014\n\004name\030\003 \002(\t\022\017\n\007te"
+    "acher\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\022\016\n\006imgu"
+    "rl\030\006 \001(\t\022\020\n\010timeopen\030\007 \001(\t\022\021\n\ttimeclose\030"
+    "\010 \001(\t", 205);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassroomInfo.proto", &protobuf_RegisterTypes);
   ClassroomInfo::default_instance_ = new ClassroomInfo();
@@ -128,7 +128,6 @@ ClassroomInfo::ClassroomInfo()
 }
 
 void ClassroomInfo::InitAsDefaultInstance() {
-  teacher_ = const_cast< ::METRO::CRO::MESSAGES::User*>(&::METRO::CRO::MESSAGES::User::default_instance());
 }
 
 ClassroomInfo::ClassroomInfo(const ClassroomInfo& from)
@@ -144,7 +143,7 @@ void ClassroomInfo::SharedCtor() {
   uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   cateid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  teacher_ = NULL;
+  teacher_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   description_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   timeopen_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -167,6 +166,9 @@ void ClassroomInfo::SharedDtor() {
   if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete name_;
   }
+  if (teacher_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete teacher_;
+  }
   if (description_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete description_;
   }
@@ -180,7 +182,6 @@ void ClassroomInfo::SharedDtor() {
     delete timeclose_;
   }
   if (this != default_instance_) {
-    delete teacher_;
   }
 }
 
@@ -223,7 +224,9 @@ void ClassroomInfo::Clear() {
       }
     }
     if (has_teacher()) {
-      if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::User::Clear();
+      if (teacher_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        teacher_->clear();
+      }
     }
     if (has_description()) {
       if (description_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -310,12 +313,16 @@ bool ClassroomInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // required .METRO.CRO.MESSAGES.User teacher = 4;
+      // optional string teacher = 4;
       case 4: {
         if (tag == 34) {
          parse_teacher:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_teacher()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_teacher()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->teacher().data(), this->teacher().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "teacher");
         } else {
           goto handle_unusual;
         }
@@ -446,9 +453,13 @@ void ClassroomInfo::SerializeWithCachedSizes(
       3, this->name(), output);
   }
 
-  // required .METRO.CRO.MESSAGES.User teacher = 4;
+  // optional string teacher = 4;
   if (has_teacher()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->teacher().data(), this->teacher().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "teacher");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       4, this->teacher(), output);
   }
 
@@ -535,10 +546,14 @@ void ClassroomInfo::SerializeWithCachedSizes(
         3, this->name(), target);
   }
 
-  // required .METRO.CRO.MESSAGES.User teacher = 4;
+  // optional string teacher = 4;
   if (has_teacher()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->teacher().data(), this->teacher().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "teacher");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         4, this->teacher(), target);
   }
 
@@ -619,10 +634,10 @@ int ClassroomInfo::ByteSize() const {
           this->name());
     }
 
-    // required .METRO.CRO.MESSAGES.User teacher = 4;
+    // optional string teacher = 4;
     if (has_teacher()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->teacher());
     }
 
@@ -691,7 +706,7 @@ void ClassroomInfo::MergeFrom(const ClassroomInfo& from) {
       set_name(from.name());
     }
     if (from.has_teacher()) {
-      mutable_teacher()->::METRO::CRO::MESSAGES::User::MergeFrom(from.teacher());
+      set_teacher(from.teacher());
     }
     if (from.has_description()) {
       set_description(from.description());
@@ -722,11 +737,8 @@ void ClassroomInfo::CopyFrom(const ClassroomInfo& from) {
 }
 
 bool ClassroomInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
-  if (has_teacher()) {
-    if (!this->teacher().IsInitialized()) return false;
-  }
   return true;
 }
 

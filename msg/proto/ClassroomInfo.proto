@@ -12,7 +12,7 @@ message ClassroomInfo {
 	required string cateid = 2;
 	required string name = 3;
 
-	required User teacher = 4;
+	optional string teacher = 4;
 
 	optional string description = 5;
 	optional string imgurl = 6;
