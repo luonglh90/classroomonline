@@ -52,10 +52,11 @@
         [[Rpc instance] requestSigninWithName:@"teacher1" pass:@"123456"];
     }];
     [[Rpc instance] setOnSocketConnectFail:^(){
+        [ROAppDelegate hideLoading];
         [Utils showAlertTitle:app_name content:socket_connect_fail];
     }];
     [[Rpc instance] setOnSignInSuccess:^(NSString *name){
-        [[ROSession instance] setUsername:name];
+        [[ROSession instance] setUsername:username];
         [ROAppDelegate hideLoading];
         DashboardViewController *dashboard = [[DashboardViewController alloc] initWithNibName:NSStringFromClass([DashboardViewController class]) bundle:nil];
         [self.navigationController pushViewController:dashboard animated:YES];

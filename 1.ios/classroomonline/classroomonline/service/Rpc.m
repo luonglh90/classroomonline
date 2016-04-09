@@ -131,7 +131,7 @@
             break;
         case RESPONSE_LOGIN_MSG:{
             [ResponseLoginRoot initialize];
-            ResponseLogin *response = [ResponseLogin parseFromData:[ipc getExtension:[ResponseLogin message]]];
+            ResponseLogin *response = [[ipc builder] getExtension:[ResponseLogin message]];
             if (response.status == EnumsResponseLoginEnumsSuccess && self.onSignInSuccess) {
                 self.onSignInSuccess(response.username);
             }

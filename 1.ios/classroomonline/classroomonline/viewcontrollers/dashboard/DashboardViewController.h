@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface DashboardViewController : BaseViewController
+@interface DashboardViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
