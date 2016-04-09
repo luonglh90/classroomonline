@@ -15,7 +15,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     ClassroomInfo_message =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[IpcMessage class]
-                                       fieldNumber:202
+                                       fieldNumber:203
                                       defaultValue:[ClassroomInfo defaultInstance]
                                messageOrGroupClass:[ClassroomInfo class]
                                         isRepeated:NO

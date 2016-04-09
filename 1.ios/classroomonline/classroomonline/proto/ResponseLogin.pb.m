@@ -15,7 +15,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     ResponseLogin_message =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[IpcMessage class]
-                                       fieldNumber:104
+                                       fieldNumber:107
                                       defaultValue:[ResponseLogin defaultInstance]
                                messageOrGroupClass:[ResponseLogin class]
                                         isRepeated:NO
@@ -34,7 +34,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 @interface ResponseLogin ()
 @property (strong) NSString* username;
-@property SInt32 status;
+@property (strong) NSString* status;
 @end
 
 @implementation ResponseLogin
@@ -56,7 +56,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 - (instancetype) init {
   if ((self = [super init])) {
     self.username = @"";
-    self.status = 0;
+    self.status = @"";
   }
   return self;
 }
@@ -83,7 +83,7 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
     [output writeString:1 value:self.username];
   }
   if (self.hasStatus) {
-    [output writeInt32:2 value:self.status];
+    [output writeString:2 value:self.status];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
@@ -98,7 +98,7 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
     size_ += computeStringSize(1, self.username);
   }
   if (self.hasStatus) {
-    size_ += computeInt32Size(2, self.status);
+    size_ += computeStringSize(2, self.status);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -139,7 +139,7 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
     [output appendFormat:@"%@%@: %@\n", indent, @"username", self.username];
   }
   if (self.hasStatus) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"status", [NSNumber numberWithInteger:self.status]];
+    [output appendFormat:@"%@%@: %@\n", indent, @"status", self.status];
   }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
@@ -148,7 +148,7 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
     [dictionary setObject: self.username forKey: @"username"];
   }
   if (self.hasStatus) {
-    [dictionary setObject: [NSNumber numberWithInteger:self.status] forKey: @"status"];
+    [dictionary setObject: self.status forKey: @"status"];
   }
   [self.unknownFields storeInDictionary:dictionary];
 }
@@ -164,7 +164,7 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
       self.hasUsername == otherMessage.hasUsername &&
       (!self.hasUsername || [self.username isEqual:otherMessage.username]) &&
       self.hasStatus == otherMessage.hasStatus &&
-      (!self.hasStatus || self.status == otherMessage.status) &&
+      (!self.hasStatus || [self.status isEqual:otherMessage.status]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -173,7 +173,7 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
     hashCode = hashCode * 31 + [self.username hash];
   }
   if (self.hasStatus) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.status] hash];
+    hashCode = hashCode * 31 + [self.status hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -249,8 +249,8 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
         [self setUsername:[input readString]];
         break;
       }
-      case 16: {
-        [self setStatus:[input readInt32]];
+      case 18: {
+        [self setStatus:[input readString]];
         break;
       }
     }
@@ -275,17 +275,17 @@ static ResponseLogin* defaultResponseLoginInstance = nil;
 - (BOOL) hasStatus {
   return resultResponseLogin.hasStatus;
 }
-- (SInt32) status {
+- (NSString*) status {
   return resultResponseLogin.status;
 }
-- (ResponseLoginBuilder*) setStatus:(SInt32) value {
+- (ResponseLoginBuilder*) setStatus:(NSString*) value {
   resultResponseLogin.hasStatus = YES;
   resultResponseLogin.status = value;
   return self;
 }
 - (ResponseLoginBuilder*) clearStatus {
   resultResponseLogin.hasStatus = NO;
-  resultResponseLogin.status = 0;
+  resultResponseLogin.status = @"";
   return self;
 }
 @end

@@ -2,12 +2,16 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RoomViewController">
             <connections>
+                <outlet property="btnCurosr" destination="dcN-zT-fUu" id="RYd-HY-Smi"/>
+                <outlet property="btnErase" destination="M43-P0-73Z" id="X7I-tT-bvl"/>
+                <outlet property="btnPencil" destination="71A-Mh-SCg" id="FLe-dH-BMf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewControl" destination="jjg-LZ-2Ac" id="2Ym-t0-QLP"/>
                 <outlet property="viewDraw" destination="V41-Iy-NA8" id="Yuh-NW-ih1"/>
             </connections>
         </placeholder>
@@ -24,11 +28,71 @@
                         <constraint firstAttribute="height" constant="1000" id="mB6-f8-50x"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjg-LZ-2Ac">
+                    <rect key="frame" x="5" y="75" width="100" height="450"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M43-P0-73Z">
+                            <rect key="frame" x="18" y="20" width="65" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.39745186059999998" blue="0.2922681888" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="EzX-GB-yHU"/>
+                                <constraint firstAttribute="width" constant="65" id="wJ6-q9-0nh"/>
+                            </constraints>
+                            <state key="normal" title="Erase">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionPressedButton:" destination="-1" eventType="touchUpInside" id="AYR-S5-eBP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71A-Mh-SCg">
+                            <rect key="frame" x="17.5" y="75" width="65" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.39745186059999998" blue="0.2922681888" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="65" id="VdR-pY-m5j"/>
+                                <constraint firstAttribute="height" constant="30" id="ln1-tA-7zv"/>
+                            </constraints>
+                            <state key="normal" title="Pencil">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionPressedButton:" destination="-1" eventType="touchUpInside" id="DXm-Dy-Th7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-zT-fUu">
+                            <rect key="frame" x="17.5" y="130" width="65" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.39745186059999998" blue="0.2922681888" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="9p0-I8-iiN"/>
+                                <constraint firstAttribute="width" constant="65" id="EX3-I9-xeZ"/>
+                            </constraints>
+                            <state key="normal" title="Cursor">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionPressedButton:" destination="-1" eventType="touchUpInside" id="dIa-6A-M9I"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.99438133285795693" blue="0.86277570466243692" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="71A-Mh-SCg" firstAttribute="centerX" secondItem="jjg-LZ-2Ac" secondAttribute="centerX" id="3CC-xJ-WRi"/>
+                        <constraint firstAttribute="height" constant="450" id="7xp-o4-nUb"/>
+                        <constraint firstItem="dcN-zT-fUu" firstAttribute="top" secondItem="71A-Mh-SCg" secondAttribute="bottom" constant="25" id="JQq-4c-7MY"/>
+                        <constraint firstItem="dcN-zT-fUu" firstAttribute="centerX" secondItem="jjg-LZ-2Ac" secondAttribute="centerX" id="U8m-2g-Zx9"/>
+                        <constraint firstItem="71A-Mh-SCg" firstAttribute="top" secondItem="M43-P0-73Z" secondAttribute="bottom" constant="25" id="cGC-Lv-tsp"/>
+                        <constraint firstItem="M43-P0-73Z" firstAttribute="top" secondItem="jjg-LZ-2Ac" secondAttribute="top" constant="20" id="v2y-bF-RjB"/>
+                        <constraint firstAttribute="width" constant="100" id="x0A-7h-A7G"/>
+                        <constraint firstItem="M43-P0-73Z" firstAttribute="centerX" secondItem="jjg-LZ-2Ac" secondAttribute="centerX" id="xnm-qZ-Rql"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="V41-Iy-NA8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6qN-bn-9tZ"/>
+                <constraint firstItem="jjg-LZ-2Ac" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Bzz-bn-zPa"/>
                 <constraint firstItem="V41-Iy-NA8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="j23-4s-i8y"/>
+                <constraint firstItem="jjg-LZ-2Ac" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="oJZ-os-1gm"/>
             </constraints>
         </view>
     </objects>

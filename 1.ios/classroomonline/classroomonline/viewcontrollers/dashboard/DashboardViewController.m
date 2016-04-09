@@ -11,6 +11,7 @@
 #import "ClassCategory.pb.h"
 #import "ClassroomInfo.pb.h"
 #import "Rpc.h"
+#import "RoomViewController.h"
 
 #define Session [ROSession instance]
 
@@ -56,12 +57,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView.tag == 1) {
         // Table categories
-        return Session.categories.count;
+        return Session.categories.count + (Session.arrayMyClasses.count > 0 ? 1 : 0);
     }
     else if (self.arrayCurrentClasses && tableView.tag == 2){
         return self.arrayCurrentClasses.count;
     }
-    return 30;
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -81,9 +82,16 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cateIdentifier];
         }
-        ClassCategory *category = Session.categories[indexPath.row];
-        cell.textLabel.text = category.name;
-        cell.detailTextLabel.text = category.pb_description;
+        int padding = Session.arrayMyClasses.count > 0 ? 1 : 0;
+        if (padding == 1 && indexPath.row == 0) {
+            cell.textLabel.text = @"My Classes";
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", (int)Session.arrayMyClasses.count];
+        }
+        else{
+            ClassCategory *category = Session.categories[indexPath.row - padding];
+            cell.textLabel.text = category.name;
+            cell.detailTextLabel.text = category.pb_description;
+        }
     }
     else if (tableView.tag == 2) {
         static NSString *cateIdentifier = @"classesIndentifier";
@@ -100,17 +108,29 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ClassCategory *category = Session.categories[indexPath.row];
-    if (category) {
-        [ROAppDelegate showLoading];
-        [[Rpc instance] requestListClassesWithCategoryId:category.uId];
-        [[Rpc instance] setOnResponseListClasses:^(int categoryId, NSArray *listClasses){
-            [ROAppDelegate hideLoading];
-            if (category.uId == categoryId) {
-                self.arrayCurrentClasses = [listClasses copy];
-                [self.tableClasses reloadData];
+    if (tableView.tag == 1) {
+        int padding = Session.arrayMyClasses.count > 0 ? 1 : 0;
+        if (padding == 1 && indexPath.row == 0) {
+            self.arrayCurrentClasses = Session.arrayMyClasses;
+        }
+        else{
+            ClassCategory *category = Session.categories[indexPath.row - padding];
+            if (category) {
+                [ROAppDelegate showLoading];
+                [[Rpc instance] requestListClassesWithCategoryId:category.uId];
+                [[Rpc instance] setOnResponseListClasses:^(int categoryId, NSArray *listClasses){
+                    [ROAppDelegate hideLoading];
+                    if (category.uId == categoryId) {
+                        self.arrayCurrentClasses = [listClasses copy];
+                        [self.tableClasses reloadData];
+                    }
+                }];
             }
-        }];
+        }
+    }
+    else if (tableView.tag == 2){
+        RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 

@@ -13,7 +13,12 @@
     
 }
 @property (weak, nonatomic) IBOutlet SmoothedBIView *viewDraw;
+@property (weak, nonatomic) IBOutlet UIView *viewControl;
+@property (weak, nonatomic) IBOutlet UIButton *btnErase;
+@property (weak, nonatomic) IBOutlet UIButton *btnPencil;
+@property (weak, nonatomic) IBOutlet UIButton *btnCurosr;
 
 
+- (IBAction)actionPressedButton:(id)sender;
 
 @end

@@ -8,5 +8,5 @@ message ResponseLogin {
 	}
 
 	optional string username = 1;
-	optional int32 status = 2;
+	optional string status = 2;
 }

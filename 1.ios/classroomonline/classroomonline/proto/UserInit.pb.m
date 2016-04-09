@@ -15,7 +15,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     UserInit_message =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[IpcMessage class]
-                                       fieldNumber:105
+                                       fieldNumber:109
                                       defaultValue:[UserInit defaultInstance]
                                messageOrGroupClass:[UserInit class]
                                         isRepeated:NO
@@ -26,6 +26,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     [IpcMessageRoot registerAllExtensions:registry];
     [UserRoot registerAllExtensions:registry];
     [ClassCategoryRoot registerAllExtensions:registry];
+    [ClassroomInfoRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
@@ -37,6 +38,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @interface UserInit ()
 @property (strong) User* userinfo;
 @property (strong) NSMutableArray * categoriesArray;
+@property (strong) NSMutableArray * ownerclassArray;
 @end
 
 @implementation UserInit
@@ -50,6 +52,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @synthesize userinfo;
 @synthesize categoriesArray;
 @dynamic categories;
+@synthesize ownerclassArray;
+@dynamic ownerclass;
 - (instancetype) init {
   if ((self = [super init])) {
     self.userinfo = [User defaultInstance];
@@ -77,6 +81,12 @@ static UserInit* defaultUserInitInstance = nil;
 - (ClassCategory*)categoriesAtIndex:(NSUInteger)index {
   return [categoriesArray objectAtIndex:index];
 }
+- (NSArray *)ownerclass {
+  return ownerclassArray;
+}
+- (ClassroomInfo*)ownerclassAtIndex:(NSUInteger)index {
+  return [ownerclassArray objectAtIndex:index];
+}
 - (BOOL) isInitialized {
   if (!self.hasUserinfo) {
     return NO;
@@ -92,6 +102,14 @@ static UserInit* defaultUserInitInstance = nil;
     }
   }];
   if (!isInitcategories) return isInitcategories;
+  __block BOOL isInitownerclass = YES;
+   [self.ownerclass enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
+    if (!element.isInitialized) {
+      isInitownerclass = NO;
+      *stop = YES;
+    }
+  }];
+  if (!isInitownerclass) return isInitownerclass;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
@@ -100,6 +118,9 @@ static UserInit* defaultUserInitInstance = nil;
   }
   [self.categoriesArray enumerateObjectsUsingBlock:^(ClassCategory *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
+  }];
+  [self.ownerclassArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
+    [output writeMessage:3 value:element];
   }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
@@ -115,6 +136,9 @@ static UserInit* defaultUserInitInstance = nil;
   }
   [self.categoriesArray enumerateObjectsUsingBlock:^(ClassCategory *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
+  }];
+  [self.ownerclassArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
+    size_ += computeMessageSize(3, element);
   }];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -163,6 +187,12 @@ static UserInit* defaultUserInitInstance = nil;
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }];
+  [self.ownerclassArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@ {\n", indent, @"ownerclass"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (void) storeInDictionary:(NSMutableDictionary *)dictionary {
@@ -175,6 +205,11 @@ static UserInit* defaultUserInitInstance = nil;
     NSMutableDictionary *elementDictionary = [NSMutableDictionary dictionary];
     [element storeInDictionary:elementDictionary];
     [dictionary setObject:[NSDictionary dictionaryWithDictionary:elementDictionary] forKey:@"categories"];
+  }
+  for (ClassroomInfo* element in self.ownerclassArray) {
+    NSMutableDictionary *elementDictionary = [NSMutableDictionary dictionary];
+    [element storeInDictionary:elementDictionary];
+    [dictionary setObject:[NSDictionary dictionaryWithDictionary:elementDictionary] forKey:@"ownerclass"];
   }
   [self.unknownFields storeInDictionary:dictionary];
 }
@@ -190,6 +225,7 @@ static UserInit* defaultUserInitInstance = nil;
       self.hasUserinfo == otherMessage.hasUserinfo &&
       (!self.hasUserinfo || [self.userinfo isEqual:otherMessage.userinfo]) &&
       [self.categoriesArray isEqualToArray:otherMessage.categoriesArray] &&
+      [self.ownerclassArray isEqualToArray:otherMessage.ownerclassArray] &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -198,6 +234,9 @@ static UserInit* defaultUserInitInstance = nil;
     hashCode = hashCode * 31 + [self.userinfo hash];
   }
   [self.categoriesArray enumerateObjectsUsingBlock:^(ClassCategory *element, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [element hash];
+  }];
+  [self.ownerclassArray enumerateObjectsUsingBlock:^(ClassroomInfo *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
   }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -253,6 +292,13 @@ static UserInit* defaultUserInitInstance = nil;
       [resultUserInit.categoriesArray addObjectsFromArray:other.categoriesArray];
     }
   }
+  if (other.ownerclassArray.count > 0) {
+    if (resultUserInit.ownerclassArray == nil) {
+      resultUserInit.ownerclassArray = [[NSMutableArray alloc] initWithArray:other.ownerclassArray];
+    } else {
+      [resultUserInit.ownerclassArray addObjectsFromArray:other.ownerclassArray];
+    }
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -287,6 +333,12 @@ static UserInit* defaultUserInitInstance = nil;
         ClassCategoryBuilder* subBuilder = [ClassCategory builder];
         [input readMessage:subBuilder extensionRegistry:extensionRegistry];
         [self addCategories:[subBuilder buildPartial]];
+        break;
+      }
+      case 26: {
+        ClassroomInfoBuilder* subBuilder = [ClassroomInfo builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addOwnerclass:[subBuilder buildPartial]];
         break;
       }
     }
@@ -341,6 +393,27 @@ static UserInit* defaultUserInitInstance = nil;
 }
 - (UserInitBuilder *)clearCategories {
   resultUserInit.categoriesArray = nil;
+  return self;
+}
+- (NSMutableArray *)ownerclass {
+  return resultUserInit.ownerclassArray;
+}
+- (ClassroomInfo*)ownerclassAtIndex:(NSUInteger)index {
+  return [resultUserInit ownerclassAtIndex:index];
+}
+- (UserInitBuilder *)addOwnerclass:(ClassroomInfo*)value {
+  if (resultUserInit.ownerclassArray == nil) {
+    resultUserInit.ownerclassArray = [[NSMutableArray alloc]init];
+  }
+  [resultUserInit.ownerclassArray addObject:value];
+  return self;
+}
+- (UserInitBuilder *)setOwnerclassArray:(NSArray *)array {
+  resultUserInit.ownerclassArray = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (UserInitBuilder *)clearOwnerclass {
+  resultUserInit.ownerclassArray = nil;
   return self;
 }
 @end

@@ -15,7 +15,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     RequestLogin_message =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[IpcMessage class]
-                                       fieldNumber:103
+                                       fieldNumber:105
                                       defaultValue:[RequestLogin defaultInstance]
                                messageOrGroupClass:[RequestLogin class]
                                         isRepeated:NO

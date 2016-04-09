@@ -22,15 +22,15 @@
 #define ResponseLogin_status @"status"
 @interface ResponseLogin : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
-  BOOL hasStatus_:1;
   BOOL hasUsername_:1;
-  SInt32 status;
+  BOOL hasStatus_:1;
   NSString* username;
+  NSString* status;
 }
 - (BOOL) hasUsername;
 - (BOOL) hasStatus;
 @property (readonly, strong) NSString* username;
-@property (readonly) SInt32 status;
+@property (readonly, strong) NSString* status;
 
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
@@ -74,8 +74,8 @@
 - (ResponseLoginBuilder*) clearUsername;
 
 - (BOOL) hasStatus;
-- (SInt32) status;
-- (ResponseLoginBuilder*) setStatus:(SInt32) value;
+- (NSString*) status;
+- (ResponseLoginBuilder*) setStatus:(NSString*) value;
 - (ResponseLoginBuilder*) clearStatus;
 @end
 

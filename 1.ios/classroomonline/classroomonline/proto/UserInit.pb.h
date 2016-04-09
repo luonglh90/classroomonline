@@ -5,10 +5,13 @@
 #import "IpcMessage.pb.h"
 #import "User.pb.h"
 #import "ClassCategory.pb.h"
+#import "ClassroomInfo.pb.h"
 // @@protoc_insertion_point(imports)
 
 @class ClassCategory;
 @class ClassCategoryBuilder;
+@class ClassroomInfo;
+@class ClassroomInfoBuilder;
 @class IpcMessage;
 @class IpcMessageBuilder;
 @class User;
@@ -26,16 +29,20 @@
 
 #define UserInit_userinfo @"userinfo"
 #define UserInit_categories @"categories"
+#define UserInit_ownerclass @"ownerclass"
 @interface UserInit : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
   BOOL hasUserinfo_:1;
   User* userinfo;
   NSMutableArray * categoriesArray;
+  NSMutableArray * ownerclassArray;
 }
 - (BOOL) hasUserinfo;
 @property (readonly, strong) User* userinfo;
 @property (readonly, strong) NSArray * categories;
+@property (readonly, strong) NSArray * ownerclass;
 - (ClassCategory*)categoriesAtIndex:(NSUInteger)index;
+- (ClassroomInfo*)ownerclassAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
@@ -85,6 +92,12 @@
 - (UserInitBuilder *)addCategories:(ClassCategory*)value;
 - (UserInitBuilder *)setCategoriesArray:(NSArray *)array;
 - (UserInitBuilder *)clearCategories;
+
+- (NSMutableArray *)ownerclass;
+- (ClassroomInfo*)ownerclassAtIndex:(NSUInteger)index;
+- (UserInitBuilder *)addOwnerclass:(ClassroomInfo*)value;
+- (UserInitBuilder *)setOwnerclassArray:(NSArray *)array;
+- (UserInitBuilder *)clearOwnerclass;
 @end
 
 

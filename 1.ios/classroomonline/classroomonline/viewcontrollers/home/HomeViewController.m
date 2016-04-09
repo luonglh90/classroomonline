@@ -63,10 +63,11 @@
         [ROAppDelegate hideLoading];
         [Utils showAlertTitle:app_name content:signin_fail];
     }];
-    [[Rpc instance] setOnResponseUserInit:^(User *user, NSArray *categories){
+    [[Rpc instance] setOnResponseUserInit:^(User *user, NSArray *categories, NSArray *arrayMyClasses){
         // handle user info and categories info
         [[ROSession instance] setUser:user];
         [[ROSession instance] setCategories:categories];
+        [[ROSession instance] setArrayMyClasses:arrayMyClasses];
         // hide loading
         [ROAppDelegate hideLoading];
         // Transition screen

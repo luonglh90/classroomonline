@@ -12,6 +12,7 @@
 #import "LoginStatus.pb.h"
 #import "RequestViewCategoryDetail.pb.h"
 #import "ClassroomInfoOfCategory.pb.h"
+#import "ResponseLogin.pb.h"
 
 @interface Rpc(){
 }
@@ -44,6 +45,7 @@
         [UserRoot initialize];
         [ClassCategoryRoot initialize];
         [RequestViewCategoryDetailRoot initialize];
+        [ResponseLoginRoot initialize];
     }
     return self;
 }
@@ -143,25 +145,25 @@
         }
             break;
         case RESPONSE_LOGIN_MSG:{
-//            id<PBExtensionField> field = [ResponseLogin message];
-//            ipc = [IpcMessage parseFromData:message extensionRegistry:[ResponseLoginRoot extensionRegistry]];
-//            ResponseLogin *response = [ipc getExtension:field];
-//            if (response.status == 0 && self.onSignInSuccess) {
-//                self.onSignInSuccess(response.username);
-//            }
-//            else if (self.onSignInFail){
-//                self.onSignInFail();
-//            }
-            
-            id<PBExtensionField> field = [LoginStatus message];
-            ipc = [IpcMessage parseFromData:message extensionRegistry:[LoginStatusRoot extensionRegistry]];
-            LoginStatus *response = [ipc getExtension:field];
-            if (response.stt == 0 && self.onSignInSuccess) {
-                self.onSignInSuccess(response.name);
+            id<PBExtensionField> field = [ResponseLogin message];
+            ipc = [IpcMessage parseFromData:message extensionRegistry:[ResponseLoginRoot extensionRegistry]];
+            ResponseLogin *response = [ipc getExtension:field];
+            if ([response.status intValue] == 0 && self.onSignInSuccess) {
+                self.onSignInSuccess(response.username);
             }
             else if (self.onSignInFail){
                 self.onSignInFail();
             }
+            
+//            id<PBExtensionField> field = [LoginStatus message];
+//            ipc = [IpcMessage parseFromData:message extensionRegistry:[LoginStatusRoot extensionRegistry]];
+//            LoginStatus *response = [ipc getExtension:field];
+//            if (response.stt == 0 && self.onSignInSuccess) {
+//                self.onSignInSuccess(response.name);
+//            }
+//            else if (self.onSignInFail){
+//                self.onSignInFail();
+//            }
             
             self.onSignInSuccess = nil;
             self.onSignInFail = nil;
@@ -172,7 +174,7 @@
             ipc = [IpcMessage parseFromData:message extensionRegistry:[UserInitRoot extensionRegistry]];
             UserInit *response = [ipc getExtension:field];
             if (self.onResponseUserInit) {
-                self.onResponseUserInit(response.userinfo, response.categories);
+                self.onResponseUserInit(response.userinfo, response.categories, response.ownerclass);
             }
             self.onResponseUserInit = nil;
         }
@@ -184,7 +186,7 @@
             ipc = [IpcMessage parseFromData:message extensionRegistry:[ClassroomInfoOfCategoryRoot extensionRegistry]];
             ClassroomInfoOfCategory *response = [ipc getExtension:field];
             if (self.onResponseListClasses) {
-                self.onResponseListClasses(response.cateId, response.listOfClasses);
+                self.onResponseListClasses([response.cateId intValue], response.listOfClasses);
             }
             self.onResponseListClasses = nil;
         }

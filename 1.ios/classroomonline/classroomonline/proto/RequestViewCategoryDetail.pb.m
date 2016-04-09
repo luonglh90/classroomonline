@@ -15,7 +15,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     RequestViewCategoryDetail_message =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[IpcMessage class]
-                                       fieldNumber:203
+                                       fieldNumber:205
                                       defaultValue:[RequestViewCategoryDetail defaultInstance]
                                messageOrGroupClass:[RequestViewCategoryDetail class]
                                         isRepeated:NO

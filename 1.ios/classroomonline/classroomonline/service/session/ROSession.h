@@ -15,6 +15,7 @@
 @property (nonatomic, assign) BOOL isSignedIn;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) NSArray *arrayMyClasses;
 
 + (instancetype)instance;
 
