@@ -4,12 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-MBProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-ProtocolBuffers.xcscheme</key>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -19,20 +14,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ProtocolBuffers.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>A69B33120B07280DB6F274EF</key>
+		<key>62B9E16C60596645CFA3093F2EF8843D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7F48FD79A40117C9A27D49C</key>
+		<key>D899D0FD605BE5C32001F066DA57D8D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9244E47D804964A6CBEE85E</key>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

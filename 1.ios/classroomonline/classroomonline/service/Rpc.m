@@ -13,6 +13,7 @@
 #import "RequestViewCategoryDetail.pb.h"
 #import "ClassroomInfoOfCategory.pb.h"
 #import "ResponseLogin.pb.h"
+#import "ClassOnlineAction.pb.h"
 
 @interface Rpc(){
 }
@@ -46,6 +47,7 @@
         [ClassCategoryRoot initialize];
         [RequestViewCategoryDetailRoot initialize];
         [ResponseLoginRoot initialize];
+        [ClassOnlineActionRoot initialize];
     }
     return self;
 }
@@ -84,10 +86,19 @@
 }
 
 // Request get list classes in a category
-- (void)requestListClassesWithCategoryId:(int)cId{
+- (void)requestListClassesWithCategoryId:(NSString*)cId{
     RequestViewCategoryDetail *request = [[[RequestViewCategoryDetail builder] setCateId:cId] build];
     IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:REQUEST_VIEW_CATEGORY_DETAIL_MSG] ;
     [ipc setExtension:[RequestViewCategoryDetail message] value:request];
+    NSData *data = [[ipc build] data];
+    [self.webSocket send:data];
+}
+
+// Request open class
+- (void)requestOpenClassId:(NSString*)classId sourceUser:(NSString*)source targetUser:(NSString*)target type:(NSString*)type{
+    ClassOnlineAction *request = [[[[[[ClassOnlineAction builder] setClassid:classId] setSourceusername:source] setTargetusername:target] setActiontype:type] build];
+    IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:CLASS_ONLINE_ACTION_MSG] ;
+    [ipc setExtension:[ClassOnlineAction message] value:request];
     NSData *data = [[ipc build] data];
     [self.webSocket send:data];
 }
@@ -132,7 +143,8 @@
         NSLog(@"webSocket Response NIL");
         return;
     }
-    IpcMessage *ipc = [IpcMessage parseFromData:message];
+    IpcMessage *ipc = [IpcMessage parseFromData:message ];
+    
     NSLog(@"%@", ipc);
     switch (ipc.msgId) {
         // USER_BASE
@@ -186,12 +198,23 @@
             ipc = [IpcMessage parseFromData:message extensionRegistry:[ClassroomInfoOfCategoryRoot extensionRegistry]];
             ClassroomInfoOfCategory *response = [ipc getExtension:field];
             if (self.onResponseListClasses) {
-                self.onResponseListClasses([response.cateId intValue], response.listOfClasses);
+                self.onResponseListClasses(response.cateid, response.listOfClasses);
             }
             self.onResponseListClasses = nil;
         }
             break;
         case CALSSROOM_MSG:{
+            // Response of list classes
+//            id<PBExtensionField> field = [ClassroomInfoOfCategory message];
+//            ipc = [IpcMessage parseFromData:message extensionRegistry:[ClassroomInfoOfCategoryRoot extensionRegistry]];
+//            ClassroomInfoOfCategory *response = [ipc getExtension:field];
+            if (self.onOpenClassSuccess) {
+                self.onOpenClassSuccess();
+            }
+            self.onOpenClassSuccess = nil;
+        }
+            break;
+        case CLASS_ONLINE_ACTION_MSG:{
             
         }
             break;

@@ -1,8 +1,13 @@
+import "IpcMessage.proto";
 import "User.proto";
 
 package METRO.CRO.MESSAGES;
 
 message ClassroomInfo {
+	extend IpcMessage {
+		optional ClassroomInfo message = 203;
+	}
+
 	required string uid = 1;
 	required string cateid = 2;
 	required string name = 3;

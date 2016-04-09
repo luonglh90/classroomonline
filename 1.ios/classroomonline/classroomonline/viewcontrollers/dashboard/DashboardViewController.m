@@ -39,6 +39,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)generateDummyData{
+//    2, 1, 'Math class 1', 'We fall in love of Math', '', 1460205353, 1460206353, 'teacher1'
+//    [ClassroomInfoRoot initialize];
+//    ClassroomInfo *class = [[[[[[[ClassroomInfo builder] setUid:@"2"] setCateid:@"1"] setName:@"We fall in love of Math"] setTimeopen:@"1460205353"] setTimeclose:@"1460206353"] build];
+    self.arrayCurrentClasses = [NSArray arrayWithObjects:@"", nil];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -100,37 +107,46 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cateIdentifier];
         }
-        ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
-        cell.textLabel.text = room.name;
-        cell.detailTextLabel.text = room.pb_description;
+        //ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
+        cell.textLabel.text = @"Test class";
+        cell.detailTextLabel.text = @"...";
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag == 1) {
-        int padding = Session.arrayMyClasses.count > 0 ? 1 : 0;
-        if (padding == 1 && indexPath.row == 0) {
-            self.arrayCurrentClasses = Session.arrayMyClasses;
-        }
-        else{
-            ClassCategory *category = Session.categories[indexPath.row - padding];
-            if (category) {
-                [ROAppDelegate showLoading];
-                [[Rpc instance] requestListClassesWithCategoryId:category.uId];
-                [[Rpc instance] setOnResponseListClasses:^(int categoryId, NSArray *listClasses){
-                    [ROAppDelegate hideLoading];
-                    if (category.uId == categoryId) {
-                        self.arrayCurrentClasses = [listClasses copy];
-                        [self.tableClasses reloadData];
-                    }
-                }];
-            }
-        }
+//        int padding = Session.arrayMyClasses.count > 0 ? 1 : 0;
+//        if (padding == 1 && indexPath.row == 0) {
+//            self.arrayCurrentClasses = Session.arrayMyClasses;
+//        }
+//        else{
+//            ClassCategory *category = Session.categories[indexPath.row - padding];
+//            if (category) {
+//                [ROAppDelegate showLoading];
+//                [[Rpc instance] requestListClassesWithCategoryId:category.uId];
+//                [[Rpc instance] setOnResponseListClasses:^(NSString* categoryId, NSArray *listClasses){
+//                    [ROAppDelegate hideLoading];
+//                    if ([category.uId isEqualToString:categoryId]) {
+//                        self.arrayCurrentClasses = [listClasses copy];
+//                        [self.tableClasses reloadData];
+//                    }
+//                }];
+//            }
+//        }
+        [self generateDummyData];
+        [self.tableClasses reloadData];
+        [self.tableClasses setHidden:NO];
     }
     else if (tableView.tag == 2){
-        RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
-        [self.navigationController pushViewController:controller animated:YES];
+        
+        [[Rpc instance] requestOpenClassId:@"2" sourceUser:@"teacher1" targetUser:@"" type:@"1"];
+        [[Rpc instance] setOnOpenClassSuccess:^(){
+            RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
+        }];
+        
+        
     }
 }
 
