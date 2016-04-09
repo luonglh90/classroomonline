@@ -1,4 +1,4 @@
-QT += core sql network
+QT += core sql network websockets
 QT -= gui
 
 CONFIG += c++11
@@ -18,7 +18,15 @@ SOURCES += main.cpp \
     ../../msg/cpp/ResponseLogin.pb.cc \
     ../../msg/cpp/Teacher.pb.cc \
     ../../msg/cpp/User.pb.cc \
-    communication/websocketcom.cpp
+    communication/websocketcom.cpp \
+    utils/socketutils.cpp \
+    pgdao/connectionpool.cpp \
+    pgdao/dbmanager.cpp \
+    channel/userchannel.cpp \
+    channel/basechannel.cpp \
+    channel/router.cpp \
+    communication/server.cpp \
+    channel/messagereceivechannel.cpp
 
 HEADERS += \
     ../../msg/cpp/Category.pb.h \
@@ -29,7 +37,20 @@ HEADERS += \
     ../../msg/cpp/ResponseLogin.pb.h \
     ../../msg/cpp/Teacher.pb.h \
     ../../msg/cpp/User.pb.h \
-    communication/websocketcom.h
+    communication/websocketcom.h \
+    utils/socketutils.h \
+    pgdao/connectionpool.h \
+    pgdao/dbmanager.h \
+    channel/userchannel.h \
+    ../../msg/cpp/ipcmessagetype.h \
+    channel/basechannel.h \
+    base/lockfreequeue.h \
+    base/structs.h \
+    base/cmmdefs.h \
+    base/enums.h \
+    channel/router.h \
+    communication/server.h \
+    channel/messagereceivechannel.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

@@ -1,8 +1,9 @@
-#include "dbmanager.h"
 #include <QSqlDatabase>
 #include <QUuid>
 #include <QSqlQuery>
 #include <QSqlError>
+
+#include "dbmanager.h"
 
 DbManager* DbManager::instance;
 bool  DbManager::instantiated = false;
