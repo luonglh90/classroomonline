@@ -2,13 +2,10 @@
 
 #import <ProtocolBuffers/ProtocolBuffers.h>
 
-#import "User.pb.h"
 // @@protoc_insertion_point(imports)
 
 @class ClassroomInfo;
 @class ClassroomInfoBuilder;
-@class User;
-@class UserBuilder;
 
 
 
@@ -31,19 +28,19 @@
   BOOL hasUid_:1;
   BOOL hasCateid_:1;
   BOOL hasName_:1;
+  BOOL hasTeacher_:1;
   BOOL hasDescription_:1;
   BOOL hasImgurl_:1;
   BOOL hasTimeopen_:1;
   BOOL hasTimeclose_:1;
-  BOOL hasTeacher_:1;
   NSString* uid;
   NSString* cateid;
   NSString* name;
+  NSString* teacher;
   NSString* pb_description;
   NSString* imgurl;
   NSString* timeopen;
   NSString* timeclose;
-  User* teacher;
 }
 - (BOOL) hasUid;
 - (BOOL) hasCateid;
@@ -56,7 +53,7 @@
 @property (readonly, strong) NSString* uid;
 @property (readonly, strong) NSString* cateid;
 @property (readonly, strong) NSString* name;
-@property (readonly, strong) User* teacher;
+@property (readonly, strong) NSString* teacher;
 @property (readonly, strong) NSString* pb_description;
 @property (readonly, strong) NSString* imgurl;
 @property (readonly, strong) NSString* timeopen;
@@ -113,10 +110,8 @@
 - (ClassroomInfoBuilder*) clearName;
 
 - (BOOL) hasTeacher;
-- (User*) teacher;
-- (ClassroomInfoBuilder*) setTeacher:(User*) value;
-- (ClassroomInfoBuilder*) setTeacherBuilder:(UserBuilder*) builderForValue;
-- (ClassroomInfoBuilder*) mergeTeacher:(User*) value;
+- (NSString*) teacher;
+- (ClassroomInfoBuilder*) setTeacher:(NSString*) value;
 - (ClassroomInfoBuilder*) clearTeacher;
 
 - (BOOL) hasDescription;

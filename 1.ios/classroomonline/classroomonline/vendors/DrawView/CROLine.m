@@ -7,6 +7,7 @@
 //
 
 #import "CROLine.h"
+#import "MetroPointXY.pb.h"
 
 @implementation CROLine{
     
