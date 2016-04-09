@@ -27,6 +27,7 @@
 #include "IpcMessage.pb.h"
 #include "User.pb.h"
 #include "ClassCategory.pb.h"
+#include "ClassroomInfo.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace METRO {
@@ -116,6 +117,18 @@ class UserInit : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassCategory >*
       mutable_categories();
 
+  // repeated .METRO.CRO.MESSAGES.ClassroomInfo ownerclass = 3;
+  inline int ownerclass_size() const;
+  inline void clear_ownerclass();
+  static const int kOwnerclassFieldNumber = 3;
+  inline const ::METRO::CRO::MESSAGES::ClassroomInfo& ownerclass(int index) const;
+  inline ::METRO::CRO::MESSAGES::ClassroomInfo* mutable_ownerclass(int index);
+  inline ::METRO::CRO::MESSAGES::ClassroomInfo* add_ownerclass();
+  inline const ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo >&
+      ownerclass() const;
+  inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo >*
+      mutable_ownerclass();
+
   static const int kMessageFieldNumber = 109;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::UserInit >, 11, false >
@@ -131,6 +144,7 @@ class UserInit : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::METRO::CRO::MESSAGES::User* userinfo_;
   ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassCategory > categories_;
+  ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo > ownerclass_;
   friend void  protobuf_AddDesc_UserInit_2eproto();
   friend void protobuf_AssignDesc_UserInit_2eproto();
   friend void protobuf_ShutdownFile_UserInit_2eproto();
@@ -214,6 +228,36 @@ inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassCatego
 UserInit::mutable_categories() {
   // @@protoc_insertion_point(field_mutable_list:METRO.CRO.MESSAGES.UserInit.categories)
   return &categories_;
+}
+
+// repeated .METRO.CRO.MESSAGES.ClassroomInfo ownerclass = 3;
+inline int UserInit::ownerclass_size() const {
+  return ownerclass_.size();
+}
+inline void UserInit::clear_ownerclass() {
+  ownerclass_.Clear();
+}
+inline const ::METRO::CRO::MESSAGES::ClassroomInfo& UserInit::ownerclass(int index) const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.UserInit.ownerclass)
+  return ownerclass_.Get(index);
+}
+inline ::METRO::CRO::MESSAGES::ClassroomInfo* UserInit::mutable_ownerclass(int index) {
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.UserInit.ownerclass)
+  return ownerclass_.Mutable(index);
+}
+inline ::METRO::CRO::MESSAGES::ClassroomInfo* UserInit::add_ownerclass() {
+  // @@protoc_insertion_point(field_add:METRO.CRO.MESSAGES.UserInit.ownerclass)
+  return ownerclass_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo >&
+UserInit::ownerclass() const {
+  // @@protoc_insertion_point(field_list:METRO.CRO.MESSAGES.UserInit.ownerclass)
+  return ownerclass_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::ClassroomInfo >*
+UserInit::mutable_ownerclass() {
+  // @@protoc_insertion_point(field_mutable_list:METRO.CRO.MESSAGES.UserInit.ownerclass)
+  return &ownerclass_;
 }
 
 

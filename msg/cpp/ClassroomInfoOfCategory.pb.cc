@@ -86,7 +86,7 @@ void protobuf_AddDesc_ClassroomInfoOfCategory_2eproto() {
     "\n\035ClassroomInfoOfCategory.proto\022\022METRO.C"
     "RO.MESSAGES\032\020IpcMessage.proto\032\023Classroom"
     "Info.proto\"\303\001\n\027ClassroomInfoOfCategory\022\017"
-    "\n\007cate_id\030\001 \002(\005\0228\n\rlistOfClasses\030\002 \003(\0132!"
+    "\n\007cate_id\030\001 \002(\t\0228\n\rlistOfClasses\030\002 \003(\0132!"
     ".METRO.CRO.MESSAGES.ClassroomInfo2]\n\007mes"
     "sage\022\036.METRO.CRO.MESSAGES.IpcMessage\030\317\001 "
     "\001(\0132+.METRO.CRO.MESSAGES.ClassroomInfoOf"
@@ -139,8 +139,9 @@ ClassroomInfoOfCategory::ClassroomInfoOfCategory(const ClassroomInfoOfCategory& 
 }
 
 void ClassroomInfoOfCategory::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  cate_id_ = 0;
+  cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -150,6 +151,9 @@ ClassroomInfoOfCategory::~ClassroomInfoOfCategory() {
 }
 
 void ClassroomInfoOfCategory::SharedDtor() {
+  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cate_id_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -176,7 +180,11 @@ ClassroomInfoOfCategory* ClassroomInfoOfCategory::New() const {
 }
 
 void ClassroomInfoOfCategory::Clear() {
-  cate_id_ = 0;
+  if (has_cate_id()) {
+    if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      cate_id_->clear();
+    }
+  }
   listofclasses_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -192,13 +200,15 @@ bool ClassroomInfoOfCategory::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 cate_id = 1;
+      // required string cate_id = 1;
       case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &cate_id_)));
-          set_has_cate_id();
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cate_id()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->cate_id().data(), this->cate_id().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "cate_id");
         } else {
           goto handle_unusual;
         }
@@ -245,9 +255,14 @@ failure:
 void ClassroomInfoOfCategory::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:METRO.CRO.MESSAGES.ClassroomInfoOfCategory)
-  // required int32 cate_id = 1;
+  // required string cate_id = 1;
   if (has_cate_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->cate_id(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cate_id().data(), this->cate_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "cate_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->cate_id(), output);
   }
 
   // repeated .METRO.CRO.MESSAGES.ClassroomInfo listOfClasses = 2;
@@ -266,9 +281,15 @@ void ClassroomInfoOfCategory::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ClassroomInfoOfCategory::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:METRO.CRO.MESSAGES.ClassroomInfoOfCategory)
-  // required int32 cate_id = 1;
+  // required string cate_id = 1;
   if (has_cate_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->cate_id(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cate_id().data(), this->cate_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "cate_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->cate_id(), target);
   }
 
   // repeated .METRO.CRO.MESSAGES.ClassroomInfo listOfClasses = 2;
@@ -290,10 +311,10 @@ int ClassroomInfoOfCategory::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 cate_id = 1;
+    // required string cate_id = 1;
     if (has_cate_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->cate_id());
     }
 

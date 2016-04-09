@@ -7,5 +7,5 @@ message RequestViewCategoryDetail {
 		optional RequestViewCategoryDetail message = 205;
 	}
 
-	required int32 cate_id = 1;
+	required string cate_id = 1;
 }

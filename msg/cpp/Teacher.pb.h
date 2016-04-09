@@ -103,17 +103,21 @@ class Teacher : public ::google::protobuf::Message {
   inline ::METRO::CRO::MESSAGES::User* release_userinfo();
   inline void set_allocated_userinfo(::METRO::CRO::MESSAGES::User* userinfo);
 
-  // repeated int32 classid = 2;
+  // repeated string classid = 2;
   inline int classid_size() const;
   inline void clear_classid();
   static const int kClassidFieldNumber = 2;
-  inline ::google::protobuf::int32 classid(int index) const;
-  inline void set_classid(int index, ::google::protobuf::int32 value);
-  inline void add_classid(::google::protobuf::int32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-      classid() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-      mutable_classid();
+  inline const ::std::string& classid(int index) const;
+  inline ::std::string* mutable_classid(int index);
+  inline void set_classid(int index, const ::std::string& value);
+  inline void set_classid(int index, const char* value);
+  inline void set_classid(int index, const char* value, size_t size);
+  inline ::std::string* add_classid();
+  inline void add_classid(const ::std::string& value);
+  inline void add_classid(const char* value);
+  inline void add_classid(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& classid() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_classid();
 
   // optional double rate = 3;
   inline bool has_rate() const;
@@ -138,7 +142,7 @@ class Teacher : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::METRO::CRO::MESSAGES::User* userinfo_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > classid_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> classid_;
   double rate_;
   friend void  protobuf_AddDesc_Teacher_2eproto();
   friend void protobuf_AssignDesc_Teacher_2eproto();
@@ -195,31 +199,55 @@ inline void Teacher::set_allocated_userinfo(::METRO::CRO::MESSAGES::User* userin
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.Teacher.userinfo)
 }
 
-// repeated int32 classid = 2;
+// repeated string classid = 2;
 inline int Teacher::classid_size() const {
   return classid_.size();
 }
 inline void Teacher::clear_classid() {
   classid_.Clear();
 }
-inline ::google::protobuf::int32 Teacher::classid(int index) const {
+inline const ::std::string& Teacher::classid(int index) const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.Teacher.classid)
   return classid_.Get(index);
 }
-inline void Teacher::set_classid(int index, ::google::protobuf::int32 value) {
-  classid_.Set(index, value);
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.Teacher.classid)
+inline ::std::string* Teacher::mutable_classid(int index) {
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.Teacher.classid)
+  return classid_.Mutable(index);
 }
-inline void Teacher::add_classid(::google::protobuf::int32 value) {
-  classid_.Add(value);
+inline void Teacher::set_classid(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.Teacher.classid)
+  classid_.Mutable(index)->assign(value);
+}
+inline void Teacher::set_classid(int index, const char* value) {
+  classid_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.Teacher.classid)
+}
+inline void Teacher::set_classid(int index, const char* value, size_t size) {
+  classid_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.Teacher.classid)
+}
+inline ::std::string* Teacher::add_classid() {
+  return classid_.Add();
+}
+inline void Teacher::add_classid(const ::std::string& value) {
+  classid_.Add()->assign(value);
   // @@protoc_insertion_point(field_add:METRO.CRO.MESSAGES.Teacher.classid)
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+inline void Teacher::add_classid(const char* value) {
+  classid_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:METRO.CRO.MESSAGES.Teacher.classid)
+}
+inline void Teacher::add_classid(const char* value, size_t size) {
+  classid_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:METRO.CRO.MESSAGES.Teacher.classid)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
 Teacher::classid() const {
   // @@protoc_insertion_point(field_list:METRO.CRO.MESSAGES.Teacher.classid)
   return classid_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 Teacher::mutable_classid() {
   // @@protoc_insertion_point(field_mutable_list:METRO.CRO.MESSAGES.Teacher.classid)
   return &classid_;

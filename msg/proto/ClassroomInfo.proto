@@ -8,14 +8,14 @@ message ClassroomInfo {
 		optional ClassroomInfo message = 203;
 	}
 
-	required int32 u_id = 1;
-	required int32 cate_id = 2;
+	required string u_id = 1;
+	required string cate_id = 2;
 	required string name = 3;
 
 	required User teacher = 4;
 
 	optional string description = 5;
 	optional string imgurl = 6;
-	optional int32 time_open = 7;
-	optional int32 time_close = 8;
+	optional string time_open = 7;
+	optional string time_close = 8;
 }

@@ -84,7 +84,7 @@ void protobuf_AddDesc_LoginStatus_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\021LoginStatus.proto\022\022METRO.CRO.MESSAGES\032"
     "\020IpcMessage.proto\"z\n\013LoginStatus\022\014\n\004name"
-    "\030\001 \001(\t\022\013\n\003stt\030\002 \001(\0052P\n\007message\022\036.METRO.C"
+    "\030\001 \001(\t\022\013\n\003stt\030\002 \001(\t2P\n\007message\022\036.METRO.C"
     "RO.MESSAGES.IpcMessage\030o \001(\0132\037.METRO.CRO"
     ".MESSAGES.LoginStatus", 181);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -138,7 +138,7 @@ void LoginStatus::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  stt_ = 0;
+  stt_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -150,6 +150,9 @@ LoginStatus::~LoginStatus() {
 void LoginStatus::SharedDtor() {
   if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete name_;
+  }
+  if (stt_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete stt_;
   }
   if (this != default_instance_) {
   }
@@ -183,7 +186,11 @@ void LoginStatus::Clear() {
         name_->clear();
       }
     }
-    stt_ = 0;
+    if (has_stt()) {
+      if (stt_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        stt_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -211,18 +218,20 @@ bool LoginStatus::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_stt;
+        if (input->ExpectTag(18)) goto parse_stt;
         break;
       }
 
-      // optional int32 stt = 2;
+      // optional string stt = 2;
       case 2: {
-        if (tag == 16) {
+        if (tag == 18) {
          parse_stt:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &stt_)));
-          set_has_stt();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_stt()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->stt().data(), this->stt().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "stt");
         } else {
           goto handle_unusual;
         }
@@ -265,9 +274,14 @@ void LoginStatus::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // optional int32 stt = 2;
+  // optional string stt = 2;
   if (has_stt()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->stt(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->stt().data(), this->stt().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "stt");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->stt(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -291,9 +305,15 @@ void LoginStatus::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // optional int32 stt = 2;
+  // optional string stt = 2;
   if (has_stt()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->stt(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->stt().data(), this->stt().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "stt");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->stt(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -315,10 +335,10 @@ int LoginStatus::ByteSize() const {
           this->name());
     }
 
-    // optional int32 stt = 2;
+    // optional string stt = 2;
     if (has_stt()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->stt());
     }
 

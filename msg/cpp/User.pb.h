@@ -129,12 +129,17 @@ class User : public ::google::protobuf::Message {
   inline ::std::string* release_fullname();
   inline void set_allocated_fullname(::std::string* fullname);
 
-  // required int32 yearofborn = 4;
+  // required string yearofborn = 4;
   inline bool has_yearofborn() const;
   inline void clear_yearofborn();
   static const int kYearofbornFieldNumber = 4;
-  inline ::google::protobuf::int32 yearofborn() const;
-  inline void set_yearofborn(::google::protobuf::int32 value);
+  inline const ::std::string& yearofborn() const;
+  inline void set_yearofborn(const ::std::string& value);
+  inline void set_yearofborn(const char* value);
+  inline void set_yearofborn(const char* value, size_t size);
+  inline ::std::string* mutable_yearofborn();
+  inline ::std::string* release_yearofborn();
+  inline void set_allocated_yearofborn(::std::string* yearofborn);
 
   // optional string imgurl = 5;
   inline bool has_imgurl() const;
@@ -186,9 +191,9 @@ class User : public ::google::protobuf::Message {
   ::std::string* username_;
   ::std::string* email_;
   ::std::string* fullname_;
+  ::std::string* yearofborn_;
   ::std::string* imgurl_;
   ::std::string* password_;
-  ::google::protobuf::int32 yearofborn_;
   friend void  protobuf_AddDesc_User_2eproto();
   friend void protobuf_AssignDesc_User_2eproto();
   friend void protobuf_ShutdownFile_User_2eproto();
@@ -431,7 +436,7 @@ inline void User::set_allocated_fullname(::std::string* fullname) {
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.User.fullname)
 }
 
-// required int32 yearofborn = 4;
+// required string yearofborn = 4;
 inline bool User::has_yearofborn() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -442,17 +447,69 @@ inline void User::clear_has_yearofborn() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void User::clear_yearofborn() {
-  yearofborn_ = 0;
+  if (yearofborn_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    yearofborn_->clear();
+  }
   clear_has_yearofborn();
 }
-inline ::google::protobuf::int32 User::yearofborn() const {
+inline const ::std::string& User::yearofborn() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.User.yearofborn)
+  return *yearofborn_;
+}
+inline void User::set_yearofborn(const ::std::string& value) {
+  set_has_yearofborn();
+  if (yearofborn_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    yearofborn_ = new ::std::string;
+  }
+  yearofborn_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.User.yearofborn)
+}
+inline void User::set_yearofborn(const char* value) {
+  set_has_yearofborn();
+  if (yearofborn_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    yearofborn_ = new ::std::string;
+  }
+  yearofborn_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.User.yearofborn)
+}
+inline void User::set_yearofborn(const char* value, size_t size) {
+  set_has_yearofborn();
+  if (yearofborn_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    yearofborn_ = new ::std::string;
+  }
+  yearofborn_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.User.yearofborn)
+}
+inline ::std::string* User::mutable_yearofborn() {
+  set_has_yearofborn();
+  if (yearofborn_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    yearofborn_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.User.yearofborn)
   return yearofborn_;
 }
-inline void User::set_yearofborn(::google::protobuf::int32 value) {
-  set_has_yearofborn();
-  yearofborn_ = value;
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.User.yearofborn)
+inline ::std::string* User::release_yearofborn() {
+  clear_has_yearofborn();
+  if (yearofborn_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = yearofborn_;
+    yearofborn_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void User::set_allocated_yearofborn(::std::string* yearofborn) {
+  if (yearofborn_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete yearofborn_;
+  }
+  if (yearofborn) {
+    set_has_yearofborn();
+    yearofborn_ = yearofborn;
+  } else {
+    clear_has_yearofborn();
+    yearofborn_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.User.yearofborn)
 }
 
 // optional string imgurl = 5;
