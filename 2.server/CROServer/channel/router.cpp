@@ -40,6 +40,7 @@ void Router::unregisterMessageWithChannel(int messageId, ChannelType channelType
 void Router::init()
 {
     registerMessageWithChannel(REQUEST_LOGIN_MSG, ChannelType::USER_CHANNEL);
+    registerMessageWithChannel(REQUEST_VIEW_CATEGORY_DETAIL_MSG, ChannelType::CLASS_CHANNEL);
 }
 
 

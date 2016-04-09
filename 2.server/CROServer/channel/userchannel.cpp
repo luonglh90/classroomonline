@@ -33,7 +33,7 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
 //    MessageSender::instance()->sendIpcMessage(uid, msg);
 //    RequestViewCategoryDetail tmp;
 //    tmp.set_cate_id(1);
-//    MessageSender::instance()->sendIpcMessage(uid, &stt);
+//
 
     UserManager::instance()->initUserInfo(uid, userName);
 }

@@ -1,5 +1,6 @@
 #include "utils/messagesender.h"
 #include "channel/userchannel.h"
+#include "channel/classinfochannel.h"
 #include "channel/messagereceivechannel.h"
 #include "manager/usermanager.h"
 #include "manager/classinfomanager.h"
@@ -36,6 +37,8 @@ void Server::initChannels()
 {
     mUserChannel = new UserChannel();
     mChannels.insert(ChannelType::USER_CHANNEL, mUserChannel);
+    mClassInfoChannel = new ClassInfoChannel();
+    mChannels.insert(ChannelType::CLASS_CHANNEL, mClassInfoChannel);
 
     foreach (BaseChannel *channel, mChannels.values()) {
         channel->start();
