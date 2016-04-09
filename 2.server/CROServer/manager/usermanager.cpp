@@ -41,6 +41,20 @@ bool UserManager::checkUserLogin(QString username, QString password)
     }
 }
 
+void UserManager::initInfoToUser(int socketUid, QString userName)
+{
+    if(!mHashOnlineUser.contains(socketUid)) {
+        mHashOnlineUser.insert(socketUid, userName);
+    }
+}
+
+void UserManager::userLogOff(int socketUid)
+{
+    if(mHashOnlineUser.contains(socketUid)) {
+        mHashOnlineUser.remove(socketUid);
+    }
+}
+
 UserManager::UserManager()
 {
 

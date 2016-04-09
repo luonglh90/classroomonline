@@ -12,6 +12,9 @@ public:
     UserDAO();
 
     void getAllUser(QList<User> &listUser, bool &isOk, QString &errMsg);
+
+private:
+    QString GETALL;
 };
 
 #endif // USERDAO_H

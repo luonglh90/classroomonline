@@ -6,11 +6,9 @@
 #include "dbmanager.h"
 #include "userdao.h"
 
-QString GETALL = "SELECT * FROM \"user\".\"user\";";
-
 UserDAO::UserDAO()
 {
-
+    GETALL = "SELECT * FROM \"user\".\"user\";";
 }
 
 void UserDAO::getAllUser(QList<User> &listUser, bool &isOk, QString &errMsg)
@@ -29,6 +27,7 @@ void UserDAO::getAllUser(QList<User> &listUser, bool &isOk, QString &errMsg)
                 user.set_fullname(query.value("username").toString().toStdString());
                 user.set_yearofborn(query.value("bornofyear").toInt());
                 user.set_password(query.value("passwd").toString().toStdString());
+                user.set_imgurl(query.value("imgurl").toString().toStdString());
 
                 listUser.append(user);
             }

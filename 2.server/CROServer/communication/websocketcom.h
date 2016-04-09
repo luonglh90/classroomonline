@@ -18,7 +18,7 @@ public:
 
 signals:
     void newMsgReceived(int uid, QByteArray byteArray);
-    void disconnected(QWebSocket *socket);
+    void disconnected(int socketuid);
 public slots:
     void onRequestSendToSocketClient(int uid, QByteArray data);
 private slots:

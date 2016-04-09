@@ -32,6 +32,8 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
     QByteArray array = SocketUtils::convertMsgToByteArray(ipc);
     emit requestSendToSocketClient(uid, QByteArray(array));
     _DELETE_PTR(ipc);
+
+    UserManager::instance()->initInfoToUser(uid, userName);
 }
 
 void UserChannel::readMessage(IpcSocketEvelope *ipcevelope)
@@ -53,7 +55,7 @@ void UserChannel::readMessage(IpcSocketEvelope *ipcevelope)
     }
 }
 
-void UserChannel::onDisconnect(QWebSocket *socket)
+void UserChannel::onDisconnect(int socketuid)
 {
-
+    UserManager::instance()->userLogOff(socketuid);
 }

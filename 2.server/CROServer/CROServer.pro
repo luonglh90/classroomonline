@@ -30,7 +30,9 @@ SOURCES += main.cpp \
     manager/usermanager.cpp \
     pgdao/userdao.cpp \
     utils/ipcmsghelper.cpp \
-    ../../msg/cpp/UserInit.pb.cc
+    ../../msg/cpp/UserInit.pb.cc \
+    pgdao/classcategorydao.cpp \
+    manager/classinfomanager.cpp
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -58,7 +60,9 @@ HEADERS += \
     manager/usermanager.h \
     pgdao/userdao.h \
     utils/ipcmsghelper.h \
-    ../../msg/cpp/UserInit.pb.h
+    ../../msg/cpp/UserInit.pb.h \
+    pgdao/classcategorydao.h \
+    manager/classinfomanager.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

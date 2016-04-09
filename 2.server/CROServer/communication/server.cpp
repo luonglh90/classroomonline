@@ -1,6 +1,7 @@
 #include "channel/userchannel.h"
 #include "channel/messagereceivechannel.h"
 #include "manager/usermanager.h"
+#include "manager/classinfomanager.h"
 #include "server.h"
 
 Server::Server()
@@ -12,17 +13,18 @@ void Server::startServer()
     openSocket();
     initChannels();
     UserManager::instance()->loadAllUser();
+    ClassInfoManager::instance()->loadAllCategory();
 
-    connect(WebsocketCom::instance(), SIGNAL(disconnected(QWebSocket*)),
-            this, SLOT(onDisconneced(QWebSocket*)));
+    connect(WebsocketCom::instance(), SIGNAL(disconnected(int)),
+            this, SLOT(onDisconneced(int)));
     connect(WebsocketCom::instance(), SIGNAL(newMsgReceived(int,QByteArray)),
             mMsgReceivedChannel, SLOT(onReceivedNewByteArray(int,QByteArray)));
 }
 
-void Server::onDisconneced(QWebSocket *socket)
+void Server::onDisconneced(int socketuid)
 {
     foreach (BaseChannel *channel, mChannels) {
-        channel->onDisconnect(socket);
+        channel->onDisconnect(socketuid);
     }
 }
 
