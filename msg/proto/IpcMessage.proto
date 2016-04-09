@@ -10,6 +10,8 @@
  * Class
  * - Category: 201
  * - ClassroomInfo: 202
+ * - RequestViewCategoryDetail: 203
+ * - ClassroomInfoOfCategory: 204
  */
 
 package METRO.CRO.MESSAGES;

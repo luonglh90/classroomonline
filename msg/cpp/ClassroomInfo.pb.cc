@@ -36,13 +36,15 @@ void protobuf_AssignDesc_ClassroomInfo_2eproto() {
       "ClassroomInfo.proto");
   GOOGLE_CHECK(file != NULL);
   ClassroomInfo_descriptor_ = file->message_type(0);
-  static const int ClassroomInfo_offsets_[6] = {
+  static const int ClassroomInfo_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, u_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, cate_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, teacher_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, description_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, imgurl_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, time_open_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ClassroomInfo, time_close_),
   };
   ClassroomInfo_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -85,16 +87,17 @@ void protobuf_AddDesc_ClassroomInfo_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
-  ::METRO::CRO::MESSAGES::protobuf_AddDesc_Teacher_2eproto();
+  ::METRO::CRO::MESSAGES::protobuf_AddDesc_User_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023ClassroomInfo.proto\022\022METRO.CRO.MESSAGE"
-    "S\032\020IpcMessage.proto\032\rTeacher.proto\"\344\001\n\rC"
-    "lassroomInfo\022\014\n\004u_id\030\001 \002(\005\022\017\n\007cate_id\030\002 "
-    "\002(\005\022\014\n\004name\030\003 \002(\t\022,\n\007teacher\030\004 \002(\0132\033.MET"
-    "RO.CRO.MESSAGES.Teacher\022\023\n\013description\030\005"
-    " \001(\t\022\016\n\006imgurl\030\006 \001(\t2S\n\007message\022\036.METRO."
-    "CRO.MESSAGES.IpcMessage\030\312\001 \001(\0132!.METRO.C"
-    "RO.MESSAGES.ClassroomInfo", 305);
+    "S\032\020IpcMessage.proto\032\nUser.proto\"\210\002\n\rClas"
+    "sroomInfo\022\014\n\004u_id\030\001 \002(\005\022\017\n\007cate_id\030\002 \002(\005"
+    "\022\014\n\004name\030\003 \002(\t\022)\n\007teacher\030\004 \002(\0132\030.METRO."
+    "CRO.MESSAGES.User\022\023\n\013description\030\005 \001(\t\022\016"
+    "\n\006imgurl\030\006 \001(\t\022\021\n\ttime_open\030\007 \001(\005\022\022\n\ntim"
+    "e_close\030\010 \001(\0052S\n\007message\022\036.METRO.CRO.MES"
+    "SAGES.IpcMessage\030\312\001 \001(\0132!.METRO.CRO.MESS"
+    "AGES.ClassroomInfo", 338);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClassroomInfo.proto", &protobuf_RegisterTypes);
   ClassroomInfo::default_instance_ = new ClassroomInfo();
@@ -122,6 +125,8 @@ const int ClassroomInfo::kNameFieldNumber;
 const int ClassroomInfo::kTeacherFieldNumber;
 const int ClassroomInfo::kDescriptionFieldNumber;
 const int ClassroomInfo::kImgurlFieldNumber;
+const int ClassroomInfo::kTimeOpenFieldNumber;
+const int ClassroomInfo::kTimeCloseFieldNumber;
 #endif  // !_MSC_VER
 
 #ifndef _MSC_VER
@@ -137,7 +142,7 @@ ClassroomInfo::ClassroomInfo()
 }
 
 void ClassroomInfo::InitAsDefaultInstance() {
-  teacher_ = const_cast< ::METRO::CRO::MESSAGES::Teacher*>(&::METRO::CRO::MESSAGES::Teacher::default_instance());
+  teacher_ = const_cast< ::METRO::CRO::MESSAGES::User*>(&::METRO::CRO::MESSAGES::User::default_instance());
 }
 
 ClassroomInfo::ClassroomInfo(const ClassroomInfo& from)
@@ -156,6 +161,8 @@ void ClassroomInfo::SharedCtor() {
   teacher_ = NULL;
   description_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  time_open_ = 0;
+  time_close_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -211,15 +218,16 @@ void ClassroomInfo::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 63) {
+  if (_has_bits_[0 / 32] & 255) {
     ZR_(u_id_, cate_id_);
+    ZR_(time_open_, time_close_);
     if (has_name()) {
       if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         name_->clear();
       }
     }
     if (has_teacher()) {
-      if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::Teacher::Clear();
+      if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::User::Clear();
     }
     if (has_description()) {
       if (description_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -296,7 +304,7 @@ bool ClassroomInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+      // required .METRO.CRO.MESSAGES.User teacher = 4;
       case 4: {
         if (tag == 34) {
          parse_teacher:
@@ -336,6 +344,36 @@ bool ClassroomInfo::MergePartialFromCodedStream(
             this->imgurl().data(), this->imgurl().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
             "imgurl");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(56)) goto parse_time_open;
+        break;
+      }
+
+      // optional int32 time_open = 7;
+      case 7: {
+        if (tag == 56) {
+         parse_time_open:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &time_open_)));
+          set_has_time_open();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(64)) goto parse_time_close;
+        break;
+      }
+
+      // optional int32 time_close = 8;
+      case 8: {
+        if (tag == 64) {
+         parse_time_close:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &time_close_)));
+          set_has_time_close();
         } else {
           goto handle_unusual;
         }
@@ -388,7 +426,7 @@ void ClassroomInfo::SerializeWithCachedSizes(
       3, this->name(), output);
   }
 
-  // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+  // required .METRO.CRO.MESSAGES.User teacher = 4;
   if (has_teacher()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->teacher(), output);
@@ -412,6 +450,16 @@ void ClassroomInfo::SerializeWithCachedSizes(
       "imgurl");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       6, this->imgurl(), output);
+  }
+
+  // optional int32 time_open = 7;
+  if (has_time_open()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->time_open(), output);
+  }
+
+  // optional int32 time_close = 8;
+  if (has_time_close()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->time_close(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -445,7 +493,7 @@ void ClassroomInfo::SerializeWithCachedSizes(
         3, this->name(), target);
   }
 
-  // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+  // required .METRO.CRO.MESSAGES.User teacher = 4;
   if (has_teacher()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -472,6 +520,16 @@ void ClassroomInfo::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         6, this->imgurl(), target);
+  }
+
+  // optional int32 time_open = 7;
+  if (has_time_open()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->time_open(), target);
+  }
+
+  // optional int32 time_close = 8;
+  if (has_time_close()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->time_close(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -507,7 +565,7 @@ int ClassroomInfo::ByteSize() const {
           this->name());
     }
 
-    // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+    // required .METRO.CRO.MESSAGES.User teacher = 4;
     if (has_teacher()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -526,6 +584,20 @@ int ClassroomInfo::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->imgurl());
+    }
+
+    // optional int32 time_open = 7;
+    if (has_time_open()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->time_open());
+    }
+
+    // optional int32 time_close = 8;
+    if (has_time_close()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->time_close());
     }
 
   }
@@ -565,13 +637,19 @@ void ClassroomInfo::MergeFrom(const ClassroomInfo& from) {
       set_name(from.name());
     }
     if (from.has_teacher()) {
-      mutable_teacher()->::METRO::CRO::MESSAGES::Teacher::MergeFrom(from.teacher());
+      mutable_teacher()->::METRO::CRO::MESSAGES::User::MergeFrom(from.teacher());
     }
     if (from.has_description()) {
       set_description(from.description());
     }
     if (from.has_imgurl()) {
       set_imgurl(from.imgurl());
+    }
+    if (from.has_time_open()) {
+      set_time_open(from.time_open());
+    }
+    if (from.has_time_close()) {
+      set_time_close(from.time_close());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -606,6 +684,8 @@ void ClassroomInfo::Swap(ClassroomInfo* other) {
     std::swap(teacher_, other->teacher_);
     std::swap(description_, other->description_);
     std::swap(imgurl_, other->imgurl_);
+    std::swap(time_open_, other->time_open_);
+    std::swap(time_close_, other->time_close_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

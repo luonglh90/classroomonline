@@ -25,7 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "IpcMessage.pb.h"
-#include "Teacher.pb.h"
+#include "User.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace METRO {
@@ -120,14 +120,14 @@ class ClassroomInfo : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+  // required .METRO.CRO.MESSAGES.User teacher = 4;
   inline bool has_teacher() const;
   inline void clear_teacher();
   static const int kTeacherFieldNumber = 4;
-  inline const ::METRO::CRO::MESSAGES::Teacher& teacher() const;
-  inline ::METRO::CRO::MESSAGES::Teacher* mutable_teacher();
-  inline ::METRO::CRO::MESSAGES::Teacher* release_teacher();
-  inline void set_allocated_teacher(::METRO::CRO::MESSAGES::Teacher* teacher);
+  inline const ::METRO::CRO::MESSAGES::User& teacher() const;
+  inline ::METRO::CRO::MESSAGES::User* mutable_teacher();
+  inline ::METRO::CRO::MESSAGES::User* release_teacher();
+  inline void set_allocated_teacher(::METRO::CRO::MESSAGES::User* teacher);
 
   // optional string description = 5;
   inline bool has_description() const;
@@ -153,6 +153,20 @@ class ClassroomInfo : public ::google::protobuf::Message {
   inline ::std::string* release_imgurl();
   inline void set_allocated_imgurl(::std::string* imgurl);
 
+  // optional int32 time_open = 7;
+  inline bool has_time_open() const;
+  inline void clear_time_open();
+  static const int kTimeOpenFieldNumber = 7;
+  inline ::google::protobuf::int32 time_open() const;
+  inline void set_time_open(::google::protobuf::int32 value);
+
+  // optional int32 time_close = 8;
+  inline bool has_time_close() const;
+  inline void clear_time_close();
+  static const int kTimeCloseFieldNumber = 8;
+  inline ::google::protobuf::int32 time_close() const;
+  inline void set_time_close(::google::protobuf::int32 value);
+
   static const int kMessageFieldNumber = 202;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
       ::google::protobuf::internal::MessageTypeTraits< ::METRO::CRO::MESSAGES::ClassroomInfo >, 11, false >
@@ -171,6 +185,10 @@ class ClassroomInfo : public ::google::protobuf::Message {
   inline void clear_has_description();
   inline void set_has_imgurl();
   inline void clear_has_imgurl();
+  inline void set_has_time_open();
+  inline void clear_has_time_open();
+  inline void set_has_time_close();
+  inline void clear_has_time_close();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -179,9 +197,11 @@ class ClassroomInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 u_id_;
   ::google::protobuf::int32 cate_id_;
   ::std::string* name_;
-  ::METRO::CRO::MESSAGES::Teacher* teacher_;
+  ::METRO::CRO::MESSAGES::User* teacher_;
   ::std::string* description_;
   ::std::string* imgurl_;
+  ::google::protobuf::int32 time_open_;
+  ::google::protobuf::int32 time_close_;
   friend void  protobuf_AddDesc_ClassroomInfo_2eproto();
   friend void protobuf_AssignDesc_ClassroomInfo_2eproto();
   friend void protobuf_ShutdownFile_ClassroomInfo_2eproto();
@@ -320,7 +340,7 @@ inline void ClassroomInfo::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.name)
 }
 
-// required .METRO.CRO.MESSAGES.Teacher teacher = 4;
+// required .METRO.CRO.MESSAGES.User teacher = 4;
 inline bool ClassroomInfo::has_teacher() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -331,26 +351,26 @@ inline void ClassroomInfo::clear_has_teacher() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void ClassroomInfo::clear_teacher() {
-  if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::Teacher::Clear();
+  if (teacher_ != NULL) teacher_->::METRO::CRO::MESSAGES::User::Clear();
   clear_has_teacher();
 }
-inline const ::METRO::CRO::MESSAGES::Teacher& ClassroomInfo::teacher() const {
+inline const ::METRO::CRO::MESSAGES::User& ClassroomInfo::teacher() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
   return teacher_ != NULL ? *teacher_ : *default_instance_->teacher_;
 }
-inline ::METRO::CRO::MESSAGES::Teacher* ClassroomInfo::mutable_teacher() {
+inline ::METRO::CRO::MESSAGES::User* ClassroomInfo::mutable_teacher() {
   set_has_teacher();
-  if (teacher_ == NULL) teacher_ = new ::METRO::CRO::MESSAGES::Teacher;
+  if (teacher_ == NULL) teacher_ = new ::METRO::CRO::MESSAGES::User;
   // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.ClassroomInfo.teacher)
   return teacher_;
 }
-inline ::METRO::CRO::MESSAGES::Teacher* ClassroomInfo::release_teacher() {
+inline ::METRO::CRO::MESSAGES::User* ClassroomInfo::release_teacher() {
   clear_has_teacher();
-  ::METRO::CRO::MESSAGES::Teacher* temp = teacher_;
+  ::METRO::CRO::MESSAGES::User* temp = teacher_;
   teacher_ = NULL;
   return temp;
 }
-inline void ClassroomInfo::set_allocated_teacher(::METRO::CRO::MESSAGES::Teacher* teacher) {
+inline void ClassroomInfo::set_allocated_teacher(::METRO::CRO::MESSAGES::User* teacher) {
   delete teacher_;
   teacher_ = teacher;
   if (teacher) {
@@ -511,6 +531,54 @@ inline void ClassroomInfo::set_allocated_imgurl(::std::string* imgurl) {
     imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.ClassroomInfo.imgurl)
+}
+
+// optional int32 time_open = 7;
+inline bool ClassroomInfo::has_time_open() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ClassroomInfo::set_has_time_open() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ClassroomInfo::clear_has_time_open() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ClassroomInfo::clear_time_open() {
+  time_open_ = 0;
+  clear_has_time_open();
+}
+inline ::google::protobuf::int32 ClassroomInfo::time_open() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
+  return time_open_;
+}
+inline void ClassroomInfo::set_time_open(::google::protobuf::int32 value) {
+  set_has_time_open();
+  time_open_ = value;
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.time_open)
+}
+
+// optional int32 time_close = 8;
+inline bool ClassroomInfo::has_time_close() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ClassroomInfo::set_has_time_close() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ClassroomInfo::clear_has_time_close() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ClassroomInfo::clear_time_close() {
+  time_close_ = 0;
+  clear_has_time_close();
+}
+inline ::google::protobuf::int32 ClassroomInfo::time_close() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
+  return time_close_;
+}
+inline void ClassroomInfo::set_time_close(::google::protobuf::int32 value) {
+  set_has_time_close();
+  time_close_ = value;
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.ClassroomInfo.time_close)
 }
 
 

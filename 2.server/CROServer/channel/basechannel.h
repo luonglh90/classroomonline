@@ -33,7 +33,7 @@ public:
     BaseChannel();
     void enqueueMessage(IpcSocketEvelope *ipcevelope);
 
-    virtual void onDisconnect(QWebSocket *socket) = 0;
+    virtual void onDisconnect(int socketuid) = 0;
 
 signals:
     void requestSendToSocketClient(int socketuid, QByteArray data);

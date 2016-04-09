@@ -14,6 +14,7 @@ public:
     explicit UserChannel();
 
     void processRequestLogin(int uid, METRO::CRO::MESSAGES::RequestLogin *msg);
+
 signals:
 
 public slots:
@@ -21,7 +22,7 @@ public slots:
 protected:
     // BaseChannel interface
     void readMessage(IpcSocketEvelope *ipcevelope);
-    void onDisconnect(QWebSocket *socket);
+    void onDisconnect(int socketuid);
 };
 
 #endif // USERCHANNEL_H

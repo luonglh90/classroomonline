@@ -2,10 +2,13 @@
 #include <QtCore/QCommandLineParser>
 #include <QtCore/QCommandLineOption>
 #include "echoclient.h"
+#include <QDateTime>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+
+    qDebug() << QDateTime::currentDateTime().toTime_t();
 
     QCommandLineParser parser;
     parser.setApplicationDescription("QtWebSockets example: echoclient");

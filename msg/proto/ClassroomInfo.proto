@@ -1,5 +1,5 @@
 import "IpcMessage.proto";
-import "Teacher.proto";
+import "User.proto";
 
 package METRO.CRO.MESSAGES;
 
@@ -12,8 +12,10 @@ message ClassroomInfo {
 	required int32 cate_id = 2;
 	required string name = 3;
 
-	required Teacher teacher = 4;
+	required User teacher = 4;
 
 	optional string description = 5;
 	optional string imgurl = 6;
+	optional int32 time_open = 7;
+	optional int32 time_close = 8;
 }
