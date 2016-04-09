@@ -15,14 +15,19 @@
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry;
 @end
 
-#define IpcMessage_msgId @"msgId"
-@interface IpcMessage : PBExtendableMessage<GeneratedMessageProtocol> {
+#define IpcMessage_id @"id"
+#define IpcMessage_payload_data @"payloadData"
+@interface IpcMessage : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
-  BOOL hasMsgId_:1;
-  SInt32 msgId;
+  BOOL hasId_:1;
+  BOOL hasPayloadData_:1;
+  SInt64 id;
+  NSData* payloadData;
 }
-- (BOOL) hasMsgId;
-@property (readonly) SInt32 msgId;
+- (BOOL) hasId;
+- (BOOL) hasPayloadData;
+@property (readonly) SInt64 id;
+@property (readonly, strong) NSData* payloadData;
 
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
@@ -42,7 +47,7 @@
 + (IpcMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface IpcMessageBuilder : PBExtendableMessageBuilder {
+@interface IpcMessageBuilder : PBGeneratedMessageBuilder {
 @private
   IpcMessage* resultIpcMessage;
 }
@@ -59,10 +64,15 @@
 - (IpcMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (IpcMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (BOOL) hasMsgId;
-- (SInt32) msgId;
-- (IpcMessageBuilder*) setMsgId:(SInt32) value;
-- (IpcMessageBuilder*) clearMsgId;
+- (BOOL) hasId;
+- (SInt64) id;
+- (IpcMessageBuilder*) setId:(SInt64) value;
+- (IpcMessageBuilder*) clearId;
+
+- (BOOL) hasPayloadData;
+- (NSData*) payloadData;
+- (IpcMessageBuilder*) setPayloadData:(NSData*) value;
+- (IpcMessageBuilder*) clearPayloadData;
 @end
 
 

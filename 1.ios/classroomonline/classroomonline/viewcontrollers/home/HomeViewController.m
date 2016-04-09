@@ -12,6 +12,7 @@
 #import "Rpc.h"
 #import "ROSession.h"
 #import "Utils.h"
+#import "TestRoomInfo.pb.h"
 
 @interface HomeViewController ()
 
@@ -43,14 +44,14 @@
     NSString *username = self.txtName.text;
     NSString *pass = self.txtPass.text;
     
-    if (!username || ![username isEqualToString:@""] || !pass || ![pass isEqualToString:@""]) {
+    if (!username || [username isEqualToString:@""] || !pass || [pass isEqualToString:@""]) {
         [Utils showAlertTitle:app_name content:signin_empty_name_pass];
         return;
     }
     [ROAppDelegate showLoading];
     [[Rpc instance] connectSocket];
     [[Rpc instance] setOnSocketConnected:^(){
-        [[Rpc instance] requestSigninWithName:@"teacher1" pass:@"123456"];
+        [[Rpc instance] requestSigninWithName:username pass:pass];
     }];
     [[Rpc instance] setOnSocketConnectFail:^(){
         [ROAppDelegate hideLoading];

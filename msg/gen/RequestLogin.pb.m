@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation RequestLoginRoot
-static id<PBExtensionField> RequestLogin_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,23 +11,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [RequestLoginRoot class]) {
-    RequestLogin_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:105
-                                      defaultValue:[RequestLogin defaultInstance]
-                               messageOrGroupClass:[RequestLogin class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:RequestLogin_message];
 }
 @end
 
@@ -59,9 +47,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.password = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return RequestLogin_message;
 }
 static RequestLogin* defaultRequestLoginInstance = nil;
 + (void) initialize {

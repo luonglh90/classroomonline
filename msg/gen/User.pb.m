@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation UserRoot
-static id<PBExtensionField> User_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,23 +11,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [UserRoot class]) {
-    User_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:101
-                                      defaultValue:[User defaultInstance]
-                               messageOrGroupClass:[User class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:User_message];
 }
 @end
 
@@ -95,9 +83,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.password = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return User_message;
 }
 static User* defaultUserInstance = nil;
 + (void) initialize {

@@ -21,21 +21,30 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @end
 
 @interface IpcMessage ()
-@property SInt32 msgId;
+@property SInt64 id;
+@property (strong) NSData* payloadData;
 @end
 
 @implementation IpcMessage
 
-- (BOOL) hasMsgId {
-  return !!hasMsgId_;
+- (BOOL) hasId {
+  return !!hasId_;
 }
-- (void) setHasMsgId:(BOOL) _value_ {
-  hasMsgId_ = !!_value_;
+- (void) setHasId:(BOOL) _value_ {
+  hasId_ = !!_value_;
 }
-@synthesize msgId;
+@synthesize id;
+- (BOOL) hasPayloadData {
+  return !!hasPayloadData_;
+}
+- (void) setHasPayloadData:(BOOL) _value_ {
+  hasPayloadData_ = !!_value_;
+}
+@synthesize payloadData;
 - (instancetype) init {
   if ((self = [super init])) {
-    self.msgId = 0;
+    self.id = 0L;
+    self.payloadData = [NSData data];
   }
   return self;
 }
@@ -52,21 +61,15 @@ static IpcMessage* defaultIpcMessageInstance = nil;
   return defaultIpcMessageInstance;
 }
 - (BOOL) isInitialized {
-  if (!self.hasMsgId) {
-    return NO;
-  }
-  if (!self.extensionsAreInitialized) {
-    return NO;
-  }
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  if (self.hasMsgId) {
-    [output writeInt32:1 value:self.msgId];
+  if (self.hasId) {
+    [output writeInt64:1 value:self.id];
   }
-  [self writeExtensionsToCodedOutputStream:output
-                                      from:100
-                                        to:10001];
+  if (self.hasPayloadData) {
+    [output writeData:2 value:self.payloadData];
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (SInt32) serializedSize {
@@ -76,10 +79,12 @@ static IpcMessage* defaultIpcMessageInstance = nil;
   }
 
   size_ = 0;
-  if (self.hasMsgId) {
-    size_ += computeInt32Size(1, self.msgId);
+  if (self.hasId) {
+    size_ += computeInt64Size(1, self.id);
   }
-  size_ += [self extensionsSerializedSize];
+  if (self.hasPayloadData) {
+    size_ += computeDataSize(2, self.payloadData);
+  }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -115,18 +120,20 @@ static IpcMessage* defaultIpcMessageInstance = nil;
   return [IpcMessage builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  if (self.hasMsgId) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"msgId", [NSNumber numberWithInteger:self.msgId]];
+  if (self.hasId) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"id", [NSNumber numberWithLongLong:self.id]];
   }
-  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
-                                            from:100
-                                              to:10001
-                                      withIndent:indent];
+  if (self.hasPayloadData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"payloadData", self.payloadData];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (void) storeInDictionary:(NSMutableDictionary *)dictionary {
-  if (self.hasMsgId) {
-    [dictionary setObject: [NSNumber numberWithInteger:self.msgId] forKey: @"msgId"];
+  if (self.hasId) {
+    [dictionary setObject: [NSNumber numberWithLongLong:self.id] forKey: @"id"];
+  }
+  if (self.hasPayloadData) {
+    [dictionary setObject: self.payloadData forKey: @"payloadData"];
   }
   [self.unknownFields storeInDictionary:dictionary];
 }
@@ -139,18 +146,20 @@ static IpcMessage* defaultIpcMessageInstance = nil;
   }
   IpcMessage *otherMessage = other;
   return
-      self.hasMsgId == otherMessage.hasMsgId &&
-      (!self.hasMsgId || self.msgId == otherMessage.msgId) &&
-      [self isEqualExtensionsInOther:otherMessage from:100 to:10001] &&
-
+      self.hasId == otherMessage.hasId &&
+      (!self.hasId || self.id == otherMessage.id) &&
+      self.hasPayloadData == otherMessage.hasPayloadData &&
+      (!self.hasPayloadData || [self.payloadData isEqual:otherMessage.payloadData]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  if (self.hasMsgId) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.msgId] hash];
+  if (self.hasId) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.id] hash];
   }
-  hashCode = hashCode * 31 + [self hashExtensionsFrom:100 to:10001];
+  if (self.hasPayloadData) {
+    hashCode = hashCode * 31 + [self.payloadData hash];
+  }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -168,7 +177,7 @@ static IpcMessage* defaultIpcMessageInstance = nil;
   }
   return self;
 }
-- (PBExtendableMessage*) internalGetResult {
+- (PBGeneratedMessage*) internalGetResult {
   return resultIpcMessage;
 }
 - (IpcMessageBuilder*) clear {
@@ -194,10 +203,12 @@ static IpcMessage* defaultIpcMessageInstance = nil;
   if (other == [IpcMessage defaultInstance]) {
     return self;
   }
-  if (other.hasMsgId) {
-    [self setMsgId:other.msgId];
+  if (other.hasId) {
+    [self setId:other.id];
   }
-  [self mergeExtensionFields:other];
+  if (other.hasPayloadData) {
+    [self setPayloadData:other.payloadData];
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -220,26 +231,46 @@ static IpcMessage* defaultIpcMessageInstance = nil;
         break;
       }
       case 8: {
-        [self setMsgId:[input readInt32]];
+        [self setId:[input readInt64]];
+        break;
+      }
+      case 18: {
+        [self setPayloadData:[input readData]];
         break;
       }
     }
   }
 }
-- (BOOL) hasMsgId {
-  return resultIpcMessage.hasMsgId;
+- (BOOL) hasId {
+  return resultIpcMessage.hasId;
 }
-- (SInt32) msgId {
-  return resultIpcMessage.msgId;
+- (SInt64) id {
+  return resultIpcMessage.id;
 }
-- (IpcMessageBuilder*) setMsgId:(SInt32) value {
-  resultIpcMessage.hasMsgId = YES;
-  resultIpcMessage.msgId = value;
+- (IpcMessageBuilder*) setId:(SInt64) value {
+  resultIpcMessage.hasId = YES;
+  resultIpcMessage.id = value;
   return self;
 }
-- (IpcMessageBuilder*) clearMsgId {
-  resultIpcMessage.hasMsgId = NO;
-  resultIpcMessage.msgId = 0;
+- (IpcMessageBuilder*) clearId {
+  resultIpcMessage.hasId = NO;
+  resultIpcMessage.id = 0L;
+  return self;
+}
+- (BOOL) hasPayloadData {
+  return resultIpcMessage.hasPayloadData;
+}
+- (NSData*) payloadData {
+  return resultIpcMessage.payloadData;
+}
+- (IpcMessageBuilder*) setPayloadData:(NSData*) value {
+  resultIpcMessage.hasPayloadData = YES;
+  resultIpcMessage.payloadData = value;
+  return self;
+}
+- (IpcMessageBuilder*) clearPayloadData {
+  resultIpcMessage.hasPayloadData = NO;
+  resultIpcMessage.payloadData = [NSData data];
   return self;
 }
 @end

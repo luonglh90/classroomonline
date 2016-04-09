@@ -7,6 +7,7 @@
 //
 
 #import "RoomViewController.h"
+#import "ROSession.h"
 
 @interface RoomViewController ()
 
@@ -19,12 +20,22 @@
     [self.btnErase.layer setCornerRadius:5];
     [self.btnPencil.layer setCornerRadius:5];
     [self.viewControl.layer setCornerRadius:5];
-    [self actionPressedButton:self.btnPencil];
+    if ([ROSession instance].isDrawable) {
+        [self actionPressedButton:self.btnPencil];
+    }
+    else{
+        [self disableAllControl];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [ROSession instance].isDrawable = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +82,16 @@
         [self.btnCurosr setSelected:YES];
         [self.viewDraw setIsDragEnabled:YES];
     }
+}
+
+- (void)disableAllControl{
+    [self.btnErase setEnabled:NO];
+    [self.btnErase setSelected:NO];
+    [self.btnPencil setEnabled:NO];
+    [self.btnPencil setSelected:NO];
+    [self.btnCurosr setEnabled:NO];
+    [self.btnCurosr setSelected:YES];
+    [self.viewDraw setIsDragEnabled:YES];
 }
 
 @end

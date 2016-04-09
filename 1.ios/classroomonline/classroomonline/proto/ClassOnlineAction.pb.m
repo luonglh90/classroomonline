@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation ClassOnlineActionRoot
-static id<PBExtensionField> ClassOnlineAction_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,23 +11,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [ClassOnlineActionRoot class]) {
-    ClassOnlineAction_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:303
-                                      defaultValue:[ClassOnlineAction defaultInstance]
-                               messageOrGroupClass:[ClassOnlineAction class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:ClassOnlineAction_message];
 }
 @end
 
@@ -77,9 +65,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.actiontype = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return ClassOnlineAction_message;
 }
 static ClassOnlineAction* defaultClassOnlineActionInstance = nil;
 + (void) initialize {

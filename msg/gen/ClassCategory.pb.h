@@ -2,13 +2,10 @@
 
 #import <ProtocolBuffers/ProtocolBuffers.h>
 
-#import "IpcMessage.pb.h"
 // @@protoc_insertion_point(imports)
 
 @class ClassCategory;
 @class ClassCategoryBuilder;
-@class IpcMessage;
-@class IpcMessageBuilder;
 
 
 
@@ -45,7 +42,6 @@
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
 
-+ (id<PBExtensionField>) message;
 - (BOOL) isInitialized;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
 - (ClassCategoryBuilder*) builder;

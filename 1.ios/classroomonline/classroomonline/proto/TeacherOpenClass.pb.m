@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation TeacherOpenClassRoot
-static id<PBExtensionField> TeacherOpenClass_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,23 +11,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [TeacherOpenClassRoot class]) {
-    TeacherOpenClass_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:301
-                                      defaultValue:[TeacherOpenClass defaultInstance]
-                               messageOrGroupClass:[TeacherOpenClass class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:TeacherOpenClass_message];
 }
 @end
 
@@ -59,9 +47,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.classid = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return TeacherOpenClass_message;
 }
 static TeacherOpenClass* defaultTeacherOpenClassInstance = nil;
 + (void) initialize {

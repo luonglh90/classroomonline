@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation RequestViewCategoryDetailRoot
-static id<PBExtensionField> RequestViewCategoryDetail_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,23 +11,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [RequestViewCategoryDetailRoot class]) {
-    RequestViewCategoryDetail_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:205
-                                      defaultValue:[RequestViewCategoryDetail defaultInstance]
-                               messageOrGroupClass:[RequestViewCategoryDetail class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:RequestViewCategoryDetail_message];
 }
 @end
 
@@ -50,9 +38,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.cateId = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return RequestViewCategoryDetail_message;
 }
 static RequestViewCategoryDetail* defaultRequestViewCategoryDetailInstance = nil;
 + (void) initialize {

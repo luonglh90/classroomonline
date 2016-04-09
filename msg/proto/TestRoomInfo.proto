@@ -1,14 +1,12 @@
-
+import "User.proto";
 
 package METRO.CRO.MESSAGES;
 
-message ClassroomInfo {
+message TestRoomInfo {
 	required string uid = 1;
 	required string cateid = 2;
 	required string name = 3;
-
-	required string teacher = 4;
-
+	required User teacher = 4;
 	optional string description = 5;
 	optional string imgurl = 6;
 	optional string timeopen = 7;

@@ -2,13 +2,10 @@
 
 #import <ProtocolBuffers/ProtocolBuffers.h>
 
-#import "IpcMessage.pb.h"
 // @@protoc_insertion_point(imports)
 
 @class ClassOnlineAction;
 @class ClassOnlineActionBuilder;
-@class IpcMessage;
-@class IpcMessageBuilder;
 
 
 typedef NS_ENUM(SInt32, ClassOnlineActionActionType) {
@@ -57,7 +54,6 @@ NSString *NSStringFromClassOnlineActionActionType(ClassOnlineActionActionType va
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
 
-+ (id<PBExtensionField>) message;
 - (BOOL) isInitialized;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
 - (ClassOnlineActionBuilder*) builder;

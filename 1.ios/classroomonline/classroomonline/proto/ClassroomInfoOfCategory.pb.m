@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation ClassroomInfoOfCategoryRoot
-static id<PBExtensionField> ClassroomInfoOfCategory_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,24 +11,13 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [ClassroomInfoOfCategoryRoot class]) {
-    ClassroomInfoOfCategory_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:207
-                                      defaultValue:[ClassroomInfoOfCategory defaultInstance]
-                               messageOrGroupClass:[ClassroomInfoOfCategory class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     [ClassroomInfoRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:ClassroomInfoOfCategory_message];
 }
 @end
 
@@ -54,9 +42,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.cateid = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return ClassroomInfoOfCategory_message;
 }
 static ClassroomInfoOfCategory* defaultClassroomInfoOfCategoryInstance = nil;
 + (void) initialize {

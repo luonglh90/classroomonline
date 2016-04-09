@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation TeacherRoot
-static id<PBExtensionField> Teacher_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,24 +11,13 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [TeacherRoot class]) {
-    Teacher_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:103
-                                      defaultValue:[Teacher defaultInstance]
-                               messageOrGroupClass:[Teacher class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     [UserRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:Teacher_message];
 }
 @end
 
@@ -63,9 +51,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.rate = 0;
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return Teacher_message;
 }
 static Teacher* defaultTeacherInstance = nil;
 + (void) initialize {

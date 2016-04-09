@@ -12,6 +12,7 @@
 #import "User.pb.h"
 #import "ClassCategory.pb.h"
 #import "ClassroomInfo.pb.h"
+#import "ClassOnlineAction.pb.h"
 
 @interface Rpc : NSObject <SRWebSocketDelegate>{
     
@@ -25,7 +26,7 @@
 @property (nonatomic, copy) void(^onSignInFail)();
 @property (nonatomic, copy) void(^onResponseUserInit)(User *user, NSArray *categories, NSArray *arrayMyClasses);
 @property (nonatomic, copy) void(^onResponseListClasses)(NSString* categoryId, NSArray *listClasses);
-@property (nonatomic, copy) void(^onOpenClassSuccess)();
+@property (nonatomic, copy) void(^onOpenClassSuccess)(ClassOnlineAction *action);
 
 + (instancetype)instance;
 

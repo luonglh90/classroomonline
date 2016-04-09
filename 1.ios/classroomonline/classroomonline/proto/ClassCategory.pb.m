@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation ClassCategoryRoot
-static id<PBExtensionField> ClassCategory_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,23 +11,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [ClassCategoryRoot class]) {
-    ClassCategory_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:201
-                                      defaultValue:[ClassCategory defaultInstance]
-                               messageOrGroupClass:[ClassCategory class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:ClassCategory_message];
 }
 @end
 
@@ -77,9 +65,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.imgurl = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return ClassCategory_message;
 }
 static ClassCategory* defaultClassCategoryInstance = nil;
 + (void) initialize {

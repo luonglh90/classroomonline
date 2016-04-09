@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation LoginStatusRoot
-static id<PBExtensionField> LoginStatus_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,23 +11,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [LoginStatusRoot class]) {
-    LoginStatus_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:111
-                                      defaultValue:[LoginStatus defaultInstance]
-                               messageOrGroupClass:[LoginStatus class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     extensionRegistry = registry;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:LoginStatus_message];
 }
 @end
 
@@ -59,9 +47,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.stt = @"";
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return LoginStatus_message;
 }
 static LoginStatus* defaultLoginStatusInstance = nil;
 + (void) initialize {

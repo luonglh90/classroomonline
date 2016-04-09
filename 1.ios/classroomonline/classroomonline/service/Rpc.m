@@ -14,6 +14,7 @@
 #import "ClassroomInfoOfCategory.pb.h"
 #import "ResponseLogin.pb.h"
 #import "ClassOnlineAction.pb.h"
+#import "IpcMessage.pb.h"
 
 @interface Rpc(){
 }
@@ -39,15 +40,6 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        [IpcMessageRoot initialize];
-        [RequestLoginRoot initialize];
-        [LoginStatusRoot initialize];
-        [UserInitRoot initialize];
-        [UserRoot initialize];
-        [ClassCategoryRoot initialize];
-        [RequestViewCategoryDetailRoot initialize];
-        [ResponseLoginRoot initialize];
-        [ClassOnlineActionRoot initialize];
     }
     return self;
 }
@@ -74,33 +66,23 @@
 #pragma mark - Sign in methods
 // Login
 - (void)requestSigninWithName:(NSString*)name pass:(NSString*)pass{
-    
     RequestLogin *request = [[[[RequestLogin builder] setUsername:name] setPassword:pass] build];
-    IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:REQUEST_LOGIN_MSG] ;
-    [ipc setExtension:[RequestLogin message] value:request];
-    
-    NSData *data = [[ipc build] data];
-    
-    [self.webSocket send:data];
-    
+    IpcMessage *message = [[[[IpcMessage builder] setId:REQUEST_LOGIN_MSG] setPayloadData:[request data]] build];
+    [self.webSocket send:[message data]];
 }
 
 // Request get list classes in a category
 - (void)requestListClassesWithCategoryId:(NSString*)cId{
     RequestViewCategoryDetail *request = [[[RequestViewCategoryDetail builder] setCateId:cId] build];
-    IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:REQUEST_VIEW_CATEGORY_DETAIL_MSG] ;
-    [ipc setExtension:[RequestViewCategoryDetail message] value:request];
-    NSData *data = [[ipc build] data];
-    [self.webSocket send:data];
+    IpcMessage *message = [[[[IpcMessage builder] setId:REQUEST_VIEW_CATEGORY_DETAIL_MSG] setPayloadData:[request data]] build];
+    [self.webSocket send:[message data]];
 }
 
 // Request open class
 - (void)requestOpenClassId:(NSString*)classId sourceUser:(NSString*)source targetUser:(NSString*)target type:(NSString*)type{
     ClassOnlineAction *request = [[[[[[ClassOnlineAction builder] setClassid:classId] setSourceusername:source] setTargetusername:target] setActiontype:type] build];
-    IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:CLASS_ONLINE_ACTION_MSG] ;
-    [ipc setExtension:[ClassOnlineAction message] value:request];
-    NSData *data = [[ipc build] data];
-    [self.webSocket send:data];
+    IpcMessage *message = [[[[IpcMessage builder] setId:CLASS_ONLINE_ACTION_MSG] setPayloadData:[request data]] build];
+    [self.webSocket send:[message data]];
 }
 
 #pragma mark -
@@ -143,10 +125,10 @@
         NSLog(@"webSocket Response NIL");
         return;
     }
-    IpcMessage *ipc = [IpcMessage parseFromData:message ];
+    IpcMessage *ipc = [IpcMessage parseFromData:message];
     
     NSLog(@"%@", ipc);
-    switch (ipc.msgId) {
+    switch (ipc.id) {
         // USER_BASE
         case USER_MSG:{
             
@@ -157,34 +139,19 @@
         }
             break;
         case RESPONSE_LOGIN_MSG:{
-            id<PBExtensionField> field = [ResponseLogin message];
-            ipc = [IpcMessage parseFromData:message extensionRegistry:[ResponseLoginRoot extensionRegistry]];
-            ResponseLogin *response = [ipc getExtension:field];
+            ResponseLogin *response = [ResponseLogin parseFromData:ipc.payloadData];
             if ([response.status intValue] == 0 && self.onSignInSuccess) {
                 self.onSignInSuccess(response.username);
             }
             else if (self.onSignInFail){
                 self.onSignInFail();
             }
-            
-//            id<PBExtensionField> field = [LoginStatus message];
-//            ipc = [IpcMessage parseFromData:message extensionRegistry:[LoginStatusRoot extensionRegistry]];
-//            LoginStatus *response = [ipc getExtension:field];
-//            if (response.stt == 0 && self.onSignInSuccess) {
-//                self.onSignInSuccess(response.name);
-//            }
-//            else if (self.onSignInFail){
-//                self.onSignInFail();
-//            }
-            
             self.onSignInSuccess = nil;
             self.onSignInFail = nil;
         }
             break;
         case USER_INIT_MSG:{
-            id<PBExtensionField> field = [UserInit message];
-            ipc = [IpcMessage parseFromData:message extensionRegistry:[UserInitRoot extensionRegistry]];
-            UserInit *response = [ipc getExtension:field];
+            UserInit *response = [UserInit parseFromData:ipc.payloadData];
             if (self.onResponseUserInit) {
                 self.onResponseUserInit(response.userinfo, response.categories, response.ownerclass);
             }
@@ -194,9 +161,7 @@
         // CLASS BASE
         case CLASSES_OF_CATEGORY:{
             // Response of list classes
-            id<PBExtensionField> field = [ClassroomInfoOfCategory message];
-            ipc = [IpcMessage parseFromData:message extensionRegistry:[ClassroomInfoOfCategoryRoot extensionRegistry]];
-            ClassroomInfoOfCategory *response = [ipc getExtension:field];
+            ClassroomInfoOfCategory *response = [ClassroomInfoOfCategory parseFromData:ipc.payloadData];
             if (self.onResponseListClasses) {
                 self.onResponseListClasses(response.cateid, response.listOfClasses);
             }
@@ -204,18 +169,15 @@
         }
             break;
         case CALSSROOM_MSG:{
-            // Response of list classes
-//            id<PBExtensionField> field = [ClassroomInfoOfCategory message];
-//            ipc = [IpcMessage parseFromData:message extensionRegistry:[ClassroomInfoOfCategoryRoot extensionRegistry]];
-//            ClassroomInfoOfCategory *response = [ipc getExtension:field];
-            if (self.onOpenClassSuccess) {
-                self.onOpenClassSuccess();
-            }
-            self.onOpenClassSuccess = nil;
+            
         }
             break;
         case CLASS_ONLINE_ACTION_MSG:{
-            
+            // Response of list classes
+            ClassOnlineAction *response = [ClassOnlineAction parseFromData:ipc.payloadData];
+            if (self.onOpenClassSuccess) {
+                self.onOpenClassSuccess(response);
+            }
         }
             break;
         default:

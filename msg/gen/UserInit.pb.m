@@ -4,7 +4,6 @@
 // @@protoc_insertion_point(imports)
 
 @implementation UserInitRoot
-static id<PBExtensionField> UserInit_message = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -12,18 +11,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 + (void) initialize {
   if (self == [UserInitRoot class]) {
-    UserInit_message =
-      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
-                                     extendedClass:[IpcMessage class]
-                                       fieldNumber:109
-                                      defaultValue:[UserInit defaultInstance]
-                               messageOrGroupClass:[UserInit class]
-                                        isRepeated:NO
-                                          isPacked:NO
-                            isMessageSetWireFormat:NO];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
-    [IpcMessageRoot registerAllExtensions:registry];
     [UserRoot registerAllExtensions:registry];
     [ClassCategoryRoot registerAllExtensions:registry];
     [ClassroomInfoRoot registerAllExtensions:registry];
@@ -31,7 +20,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
   }
 }
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry {
-  [registry addExtension:UserInit_message];
 }
 @end
 
@@ -59,9 +47,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.userinfo = [User defaultInstance];
   }
   return self;
-}
-+ (id<PBExtensionField>) message {
-  return UserInit_message;
 }
 static UserInit* defaultUserInitInstance = nil;
 + (void) initialize {
