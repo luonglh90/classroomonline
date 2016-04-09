@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SRWebSocket.h"
 
+
 @interface Rpc : NSObject <SRWebSocketDelegate>{
     
 }
@@ -19,6 +20,7 @@
 @property (nonatomic, copy) void(^onSocketConnectFail)();
 @property (nonatomic, copy) void(^onSignInSuccess)(NSString *name);
 @property (nonatomic, copy) void(^onSignInFail)();
+@property (nonatomic, copy) void(^onResponseUserInit)();
 
 
 + (instancetype)instance;
