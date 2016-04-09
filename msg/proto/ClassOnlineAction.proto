@@ -17,6 +17,7 @@ message ClassOnlineAction {
 	}
 
 	optional string targetusername = 1;
-	optional int32 classid = 2;
-	optional ActionType actiontype = 3;
+	optional string sourceusername = 4;
+	optional string classid = 2;
+	optional string actiontype = 3;
 }

@@ -87,7 +87,7 @@ void protobuf_AddDesc_Teacher_2eproto() {
     "\n\rTeacher.proto\022\022METRO.CRO.MESSAGES\032\020Ipc"
     "Message.proto\032\nUser.proto\"\242\001\n\007Teacher\022*\n"
     "\010userinfo\030\001 \002(\0132\030.METRO.CRO.MESSAGES.Use"
-    "r\022\017\n\007classid\030\002 \003(\005\022\014\n\004rate\030\003 \001(\0012L\n\007mess"
+    "r\022\017\n\007classid\030\002 \003(\t\022\014\n\004rate\030\003 \001(\0012L\n\007mess"
     "age\022\036.METRO.CRO.MESSAGES.IpcMessage\030g \001("
     "\0132\033.METRO.CRO.MESSAGES.Teacher", 230);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -140,6 +140,7 @@ Teacher::Teacher(const Teacher& from)
 }
 
 void Teacher::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   userinfo_ = NULL;
   rate_ = 0;
@@ -208,25 +209,25 @@ bool Teacher::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_classid;
+        if (input->ExpectTag(18)) goto parse_classid;
         break;
       }
 
-      // repeated int32 classid = 2;
+      // repeated string classid = 2;
       case 2: {
-        if (tag == 16) {
+        if (tag == 18) {
          parse_classid:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 16, input, this->mutable_classid())));
-        } else if (tag == 18) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, this->mutable_classid())));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_classid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->classid(this->classid_size() - 1).data(),
+            this->classid(this->classid_size() - 1).length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "classid");
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_classid;
+        if (input->ExpectTag(18)) goto parse_classid;
         if (input->ExpectTag(25)) goto parse_rate;
         break;
       }
@@ -277,9 +278,13 @@ void Teacher::SerializeWithCachedSizes(
       1, this->userinfo(), output);
   }
 
-  // repeated int32 classid = 2;
+  // repeated string classid = 2;
   for (int i = 0; i < this->classid_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+  ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+    this->classid(i).data(), this->classid(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE,
+    "classid");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->classid(i), output);
   }
 
@@ -305,10 +310,14 @@ void Teacher::SerializeWithCachedSizes(
         1, this->userinfo(), target);
   }
 
-  // repeated int32 classid = 2;
+  // repeated string classid = 2;
   for (int i = 0; i < this->classid_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->classid(i).data(), this->classid(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "classid");
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(2, this->classid(i), target);
+      WriteStringToArray(2, this->classid(i), target);
   }
 
   // optional double rate = 3;
@@ -341,14 +350,11 @@ int Teacher::ByteSize() const {
     }
 
   }
-  // repeated int32 classid = 2;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->classid_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        Int32Size(this->classid(i));
-    }
-    total_size += 1 * this->classid_size() + data_size;
+  // repeated string classid = 2;
+  total_size += 1 * this->classid_size();
+  for (int i = 0; i < this->classid_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->classid(i));
   }
 
   if (!unknown_fields().empty()) {

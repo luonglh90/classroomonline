@@ -93,12 +93,17 @@ class RequestViewCategoryDetail : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 cate_id = 1;
+  // required string cate_id = 1;
   inline bool has_cate_id() const;
   inline void clear_cate_id();
   static const int kCateIdFieldNumber = 1;
-  inline ::google::protobuf::int32 cate_id() const;
-  inline void set_cate_id(::google::protobuf::int32 value);
+  inline const ::std::string& cate_id() const;
+  inline void set_cate_id(const ::std::string& value);
+  inline void set_cate_id(const char* value);
+  inline void set_cate_id(const char* value, size_t size);
+  inline ::std::string* mutable_cate_id();
+  inline ::std::string* release_cate_id();
+  inline void set_allocated_cate_id(::std::string* cate_id);
 
   static const int kMessageFieldNumber = 205;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
@@ -113,7 +118,7 @@ class RequestViewCategoryDetail : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::int32 cate_id_;
+  ::std::string* cate_id_;
   friend void  protobuf_AddDesc_RequestViewCategoryDetail_2eproto();
   friend void protobuf_AssignDesc_RequestViewCategoryDetail_2eproto();
   friend void protobuf_ShutdownFile_RequestViewCategoryDetail_2eproto();
@@ -128,7 +133,7 @@ class RequestViewCategoryDetail : public ::google::protobuf::Message {
 
 // RequestViewCategoryDetail
 
-// required int32 cate_id = 1;
+// required string cate_id = 1;
 inline bool RequestViewCategoryDetail::has_cate_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -139,17 +144,69 @@ inline void RequestViewCategoryDetail::clear_has_cate_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void RequestViewCategoryDetail::clear_cate_id() {
-  cate_id_ = 0;
+  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cate_id_->clear();
+  }
   clear_has_cate_id();
 }
-inline ::google::protobuf::int32 RequestViewCategoryDetail::cate_id() const {
+inline const ::std::string& RequestViewCategoryDetail::cate_id() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.RequestViewCategoryDetail.cate_id)
+  return *cate_id_;
+}
+inline void RequestViewCategoryDetail::set_cate_id(const ::std::string& value) {
+  set_has_cate_id();
+  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cate_id_ = new ::std::string;
+  }
+  cate_id_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.RequestViewCategoryDetail.cate_id)
+}
+inline void RequestViewCategoryDetail::set_cate_id(const char* value) {
+  set_has_cate_id();
+  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cate_id_ = new ::std::string;
+  }
+  cate_id_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.RequestViewCategoryDetail.cate_id)
+}
+inline void RequestViewCategoryDetail::set_cate_id(const char* value, size_t size) {
+  set_has_cate_id();
+  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cate_id_ = new ::std::string;
+  }
+  cate_id_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.RequestViewCategoryDetail.cate_id)
+}
+inline ::std::string* RequestViewCategoryDetail::mutable_cate_id() {
+  set_has_cate_id();
+  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cate_id_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.RequestViewCategoryDetail.cate_id)
   return cate_id_;
 }
-inline void RequestViewCategoryDetail::set_cate_id(::google::protobuf::int32 value) {
-  set_has_cate_id();
-  cate_id_ = value;
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.RequestViewCategoryDetail.cate_id)
+inline ::std::string* RequestViewCategoryDetail::release_cate_id() {
+  clear_has_cate_id();
+  if (cate_id_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = cate_id_;
+    cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RequestViewCategoryDetail::set_allocated_cate_id(::std::string* cate_id) {
+  if (cate_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cate_id_;
+  }
+  if (cate_id) {
+    set_has_cate_id();
+    cate_id_ = cate_id;
+  } else {
+    clear_has_cate_id();
+    cate_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.RequestViewCategoryDetail.cate_id)
 }
 
 

@@ -84,7 +84,7 @@ void protobuf_AddDesc_TeacherOpenClass_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026TeacherOpenClass.proto\022\022METRO.CRO.MESS"
     "AGES\032\020IpcMessage.proto\"\215\001\n\020TeacherOpenCl"
-    "ass\022\020\n\010username\030\001 \001(\t\022\017\n\007classid\030\002 \001(\0052V"
+    "ass\022\020\n\010username\030\001 \001(\t\022\017\n\007classid\030\002 \001(\t2V"
     "\n\007message\022\036.METRO.CRO.MESSAGES.IpcMessag"
     "e\030\255\002 \001(\0132$.METRO.CRO.MESSAGES.TeacherOpe"
     "nClass", 206);
@@ -139,7 +139,7 @@ void TeacherOpenClass::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  classid_ = 0;
+  classid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -151,6 +151,9 @@ TeacherOpenClass::~TeacherOpenClass() {
 void TeacherOpenClass::SharedDtor() {
   if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete username_;
+  }
+  if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete classid_;
   }
   if (this != default_instance_) {
   }
@@ -184,7 +187,11 @@ void TeacherOpenClass::Clear() {
         username_->clear();
       }
     }
-    classid_ = 0;
+    if (has_classid()) {
+      if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        classid_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -212,18 +219,20 @@ bool TeacherOpenClass::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_classid;
+        if (input->ExpectTag(18)) goto parse_classid;
         break;
       }
 
-      // optional int32 classid = 2;
+      // optional string classid = 2;
       case 2: {
-        if (tag == 16) {
+        if (tag == 18) {
          parse_classid:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &classid_)));
-          set_has_classid();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_classid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->classid().data(), this->classid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "classid");
         } else {
           goto handle_unusual;
         }
@@ -266,9 +275,14 @@ void TeacherOpenClass::SerializeWithCachedSizes(
       1, this->username(), output);
   }
 
-  // optional int32 classid = 2;
+  // optional string classid = 2;
   if (has_classid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->classid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->classid().data(), this->classid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "classid");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->classid(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -292,9 +306,15 @@ void TeacherOpenClass::SerializeWithCachedSizes(
         1, this->username(), target);
   }
 
-  // optional int32 classid = 2;
+  // optional string classid = 2;
   if (has_classid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->classid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->classid().data(), this->classid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "classid");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->classid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -316,10 +336,10 @@ int TeacherOpenClass::ByteSize() const {
           this->username());
     }
 
-    // optional int32 classid = 2;
+    // optional string classid = 2;
     if (has_classid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->classid());
     }
 

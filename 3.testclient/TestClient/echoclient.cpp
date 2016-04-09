@@ -85,20 +85,6 @@ void EchoClient::onBinaryMessageReceived(QByteArray msg)
     IpcMessage ipc;
     ipc.ParseFromArray(msg.constData(), msg.size());
 
-    switch (ipc.msgid()) {
-    case 104:
-    {
-        ResponseLogin *res = (ResponseLogin*)IpcMsgHelper::getMessage(&ipc);
-        if(res) {
-            qDebug() << QString::fromStdString(res->username());
-            qDebug() << QString::fromStdString(res->SerializeAsString());
-        }
-        break;
-    }
-    default:
-        break;
-    }
-
     qDebug() << QString::fromStdString(msg.toHex().toStdString());
 
 }

@@ -4,7 +4,7 @@
 #include <QHash>
 #include "entity/classroomonline.h"
 #include "basechannel.h"
-#include "../../msg/cpp/TeacherOpenClass.pb.h"
+#include "../../msg/cpp/ClassOnlineAction.pb.h"
 
 using namespace METRO::CRO::MESSAGES;
 
@@ -12,8 +12,11 @@ class ClassOnlineChannel : public BaseChannel
 {
 public:
     ClassOnlineChannel();
-    void processRequestOpenClass(int uid, METRO::CRO::MESSAGES::TeacherOpenClass *msg);
-
+    void processRequestClassAction(int uid, METRO::CRO::MESSAGES::ClassOnlineAction *msg);
+    // action
+    void userOpenClass(int uid, ClassOnlineAction *msg);
+    void userRequestJointClass(int uid, ClassOnlineAction *msg);
+    void userAcceptJointClass(int uid, ClassOnlineAction *msg);
     // BaseChannel interface
 public:
     void onDisconnect(int socketuid);

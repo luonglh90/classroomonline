@@ -36,9 +36,10 @@ void protobuf_AssignDesc_UserInit_2eproto() {
       "UserInit.proto");
   GOOGLE_CHECK(file != NULL);
   UserInit_descriptor_ = file->message_type(0);
-  static const int UserInit_offsets_[2] = {
+  static const int UserInit_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UserInit, userinfo_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UserInit, categories_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UserInit, ownerclass_),
   };
   UserInit_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -83,14 +84,17 @@ void protobuf_AddDesc_UserInit_2eproto() {
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_IpcMessage_2eproto();
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_User_2eproto();
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_ClassCategory_2eproto();
+  ::METRO::CRO::MESSAGES::protobuf_AddDesc_ClassroomInfo_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\016UserInit.proto\022\022METRO.CRO.MESSAGES\032\020Ip"
     "cMessage.proto\032\nUser.proto\032\023ClassCategor"
-    "y.proto\"\274\001\n\010UserInit\022*\n\010userinfo\030\001 \002(\0132\030"
-    ".METRO.CRO.MESSAGES.User\0225\n\ncategories\030\002"
-    " \003(\0132!.METRO.CRO.MESSAGES.ClassCategory2"
-    "M\n\007message\022\036.METRO.CRO.MESSAGES.IpcMessa"
-    "ge\030m \001(\0132\034.METRO.CRO.MESSAGES.UserInit", 278);
+    "y.proto\032\023ClassroomInfo.proto\"\363\001\n\010UserIni"
+    "t\022*\n\010userinfo\030\001 \002(\0132\030.METRO.CRO.MESSAGES"
+    ".User\0225\n\ncategories\030\002 \003(\0132!.METRO.CRO.ME"
+    "SSAGES.ClassCategory\0225\n\nownerclass\030\003 \003(\013"
+    "2!.METRO.CRO.MESSAGES.ClassroomInfo2M\n\007m"
+    "essage\022\036.METRO.CRO.MESSAGES.IpcMessage\030m"
+    " \001(\0132\034.METRO.CRO.MESSAGES.UserInit", 354);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "UserInit.proto", &protobuf_RegisterTypes);
   UserInit::default_instance_ = new UserInit();
@@ -114,6 +118,7 @@ struct StaticDescriptorInitializer_UserInit_2eproto {
 #ifndef _MSC_VER
 const int UserInit::kUserinfoFieldNumber;
 const int UserInit::kCategoriesFieldNumber;
+const int UserInit::kOwnerclassFieldNumber;
 #endif  // !_MSC_VER
 
 #ifndef _MSC_VER
@@ -182,6 +187,7 @@ void UserInit::Clear() {
     if (userinfo_ != NULL) userinfo_->::METRO::CRO::MESSAGES::User::Clear();
   }
   categories_.Clear();
+  ownerclass_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -218,6 +224,20 @@ bool UserInit::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(18)) goto parse_categories;
+        if (input->ExpectTag(26)) goto parse_ownerclass;
+        break;
+      }
+
+      // repeated .METRO.CRO.MESSAGES.ClassroomInfo ownerclass = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_ownerclass:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_ownerclass()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_ownerclass;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -259,6 +279,12 @@ void UserInit::SerializeWithCachedSizes(
       2, this->categories(i), output);
   }
 
+  // repeated .METRO.CRO.MESSAGES.ClassroomInfo ownerclass = 3;
+  for (int i = 0; i < this->ownerclass_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->ownerclass(i), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -281,6 +307,13 @@ void UserInit::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->categories(i), target);
+  }
+
+  // repeated .METRO.CRO.MESSAGES.ClassroomInfo ownerclass = 3;
+  for (int i = 0; i < this->ownerclass_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->ownerclass(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -311,6 +344,14 @@ int UserInit::ByteSize() const {
         this->categories(i));
   }
 
+  // repeated .METRO.CRO.MESSAGES.ClassroomInfo ownerclass = 3;
+  total_size += 1 * this->ownerclass_size();
+  for (int i = 0; i < this->ownerclass_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->ownerclass(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -337,6 +378,7 @@ void UserInit::MergeFrom(const ::google::protobuf::Message& from) {
 void UserInit::MergeFrom(const UserInit& from) {
   GOOGLE_CHECK_NE(&from, this);
   categories_.MergeFrom(from.categories_);
+  ownerclass_.MergeFrom(from.ownerclass_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_userinfo()) {
       mutable_userinfo()->::METRO::CRO::MESSAGES::User::MergeFrom(from.userinfo());
@@ -364,6 +406,7 @@ bool UserInit::IsInitialized() const {
     if (!this->userinfo().IsInitialized()) return false;
   }
   if (!::google::protobuf::internal::AllAreInitialized(this->categories())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->ownerclass())) return false;
   return true;
 }
 
@@ -371,6 +414,7 @@ void UserInit::Swap(UserInit* other) {
   if (other != this) {
     std::swap(userinfo_, other->userinfo_);
     categories_.Swap(&other->categories_);
+    ownerclass_.Swap(&other->ownerclass_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

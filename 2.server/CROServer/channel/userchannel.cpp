@@ -25,12 +25,12 @@ void UserChannel::processRequestLogin(int uid, RequestLogin *msg)
     bool isValid = UserManager::instance()->checkUserLogin(userName, passwd);
 
 
-    LoginStatus stt;
-    stt.set_name(msg->username());
+    ResponseLogin stt;
+    stt.set_username(msg->username());
     if(isValid) {
-        stt.set_stt(0);
+        stt.set_status("0");
     } else {
-        stt.set_stt(1);
+        stt.set_status("1");
     }
 
 //    RequestViewCategoryDetail tmp;

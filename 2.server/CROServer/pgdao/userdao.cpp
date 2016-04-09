@@ -27,7 +27,7 @@ void UserDAO::getAllUser(QList<User> &listUser, bool &isOk, QString &errMsg)
                 user.set_username(query.value("username").toString().toStdString());
                 user.set_email(query.value("emailaddr").toString().toStdString());
                 user.set_fullname(query.value("username").toString().toStdString());
-                user.set_yearofborn(query.value("bornofyear").toInt());
+                user.set_yearofborn(std::to_string(query.value("bornofyear").toInt()));
                 user.set_password(query.value("passwd").toString().toStdString());
 
                 listUser.append(user);

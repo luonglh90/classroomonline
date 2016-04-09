@@ -89,7 +89,7 @@ void protobuf_AddDesc_User_2eproto() {
     "\n\nUser.proto\022\022METRO.CRO.MESSAGES\032\020IpcMes"
     "sage.proto\"\272\001\n\004User\022\020\n\010username\030\001 \002(\t\022\r\n"
     "\005email\030\002 \002(\t\022\020\n\010fullname\030\003 \001(\t\022\022\n\nyearof"
-    "born\030\004 \002(\005\022\016\n\006imgurl\030\005 \001(\t\022\020\n\010password\030\006"
+    "born\030\004 \002(\t\022\016\n\006imgurl\030\005 \001(\t\022\020\n\010password\030\006"
     " \001(\t2I\n\007message\022\036.METRO.CRO.MESSAGES.Ipc"
     "Message\030e \001(\0132\030.METRO.CRO.MESSAGES.User", 239);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -149,7 +149,7 @@ void User::SharedCtor() {
   username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   email_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   fullname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  yearofborn_ = 0;
+  yearofborn_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   imgurl_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   password_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -169,6 +169,9 @@ void User::SharedDtor() {
   }
   if (fullname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete fullname_;
+  }
+  if (yearofborn_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete yearofborn_;
   }
   if (imgurl_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete imgurl_;
@@ -218,7 +221,11 @@ void User::Clear() {
         fullname_->clear();
       }
     }
-    yearofborn_ = 0;
+    if (has_yearofborn()) {
+      if (yearofborn_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        yearofborn_->clear();
+      }
+    }
     if (has_imgurl()) {
       if (imgurl_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         imgurl_->clear();
@@ -290,18 +297,20 @@ bool User::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_yearofborn;
+        if (input->ExpectTag(34)) goto parse_yearofborn;
         break;
       }
 
-      // required int32 yearofborn = 4;
+      // required string yearofborn = 4;
       case 4: {
-        if (tag == 32) {
+        if (tag == 34) {
          parse_yearofborn:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &yearofborn_)));
-          set_has_yearofborn();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_yearofborn()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->yearofborn().data(), this->yearofborn().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "yearofborn");
         } else {
           goto handle_unusual;
         }
@@ -398,9 +407,14 @@ void User::SerializeWithCachedSizes(
       3, this->fullname(), output);
   }
 
-  // required int32 yearofborn = 4;
+  // required string yearofborn = 4;
   if (has_yearofborn()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->yearofborn(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->yearofborn().data(), this->yearofborn().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "yearofborn");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->yearofborn(), output);
   }
 
   // optional string imgurl = 5;
@@ -466,9 +480,15 @@ void User::SerializeWithCachedSizes(
         3, this->fullname(), target);
   }
 
-  // required int32 yearofborn = 4;
+  // required string yearofborn = 4;
   if (has_yearofborn()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->yearofborn(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->yearofborn().data(), this->yearofborn().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "yearofborn");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->yearofborn(), target);
   }
 
   // optional string imgurl = 5;
@@ -526,10 +546,10 @@ int User::ByteSize() const {
           this->fullname());
     }
 
-    // required int32 yearofborn = 4;
+    // required string yearofborn = 4;
     if (has_yearofborn()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yearofborn());
     }
 

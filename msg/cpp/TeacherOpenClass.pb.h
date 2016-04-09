@@ -105,12 +105,17 @@ class TeacherOpenClass : public ::google::protobuf::Message {
   inline ::std::string* release_username();
   inline void set_allocated_username(::std::string* username);
 
-  // optional int32 classid = 2;
+  // optional string classid = 2;
   inline bool has_classid() const;
   inline void clear_classid();
   static const int kClassidFieldNumber = 2;
-  inline ::google::protobuf::int32 classid() const;
-  inline void set_classid(::google::protobuf::int32 value);
+  inline const ::std::string& classid() const;
+  inline void set_classid(const ::std::string& value);
+  inline void set_classid(const char* value);
+  inline void set_classid(const char* value, size_t size);
+  inline ::std::string* mutable_classid();
+  inline ::std::string* release_classid();
+  inline void set_allocated_classid(::std::string* classid);
 
   static const int kMessageFieldNumber = 301;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
@@ -128,7 +133,7 @@ class TeacherOpenClass : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* username_;
-  ::google::protobuf::int32 classid_;
+  ::std::string* classid_;
   friend void  protobuf_AddDesc_TeacherOpenClass_2eproto();
   friend void protobuf_AssignDesc_TeacherOpenClass_2eproto();
   friend void protobuf_ShutdownFile_TeacherOpenClass_2eproto();
@@ -219,7 +224,7 @@ inline void TeacherOpenClass::set_allocated_username(::std::string* username) {
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.TeacherOpenClass.username)
 }
 
-// optional int32 classid = 2;
+// optional string classid = 2;
 inline bool TeacherOpenClass::has_classid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -230,17 +235,69 @@ inline void TeacherOpenClass::clear_has_classid() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void TeacherOpenClass::clear_classid() {
-  classid_ = 0;
+  if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_->clear();
+  }
   clear_has_classid();
 }
-inline ::google::protobuf::int32 TeacherOpenClass::classid() const {
+inline const ::std::string& TeacherOpenClass::classid() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.TeacherOpenClass.classid)
+  return *classid_;
+}
+inline void TeacherOpenClass::set_classid(const ::std::string& value) {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  classid_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.TeacherOpenClass.classid)
+}
+inline void TeacherOpenClass::set_classid(const char* value) {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  classid_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.TeacherOpenClass.classid)
+}
+inline void TeacherOpenClass::set_classid(const char* value, size_t size) {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  classid_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.TeacherOpenClass.classid)
+}
+inline ::std::string* TeacherOpenClass::mutable_classid() {
+  set_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    classid_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.TeacherOpenClass.classid)
   return classid_;
 }
-inline void TeacherOpenClass::set_classid(::google::protobuf::int32 value) {
-  set_has_classid();
-  classid_ = value;
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.TeacherOpenClass.classid)
+inline ::std::string* TeacherOpenClass::release_classid() {
+  clear_has_classid();
+  if (classid_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = classid_;
+    classid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void TeacherOpenClass::set_allocated_classid(::std::string* classid) {
+  if (classid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete classid_;
+  }
+  if (classid) {
+    set_has_classid();
+    classid_ = classid;
+  } else {
+    clear_has_classid();
+    classid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.TeacherOpenClass.classid)
 }
 
 

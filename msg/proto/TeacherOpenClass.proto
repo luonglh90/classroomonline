@@ -8,5 +8,5 @@ message TeacherOpenClass {
 	}
 
 	optional string username = 1;
-	optional int32 classid = 2;
+	optional string classid = 2;
 }

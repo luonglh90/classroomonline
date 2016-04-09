@@ -105,12 +105,17 @@ class LoginStatus : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // optional int32 stt = 2;
+  // optional string stt = 2;
   inline bool has_stt() const;
   inline void clear_stt();
   static const int kSttFieldNumber = 2;
-  inline ::google::protobuf::int32 stt() const;
-  inline void set_stt(::google::protobuf::int32 value);
+  inline const ::std::string& stt() const;
+  inline void set_stt(const ::std::string& value);
+  inline void set_stt(const char* value);
+  inline void set_stt(const char* value, size_t size);
+  inline ::std::string* mutable_stt();
+  inline ::std::string* release_stt();
+  inline void set_allocated_stt(::std::string* stt);
 
   static const int kMessageFieldNumber = 111;
   static ::google::protobuf::internal::ExtensionIdentifier< ::METRO::CRO::MESSAGES::IpcMessage,
@@ -128,7 +133,7 @@ class LoginStatus : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* name_;
-  ::google::protobuf::int32 stt_;
+  ::std::string* stt_;
   friend void  protobuf_AddDesc_LoginStatus_2eproto();
   friend void protobuf_AssignDesc_LoginStatus_2eproto();
   friend void protobuf_ShutdownFile_LoginStatus_2eproto();
@@ -219,7 +224,7 @@ inline void LoginStatus::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.LoginStatus.name)
 }
 
-// optional int32 stt = 2;
+// optional string stt = 2;
 inline bool LoginStatus::has_stt() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -230,17 +235,69 @@ inline void LoginStatus::clear_has_stt() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void LoginStatus::clear_stt() {
-  stt_ = 0;
+  if (stt_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    stt_->clear();
+  }
   clear_has_stt();
 }
-inline ::google::protobuf::int32 LoginStatus::stt() const {
+inline const ::std::string& LoginStatus::stt() const {
   // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.LoginStatus.stt)
+  return *stt_;
+}
+inline void LoginStatus::set_stt(const ::std::string& value) {
+  set_has_stt();
+  if (stt_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    stt_ = new ::std::string;
+  }
+  stt_->assign(value);
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.LoginStatus.stt)
+}
+inline void LoginStatus::set_stt(const char* value) {
+  set_has_stt();
+  if (stt_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    stt_ = new ::std::string;
+  }
+  stt_->assign(value);
+  // @@protoc_insertion_point(field_set_char:METRO.CRO.MESSAGES.LoginStatus.stt)
+}
+inline void LoginStatus::set_stt(const char* value, size_t size) {
+  set_has_stt();
+  if (stt_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    stt_ = new ::std::string;
+  }
+  stt_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:METRO.CRO.MESSAGES.LoginStatus.stt)
+}
+inline ::std::string* LoginStatus::mutable_stt() {
+  set_has_stt();
+  if (stt_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    stt_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:METRO.CRO.MESSAGES.LoginStatus.stt)
   return stt_;
 }
-inline void LoginStatus::set_stt(::google::protobuf::int32 value) {
-  set_has_stt();
-  stt_ = value;
-  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.LoginStatus.stt)
+inline ::std::string* LoginStatus::release_stt() {
+  clear_has_stt();
+  if (stt_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = stt_;
+    stt_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void LoginStatus::set_allocated_stt(::std::string* stt) {
+  if (stt_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete stt_;
+  }
+  if (stt) {
+    set_has_stt();
+    stt_ = stt;
+  } else {
+    clear_has_stt();
+    stt_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:METRO.CRO.MESSAGES.LoginStatus.stt)
 }
 
 

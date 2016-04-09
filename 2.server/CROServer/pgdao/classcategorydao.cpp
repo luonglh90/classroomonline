@@ -23,7 +23,7 @@ void ClassCategoryDAO::getAllClassCategory(QList<ClassCategory> &listCategory, b
             while(query.next()) {
                 ClassCategory category;
 
-                category.set_u_id(query.value("id").toInt());
+                category.set_u_id(std::to_string(query.value("id").toInt()));
                 category.set_name(query.value("name").toString().toStdString());
                 category.set_description(query.value("description").toString().toStdString());
                 category.set_imgurl(query.value("imgurl").toString().toStdString());

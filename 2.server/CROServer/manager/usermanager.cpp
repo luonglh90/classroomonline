@@ -62,6 +62,18 @@ User UserManager::getUserOnlineByUid(int uid) {
     return user;
 }
 
+int UserManager::getSocketuidOnlineByUsername(QString userName)
+{
+    int uid = -1;
+    for(QString value : mHashUserOnline.values()) {
+        if(value.compare(userName) == 0) {
+            uid = mHashUserOnline.key(value);
+            break;
+        }
+    }
+    return uid;
+}
+
 bool UserManager::checkUserLogin(QString username, QString password)
 {
     if(mMapAllUser.contains(username)) {
@@ -112,6 +124,12 @@ void UserManager::sendInitUser(int sockuid, QString userName)
         for(const ClassCategory &category : listCategories) {
             ClassCategory *cate = msg.add_categories();
             (*cate) = category;
+        }
+        // owner class
+        QList<ClassroomInfo> listOwnerClasses = ClassInfoManager::instance()->getOwnerClasses(userName);
+        for(const ClassroomInfo &classInfo : listOwnerClasses) {
+            ClassroomInfo *info = msg.add_ownerclass();
+            (*info) = classInfo;
         }
 
         MessageSender::instance()->sendIpcMessage(sockuid, &msg);

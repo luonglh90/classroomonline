@@ -7,7 +7,7 @@ message ClassCategory {
 		optional ClassCategory message = 201;
 	}
 
-	required int32 u_id = 1;
+	required string u_id = 1;
 	required string name = 2;
 	optional string description = 3;
 	optional string imgurl = 4;

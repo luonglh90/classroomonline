@@ -18,6 +18,9 @@ public:
     QList<ClassCategory> getListCategories() {
         return mHashClassCategory.values();
     }
+    QList<ClassroomInfo> getOwnerClasses(QString username);
+    ClassroomInfo getClassById(int classId);
+
     void sendClassroomOfCategory(int socketuid, int cate_id);
 
 signals:
