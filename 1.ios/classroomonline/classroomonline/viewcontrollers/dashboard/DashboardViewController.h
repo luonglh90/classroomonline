@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 
-@interface DashboardViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DashboardViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>{
+    
+}
+@property (weak, nonatomic) IBOutlet UITableView *tableCategories;
+@property (weak, nonatomic) IBOutlet UITableView *tableClasses;
 
 @end

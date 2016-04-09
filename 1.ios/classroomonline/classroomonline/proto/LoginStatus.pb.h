@@ -18,18 +18,18 @@
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry;
 @end
 
-#define LoginStatus_username @"username"
+#define LoginStatus_name @"name"
 #define LoginStatus_stt @"stt"
 @interface LoginStatus : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
   BOOL hasStt_:1;
-  BOOL hasUsername_:1;
+  BOOL hasName_:1;
   SInt32 stt;
-  NSString* username;
+  NSString* name;
 }
-- (BOOL) hasUsername;
+- (BOOL) hasName;
 - (BOOL) hasStt;
-@property (readonly, strong) NSString* username;
+@property (readonly, strong) NSString* name;
 @property (readonly) SInt32 stt;
 
 + (instancetype) defaultInstance;
@@ -68,10 +68,10 @@
 - (LoginStatusBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (LoginStatusBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (BOOL) hasUsername;
-- (NSString*) username;
-- (LoginStatusBuilder*) setUsername:(NSString*) value;
-- (LoginStatusBuilder*) clearUsername;
+- (BOOL) hasName;
+- (NSString*) name;
+- (LoginStatusBuilder*) setName:(NSString*) value;
+- (LoginStatusBuilder*) clearName;
 
 - (BOOL) hasStt;
 - (SInt32) stt;

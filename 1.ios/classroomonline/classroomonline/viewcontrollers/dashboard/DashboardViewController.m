@@ -7,8 +7,17 @@
 //
 
 #import "DashboardViewController.h"
+#import "ROSession.h"
+#import "ClassCategory.pb.h"
+#import "ClassroomInfo.pb.h"
+#import "Rpc.h"
 
-@interface DashboardViewController ()
+#define Session [ROSession instance]
+
+@interface DashboardViewController (){
+    
+}
+@property (nonatomic, strong) NSArray *arrayCurrentClasses;
 
 @end
 
@@ -16,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableClasses.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -40,19 +50,68 @@
 
 #pragma mark - Table delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    if (tableView.tag == 1) {
+        // Table categories
+        return Session.categories.count;
+    }
+    else if (self.arrayCurrentClasses && tableView.tag == 2){
+        return self.arrayCurrentClasses.count;
+    }
+    return 30;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 0;
+    if (tableView.tag == 1) {
+        // table categories
+        return 70;
+    }
+    return 70;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return nil;
+    UITableViewCell *cell;
+    if (tableView.tag == 1) {
+        static NSString *cateIdentifier = @"categories";
+        // Table categories
+        cell = [tableView dequeueReusableCellWithIdentifier:cateIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cateIdentifier];
+        }
+        ClassCategory *category = Session.categories[indexPath.row];
+        cell.textLabel.text = category.name;
+        cell.detailTextLabel.text = category.pb_description;
+    }
+    else if (tableView.tag == 2) {
+        static NSString *cateIdentifier = @"classesIndentifier";
+        // Table categories
+        cell = [tableView dequeueReusableCellWithIdentifier:cateIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cateIdentifier];
+        }
+        ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
+        cell.textLabel.text = room.name;
+        cell.detailTextLabel.text = room.pb_description;
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ClassCategory *category = Session.categories[indexPath.row];
+    if (category) {
+        [ROAppDelegate showLoading];
+        [[Rpc instance] requestListClassesWithCategoryId:category.uId];
+        [[Rpc instance] setOnResponseListClasses:^(int categoryId, NSArray *listClasses){
+            [ROAppDelegate hideLoading];
+            if (category.uId == categoryId) {
+                self.arrayCurrentClasses = [listClasses copy];
+                [self.tableClasses reloadData];
+            }
+        }];
+    }
 }
 
 @end

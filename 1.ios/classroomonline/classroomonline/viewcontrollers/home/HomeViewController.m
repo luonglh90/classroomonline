@@ -21,7 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.btnSignIn.layer.cornerRadius = 5;
+    self.btnSignUp.layer.cornerRadius = 5;
 }
 
 - (void)didReceiveMemoryWarning {

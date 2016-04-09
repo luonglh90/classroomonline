@@ -4,9 +4,9 @@ package METRO.CRO.MESSAGES;
 
 message LoginStatus {
 	extend IpcMessage {
-		optional LoginStatus message = 106;
+		optional LoginStatus message = 109;
 	}
 
-	optional string username = 1;
+	optional string name = 1;
 	optional int32 stt = 2;
 }

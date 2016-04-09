@@ -24,12 +24,13 @@
 @property (nonatomic, copy) void(^onSignInSuccess)(NSString *name);
 @property (nonatomic, copy) void(^onSignInFail)();
 @property (nonatomic, copy) void(^onResponseUserInit)(User *user, NSArray *categories);
+@property (nonatomic, copy) void(^onResponseListClasses)(int categoryId, NSArray *listClasses);
 
 
 + (instancetype)instance;
 
 - (void)connectSocket;
 - (void)requestSigninWithName:(NSString*)name pass:(NSString*)pass;
-
+- (void)requestListClassesWithCategoryId:(int)cId;
 
 @end

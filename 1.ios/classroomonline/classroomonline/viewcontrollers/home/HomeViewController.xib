@@ -19,6 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="learning-study-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="b7o-0o-bpU">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zv5-TC-1ss">
                     <rect key="frame" x="20" y="718" width="312" height="30"/>
                     <constraints>
@@ -69,16 +72,20 @@
                 <constraint firstItem="G8v-oj-Xzs" firstAttribute="leading" secondItem="Zv5-TC-1ss" secondAttribute="trailing" constant="20" id="1AE-kv-0SL"/>
                 <constraint firstItem="Y6b-Lv-0sK" firstAttribute="centerY" secondItem="Zv5-TC-1ss" secondAttribute="centerY" id="5js-Rd-IJs"/>
                 <constraint firstItem="Zv5-TC-1ss" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Dnj-k8-TxR"/>
+                <constraint firstItem="b7o-0o-bpU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Quw-DC-GDx"/>
                 <constraint firstItem="sdz-EE-7b9" firstAttribute="leading" secondItem="G8v-oj-Xzs" secondAttribute="trailing" constant="20" id="bo5-qe-DL4"/>
                 <constraint firstAttribute="bottom" secondItem="Zv5-TC-1ss" secondAttribute="bottom" constant="20" id="dPS-L7-1CR"/>
                 <constraint firstItem="Zv5-TC-1ss" firstAttribute="width" secondItem="G8v-oj-Xzs" secondAttribute="width" id="dgh-A9-Gl3"/>
+                <constraint firstItem="b7o-0o-bpU" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="dn9-az-yTl"/>
                 <constraint firstAttribute="trailing" secondItem="Y6b-Lv-0sK" secondAttribute="trailing" constant="20" id="fs8-K8-YJg"/>
+                <constraint firstItem="b7o-0o-bpU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gDo-L5-Pc3"/>
                 <constraint firstAttribute="bottom" secondItem="Y6b-Lv-0sK" secondAttribute="bottom" constant="20" id="gGV-Ip-je7"/>
                 <constraint firstAttribute="bottom" secondItem="G8v-oj-Xzs" secondAttribute="bottom" constant="20" id="h0d-AD-Tsc"/>
                 <constraint firstItem="sdz-EE-7b9" firstAttribute="centerY" secondItem="Zv5-TC-1ss" secondAttribute="centerY" id="iSV-S4-GDg"/>
                 <constraint firstAttribute="bottom" secondItem="sdz-EE-7b9" secondAttribute="bottom" constant="20" id="kR1-J6-vZa"/>
                 <constraint firstItem="G8v-oj-Xzs" firstAttribute="centerY" secondItem="Zv5-TC-1ss" secondAttribute="centerY" id="nhp-Zy-Mej"/>
                 <constraint firstItem="G8v-oj-Xzs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="327" id="rYw-rw-Xiw"/>
+                <constraint firstItem="b7o-0o-bpU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="rwp-lk-Mfm"/>
                 <constraint firstItem="Y6b-Lv-0sK" firstAttribute="leading" secondItem="sdz-EE-7b9" secondAttribute="trailing" constant="20" id="vMc-zc-euA"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -94,4 +101,7 @@
             <point key="canvasLocation" x="483" y="264"/>
         </view>
     </objects>
+    <resources>
+        <image name="learning-study-bg.png" width="1300" height="1282"/>
+    </resources>
 </document>

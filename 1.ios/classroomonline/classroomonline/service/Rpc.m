@@ -10,7 +10,8 @@
 #import "RequestLogin.pb.h"
 #import "ipcmessagetype.h"
 #import "LoginStatus.pb.h"
-
+#import "RequestViewCategoryDetail.pb.h"
+#import "ClassroomInfoOfCategory.pb.h"
 
 @interface Rpc(){
 }
@@ -41,7 +42,8 @@
         [LoginStatusRoot initialize];
         [UserInitRoot initialize];
         [UserRoot initialize];
-        [ClassCategory initialize];
+        [ClassCategoryRoot initialize];
+        [RequestViewCategoryDetailRoot initialize];
     }
     return self;
 }
@@ -77,6 +79,15 @@
     
     [self.webSocket send:data];
     
+}
+
+// Request get list classes in a category
+- (void)requestListClassesWithCategoryId:(int)cId{
+    RequestViewCategoryDetail *request = [[[RequestViewCategoryDetail builder] setCateId:cId] build];
+    IpcMessageBuilder* ipc = [[IpcMessage builder] setMsgId:REQUEST_VIEW_CATEGORY_DETAIL_MSG] ;
+    [ipc setExtension:[RequestViewCategoryDetail message] value:request];
+    NSData *data = [[ipc build] data];
+    [self.webSocket send:data];
 }
 
 #pragma mark -
@@ -146,7 +157,7 @@
             ipc = [IpcMessage parseFromData:message extensionRegistry:[LoginStatusRoot extensionRegistry]];
             LoginStatus *response = [ipc getExtension:field];
             if (response.stt == 0 && self.onSignInSuccess) {
-                self.onSignInSuccess(response.username);
+                self.onSignInSuccess(response.name);
             }
             else if (self.onSignInFail){
                 self.onSignInFail();
@@ -167,8 +178,15 @@
         }
             break;
         // CLASS BASE
-        case CATEGORY_MSG:{
-            
+        case CLASSES_OF_CATEGORY:{
+            // Response of list classes
+            id<PBExtensionField> field = [ClassroomInfoOfCategory message];
+            ipc = [IpcMessage parseFromData:message extensionRegistry:[ClassroomInfoOfCategoryRoot extensionRegistry]];
+            ClassroomInfoOfCategory *response = [ipc getExtension:field];
+            if (self.onResponseListClasses) {
+                self.onResponseListClasses(response.cateId, response.listOfClasses);
+            }
+            self.onResponseListClasses = nil;
         }
             break;
         case CALSSROOM_MSG:{

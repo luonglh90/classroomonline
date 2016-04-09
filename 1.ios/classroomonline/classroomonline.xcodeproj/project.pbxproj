@@ -38,6 +38,8 @@
 		41F0B2E51CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2E21CB93EBD0046BF63 /* ClassroomInfoOfCategory.pb.m */; };
 		41F0B2E61CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2E41CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m */; };
 		41F0B2E91CB94A900046BF63 /* LoginStatus.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2E81CB94A900046BF63 /* LoginStatus.pb.m */; };
+		41F0B2EC1CB952770046BF63 /* school-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41F0B2EB1CB952770046BF63 /* school-bg.jpg */; };
+		41F0B2F01CB953DF0046BF63 /* learning-study-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */; };
 		41F5955F1CB8EC320092C005 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F5955E1CB8EC320092C005 /* CFNetwork.framework */; };
 		41F595611CB8EC3B0092C005 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595601CB8EC3B0092C005 /* Security.framework */; };
 		41F595651CB8ED010092C005 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F595641CB8ED010092C005 /* libicucore.A.dylib */; };
@@ -110,6 +112,8 @@
 		41F0B2E41CB93EBD0046BF63 /* RequestViewCategoryDetail.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestViewCategoryDetail.pb.m; sourceTree = "<group>"; };
 		41F0B2E71CB94A900046BF63 /* LoginStatus.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginStatus.pb.h; sourceTree = "<group>"; };
 		41F0B2E81CB94A900046BF63 /* LoginStatus.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginStatus.pb.m; sourceTree = "<group>"; };
+		41F0B2EB1CB952770046BF63 /* school-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "school-bg.jpg"; sourceTree = "<group>"; };
+		41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning-study-bg.png"; sourceTree = "<group>"; };
 		41F5955E1CB8EC320092C005 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		41F595601CB8EC3B0092C005 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		41F595621CB8EC430092C005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -236,6 +240,7 @@
 		419537871CB8BBCA00773F93 /* classroomonline */ = {
 			isa = PBXGroup;
 			children = (
+				41F0B2EA1CB952640046BF63 /* art */,
 				41F595671CB909A70092C005 /* utils */,
 				419537EE1CB8EA5800773F93 /* proto */,
 				419537DA1CB8E39E00773F93 /* vendors */,
@@ -328,6 +333,15 @@
 			path = proto;
 			sourceTree = "<group>";
 		};
+		41F0B2EA1CB952640046BF63 /* art */ = {
+			isa = PBXGroup;
+			children = (
+				41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */,
+				41F0B2EB1CB952770046BF63 /* school-bg.jpg */,
+			);
+			path = art;
+			sourceTree = "<group>";
+		};
 		41F595671CB909A70092C005 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,10 +420,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				411979EB1CB920480097CD4F /* SignUpViewController.xib in Resources */,
+				41F0B2EC1CB952770046BF63 /* school-bg.jpg in Resources */,
 				411979ED1CB920480097CD4F /* RoomViewController.xib in Resources */,
 				419537981CB8BBCA00773F93 /* LaunchScreen.storyboard in Resources */,
 				419537951CB8BBCA00773F93 /* Assets.xcassets in Resources */,
 				411979E71CB920480097CD4F /* DashboardViewController.xib in Resources */,
+				41F0B2F01CB953DF0046BF63 /* learning-study-bg.png in Resources */,
 				411979E91CB920480097CD4F /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,7 +599,7 @@
 			baseConfigurationReference = 2152F778B7CCE8B7A21F7F80 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				APIHost = "ws://192.168.1.105";
-				APIPort = 1234;
+				APIPort = 8668;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -601,7 +617,7 @@
 			baseConfigurationReference = 1EA645C66A64E3A3255E49EB /* Pods.release.xcconfig */;
 			buildSettings = {
 				APIHost = "ws://192.168.1.105";
-				APIPort = 1234;
+				APIPort = 8668;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;

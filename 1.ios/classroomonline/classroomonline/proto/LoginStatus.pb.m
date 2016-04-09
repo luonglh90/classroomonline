@@ -15,7 +15,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     LoginStatus_message =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[IpcMessage class]
-                                       fieldNumber:106
+                                       fieldNumber:109
                                       defaultValue:[LoginStatus defaultInstance]
                                messageOrGroupClass:[LoginStatus class]
                                         isRepeated:NO
@@ -33,19 +33,19 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @end
 
 @interface LoginStatus ()
-@property (strong) NSString* username;
+@property (strong) NSString* name;
 @property SInt32 stt;
 @end
 
 @implementation LoginStatus
 
-- (BOOL) hasUsername {
-  return !!hasUsername_;
+- (BOOL) hasName {
+  return !!hasName_;
 }
-- (void) setHasUsername:(BOOL) _value_ {
-  hasUsername_ = !!_value_;
+- (void) setHasName:(BOOL) _value_ {
+  hasName_ = !!_value_;
 }
-@synthesize username;
+@synthesize name;
 - (BOOL) hasStt {
   return !!hasStt_;
 }
@@ -55,7 +55,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @synthesize stt;
 - (instancetype) init {
   if ((self = [super init])) {
-    self.username = @"";
+    self.name = @"";
     self.stt = 0;
   }
   return self;
@@ -79,8 +79,8 @@ static LoginStatus* defaultLoginStatusInstance = nil;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  if (self.hasUsername) {
-    [output writeString:1 value:self.username];
+  if (self.hasName) {
+    [output writeString:1 value:self.name];
   }
   if (self.hasStt) {
     [output writeInt32:2 value:self.stt];
@@ -94,8 +94,8 @@ static LoginStatus* defaultLoginStatusInstance = nil;
   }
 
   size_ = 0;
-  if (self.hasUsername) {
-    size_ += computeStringSize(1, self.username);
+  if (self.hasName) {
+    size_ += computeStringSize(1, self.name);
   }
   if (self.hasStt) {
     size_ += computeInt32Size(2, self.stt);
@@ -135,8 +135,8 @@ static LoginStatus* defaultLoginStatusInstance = nil;
   return [LoginStatus builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  if (self.hasUsername) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"username", self.username];
+  if (self.hasName) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
   }
   if (self.hasStt) {
     [output appendFormat:@"%@%@: %@\n", indent, @"stt", [NSNumber numberWithInteger:self.stt]];
@@ -144,8 +144,8 @@ static LoginStatus* defaultLoginStatusInstance = nil;
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (void) storeInDictionary:(NSMutableDictionary *)dictionary {
-  if (self.hasUsername) {
-    [dictionary setObject: self.username forKey: @"username"];
+  if (self.hasName) {
+    [dictionary setObject: self.name forKey: @"name"];
   }
   if (self.hasStt) {
     [dictionary setObject: [NSNumber numberWithInteger:self.stt] forKey: @"stt"];
@@ -161,16 +161,16 @@ static LoginStatus* defaultLoginStatusInstance = nil;
   }
   LoginStatus *otherMessage = other;
   return
-      self.hasUsername == otherMessage.hasUsername &&
-      (!self.hasUsername || [self.username isEqual:otherMessage.username]) &&
+      self.hasName == otherMessage.hasName &&
+      (!self.hasName || [self.name isEqual:otherMessage.name]) &&
       self.hasStt == otherMessage.hasStt &&
       (!self.hasStt || self.stt == otherMessage.stt) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  if (self.hasUsername) {
-    hashCode = hashCode * 31 + [self.username hash];
+  if (self.hasName) {
+    hashCode = hashCode * 31 + [self.name hash];
   }
   if (self.hasStt) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.stt] hash];
@@ -218,8 +218,8 @@ static LoginStatus* defaultLoginStatusInstance = nil;
   if (other == [LoginStatus defaultInstance]) {
     return self;
   }
-  if (other.hasUsername) {
-    [self setUsername:other.username];
+  if (other.hasName) {
+    [self setName:other.name];
   }
   if (other.hasStt) {
     [self setStt:other.stt];
@@ -246,7 +246,7 @@ static LoginStatus* defaultLoginStatusInstance = nil;
         break;
       }
       case 10: {
-        [self setUsername:[input readString]];
+        [self setName:[input readString]];
         break;
       }
       case 16: {
@@ -256,20 +256,20 @@ static LoginStatus* defaultLoginStatusInstance = nil;
     }
   }
 }
-- (BOOL) hasUsername {
-  return resultLoginStatus.hasUsername;
+- (BOOL) hasName {
+  return resultLoginStatus.hasName;
 }
-- (NSString*) username {
-  return resultLoginStatus.username;
+- (NSString*) name {
+  return resultLoginStatus.name;
 }
-- (LoginStatusBuilder*) setUsername:(NSString*) value {
-  resultLoginStatus.hasUsername = YES;
-  resultLoginStatus.username = value;
+- (LoginStatusBuilder*) setName:(NSString*) value {
+  resultLoginStatus.hasName = YES;
+  resultLoginStatus.name = value;
   return self;
 }
-- (LoginStatusBuilder*) clearUsername {
-  resultLoginStatus.hasUsername = NO;
-  resultLoginStatus.username = @"";
+- (LoginStatusBuilder*) clearName {
+  resultLoginStatus.hasName = NO;
+  resultLoginStatus.name = @"";
   return self;
 }
 - (BOOL) hasStt {

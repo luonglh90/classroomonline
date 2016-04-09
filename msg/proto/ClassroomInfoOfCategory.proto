@@ -5,7 +5,7 @@ package METRO.CRO.MESSAGES;
 
 message ClassroomInfoOfCategory {
 	extend IpcMessage {
-		optional ClassroomInfoOfCategory message = 204;
+		optional ClassroomInfoOfCategory message = 205;
 	}
 
 	required int32 cate_id = 1;
