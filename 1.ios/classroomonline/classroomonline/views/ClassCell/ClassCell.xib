@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="113" id="KGk-i7-Jjw" customClass="ClassCell">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="113"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="384" height="112.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwW-Bx-oNE">
+                        <rect key="frame" x="16" y="13" width="352" height="88"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wop-ZG-Lmb">
+                                <rect key="frame" x="15" y="5" width="327" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpg-89-A3Q">
+                                <rect key="frame" x="15" y="61" width="327" height="22"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="4Qk-TB-cvF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rpg-89-A3Q" secondAttribute="bottom" constant="5" id="1i6-re-kbO"/>
+                            <constraint firstItem="wop-ZG-Lmb" firstAttribute="leading" secondItem="IwW-Bx-oNE" secondAttribute="leading" constant="15" id="B0j-3a-irY"/>
+                            <constraint firstAttribute="trailing" secondItem="rpg-89-A3Q" secondAttribute="trailing" constant="10" id="Gif-ly-dxT"/>
+                            <constraint firstAttribute="bottom" secondItem="wop-ZG-Lmb" secondAttribute="bottom" constant="35" id="cct-uO-vyl"/>
+                            <constraint firstItem="rpg-89-A3Q" firstAttribute="leading" secondItem="IwW-Bx-oNE" secondAttribute="leading" constant="15" id="hM7-Vn-ay6"/>
+                            <constraint firstAttribute="trailing" secondItem="wop-ZG-Lmb" secondAttribute="trailing" constant="10" id="hSg-EB-DRf"/>
+                            <constraint firstItem="wop-ZG-Lmb" firstAttribute="top" secondItem="IwW-Bx-oNE" secondAttribute="top" constant="5" id="vbk-GA-EOu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="IwW-Bx-oNE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="FIe-fC-Yce"/>
+                    <constraint firstItem="IwW-Bx-oNE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="G9e-OT-UQl"/>
+                    <constraint firstItem="IwW-Bx-oNE" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Rgf-ZD-3M2"/>
+                    <constraint firstItem="IwW-Bx-oNE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="omG-tW-or8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="labelDescription" destination="rpg-89-A3Q" id="Z8C-IU-W4Y"/>
+                <outlet property="labelTitle" destination="wop-ZG-Lmb" id="umW-PC-me7"/>
+                <outlet property="viewContent" destination="IwW-Bx-oNE" id="XIj-2c-EVg"/>
+            </connections>
+            <point key="canvasLocation" x="227" y="166.5"/>
+        </tableViewCell>
+    </objects>
+</document>

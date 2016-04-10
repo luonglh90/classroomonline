@@ -10,6 +10,7 @@
                 <outlet property="btnCurosr" destination="dcN-zT-fUu" id="RYd-HY-Smi"/>
                 <outlet property="btnErase" destination="M43-P0-73Z" id="X7I-tT-bvl"/>
                 <outlet property="btnPencil" destination="71A-Mh-SCg" id="FLe-dH-BMf"/>
+                <outlet property="btnRing" destination="xTE-Bu-Y9X" id="ju3-Uh-Kag"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewControl" destination="jjg-LZ-2Ac" id="2Ym-t0-QLP"/>
                 <outlet property="viewDraw" destination="V41-Iy-NA8" id="Yuh-NW-ih1"/>
@@ -31,46 +32,60 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjg-LZ-2Ac">
                     <rect key="frame" x="5" y="75" width="100" height="450"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M43-P0-73Z">
-                            <rect key="frame" x="18" y="20" width="65" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.39745186059999998" blue="0.2922681888" alpha="1" colorSpace="calibratedRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M43-P0-73Z">
+                            <rect key="frame" x="17.5" y="20" width="65" height="65"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="EzX-GB-yHU"/>
+                                <constraint firstAttribute="height" constant="65" id="EzX-GB-yHU"/>
                                 <constraint firstAttribute="width" constant="65" id="wJ6-q9-0nh"/>
                             </constraints>
-                            <state key="normal" title="Erase">
+                            <state key="normal" title="Erase" image="eraser.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="actionPressedButton:" destination="-1" eventType="touchUpInside" id="AYR-S5-eBP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71A-Mh-SCg">
-                            <rect key="frame" x="17.5" y="75" width="65" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.39745186059999998" blue="0.2922681888" alpha="1" colorSpace="calibratedRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71A-Mh-SCg">
+                            <rect key="frame" x="17.5" y="110" width="65" height="65"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="65" id="VdR-pY-m5j"/>
-                                <constraint firstAttribute="height" constant="30" id="ln1-tA-7zv"/>
+                                <constraint firstAttribute="height" constant="65" id="ln1-tA-7zv"/>
                             </constraints>
-                            <state key="normal" title="Pencil">
+                            <state key="normal" title="Pencil" image="pencil.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="actionPressedButton:" destination="-1" eventType="touchUpInside" id="DXm-Dy-Th7"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-zT-fUu">
-                            <rect key="frame" x="17.5" y="130" width="65" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.39745186059999998" blue="0.2922681888" alpha="1" colorSpace="calibratedRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-zT-fUu">
+                            <rect key="frame" x="17.5" y="200" width="65" height="65"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="9p0-I8-iiN"/>
+                                <constraint firstAttribute="height" constant="65" id="9p0-I8-iiN"/>
                                 <constraint firstAttribute="width" constant="65" id="EX3-I9-xeZ"/>
                             </constraints>
-                            <state key="normal" title="Cursor">
+                            <state key="normal" title="Cursor" image="drag.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="actionPressedButton:" destination="-1" eventType="touchUpInside" id="dIa-6A-M9I"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTE-Bu-Y9X">
+                            <rect key="frame" x="18" y="370" width="65" height="65"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="65" id="uCW-YP-Prn"/>
+                                <constraint firstAttribute="width" constant="65" id="vuN-ls-ARD"/>
+                            </constraints>
+                            <state key="normal" title="Ring!" image="ping.png">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionRing:" destination="-1" eventType="touchUpInside" id="4Qo-9M-wxY"/>
                             </connections>
                         </button>
                     </subviews>
@@ -78,9 +93,11 @@
                     <constraints>
                         <constraint firstItem="71A-Mh-SCg" firstAttribute="centerX" secondItem="jjg-LZ-2Ac" secondAttribute="centerX" id="3CC-xJ-WRi"/>
                         <constraint firstAttribute="height" constant="450" id="7xp-o4-nUb"/>
+                        <constraint firstAttribute="bottom" secondItem="xTE-Bu-Y9X" secondAttribute="bottom" constant="15" id="BBn-bz-pQR"/>
                         <constraint firstItem="dcN-zT-fUu" firstAttribute="top" secondItem="71A-Mh-SCg" secondAttribute="bottom" constant="25" id="JQq-4c-7MY"/>
                         <constraint firstItem="dcN-zT-fUu" firstAttribute="centerX" secondItem="jjg-LZ-2Ac" secondAttribute="centerX" id="U8m-2g-Zx9"/>
                         <constraint firstItem="71A-Mh-SCg" firstAttribute="top" secondItem="M43-P0-73Z" secondAttribute="bottom" constant="25" id="cGC-Lv-tsp"/>
+                        <constraint firstItem="xTE-Bu-Y9X" firstAttribute="centerX" secondItem="jjg-LZ-2Ac" secondAttribute="centerX" id="jcX-FZ-anZ"/>
                         <constraint firstItem="M43-P0-73Z" firstAttribute="top" secondItem="jjg-LZ-2Ac" secondAttribute="top" constant="20" id="v2y-bF-RjB"/>
                         <constraint firstAttribute="width" constant="100" id="x0A-7h-A7G"/>
                         <constraint firstItem="M43-P0-73Z" firstAttribute="centerX" secondItem="jjg-LZ-2Ac" secondAttribute="centerX" id="xnm-qZ-Rql"/>
@@ -94,6 +111,13 @@
                 <constraint firstItem="V41-Iy-NA8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="j23-4s-i8y"/>
                 <constraint firstItem="jjg-LZ-2Ac" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="oJZ-os-1gm"/>
             </constraints>
+            <point key="canvasLocation" x="174" y="367"/>
         </view>
     </objects>
+    <resources>
+        <image name="drag.png" width="512" height="512"/>
+        <image name="eraser.png" width="512" height="512"/>
+        <image name="pencil.png" width="512" height="512"/>
+        <image name="ping.png" width="512" height="512"/>
+    </resources>
 </document>

@@ -46,6 +46,12 @@
 		41D0B3311CB9CA3D0007BFE1 /* TestRoomInfo.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D0B31D1CB9CA3D0007BFE1 /* TestRoomInfo.pb.m */; };
 		41D0B3321CB9CA3D0007BFE1 /* User.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D0B31F1CB9CA3D0007BFE1 /* User.pb.m */; };
 		41D0B3331CB9CA3D0007BFE1 /* UserInit.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D0B3211CB9CA3D0007BFE1 /* UserInit.pb.m */; };
+		41D0B3381CB9FAC40007BFE1 /* ClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D0B3361CB9FAC40007BFE1 /* ClassCell.m */; };
+		41D0B3391CB9FAC40007BFE1 /* ClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D0B3371CB9FAC40007BFE1 /* ClassCell.xib */; };
+		41D0B33D1CB9FF100007BFE1 /* drag.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D0B33A1CB9FF100007BFE1 /* drag.png */; };
+		41D0B33E1CB9FF100007BFE1 /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D0B33B1CB9FF100007BFE1 /* eraser.png */; };
+		41D0B33F1CB9FF100007BFE1 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D0B33C1CB9FF100007BFE1 /* pencil.png */; };
+		41D0B3411CBA00410007BFE1 /* ping.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D0B3401CBA00410007BFE1 /* ping.png */; };
 		41F0B2EC1CB952770046BF63 /* school-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41F0B2EB1CB952770046BF63 /* school-bg.jpg */; };
 		41F0B2F01CB953DF0046BF63 /* learning-study-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */; };
 		41F0B2FA1CB9708E0046BF63 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F0B2F71CB9708E0046BF63 /* SmoothedBIView.m */; };
@@ -136,6 +142,13 @@
 		41D0B31F1CB9CA3D0007BFE1 /* User.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.pb.m; sourceTree = "<group>"; };
 		41D0B3201CB9CA3D0007BFE1 /* UserInit.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInit.pb.h; sourceTree = "<group>"; };
 		41D0B3211CB9CA3D0007BFE1 /* UserInit.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInit.pb.m; sourceTree = "<group>"; };
+		41D0B3351CB9FAC40007BFE1 /* ClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCell.h; sourceTree = "<group>"; };
+		41D0B3361CB9FAC40007BFE1 /* ClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCell.m; sourceTree = "<group>"; };
+		41D0B3371CB9FAC40007BFE1 /* ClassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassCell.xib; sourceTree = "<group>"; };
+		41D0B33A1CB9FF100007BFE1 /* drag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drag.png; sourceTree = "<group>"; };
+		41D0B33B1CB9FF100007BFE1 /* eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser.png; sourceTree = "<group>"; };
+		41D0B33C1CB9FF100007BFE1 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		41D0B3401CBA00410007BFE1 /* ping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ping.png; sourceTree = "<group>"; };
 		41F0B2E01CB93BDF0046BF63 /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
 		41F0B2EB1CB952770046BF63 /* school-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "school-bg.jpg"; sourceTree = "<group>"; };
 		41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning-study-bg.png"; sourceTree = "<group>"; };
@@ -242,6 +255,7 @@
 		411979EE1CB922640097CD4F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				41D0B3341CB9FAA40007BFE1 /* ClassCell */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -373,9 +387,23 @@
 			path = proto;
 			sourceTree = "<group>";
 		};
+		41D0B3341CB9FAA40007BFE1 /* ClassCell */ = {
+			isa = PBXGroup;
+			children = (
+				41D0B3351CB9FAC40007BFE1 /* ClassCell.h */,
+				41D0B3361CB9FAC40007BFE1 /* ClassCell.m */,
+				41D0B3371CB9FAC40007BFE1 /* ClassCell.xib */,
+			);
+			path = ClassCell;
+			sourceTree = "<group>";
+		};
 		41F0B2EA1CB952640046BF63 /* art */ = {
 			isa = PBXGroup;
 			children = (
+				41D0B3401CBA00410007BFE1 /* ping.png */,
+				41D0B33A1CB9FF100007BFE1 /* drag.png */,
+				41D0B33B1CB9FF100007BFE1 /* eraser.png */,
+				41D0B33C1CB9FF100007BFE1 /* pencil.png */,
 				41F0B2EF1CB953DF0046BF63 /* learning-study-bg.png */,
 				41F0B2EB1CB952770046BF63 /* school-bg.jpg */,
 			);
@@ -473,9 +501,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41D0B33F1CB9FF100007BFE1 /* pencil.png in Resources */,
 				411979EB1CB920480097CD4F /* SignUpViewController.xib in Resources */,
+				41D0B33E1CB9FF100007BFE1 /* eraser.png in Resources */,
+				41D0B33D1CB9FF100007BFE1 /* drag.png in Resources */,
+				41D0B3391CB9FAC40007BFE1 /* ClassCell.xib in Resources */,
 				41F0B2EC1CB952770046BF63 /* school-bg.jpg in Resources */,
 				411979ED1CB920480097CD4F /* RoomViewController.xib in Resources */,
+				41D0B3411CBA00410007BFE1 /* ping.png in Resources */,
 				419537981CB8BBCA00773F93 /* LaunchScreen.storyboard in Resources */,
 				419537951CB8BBCA00773F93 /* Assets.xcassets in Resources */,
 				411979E71CB920480097CD4F /* DashboardViewController.xib in Resources */,
@@ -544,6 +577,7 @@
 				419537D91CB8E36900773F93 /* Rpc.m in Sources */,
 				419537E71CB8E39E00773F93 /* base64.c in Sources */,
 				41D0B3291CB9CA3D0007BFE1 /* IpcMessage.pb.m in Sources */,
+				41D0B3381CB9FAC40007BFE1 /* ClassCell.m in Sources */,
 				411979EC1CB920480097CD4F /* RoomViewController.m in Sources */,
 				41D0B3261CB9CA3D0007BFE1 /* ClassroomInfo.pb.m in Sources */,
 				41D0B32D1CB9CA3D0007BFE1 /* RequestViewCategoryDetail.pb.m in Sources */,
@@ -676,7 +710,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2152F778B7CCE8B7A21F7F80 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				APIHost = "ws://192.168.1.20";
+				APIHost = "ws://172.20.10.12";
 				APIPort = 8668;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ayako Miyauchi (AX864AL87E)";
@@ -696,7 +730,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EA645C66A64E3A3255E49EB /* Pods.release.xcconfig */;
 			buildSettings = {
-				APIHost = "ws://192.168.1.20";
+				APIHost = "ws://172.20.10.12";
 				APIPort = 8668;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ayako Miyauchi (AX864AL87E)";

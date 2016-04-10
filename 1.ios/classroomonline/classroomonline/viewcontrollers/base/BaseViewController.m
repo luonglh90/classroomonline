@@ -64,8 +64,37 @@
             case ClassOnlineActionActionTypeAcceptJoint:{
                 if ([action.targetusername isEqualToString:Session.user.username]) {
                     [ROSession instance].currentClassId = [action.classid intValue];
+                    Session.teacher = action.sourceusername;
                     RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
                     [self.navigationController pushViewController:controller animated:YES];
+                }
+            }
+                break;
+            case ClassOnlineActionActionTypeRequestDrawBoard:{
+                if ([Session.teacher isEqualToString:Session.user.username]) {
+                    UIAlertView *message = [[UIAlertView alloc] initWithTitle:app_name
+                                                                      message:[NSString stringWithFormat:@"%@ request to use board!", action.sourceusername]
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"OK"
+                                                            otherButtonTitles:@"Cancel", nil];
+                    [message setTag:112];
+                    [message show];
+                }
+                else if(Session.isDrawable){
+                    UIAlertView *message = [[UIAlertView alloc] initWithTitle:app_name
+                                                                      message:@"Your teacher grant draw board premission"
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"OK"
+                                                            otherButtonTitles:@"Cancel", nil];
+                    [message show];
+                }
+                
+            }
+                break;
+            case ClassOnlineActionActionTypeAcceptDrawBoard:{
+                if ([Session.user.username isEqualToString:action.targetusername]) {
+                    Session.isDrawable = YES;
+                    [self notifyAcceptDraw:YES];
                 }
             }
                 break;
@@ -75,6 +104,10 @@
         
     }];
     
+}
+
+- (void)notifyAcceptDraw:(BOOL)draw{
+    // for implement
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +131,13 @@
     if (alertView.tag == 111) {
         if (buttonIndex == 0) {
             [[Rpc instance] requestOpenClassId:receivedRoomId sourceUser:Session.user.username targetUser:target type:@"4"];
+        }
+    }
+    else if (alertView.tag == 112) {
+        if (buttonIndex == 0) {
+            Session.isDrawable = NO;
+            [self notifyAcceptDraw:NO];
+            [[Rpc instance] requestOpenClassId:receivedRoomId sourceUser:Session.user.username targetUser:target type:@"6"];
         }
     }
 }

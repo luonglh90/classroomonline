@@ -20,6 +20,7 @@
 @property (nonatomic, assign) BOOL isDrawable;
 @property (nonatomic, assign) int currentLineId;
 @property (nonatomic, assign) int currentClassId;
+@property (nonatomic, strong) NSString *teacher;
 
 + (instancetype)instance;
 

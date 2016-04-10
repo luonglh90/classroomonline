@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface BaseViewController : UIViewController
+@interface BaseViewController : UIViewController{
+    
+    
+}
+
+
+- (void)notifyAcceptDraw:(BOOL)draw;
 
 @end
