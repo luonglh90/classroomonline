@@ -8,6 +8,9 @@
 
 #import "RoomViewController.h"
 #import "ROSession.h"
+#import "Rpc.h"
+#import "BoardDrawLine.pb.h"
+#import "BoardErase.pb.h"
 
 @interface RoomViewController ()
 
@@ -31,6 +34,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+    [[Rpc instance] setOnResponseDrawLine:^(BoardDrawLine *draw){
+        [self.viewDraw drawListPoints:draw.points];
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

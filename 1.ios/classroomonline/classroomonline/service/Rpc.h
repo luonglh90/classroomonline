@@ -13,6 +13,8 @@
 #import "ClassCategory.pb.h"
 #import "ClassroomInfo.pb.h"
 #import "ClassOnlineAction.pb.h"
+#import "BoardDrawLine.pb.h"
+#import "BoardErase.pb.h"
 
 @interface Rpc : NSObject <SRWebSocketDelegate>{
     
@@ -27,6 +29,8 @@
 @property (nonatomic, copy) void(^onResponseUserInit)(User *user, NSArray *categories, NSArray *arrayMyClasses);
 @property (nonatomic, copy) void(^onResponseListClasses)(NSString* categoryId, NSArray *listClasses);
 @property (nonatomic, copy) void(^onOpenClassSuccess)(ClassOnlineAction *action);
+@property (nonatomic, copy) void(^onResponseDrawLine)(BoardDrawLine *draw);
+@property (nonatomic, copy) void(^onResponseEraseLine)(BoardErase *draw);
 
 + (instancetype)instance;
 
@@ -34,5 +38,6 @@
 - (void)requestSigninWithName:(NSString*)name pass:(NSString*)pass;
 - (void)requestListClassesWithCategoryId:(NSString*)cId;
 - (void)requestOpenClassId:(NSString*)classId sourceUser:(NSString*)source targetUser:(NSString*)target type:(NSString*)type;
+- (void)requestClass:(int)classid drawLineId:(int)lineId points:(NSMutableArray*)points;
 
 @end

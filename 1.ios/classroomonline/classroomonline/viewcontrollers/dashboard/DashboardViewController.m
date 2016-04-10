@@ -141,6 +141,7 @@
         ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
         if ([room.teacher isEqualToString:Session.user.username]) {
             Session.isDrawable = YES;
+            Session.currentClassId = [room.uid intValue];
             [[Rpc instance] requestOpenClassId:room.uid sourceUser:Session.user.username targetUser:@"test" type:@"1"];
             RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];

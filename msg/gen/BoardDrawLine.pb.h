@@ -20,15 +20,20 @@
 
 #define BoardDrawLine_lineid @"lineid"
 #define BoardDrawLine_points @"points"
+#define BoardDrawLine_classid @"classid"
 @interface BoardDrawLine : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
   BOOL hasLineid_:1;
+  BOOL hasClassid_:1;
   SInt32 lineid;
+  SInt32 classid;
   NSMutableArray * pointsArray;
 }
 - (BOOL) hasLineid;
+- (BOOL) hasClassid;
 @property (readonly) SInt32 lineid;
 @property (readonly, strong) NSArray * points;
+@property (readonly) SInt32 classid;
 - (MetroPointXY*)pointsAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -76,6 +81,11 @@
 - (BoardDrawLineBuilder *)addPoints:(MetroPointXY*)value;
 - (BoardDrawLineBuilder *)setPointsArray:(NSArray *)array;
 - (BoardDrawLineBuilder *)clearPoints;
+
+- (BOOL) hasClassid;
+- (SInt32) classid;
+- (BoardDrawLineBuilder*) setClassid:(SInt32) value;
+- (BoardDrawLineBuilder*) clearClassid;
 @end
 
 

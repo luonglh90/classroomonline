@@ -24,6 +24,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @interface BoardDrawLine ()
 @property SInt32 lineid;
 @property (strong) NSMutableArray * pointsArray;
+@property SInt32 classid;
 @end
 
 @implementation BoardDrawLine
@@ -37,9 +38,17 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @synthesize lineid;
 @synthesize pointsArray;
 @dynamic points;
+- (BOOL) hasClassid {
+  return !!hasClassid_;
+}
+- (void) setHasClassid:(BOOL) _value_ {
+  hasClassid_ = !!_value_;
+}
+@synthesize classid;
 - (instancetype) init {
   if ((self = [super init])) {
     self.lineid = 0;
+    self.classid = 0;
   }
   return self;
 }
@@ -79,6 +88,9 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
   [self.pointsArray enumerateObjectsUsingBlock:^(MetroPointXY *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
   }];
+  if (self.hasClassid) {
+    [output writeInt32:3 value:self.classid];
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (SInt32) serializedSize {
@@ -94,6 +106,9 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
   [self.pointsArray enumerateObjectsUsingBlock:^(MetroPointXY *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
   }];
+  if (self.hasClassid) {
+    size_ += computeInt32Size(3, self.classid);
+  }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -138,6 +153,9 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }];
+  if (self.hasClassid) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"classid", [NSNumber numberWithInteger:self.classid]];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (void) storeInDictionary:(NSMutableDictionary *)dictionary {
@@ -148,6 +166,9 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
     NSMutableDictionary *elementDictionary = [NSMutableDictionary dictionary];
     [element storeInDictionary:elementDictionary];
     [dictionary setObject:[NSDictionary dictionaryWithDictionary:elementDictionary] forKey:@"points"];
+  }
+  if (self.hasClassid) {
+    [dictionary setObject: [NSNumber numberWithInteger:self.classid] forKey: @"classid"];
   }
   [self.unknownFields storeInDictionary:dictionary];
 }
@@ -163,6 +184,8 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
       self.hasLineid == otherMessage.hasLineid &&
       (!self.hasLineid || self.lineid == otherMessage.lineid) &&
       [self.pointsArray isEqualToArray:otherMessage.pointsArray] &&
+      self.hasClassid == otherMessage.hasClassid &&
+      (!self.hasClassid || self.classid == otherMessage.classid) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -173,6 +196,9 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
   [self.pointsArray enumerateObjectsUsingBlock:^(MetroPointXY *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
   }];
+  if (self.hasClassid) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.classid] hash];
+  }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -226,6 +252,9 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
       [resultBoardDrawLine.pointsArray addObjectsFromArray:other.pointsArray];
     }
   }
+  if (other.hasClassid) {
+    [self setClassid:other.classid];
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -255,6 +284,10 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
         MetroPointXYBuilder* subBuilder = [MetroPointXY builder];
         [input readMessage:subBuilder extensionRegistry:extensionRegistry];
         [self addPoints:[subBuilder buildPartial]];
+        break;
+      }
+      case 24: {
+        [self setClassid:[input readInt32]];
         break;
       }
     }
@@ -295,6 +328,22 @@ static BoardDrawLine* defaultBoardDrawLineInstance = nil;
 }
 - (BoardDrawLineBuilder *)clearPoints {
   resultBoardDrawLine.pointsArray = nil;
+  return self;
+}
+- (BOOL) hasClassid {
+  return resultBoardDrawLine.hasClassid;
+}
+- (SInt32) classid {
+  return resultBoardDrawLine.classid;
+}
+- (BoardDrawLineBuilder*) setClassid:(SInt32) value {
+  resultBoardDrawLine.hasClassid = YES;
+  resultBoardDrawLine.classid = value;
+  return self;
+}
+- (BoardDrawLineBuilder*) clearClassid {
+  resultBoardDrawLine.hasClassid = NO;
+  resultBoardDrawLine.classid = 0;
   return self;
 }
 @end

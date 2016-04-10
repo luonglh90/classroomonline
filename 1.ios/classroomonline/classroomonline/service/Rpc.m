@@ -15,6 +15,7 @@
 #import "ResponseLogin.pb.h"
 #import "ClassOnlineAction.pb.h"
 #import "IpcMessage.pb.h"
+#import "BoardDrawLine.pb.h"
 
 @interface Rpc(){
 }
@@ -82,6 +83,12 @@
 - (void)requestOpenClassId:(NSString*)classId sourceUser:(NSString*)source targetUser:(NSString*)target type:(NSString*)type{
     ClassOnlineAction *request = [[[[[[ClassOnlineAction builder] setClassid:classId] setSourceusername:source] setTargetusername:target] setActiontype:type] build];
     IpcMessage *message = [[[[IpcMessage builder] setId:CLASS_ONLINE_ACTION_MSG] setPayloadData:[request data]] build];
+    [self.webSocket send:[message data]];
+}
+
+- (void)requestClass:(int)classid drawLineId:(int)lineId points:(NSMutableArray*)points{
+    BoardDrawLine *request = [[[[[BoardDrawLine builder] setClassid:classid] setLineid:lineId] setPointsArray:points] build];
+    IpcMessage *message = [[[[IpcMessage builder] setId:BOARD_DRAW_LINE_MSG] setPayloadData:[request data]] build];
     [self.webSocket send:[message data]];
 }
 
@@ -177,6 +184,13 @@
             ClassOnlineAction *response = [ClassOnlineAction parseFromData:ipc.payloadData];
             if (self.onOpenClassSuccess) {
                 self.onOpenClassSuccess(response);
+            }
+        }
+            break;
+        case BOARD_DRAW_LINE_MSG:{
+            BoardDrawLine *response = [BoardDrawLine parseFromData:ipc.payloadData];
+            if (self.onResponseDrawLine) {
+                self.onResponseDrawLine(response);
             }
         }
             break;

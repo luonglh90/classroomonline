@@ -2,6 +2,7 @@
 #import "CROLine.h"
 #import "ROSession.h"
 #import "MetroPointXY.pb.h"
+#import "Rpc.h"
 
 @implementation SmoothedBIView
 {
@@ -57,7 +58,7 @@
     // Clear and add first node to array
     currentLine = nil;
     currentLine = [[CROLine alloc] init];
-    [currentLine.points addObject:[[[MetroPointXY builder] setX:pts[0].x] setY:pts[0].y]];
+    [currentLine.points addObject:[[[[MetroPointXY builder] setX:pts[0].x] setY:pts[0].y] build]];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -67,7 +68,7 @@
     }
     UITouch *touch = [touches anyObject];
     CGPoint p = [touch locationInView:self];
-    [currentLine.points addObject:[[[MetroPointXY builder] setX:p.x] setY:p.y]];
+    [currentLine.points addObject:[[[[MetroPointXY builder] setX:p.x] setY:p.y] build]];
     ctr++;
     pts[ctr] = p;
     if (ctr == 4) 
@@ -95,6 +96,9 @@
     //[path removeAllPoints];
     ctr = 0;
     [self.arrayLines addObject:currentLine];
+    // Send line
+    [[Rpc instance] requestClass:[ROSession instance].currentClassId drawLineId:[ROSession instance].currentLineId points:currentLine.points];
+    [ROSession instance].currentLineId++;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -117,6 +121,29 @@
     incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 }
+
+- (void)drawListPoints:(NSArray*)points{
+    ctr = 0;
+    for (MetroPointXY *xy in points) {
+        ctr++;
+        pts[ctr] = CGPointMake(xy.x, xy.y);
+        if (ctr == 4)
+        {
+            pts[3] = CGPointMake((pts[2].x + pts[4].x)/2.0, (pts[2].y + pts[4].y)/2.0); // move the endpoint to the middle of the line joining the second control point of the first Bezier segment and the first control point of the second Bezier segment
+            
+            [path moveToPoint:pts[0]];
+            [path addCurveToPoint:pts[3] controlPoint1:pts[1] controlPoint2:pts[2]];
+            
+            [self setNeedsDisplay];
+            // replace points and get ready to handle the next segment
+            pts[0] = pts[3];
+            pts[1] = pts[4];
+            ctr = 1;
+        }
+    }
+    [self setNeedsDisplay];
+}
+
 
 @end
 

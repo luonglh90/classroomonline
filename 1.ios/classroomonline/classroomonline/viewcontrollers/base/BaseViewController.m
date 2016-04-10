@@ -63,6 +63,7 @@
                 break;
             case ClassOnlineActionActionTypeAcceptJoint:{
                 if ([action.targetusername isEqualToString:Session.user.username]) {
+                    [ROSession instance].currentClassId = [action.classid intValue];
                     RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
                     [self.navigationController pushViewController:controller animated:YES];
                 }
