@@ -112,10 +112,19 @@ class BoardDrawLine : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::MetroPointXY >*
       mutable_points();
 
+  // optional int32 classid = 3;
+  inline bool has_classid() const;
+  inline void clear_classid();
+  static const int kClassidFieldNumber = 3;
+  inline ::google::protobuf::int32 classid() const;
+  inline void set_classid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.BoardDrawLine)
  private:
   inline void set_has_lineid();
   inline void clear_has_lineid();
+  inline void set_has_classid();
+  inline void clear_has_classid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -123,6 +132,7 @@ class BoardDrawLine : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::MetroPointXY > points_;
   ::google::protobuf::int32 lineid_;
+  ::google::protobuf::int32 classid_;
   friend void  protobuf_AddDesc_BoardDrawLine_2eproto();
   friend void protobuf_AssignDesc_BoardDrawLine_2eproto();
   friend void protobuf_ShutdownFile_BoardDrawLine_2eproto();
@@ -189,6 +199,30 @@ inline ::google::protobuf::RepeatedPtrField< ::METRO::CRO::MESSAGES::MetroPointX
 BoardDrawLine::mutable_points() {
   // @@protoc_insertion_point(field_mutable_list:METRO.CRO.MESSAGES.BoardDrawLine.points)
   return &points_;
+}
+
+// optional int32 classid = 3;
+inline bool BoardDrawLine::has_classid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void BoardDrawLine::set_has_classid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void BoardDrawLine::clear_has_classid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void BoardDrawLine::clear_classid() {
+  classid_ = 0;
+  clear_has_classid();
+}
+inline ::google::protobuf::int32 BoardDrawLine::classid() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.BoardDrawLine.classid)
+  return classid_;
+}
+inline void BoardDrawLine::set_classid(::google::protobuf::int32 value) {
+  set_has_classid();
+  classid_ = value;
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.BoardDrawLine.classid)
 }
 
 

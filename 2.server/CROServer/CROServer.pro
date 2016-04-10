@@ -43,7 +43,10 @@ SOURCES += main.cpp \
     ../../msg/cpp/TeacherOpenClass.pb.cc \
     channel/classonlinechannel.cpp \
     ../../msg/cpp/ClassOnlineAction.pb.cc \
-    utils/stringutils.cpp
+    utils/stringutils.cpp \
+    ../../msg/cpp/BoardDrawLine.pb.cc \
+    ../../msg/cpp/BoardErase.pb.cc \
+    ../../msg/cpp/MetroPointXY.pb.cc
 
 HEADERS += \
     ../../msg/cpp/ClassCategory.pb.h \
@@ -84,7 +87,10 @@ HEADERS += \
     ../../msg/cpp/TeacherOpenClass.pb.h \
     channel/classonlinechannel.h \
     ../../msg/cpp/ClassOnlineAction.pb.h \
-    utils/stringutils.h
+    utils/stringutils.h \
+    ../../msg/cpp/BoardDrawLine.pb.h \
+    ../../msg/cpp/BoardErase.pb.h \
+    ../../msg/cpp/MetroPointXY.pb.h
 
 
 win32: LIBS += -L$$PWD/../../ThirdParty/lib/ -lprotobuf

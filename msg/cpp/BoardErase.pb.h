@@ -99,16 +99,26 @@ class BoardErase : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 lineid() const;
   inline void set_lineid(::google::protobuf::int32 value);
 
+  // optional int32 classid = 2;
+  inline bool has_classid() const;
+  inline void clear_classid();
+  static const int kClassidFieldNumber = 2;
+  inline ::google::protobuf::int32 classid() const;
+  inline void set_classid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:METRO.CRO.MESSAGES.BoardErase)
  private:
   inline void set_has_lineid();
   inline void clear_has_lineid();
+  inline void set_has_classid();
+  inline void clear_has_classid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::int32 lineid_;
+  ::google::protobuf::int32 classid_;
   friend void  protobuf_AddDesc_BoardErase_2eproto();
   friend void protobuf_AssignDesc_BoardErase_2eproto();
   friend void protobuf_ShutdownFile_BoardErase_2eproto();
@@ -145,6 +155,30 @@ inline void BoardErase::set_lineid(::google::protobuf::int32 value) {
   set_has_lineid();
   lineid_ = value;
   // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.BoardErase.lineid)
+}
+
+// optional int32 classid = 2;
+inline bool BoardErase::has_classid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BoardErase::set_has_classid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BoardErase::clear_has_classid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BoardErase::clear_classid() {
+  classid_ = 0;
+  clear_has_classid();
+}
+inline ::google::protobuf::int32 BoardErase::classid() const {
+  // @@protoc_insertion_point(field_get:METRO.CRO.MESSAGES.BoardErase.classid)
+  return classid_;
+}
+inline void BoardErase::set_classid(::google::protobuf::int32 value) {
+  set_has_classid();
+  classid_ = value;
+  // @@protoc_insertion_point(field_set:METRO.CRO.MESSAGES.BoardErase.classid)
 }
 
 

@@ -36,8 +36,9 @@ void protobuf_AssignDesc_BoardErase_2eproto() {
       "BoardErase.proto");
   GOOGLE_CHECK(file != NULL);
   BoardErase_descriptor_ = file->message_type(0);
-  static const int BoardErase_offsets_[1] = {
+  static const int BoardErase_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BoardErase, lineid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BoardErase, classid_),
   };
   BoardErase_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -80,8 +81,9 @@ void protobuf_AddDesc_BoardErase_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020BoardErase.proto\022\022METRO.CRO.MESSAGES\"\034"
-    "\n\nBoardErase\022\016\n\006lineid\030\001 \002(\005", 68);
+    "\n\020BoardErase.proto\022\022METRO.CRO.MESSAGES\"-"
+    "\n\nBoardErase\022\016\n\006lineid\030\001 \002(\005\022\017\n\007classid\030"
+    "\002 \001(\005", 85);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "BoardErase.proto", &protobuf_RegisterTypes);
   BoardErase::default_instance_ = new BoardErase();
@@ -100,6 +102,7 @@ struct StaticDescriptorInitializer_BoardErase_2eproto {
 
 #ifndef _MSC_VER
 const int BoardErase::kLineidFieldNumber;
+const int BoardErase::kClassidFieldNumber;
 #endif  // !_MSC_VER
 
 BoardErase::BoardErase()
@@ -121,6 +124,7 @@ BoardErase::BoardErase(const BoardErase& from)
 void BoardErase::SharedCtor() {
   _cached_size_ = 0;
   lineid_ = 0;
+  classid_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -156,7 +160,21 @@ BoardErase* BoardErase::New() const {
 }
 
 void BoardErase::Clear() {
-  lineid_ = 0;
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<BoardErase*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  ZR_(lineid_, classid_);
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -178,6 +196,21 @@ bool BoardErase::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &lineid_)));
           set_has_lineid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_classid;
+        break;
+      }
+
+      // optional int32 classid = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_classid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &classid_)));
+          set_has_classid();
         } else {
           goto handle_unusual;
         }
@@ -215,6 +248,11 @@ void BoardErase::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->lineid(), output);
   }
 
+  // optional int32 classid = 2;
+  if (has_classid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->classid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -228,6 +266,11 @@ void BoardErase::SerializeWithCachedSizes(
   // required int32 lineid = 1;
   if (has_lineid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->lineid(), target);
+  }
+
+  // optional int32 classid = 2;
+  if (has_classid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->classid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -247,6 +290,13 @@ int BoardErase::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->lineid());
+    }
+
+    // optional int32 classid = 2;
+    if (has_classid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->classid());
     }
 
   }
@@ -279,6 +329,9 @@ void BoardErase::MergeFrom(const BoardErase& from) {
     if (from.has_lineid()) {
       set_lineid(from.lineid());
     }
+    if (from.has_classid()) {
+      set_classid(from.classid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -304,6 +357,7 @@ bool BoardErase::IsInitialized() const {
 void BoardErase::Swap(BoardErase* other) {
   if (other != this) {
     std::swap(lineid_, other->lineid_);
+    std::swap(classid_, other->classid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -15,7 +15,8 @@ class ClassOnlineChannel : public BaseChannel
 public:
     ClassOnlineChannel();
     void processRequestClassAction(int uid, METRO::CRO::MESSAGES::ClassOnlineAction *msg);
-    void processRequestDrawBoard(int uid, METRO::CRO::MESSAGES::BoardDrawLine *msg);
+    void processRequestDrawBoard(int uid, BoardDrawLine *msg);
+    void processRequestEraseLine(int uid, BoardErase *msg);
     // action
     void userOpenClass(int uid, ClassOnlineAction *msg);
     void userRequestJointClass(int uid, ClassOnlineAction *msg);
