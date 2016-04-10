@@ -1,4 +1,5 @@
 #include <sstream>
+#include <QDebug>
 #include "../../msg/cpp/ipcmessagetype.h"
 #include "socketutils.h"
 
@@ -26,5 +27,7 @@ QByteArray SocketUtils::convertMsgToByteArray(IpcMessage* ipc)
 {
     std::ostringstream out;
     ipc->SerializeToOstream(&out);
-    return QByteArray(out.str().c_str());
+    int size = out.str().size();
+    qDebug() << size;
+    return QByteArray(out.str().c_str(), size);
 }

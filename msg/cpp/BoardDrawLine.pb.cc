@@ -36,9 +36,10 @@ void protobuf_AssignDesc_BoardDrawLine_2eproto() {
       "BoardDrawLine.proto");
   GOOGLE_CHECK(file != NULL);
   BoardDrawLine_descriptor_ = file->message_type(0);
-  static const int BoardDrawLine_offsets_[2] = {
+  static const int BoardDrawLine_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BoardDrawLine, lineid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BoardDrawLine, points_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BoardDrawLine, classid_),
   };
   BoardDrawLine_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -83,9 +84,10 @@ void protobuf_AddDesc_BoardDrawLine_2eproto() {
   ::METRO::CRO::MESSAGES::protobuf_AddDesc_MetroPointXY_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023BoardDrawLine.proto\022\022METRO.CRO.MESSAGE"
-    "S\032\022MetroPointXY.proto\"Q\n\rBoardDrawLine\022\016"
+    "S\032\022MetroPointXY.proto\"b\n\rBoardDrawLine\022\016"
     "\n\006lineid\030\001 \001(\005\0220\n\006points\030\002 \003(\0132 .METRO.C"
-    "RO.MESSAGES.MetroPointXY", 144);
+    "RO.MESSAGES.MetroPointXY\022\017\n\007classid\030\003 \001("
+    "\005", 161);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "BoardDrawLine.proto", &protobuf_RegisterTypes);
   BoardDrawLine::default_instance_ = new BoardDrawLine();
@@ -105,6 +107,7 @@ struct StaticDescriptorInitializer_BoardDrawLine_2eproto {
 #ifndef _MSC_VER
 const int BoardDrawLine::kLineidFieldNumber;
 const int BoardDrawLine::kPointsFieldNumber;
+const int BoardDrawLine::kClassidFieldNumber;
 #endif  // !_MSC_VER
 
 BoardDrawLine::BoardDrawLine()
@@ -126,6 +129,7 @@ BoardDrawLine::BoardDrawLine(const BoardDrawLine& from)
 void BoardDrawLine::SharedCtor() {
   _cached_size_ = 0;
   lineid_ = 0;
+  classid_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -161,7 +165,21 @@ BoardDrawLine* BoardDrawLine::New() const {
 }
 
 void BoardDrawLine::Clear() {
-  lineid_ = 0;
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<BoardDrawLine*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  ZR_(lineid_, classid_);
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   points_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -201,6 +219,21 @@ bool BoardDrawLine::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(18)) goto parse_points;
+        if (input->ExpectTag(24)) goto parse_classid;
+        break;
+      }
+
+      // optional int32 classid = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_classid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &classid_)));
+          set_has_classid();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -241,6 +274,11 @@ void BoardDrawLine::SerializeWithCachedSizes(
       2, this->points(i), output);
   }
 
+  // optional int32 classid = 3;
+  if (has_classid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->classid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -263,6 +301,11 @@ void BoardDrawLine::SerializeWithCachedSizes(
         2, this->points(i), target);
   }
 
+  // optional int32 classid = 3;
+  if (has_classid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->classid(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -280,6 +323,13 @@ int BoardDrawLine::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->lineid());
+    }
+
+    // optional int32 classid = 3;
+    if (has_classid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->classid());
     }
 
   }
@@ -321,6 +371,9 @@ void BoardDrawLine::MergeFrom(const BoardDrawLine& from) {
     if (from.has_lineid()) {
       set_lineid(from.lineid());
     }
+    if (from.has_classid()) {
+      set_classid(from.classid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -347,6 +400,7 @@ void BoardDrawLine::Swap(BoardDrawLine* other) {
   if (other != this) {
     std::swap(lineid_, other->lineid_);
     points_.Swap(&other->points_);
+    std::swap(classid_, other->classid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

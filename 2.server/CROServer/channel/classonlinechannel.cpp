@@ -54,11 +54,24 @@ void ClassOnlineChannel::processRequestDrawBoard(int uid, BoardDrawLine *msg)
 {
     if(UserManager::instance()->checkUserOnline(uid)) {
         // get opening class
-        int classId = StringUtils::stringToInt(msg->classid());
+        int classId = msg->classid();
         if(mHashClassroomOnline.contains(classId)) {
-            qDebug() << "forward request to teacher";
-            int teacherUid = mHashClassroomOnline[classId].teacherUid();
-            MessageSender::instance()->sendIpcMessage(teacherUid, msg);
+            qDebug() << "boardcast to other";
+            mHashClassroomOnline[classId].processDrawMsg(uid, msg);
+        } else {
+            qDebug() << "class not exist";
+        }
+    }
+}
+
+void ClassOnlineChannel::processRequestEraseLine(int uid, BoardErase *msg)
+{
+    if(UserManager::instance()->checkUserOnline(uid)) {
+        // get opening class
+        int classId = msg->classid();
+        if(mHashClassroomOnline.contains(classId)) {
+            qDebug() << "boardcast to other";
+            mHashClassroomOnline[classId].processEraseMsg(uid, msg);
         } else {
             qDebug() << "class not exist";
         }
@@ -173,9 +186,9 @@ void ClassOnlineChannel::readMessage(IpcSocketEvelope *ipcevelope)
                 break;
             }
             case BOARD_ERASE_MSG: {
-//                ClassOnlineAction *msg = (ClassOnlineAction*)IpcMsgHelper::getMessage(ipc);
-//                processRequestClassAction(ipcevelope->socketuid, msg);
-//                _DELETE_PTR(msg);
+                BoardErase *msg = (BoardErase*)IpcMsgHelper::getMessage(ipc);
+                processRequestEraseLine(ipcevelope->socketuid, msg);
+                _DELETE_PTR(msg);
                 break;
             }
             default:

@@ -2,4 +2,5 @@ package METRO.CRO.MESSAGES;
 
 message BoardErase {
 	required int32 lineid = 1;
+	optional int32 classid = 2;
 }

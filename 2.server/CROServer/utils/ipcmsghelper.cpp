@@ -1,4 +1,5 @@
 #include <sstream>
+#include <QDebug>
 #include "IpcMsgHelper.h"
 #include "../../msg/cpp/ipcmessagetype.h"
 #include "../../msg/cpp/RequestLogin.pb.h"
@@ -9,6 +10,8 @@
 #include "../../msg/cpp/LoginStatus.pb.h"
 #include "../../msg/cpp/TeacherOpenClass.pb.h"
 #include "../../msg/cpp/ClassOnlineAction.pb.h"
+#include "../../msg/cpp/BoardDrawLine.pb.h"
+#include "../../msg/cpp/BoardErase.pb.h"
 
 std::map<std::string, int> nameIdMap;
 
@@ -31,6 +34,8 @@ void IpcMsgHelper::init() {
         nameIdMap["METRO.CRO.MESSAGES.LoginStatus"] = LOGIN_STATUS_MSG;
         nameIdMap["METRO.CRO.MESSAGES.TeacherOpenClass"] = TEACHER_OPEN_CLASS_MSG;
         nameIdMap["METRO.CRO.MESSAGES.ClassOnlineAction"] = CLASS_ONLINE_ACTION_MSG;
+        nameIdMap["METRO.CRO.MESSAGES.BoardDrawLine"] = BOARD_DRAW_LINE_MSG;
+        nameIdMap["METRO.CRO.MESSAGES.BoardErase"] = BOARD_ERASE_MSG;
     }
 }
 
@@ -43,7 +48,9 @@ IpcMessage* IpcMsgHelper::createIpcMessage(google::protobuf::Message* msg) {
     ipc->set_id(msgId);
     std::ostringstream out;
     msg->SerializeToOstream(&out);
-    ipc->set_payload_data(out.str().data());
+    int size = out.str().size();
+
+    ipc->set_payload_data(out.str().data(), size);
 
     return ipc;
 }
@@ -87,6 +94,14 @@ google::protobuf::Message* IpcMsgHelper::getMessage(IpcMessage* ipc) {
     }
     case CLASS_ONLINE_ACTION_MSG: {
         msg = new ClassOnlineAction();
+        break;
+    }
+    case BOARD_DRAW_LINE_MSG: {
+        msg = new BoardDrawLine();
+        break;
+    }
+    case BOARD_ERASE_MSG: {
+        msg = new BoardErase();
         break;
     }
     default:
