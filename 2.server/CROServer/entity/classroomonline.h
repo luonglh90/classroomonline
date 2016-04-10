@@ -23,6 +23,7 @@ public:
     void processTeacherDisconnect();
     void sendAllExcept(google::protobuf::Message *msg, int exceptUid);
     void sendAllLinesToNewStudent(int uid);
+    void sendAllMsgToStudent(google::protobuf::Message *msg);
 
     User teacher() const;
     int teacherUid() const;

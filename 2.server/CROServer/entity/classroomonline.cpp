@@ -61,6 +61,13 @@ void ClassroomOnline::sendAllLinesToNewStudent(int uid)
     }
 }
 
+void ClassroomOnline::sendAllMsgToStudent(google::protobuf::Message *msg)
+{
+    for(int uid : mHashStudent.keys()) {
+        MessageSender::instance()->sendIpcMessage(uid, msg);
+    }
+}
+
 User ClassroomOnline::teacher() const
 {
     return mTeacher;

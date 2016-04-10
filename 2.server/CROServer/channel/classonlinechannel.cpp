@@ -135,7 +135,11 @@ void ClassOnlineChannel::userRequestDrawBoard(int uid, ClassOnlineAction *msg)
         if(mHashClassroomOnline.contains(classId)) {
             qDebug() << "forward request to teacher";
             int teacherUid = mHashClassroomOnline[classId].teacherUid();
-            MessageSender::instance()->sendIpcMessage(teacherUid, msg);
+            if(uid != teacherUid) { // student request
+                MessageSender::instance()->sendIpcMessage(teacherUid, msg);
+            } else {
+                mHashClassroomOnline[classId].sendAllMsgToStudent(msg);
+            }
         } else {
             qDebug() << "class not exist";
         }
