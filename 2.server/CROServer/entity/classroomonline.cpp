@@ -57,8 +57,7 @@ void ClassroomOnline::sendAllExcept(google::protobuf::Message *msg, int exceptUi
 void ClassroomOnline::sendAllLinesToNewStudent(int uid)
 {
     for(int lineKey : mHashDrawLine.keys()) {
-
-//        MessageSender::instance()->sendIpcMessage(uid, mHashDrawLine[lineKey]));
+        MessageSender::instance()->sendIpcMessage(uid, &(mHashDrawLine[lineKey]));
     }
 }
 
