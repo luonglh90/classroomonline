@@ -14,6 +14,7 @@
 #import "RoomViewController.h"
 #import "TestRoomInfo.pb.h"
 #import "Utils.h"
+#import "ClassCell.h"
 
 #define Session [ROSession instance]
 
@@ -29,6 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableClasses.hidden = YES;
+    [self.tableClasses setBackgroundColor:[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.7]];
+    
+    [self.tableClasses registerNib:[UINib nibWithNibName:NSStringFromClass([ClassCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ClassCell class])];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -73,7 +77,7 @@
         // table categories
         return 70;
     }
-    return 70;
+    return 125;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -92,27 +96,28 @@
         }
         else{
             ClassCategory *category = Session.categories[indexPath.row - padding];
+            //[cell.imageView setImage:[UIImage imageNamed:category.imgurl]];
             cell.textLabel.text = category.name;
             cell.detailTextLabel.text = category.pb_description;
         }
+        return cell;
     }
     else if (tableView.tag == 2) {
-        static NSString *cateIdentifier = @"classesIndentifier";
         // Table categories
-        cell = [tableView dequeueReusableCellWithIdentifier:cateIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cateIdentifier];
-        }
+        ClassCell *classCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ClassCell class]) forIndexPath:indexPath];
+        [classCell setBackgroundColor:[UIColor clearColor]];
         ClassroomInfo *room = self.arrayCurrentClasses[indexPath.row];
-        cell.textLabel.text = room.name;
+       NSString *sub = @"";
         if ([room.teacher isEqualToString:Session.user.username]) {
-            cell.detailTextLabel.text = @"Click to OPEN class";;
+            sub = @"Click to OPEN class";;
         }
         else {
-            cell.detailTextLabel.text = @"Click to JOIN";
+            sub = @"Click to JOIN";
         }
+        [classCell setupWithTitle:room.name subtitle:sub];
+        return classCell;
     }
-    return cell;
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -142,6 +147,7 @@
         if ([room.teacher isEqualToString:Session.user.username]) {
             Session.isDrawable = YES;
             Session.currentClassId = [room.uid intValue];
+            Session.teacher = Session.user.username;
             [[Rpc instance] requestOpenClassId:room.uid sourceUser:Session.user.username targetUser:@"test" type:@"1"];
             RoomViewController *controller = [[RoomViewController alloc] initWithNibName:NSStringFromClass([RoomViewController class]) bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];

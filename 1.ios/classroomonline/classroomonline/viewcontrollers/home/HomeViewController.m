@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.btnSignIn.layer.cornerRadius = 5;
-    self.btnSignUp.layer.cornerRadius = 5;
+    self.btnSignIn.layer.cornerRadius = 8;
+    self.btnSignUp.layer.cornerRadius = 8;
 }
 
 - (void)didReceiveMemoryWarning {

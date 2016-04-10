@@ -23,11 +23,14 @@
     [self.btnErase.layer setCornerRadius:5];
     [self.btnPencil.layer setCornerRadius:5];
     [self.viewControl.layer setCornerRadius:5];
+    [self.btnRing.layer setCornerRadius:33];
     if ([ROSession instance].isDrawable) {
         [self actionPressedButton:self.btnPencil];
+        [self.btnRing setHidden:YES];
     }
     else{
         [self disableAllControl];
+        [self.btnRing setHidden:NO];
     }
 }
 
@@ -35,7 +38,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
     [[Rpc instance] setOnResponseDrawLine:^(BoardDrawLine *draw){
-        [self.viewDraw drawListPoints:draw.points];
+        [self.viewDraw drawListPoints:draw.points lineId:draw.lineid];
     }];
 }
 
@@ -90,6 +93,10 @@
     }
 }
 
+- (IBAction)actionRing:(id)sender {
+    [[Rpc instance] requestOpenClassId:[NSString stringWithFormat:@"%d", [ROSession instance].currentClassId] sourceUser:[ROSession instance].user.username targetUser:[ROSession instance].teacher type:@"5"];
+}
+
 - (void)disableAllControl{
     [self.btnErase setEnabled:NO];
     [self.btnErase setSelected:NO];
@@ -98,6 +105,17 @@
     [self.btnCurosr setEnabled:NO];
     [self.btnCurosr setSelected:YES];
     [self.viewDraw setIsDragEnabled:YES];
+}
+
+- (void)notifyAcceptDraw:(BOOL)draw{
+    if (draw) {
+        [self actionPressedButton:self.btnPencil];
+        [self.btnRing setHidden:YES];
+    }
+    else{
+        [self.btnRing setHidden:NO];
+    }
+    
 }
 
 @end

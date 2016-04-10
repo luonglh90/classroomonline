@@ -17,8 +17,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnErase;
 @property (weak, nonatomic) IBOutlet UIButton *btnPencil;
 @property (weak, nonatomic) IBOutlet UIButton *btnCurosr;
+@property (weak, nonatomic) IBOutlet UIButton *btnRing;
 
 
 - (IBAction)actionPressedButton:(id)sender;
+- (IBAction)actionRing:(id)sender;
 
 @end

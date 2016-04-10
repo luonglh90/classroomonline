@@ -11,6 +11,6 @@
 
 @interface SmoothedBIView : BaseDrawView
 
-- (void)drawListPoints:(NSArray*)points;
+- (void)drawListPoints:(NSArray*)points lineId:(int)line;
 
 @end
